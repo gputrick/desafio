@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.1</jsp-version>
+    <short-name>netui-template</short-name>
+    <uri>http://www.bea.com/workshop/netui-tags-template-1.0</uri>
+    <description>NetUI Template controls taglibrary.</description>
+    <tag>
+        <name>attribute</name>
+        <tag-class>com.bea.wlw.netui.tags.template.Attribute</tag-class>
+        <description>Place this tag in a template file, and then set its
+            value with the netui-template:setAttribute tag.</description>
+        <attribute>
+            <name>defaultValue</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>includeSection</name>
+        <tag-class>com.bea.wlw.netui.tags.template.IncludeSection</tag-class>
+        <description>Include this tag in a template file to mark out
+            content that will be used in another JSP page.</description>
+        <attribute>
+            <name>defaultPage</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>section</name>
+        <tag-class>com.bea.wlw.netui.tags.template.Section</tag-class>
+        <description>Use this tag to mark out content to replace a
+            netui-template:includeSection within a template file.</description>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>visibility</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>visible</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>setAttribute</name>
+        <tag-class>com.bea.wlw.netui.tags.template.SetAttribute</tag-class>
+        <description>Use this tag to set the value of an
+            netui-template:attribute element in a template file.</description>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>template</name>
+        <tag-class>com.bea.wlw.netui.tags.template.Template</tag-class>
+        <description>Use this tag to associate a JSP page with a
+            particular template file.</description>
+        <attribute>
+            <name>reportErrors</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>templatePage</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>visible</name>
+        <tag-class>com.bea.wlw.netui.tags.template.Visible</tag-class>
+        <description>Use this tag to turn on/off the display of the body content.</description>
+        <attribute>
+            <name>negate</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>visibility</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>visible</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+</taglib>

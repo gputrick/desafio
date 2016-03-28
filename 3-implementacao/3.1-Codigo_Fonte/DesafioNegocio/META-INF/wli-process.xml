@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proc:ProcessManifest xmlns:proc="http://www.bea.com/wli/management/processmanifest">
+    <proc:project name="DesafioWebTest">
+        <proc:ProcessDefinitions/>
+    </proc:project>
+</proc:ProcessManifest>

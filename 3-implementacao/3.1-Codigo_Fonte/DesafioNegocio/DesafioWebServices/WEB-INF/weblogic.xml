@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+  <!DOCTYPE weblogic-web-app 
+    PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" 
+    "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd" >
+<weblogic-web-app>
+    
+    <jsp-descriptor>
+        <!-- Comment the jspServlet param out to go back to weblogic's jspc -->
+        <jsp-param>
+            <param-name>jspServlet</param-name>
+            <param-value>weblogic.servlet.WlwJSPServlet</param-value>
+        </jsp-param>
+        <jsp-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </jsp-param>
+    </jsp-descriptor>
+    
+    <url-match-map>
+       weblogic.servlet.utils.SimpleApacheURLMatchMap
+    </url-match-map>
+</weblogic-web-app>

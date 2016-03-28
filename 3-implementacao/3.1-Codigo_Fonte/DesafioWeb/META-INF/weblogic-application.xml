@@ -1,0 +1,19 @@
+  <!DOCTYPE weblogic-application PUBLIC '-//BEA Systems, Inc.//DTD WebLogic Application 8.1.0//EN' 'http://www.bea.com/servers/wls810/dtd/weblogic-application_2_0.dtd'>
+  <weblogic-application>
+    <ejb>
+      <start-mdbs-with-application>False</start-mdbs-with-application>
+    </ejb>
+
+    <application-param>
+      <param-name>webapp.encoding.default</param-name>
+      <param-value>UTF-8</param-value>
+    </application-param>
+    <classloader-structure>
+      <classloader-structure>
+        <module-ref>
+          <module-uri>DesafioWeb</module-uri>
+        </module-ref>
+      </classloader-structure>
+    </classloader-structure>
+
+  </weblogic-application>

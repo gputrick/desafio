@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.1</jsp-version>
+    <short-name>netui-data</short-name>
+    <uri>http://www.bea.com/workshop/netui-tags-databinding-1.0</uri>
+    <description>NetUI Databinding Tag Library.</description>
+    <tag>
+        <name>anchorColumn</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.column.AnchorColumn</tag-class>
+        <description>Renders an HTML anchor into each data cell in the column.</description>
+        <attribute>
+            <name>action</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>addRowId</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>border</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>filterAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>filterable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>height</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>href</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>src</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>styleClassPrefix</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>target</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>width</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>basicColumn</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.column.BasicColumn</tag-class>
+        <description>Renders data from the data set into the page.</description>
+        <attribute>
+            <name>filterAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>filterable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>sortAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>styleClassPrefix</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>callControl</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.invoke.CallControl</tag-class>
+        <description>Use this tag to call a method on a control.</description>
+        <attribute>
+            <name>controlId</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>method</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>resultId</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>callMethod</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.invoke.CallMethod</tag-class>
+        <description>Use this tag to call a method on an object.</description>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>method</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>object</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>resultId</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>callPageFlow</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.invoke.CallPageFlow</tag-class>
+        <description>Use this tag to call a method on the current page
+            flow controller.</description>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>method</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>object</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>resultId</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>cellRepeater</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.cellrepeater.CellRepeater</tag-class>
+        <description>A repeating, databound tag that renders its body
+            into each cell of a table of the specified dimensions.</description>
+        <attribute>
+            <name>alternatingCellClass</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>cellClass</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>columns</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>dataSource</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>rowClass</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>rows</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>tableClass</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>verticalRepeat</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>choice</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.choice.Choice</tag-class>
+        <description>When nested in a netui-data:repeaterItem tag,
+            allows its body to be rendered conditionally.</description>
+        <attribute>
+            <name>default</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>choiceMethod</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.choice.ChoiceMethod</tag-class>
+        <description>Use this tag to choose a particular
+            netui-data:choice tag whose body should be rendered for the
+            current data item in the Repeater.</description>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>method</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>object</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>resultId</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>columns</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.Columns</tag-class>
+        <description>Provides a container for the columns that will
+            render the header, data, and footer for each column in a netui-data:grid.</description>
+        <attribute>
+            <name>filterAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>filterable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>styleClassPrefix</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>declareBundle</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.bundle.DeclareBundle</tag-class>
+        <description>Use this tag to declare a resource bundle that is
+            available in the bundle databinding context.</description>
+        <attribute>
+            <name>bundlePath</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>country</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>language</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>variant</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>declareControl</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.invoke.DeclareControl</tag-class>
+        <description>Declare a control that is stored in the pageContext
+            attribute map.</description>
+        <attribute>
+            <name>controlId</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>declarePageInput</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.pageinput.DeclarePageInput</tag-class>
+        <description>Use this tag to declare a page input variable that
+            is available in the pageInput databinding context.</description>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>expressionColumn</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.column.ExpressionColumn</tag-class>
+        <description>A column that can use XScript expressions in
+            addition to formatters to format the value of a data cell.</description>
+        <attribute>
+            <name>styleClassPrefix</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>getData</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.script.GetData</tag-class>
+        <description>Evaluates an expression and places the result in
+            the JSP's PageContext. Can be used to extract objects from
+            forms, page flows, and other objects that can be databound.
+            You can then write a scriplet to access the data by using
+            the getAttribute method of javax.servlet.jsp.PageContext.</description>
+        <attribute>
+            <name>resultId</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>grid</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.Grid</tag-class>
+        <description>The containing tag of a tag set that renders
+            regular data with the ability to page, sort, and filter the
+            data set.</description>
+        <attribute>
+            <name>autoRender</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>dataSource</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>imageRoot</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>gridStyle</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.style.GridStyle</tag-class>
+        <description>Allows parameterization of the style components of
+            the HTML table that a Grid renders.</description>
+        <attribute>
+            <name>styleClassPrefix</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>imageColumn</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.column.ImageColumn</tag-class>
+        <description>In a grid, renders an image into a column.</description>
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>border</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>filterAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>filterable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>height</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortAction</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortable</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>src</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>styleClassPrefix</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>width</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>message</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.message.Message</tag-class>
+        <description>Allows you to format messages according to any
+            sequence you want, using one or more values from arguments
+            defined in MessageArg tag(s). The results are available to
+            the page context.</description>
+        <attribute>
+            <name>resultId</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>messageArg</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.message.MessageArg</tag-class>
+        <description>Allows you to set values that are used as arguments
+            to the Message tag. The formatted message results are
+            available to the page context.</description>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>methodParameter</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.invoke.MethodParameter</tag-class>
+        <description>Use this tag to add an argument to a method that
+            will be called on some object.</description>
+        <attribute>
+            <name>null</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>pad</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.pad.Pad</tag-class>
+        <description>Affects the number of items that are rendered in a Repeater.</description>
+        <attribute>
+            <name>maxRepeat</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>minRepeat</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>padText</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>pager</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.grid.pager.Pager</tag-class>
+        <description>Allows the grid to render a subset of data on each
+            page and renders the navigation links for moving between
+            grid pages.</description>
+        <attribute>
+            <name>action</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>pageSize</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>renderInFooter</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>renderInHeader</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>repeater</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.Repeater</tag-class>
+        <description>A markup-generic tag that repeats over a data set,
+            and renders the data onto the page.</description>
+        <attribute>
+            <name>dataSource</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>defaultText</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>ignoreNulls</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <tag>
+        <name>repeaterFooter</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.RepeaterFooter</tag-class>
+        <description>Use this tag to render the footer of a Repeater.</description>
+    </tag>
+    <tag>
+        <name>repeaterHeader</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.RepeaterHeader</tag-class>
+        <description>Use this tag to render the header of a Repeater.</description>
+    </tag>
+    <tag>
+        <name>repeaterItem</name>
+        <tag-class>com.bea.wlw.netui.tags.databinding.repeater.RepeaterItem</tag-class>
+        <description>Use this tag to render each item in the data set.</description>
+        <attribute>
+            <name>choiceValue</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+</taglib>

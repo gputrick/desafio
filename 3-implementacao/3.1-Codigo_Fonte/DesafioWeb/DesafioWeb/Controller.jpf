@@ -1,0 +1,80 @@
+import com.bea.wlw.netui.pageflow.PageFlowController;
+import com.bea.wlw.netui.pageflow.Forward;
+import java.util.Locale;
+
+/**
+ * This is the default controller for a blank web application.
+ *
+ * @jpf:controller
+ * @jpf:view-properties view-properties::
+ * <!-- This data is auto-generated. Hand-editing this section is not recommended. -->
+ * <view-properties>
+ * <pageflow-object id="pageflow:/Controller.jpf"/>
+ * <pageflow-object id="action:begin.do">
+ *   <property name="x" value="220"/>
+ *   <property name="y" value="180"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:index.jsp">
+ *   <property name="x" value="120"/>
+ *   <property name="y" value="300"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:error.jsp">
+ *   <property name="x" value="460"/>
+ *   <property name="y" value="300"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#index#index.jsp#@action:begin.do@">
+ *   <property name="elbowsY" value="173,173,293,293"/>
+ *   <property name="elbowsX" value="184,170,170,156"/>
+ *   <property name="toPort" value="East_1"/>
+ *   <property name="fromPort" value="West_1"/>
+ *   <property name="label" value="index"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:acTrocaIdioma.do">
+ *   <property value="80" name="x"/>
+ *   <property value="60" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#begin.do#@action:acTrocaIdioma.do@">
+ *   <property value="116,220,220,220" name="elbowsX"/>
+ *   <property value="53,53,95,137" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * </view-properties>
+ * ::
+ */
+public class Controller extends PageFlowController
+{
+    /**
+     * @jpf:action
+     * @jpf:forward name="index" path="index.jsp"
+     */
+    protected Forward begin()
+    {
+        return new Forward("index");
+    }
+
+
+    /**
+     * @jpf:action
+     * @jpf:forward name="success" path="begin.do"
+     */
+    protected Forward acTrocaIdioma()
+    {
+        Locale locale = (Locale)this.getSession().getAttribute(org.apache.struts.Globals.LOCALE_KEY);
+        String country = (String)this.getSession().getAttribute("country");
+        String language = (String)this.getSession().getAttribute("language");
+        if (language.equalsIgnoreCase("pt")) {
+            language = "es";
+            country = "PY";
+        } else if (language.equalsIgnoreCase("es")) {
+            language = "pt";
+            country = "BR";
+        }
+        this.getSession().setAttribute("country", country);
+        this.getSession().setAttribute("language", language);
+        locale = new Locale(language, country);
+        this.getSession().setAttribute(org.apache.struts.Globals.LOCALE_KEY, locale);
+        return new Forward("success");
+    }
+}

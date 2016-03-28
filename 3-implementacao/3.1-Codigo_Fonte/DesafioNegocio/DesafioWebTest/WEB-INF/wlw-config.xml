@@ -1,0 +1,36 @@
+<!-- 
+Use this file to configure Services within this web-app.  Note that runtime configuration can 
+be accomplished by locating a runtime-wlw-config file in the root of the deployment domain.
+-->
+<wlw-config xmlns="http://www.bea.com/2003/03/wlw/config/">
+
+	<!-- hostname that will be in WSDL and Callback URL -->
+	<!-- <hostname>production_host</hostname> -->
+	
+	<!-- default protocol for services in this web-app, can be overriden in "service" element -->
+	<!-- <protocol>http</protocol> -->
+	
+	<!-- http port that will be in WSDL and Callback URL -->
+	<!-- <http-port>8000</http-port> -->
+	
+	<!-- https port that will be in WSDL and Callback URL -->
+	<!-- <https-port>8003</https-port> -->
+	
+	<!-- Service Specific Configuration-->
+	<!--
+	<service>
+		<class-name>com.myco.MyWebService</class-name>
+		<protocol>https</protocol>
+	</service>
+	-->
+
+    <!-- inclusion list for control bean generation -->
+    <!-- this is a list of control interface class names, no extension -->
+    <!--
+    <web-tier-controls>
+        <class-name>your.package.ClassName</class-name>
+        <class-name>com.bea.foo.Bar</class-name>
+    </web-tier-controls>
+    -->
+
+</wlw-config>

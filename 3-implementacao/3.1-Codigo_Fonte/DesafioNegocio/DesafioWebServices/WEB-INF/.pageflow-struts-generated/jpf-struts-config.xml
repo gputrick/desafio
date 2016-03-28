@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+    <form-beans>
+    </form-beans>
+    <global-forwards>
+    </global-forwards>
+    <action-mappings>
+        <action type="Controller" validate="false" scope="request" path="/begin">
+            <forward path="/index.jsp" name="index"/>
+        </action>
+
+    </action-mappings>
+
+<controller processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor"/>
+
+</struts-config>

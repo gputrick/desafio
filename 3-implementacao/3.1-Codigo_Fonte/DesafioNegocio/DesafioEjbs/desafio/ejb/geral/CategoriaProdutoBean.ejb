@@ -1,0 +1,61 @@
+package desafio.ejb.geral;
+
+import java.util.Collection;
+import javax.ejb.CreateException;
+
+import weblogic.ejb.GenericEntityBean;
+
+/**
+ * @ejbgen:entity enable-call-by-reference="true" default-transaction="Supports"
+ *   ejb-name = "CategoriaProdutoBean"
+ *   data-source-name="dsDesafio"
+ *   table-name = "CATEGORIA_PRODUTO"
+ *   prim-key-class = "java.lang.Long"
+ *
+ * @ejbgen:jndi-name
+ *   local = "ejb.DesafioEjbs.CategoriaProdutoBeanHome"
+ *
+ * @ejbgen:file-generation local-class = "true" local-class-name = "CategoriaProduto" local-home = "true" local-home-name = "CategoriaProdutoHome" remote-class = "false" remote-class-name = "CategoriaProdutoRemote" remote-home = "false" remote-home-name = "CategoriaProdutoRemoteHome" value-class = "false" value-class-name = "CategoriaProdutoValue" pk-class = "true"
+ */
+
+public abstract class CategoriaProdutoBean 
+  extends GenericEntityBean
+{
+
+  public java.lang.Long ejbCreate(Long idCategoriaProduto, String nome)
+    throws CreateException
+  {
+    setIdCategoriaProduto(idCategoriaProduto);
+setNome(nome);
+
+    return null;
+  }
+  
+  public void ejbPostCreate(Long idCategoriaProduto, String nome) 
+    throws CreateException
+  {}
+
+
+  /**
+   * @ejbgen:cmp-field column = "ID_CATEGORIA_PRODUTO"
+   *  primkey-field="true"
+   * @ejbgen:local-method
+   */
+  public abstract Long getIdCategoriaProduto();
+  /**
+   * @ejbgen:local-method
+   */
+  public abstract void setIdCategoriaProduto(Long val);
+  
+  /**
+   * @ejbgen:cmp-field column = "NOME"
+   * @ejbgen:local-method
+   */
+  public abstract String getNome();
+  /**
+   * @ejbgen:local-method
+   */
+  public abstract void setNome(String val);
+  
+}
+

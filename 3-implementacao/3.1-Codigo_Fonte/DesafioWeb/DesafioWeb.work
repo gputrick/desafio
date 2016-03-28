@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application>
+  <option name="excludedirs" value="cvs;sccs;rcs;" />
+  <option name="excludefiles" value="\..*|.*\.[0-9]+|wlw_[0-9]+\..*" />
+  <option name="excludefilesFromEar" value="[default]" />
+  <option name="name" value="DesafioWeb" />
+  <option name="version" value="1" />
+  <components>
+    <component name="com.bea.ide.debug.IDebugClient">
+      <option name="SrcPath0_currproject_" value="Current Project" />
+      <option name="SrcPath1_project_" value="DesafioWeb" />
+    </component>
+    <component name="com.bea.ide.workspace.IWorkspace">
+      <node name="ApplicationBuild" />
+    </component>
+    <component name="com.bea.portal.ide.actions.OpenAdministrationPageAction" />
+  </components>
+  <projects>
+    <project name="DesafioWeb">
+      <option name="project.path" value="./DesafioWeb" />
+      <option name="type" value="urn:com-bea-ide:project.type:WebApp" />
+      <components>
+        <component name="com.bea.ide.debug.IDebugData" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
+      </components>
+    </project>
+  </projects>
+  <node name="roles" />
+</application>
+
