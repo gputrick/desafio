@@ -1,0 +1,59 @@
+package desafio.ejb.manager;
+
+import desafio.ProdutoVO;
+import desafio.ejb.geral.Produto;
+import desafio.ejb.geral.ProdutoBean;
+import desafio.ejb.geral.ProdutoHome;
+import desafio.infra.DesafioException;
+import javax.ejb.*;
+import weblogic.ejb.*;
+
+/**
+ * @ejbgen:session type="Stateless" enable-call-by-reference="true" default-transaction="Required"
+ *   ejb-name = "ProdutoSession"
+ *
+ * @ejbgen:jndi-name
+ *   remote = "ejb.ProdutoSessionRemoteHome"
+ *
+ * @ejbgen:file-generation remote-class = "true" remote-class-name = "ProdutoSessionRemote" remote-home = "true" remote-home-name = "ProdutoSessionHome" local-class = "false" local-class-name = "ProdutoSessionLocal" local-home = "false" local-home-name = "ProdutoSessionLocalHome"
+ */
+public class ProdutoSession
+  extends GenericSessionBean
+  implements SessionBean
+{
+  private Produto produto;
+  private ProdutoHome produtoHome;
+  
+  
+  public void ejbCreate() {
+    // Your code here
+  }
+   /**
+	* M�todo respons�vel pela inicaliza��o do atributo do contexto
+	* @param produtoVO value objecdt a incializar
+	* @throws DesafioException, EJBException
+	*/
+   private void inicializa(ProdutoVO produtoVO) throws DesafioException, EJBException{
+        this.produto = null;
+        this.produtoHome = null;
+        
+        try{
+            this.produtoHome = ProdutoBean.getHome();
+            
+            if((produtoVO != null) &&
+                produtoVO.getIdProduto() > 0 ){
+                    this.produto = produtoHome.findByPrimaryKey (new Long( produtoVO.getIdProduto()));
+            }else{
+                throw new ObjectNotFoundException();
+            }
+        }
+        catch(ObjectNotFoundException e){
+            throw new DesafioException("Desafio0010 - Produto: Produto não encontrado");
+        }
+        catch (Exception e){
+			throw new EJBException(e);
+		}
+   }
+}
+
+

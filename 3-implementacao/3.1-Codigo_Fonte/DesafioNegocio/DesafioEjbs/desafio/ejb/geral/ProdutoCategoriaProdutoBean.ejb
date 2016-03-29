@@ -1,38 +1,48 @@
 package desafio.ejb.geral;
 
+import desafio.CategoriaProdutoVO;
+import desafio.ProdutoCategoriaProdutoVO;
+import desafio.ProdutoVO;
+import desafio.infra.DesafioException;
+import itaipu.util.ServiceLocator;
 import java.util.Collection;
 import javax.ejb.CreateException;
+import javax.naming.NamingException;
 
 import weblogic.ejb.GenericEntityBean;
 
 /**
  * @ejbgen:entity enable-call-by-reference="true" default-transaction="Supports"
- *   ejb-name = "Produto_categoria_produtoBean"
+ *   ejb-name = "ProdutoCategoriaProdutoBean"
  *   data-source-name = "dsDesafio"
  *   table-name = "PRODUTO_CATEGORIA_PRODUTO"
- *   prim-key-class = "desafio.ejb.geral.Produto_categoria_produtoBeanPK"
+ *   prim-key-class = "desafio.ejb.geral.ProdutoCategoriaProdutoBeanPK"
  *
  * @ejbgen:jndi-name
- *   local = "ejb.Produto_categoria_produtoBeanHome"
+ *   local = "ejb.DesafioEjbs.ProdutoCategoriaProdutoBeanHome"
  *
- * @ejbgen:file-generation local-class = "true" local-class-name = "Produto_categoria_produto" local-home = "true" local-home-name = "Produto_categoria_produtoHome" remote-class = "false" remote-class-name = "Produto_categoria_produtoRemote" remote-home = "false" remote-home-name = "Produto_categoria_produtoRemoteHome" value-class = "false" value-class-name = "Produto_categoria_produtoValue" pk-class = "true"
+ * @ejbgen:file-generation local-class = "true" local-class-name = "ProdutoCategoriaProduto" local-home = "true" local-home-name = "ProdutoCategoriaProdutoHome" remote-class = "false" remote-class-name = "Produto_categoria_produtoRemote" remote-home = "false" remote-home-name = "Produto_categoria_produtoRemoteHome" value-class = "false" value-class-name = "Produto_categoria_produtoValue" pk-class = "true"
+ * @ejbgen:relation role-name="ProdutoCategoriaProdutoBeans-have-CategoriaProdutoBean" fk-column="ID_CATEGORIA_PRODUTO" cmr-field="categoriaProduto" target-ejb="CategoriaProdutoBean" multiplicity="Many" name="CategoriaProdutoBean-ProdutoCategoriaProdutoBean"
+ * @ejbgen:relation role-name="ProdutoCategoriaProdutoBeans-have-ProdutoBean" fk-column="ID_PRODUTO" cmr-field="produto" target-ejb="ProdutoBean" multiplicity="Many" name="ProdutoBean-ProdutoCategoriaProdutoBean"
  */
 
 public abstract class ProdutoCategoriaProdutoBean extends GenericEntityBean
 {
 
-  public java.lang.Long ejbCreate(Long idCategoriaProduto, Long idProduto)
-    throws CreateException
+  public java.lang.Long ejbCreate(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, CategoriaProdutoVO categoriaProdutoVO, ProdutoVO produtoVO)
+    throws CreateException, DesafioException
   {
-    setIdCategoriaProduto(idCategoriaProduto);
-setIdProduto(idProduto);
-
+    this.validaProdutoCategoriaProduto(produtoCategoriaProdutoVO);
+    this.setData(produtoCategoriaProdutoVO);
     return null;
   }
   
-  public void ejbPostCreate(Long idCategoriaProduto, Long idProduto) 
+  public void ejbPostCreate(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, CategoriaProduto categoriaProduto, Produto produto) 
     throws CreateException
-  {}
+  {
+    this.setProduto(produto);
+    this.setCategoriaProduto(categoriaProduto);
+  }
 
 
   /**
@@ -57,5 +67,83 @@ setIdProduto(idProduto);
    */
   public abstract void setIdProduto(Long val);
   
-}
+  
+    /**
+     * @ejbgen:cmr-field
+     * @ejbgen:local-method
+     */
+    public abstract CategoriaProduto getCategoriaProduto();
 
+    /**
+     * @ejbgen:local-method
+     */
+    public abstract void setCategoriaProduto(CategoriaProduto arg);
+
+    /**
+     * @ejbgen:cmr-field
+     * @ejbgen:local-method
+     */
+    public abstract Produto getProduto();
+
+    /**
+     * @ejbgen:local-method
+     */
+    public abstract void setProduto(Produto arg);
+  
+  public void setData(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException{
+  }
+  	/**
+	 * Método obtem os dados do Bean para o VO
+	 *
+	 * @return ProdutoCategoriaProdutoVO
+	 * @throws DesafioException
+	 * @ejbgen:local-method transaction-attribute="Supports"
+	 */
+	public ProdutoCategoriaProdutoVO getData() throws DesafioException {
+		ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO();
+
+		return produtoCategoriaProdutoVO;
+	}
+
+  
+  	/**
+	 * Método valida os dados do Value Object
+	 *
+	 * @param Produto com os dados a serem validados
+	 * @throws DesafioException
+	 * @ejbgen:local-method transaction-attribute="Supports"
+	 */
+  
+      public void validaProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException{
+        if ((produtoCategoriaProdutoVO == null)){  
+            throw new DesafioException("Desafio003 - Produto Categoria Produto: Dados incompletos");
+        }
+        
+        if ((produtoCategoriaProdutoVO.getProduto() == null)){
+            throw new DesafioException("Desafio004 - Produto Categoria Produto: Produto deve ser informado");
+        }
+        
+        if ((produtoCategoriaProdutoVO.getCategoriaProduto() == null)){
+            throw new DesafioException("Desafio004 - Produto Categoria Produto: Categoria Produto deve ser informado");
+        }
+      }
+  
+  	/**
+	 * Método retorna o nome jndi para lookup
+	 *
+	 * @return String
+	 */
+	public static String getLocalJndiName() {
+		return "ejb.DesafioEjbs.ProdutoCategoriaProdutoBeanHome";
+	}
+    
+     /**
+	 * Método retorna a classe home do bean
+	 *
+	 * @return ProdutoCategoriaProdutoHome
+	 * @throws NamingException
+	 */
+	public static ProdutoCategoriaProdutoHome getHome() throws NamingException {
+		return (ProdutoCategoriaProdutoHome) ServiceLocator.getInstance().getLocalHome(getLocalJndiName());
+    }
+}

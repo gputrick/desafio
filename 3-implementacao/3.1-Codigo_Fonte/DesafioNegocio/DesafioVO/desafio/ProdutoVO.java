@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class ProdutoVO implements Serializable
 { 
     private long idProduto;
-    private String nome;
-    private ArrayList listaProdutoCategoriaProduto = new ArrayList();
+    private String nomeProduto;
+    private ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto;
     
     public long getIdProduto(){
         return this.idProduto;
@@ -18,19 +18,19 @@ public class ProdutoVO implements Serializable
         this.idProduto = idProduto;
     }
     
-    public String getNome(){
-        return this.nome;
+    public String getNomeProduto(){
+        return this.nomeProduto;
     }
     
-    public void setNome(String nome){
-        this.nome = nome;
+    public void setNomeProduto(String nomeProduto){
+        this.nomeProduto = nomeProduto;
     }
     
-    public ArrayList getListaProdutoCategoriaProduto(){
+    public ProdutoCategoriaProdutoVO[] getListaProdutoCategoriaProduto(){
         return this.listaProdutoCategoriaProduto;
     }
     
-    public void setListaProdutoCategoriaProduto(ArrayList listaProdutoCategoriaProduto){
+    public void setListaProdutoCategoriaProduto(ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto){
         this.listaProdutoCategoriaProduto = listaProdutoCategoriaProduto;
     }
 } 

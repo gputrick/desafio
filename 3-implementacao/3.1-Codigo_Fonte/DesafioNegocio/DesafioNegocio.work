@@ -16,21 +16,53 @@
       <option name="SrcPath5_project_" value="DesafioWebTest" />
     </component>
     <component name="com.bea.ide.workspace.IWorkspace">
-      <node name="ApplicationBuild" />
+      <node name="ApplicationBuild">
+        <node name="1">
+          <option name="includeProject" value="true" />
+          <option name="project" value="DesafioInfra" />
+        </node>
+        <node name="2">
+          <option name="includeProject" value="true" />
+          <option name="project" value="DesafioVO" />
+        </node>
+        <node name="3">
+          <option name="includeProject" value="true" />
+          <option name="project" value="DesafioEjbs" />
+        </node>
+        <node name="4">
+          <option name="includeProject" value="true" />
+          <option name="project" value="DesafioControls" />
+        </node>
+        <node name="5">
+          <option name="includeProject" value="true" />
+          <option name="project" value="DesafioWebTest" />
+        </node>
+      </node>
+      <node name="EARBuild">
+        <option name="output.directory" value="." />
+      </node>
     </component>
     <component name="com.bea.portal.ide.actions.OpenAdministrationPageAction" />
   </components>
+  <modules />
   <projects>
     <project name="DesafioControls">
       <option name="project.path" value="./DesafioControls" />
       <option name="type" value="urn:com-bea-ide:project.type:Control" />
       <components>
         <component name="com.bea.ide.debug.IDebugData" />
+        <component name="workshop.workspace.project.build.ControlBuilderPrefs" />
+        <component name="workshop.workspace.project.build.ProjectBuilderPrefs" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
       </components>
     </project>
     <project name="DesafioEjbs">
       <option name="project.path" value="./DesafioEjbs" />
       <option name="type" value="urn:com-bea-ide:project.type:EJB" />
+      <components>
+        <component name="workshop.workspace.project.build.ProjectBuilderPrefs" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
+      </components>
     </project>
     <project name="DesafioInfra">
       <option name="project.path" value="./DesafioInfra" />
@@ -39,6 +71,8 @@
         <component name="com.bea.ide.JavaCompiler" />
         <component name="com.bea.ide.debug.IDebugData" />
         <component name="workshop.workspace.project.build.JavaBuilderPrefs" />
+        <component name="workshop.workspace.project.build.ProjectBuilderPrefs" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
       </components>
     </project>
     <project name="DesafioVO">
@@ -48,6 +82,8 @@
         <component name="com.bea.ide.JavaCompiler" />
         <component name="com.bea.ide.debug.IDebugData" />
         <component name="workshop.workspace.project.build.JavaBuilderPrefs" />
+        <component name="workshop.workspace.project.build.ProjectBuilderPrefs" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
       </components>
     </project>
     <project name="DesafioWebTest">
@@ -55,6 +91,8 @@
       <option name="type" value="urn:com-bea-ide:project.type:WebApp" />
       <components>
         <component name="com.bea.ide.debug.IDebugData" />
+        <component name="workshop.workspace.project.build.ProjectBuilderPrefs" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
       </components>
     </project>
   </projects>
