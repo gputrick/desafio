@@ -31,7 +31,7 @@ public abstract class CategoriaProdutoBean
   extends GenericEntityBean
 {
 
-  public java.lang.Long ejbCreate(CategoriaProdutoVO categoriaProdutoVO)
+  public java.lang.Long ejbCreate(CategoriaProdutoVO categoriaProdutoVO, CategoriaProduto categoriaPai)
     throws CreateException, DesafioException
     {
         this.validaCategoriaProduto(categoriaProdutoVO);
@@ -39,9 +39,10 @@ public abstract class CategoriaProdutoBean
         return null;
     }
   
-  public void ejbPostCreate(CategoriaProdutoVO categoriaProdutoVO) 
+  public void ejbPostCreate(CategoriaProdutoVO categoriaProdutoVO, CategoriaProduto categoriaPai) 
     throws CreateException
-  {}
+  { 
+  }
 
 
   /**
@@ -87,6 +88,13 @@ public abstract class CategoriaProdutoBean
      */
     public abstract void setCategoriaProduto(CategoriaProduto arg);
     
+        /**
+    * Método obtem os dados do Bean para o VO
+    *
+    * @return CategoriaProdutoVO
+    * @throws DesafioException
+    * @ejbgen:local-method transaction-attribute="Supports"
+    */
     public void setData(CategoriaProdutoVO categoriaProdutoVO) throws DesafioException{
       this.setNome(categoriaProdutoVO.getNomeCategoriaProduto() == null ? null : categoriaProdutoVO.getNomeCategoriaProduto().trim());
     }
