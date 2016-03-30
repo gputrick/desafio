@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class CategoriaProdutoVO implements Serializable
 { 
     private long idCategoriaProduto;
+    private long idCategoriaPai;
     private String nomeCategoriaProduto;
     private ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto;
     
@@ -15,6 +16,14 @@ public class CategoriaProdutoVO implements Serializable
     
     public void setIdCategoriaProduto(long idCategoriaProduto){
         this.idCategoriaProduto = idCategoriaProduto;
+    }
+    
+    public long getIdCategoriaPai(){
+        return this.idCategoriaPai;
+    }
+    
+    public void setIdCategoriaPai(long idCategoriaPai){
+        this.idCategoriaPai = idCategoriaPai;
     }
     
     public String getNomeCategoriaProduto(){

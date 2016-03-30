@@ -3,6 +3,9 @@
   <application>
     <display-name>DesafioNegocio</display-name>
     <module>
+      <ejb>DesafioEjbs.jar</ejb>
+    </module>
+    <module>
       <web>
         <web-uri>DesafioWebTest</web-uri>
         <context-root>DesafioWebTest</context-root>

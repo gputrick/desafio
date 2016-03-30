@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /WEB-INF/src/global/Global.app on Wed Mar 23 17:13:04 GMT-03:00 2016 -->
+<!-- Generated from /WEB-INF/src/global/Global.app on Wed Mar 30 11:26:57 GMT-03:00 2016 -->
 <struts-config>
   <form-beans/>
   <global-exceptions>

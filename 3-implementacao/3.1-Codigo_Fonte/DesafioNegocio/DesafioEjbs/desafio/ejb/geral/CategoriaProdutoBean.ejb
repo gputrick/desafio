@@ -1,125 +1,130 @@
-    package desafio.ejb.geral;
-    
-    import desafio.CategoriaProdutoVO;
-    import desafio.infra.DesafioException;
-    import itaipu.util.ServiceLocator;
-    import java.util.ArrayList;
-    import java.util.Collection;
-    import javax.ejb.CreateException;
-    import javax.naming.NamingException;
-    
-    import weblogic.ejb.GenericEntityBean;
-    
-    /**
-    * @ejbgen:entity enable-call-by-reference="true" default-transaction="Supports"
-    *   ejb-name = "CategoriaProdutoBean"
-    *   data-source-name="dsDesafio"
-    *   table-name = "CATEGORIA_PRODUTO"
-    *   prim-key-class = "java.lang.Long"
-    *
-    * @ejbgen:jndi-name
-    *   local = "ejb.DesafioEjbs.CategoriaProdutoBeanHome"
-    *
-    * @ejbgen:file-generation local-class = "true" local-class-name = "CategoriaProduto" local-home = "true" local-home-name = "CategoriaProdutoHome" remote-class = "false" remote-class-name = "CategoriaProdutoRemote" remote-home = "false" remote-home-name = "CategoriaProdutoRemoteHome" value-class = "false" value-class-name = "CategoriaProdutoValue" pk-class = "true"
-    * @ejbgen:automatic-key-generation name="CATEGORIA_PRODUTO_SEQ" cache-size="1" type="Oracle"
-    * @ejbgen:relation role-name="CategoriaProdutoBean-has-ProdutoCategoriaProdutoBeans" target-ejb="ProdutoCategoriaProdutoBean" multiplicity="One" name="CategoriaProdutoBean-ProdutoCategoriaProdutoBean"
-    * @ejbgen:relation role-name="CategoriaProdutoBean-has-CategoriaProdutoBeans" target-ejb="CategoriaProdutoBean" multiplicity="One" name="CategoriaProdutoBean-CategoriaProdutoBean"
-    * @ejbgen:relation role-name="CategoriaProdutoBeans-have-CategoriaProdutoBean" fk-column="ID_CATEGORIA_PAI" cmr-field="categoriaProduto" target-ejb="CategoriaProdutoBean" multiplicity="Many" name="CategoriaProdutoBean-CategoriaProdutoBean"
-    */
-    
+package desafio.ejb.geral;
+
+import desafio.CategoriaProdutoVO;
+import desafio.ProdutoCategoriaProdutoVO;
+import desafio.infra.DesafioException;
+import itaipu.util.ServiceLocator;
+import java.util.Collection;
+import javax.ejb.CreateException;
+import javax.naming.NamingException;
+
+import weblogic.ejb.GenericEntityBean;
+
+/**
+ * @ejbgen:entity enable-call-by-reference="true" default-transaction="Supports"
+ *   ejb-name = "CategoriaProdutoBean"
+ *   data-source-name = "dsDesafio"
+ *   table-name = "CATEGORIA_PRODUTO"
+ *   prim-key-class = "java.lang.Long"
+ *
+ * @ejbgen:jndi-name
+ *   local = "ejb.DesafioEjbs.CategoriaProdutoBeanHome"
+ *
+ * @ejbgen:file-generation local-class = "true" local-class-name = "CategoriaProduto" local-home = "true" local-home-name = "CategoriaProdutoHome" remote-class = "false" remote-class-name = "CategoriaProdutoRemote" remote-home = "false" remote-home-name = "CategoriaProdutoRemoteHome" value-class = "false" value-class-name = "CategoriaProdutoValue" pk-class = "true"
+ * @ejbgen:relation role-name="CategoriaProdutoBean-has-ProdutoCategoriaProdutoBeans" target-ejb="ProdutoCategoriaProdutoBean" multiplicity="One" name="ProdutoCategoriaProdutoBean-CategoriaProdutoBean"
+ * @ejbgen:relation role-name="CategoriaProdutoBeans-have-CategoriaProdutoBean" fk-column="ID_CATEGORIA_PAI" cmr-field="categoriaProduto" target-ejb="CategoriaProdutoBean" multiplicity="Many" name="CategoriaProdutoBean-CategoriaProdutoBean"
+ * @ejbgen:relation role-name="CategoriaProdutoBean-has-CategoriaProdutoBeans" target-ejb="CategoriaProdutoBean" multiplicity="One" name="CategoriaProdutoBean-CategoriaProdutoBean"
+ * @ejbgen:automatic-key-generation cache-size="1" name="CATEGORIA_PRODUTO_SEQ" type="Oracle"
+ */
+
 public abstract class CategoriaProdutoBean 
-extends GenericEntityBean
+  extends GenericEntityBean
 {
-    
-    public java.lang.Long ejbCreate(CategoriaProdutoVO categoriaProdutoVO, ArrayList listaProdutoCategoriaProduto)
+
+  public java.lang.Long ejbCreate(CategoriaProdutoVO categoriaProdutoVO)
     throws CreateException, DesafioException
     {
         this.validaCategoriaProduto(categoriaProdutoVO);
         this.setData(categoriaProdutoVO);
         return null;
     }
-    
-    public void ejbPostCreate(CategoriaProdutoVO categoriaProdutoVO, ArrayList listaProdutoCategoriaProduto) 
+  
+  public void ejbPostCreate(CategoriaProdutoVO categoriaProdutoVO) 
     throws CreateException
-    {
-        this.setListaProdutoCategoriaProduto(listaProdutoCategoriaProduto);
-    }
-    
-    
+  {}
+
+
+  /**
+   * @ejbgen:cmp-field ordering-number="10" column = "ID_CATEGORIA_PRODUTO"
+   *  primkey-field="true"
+   * @ejbgen:local-method
+   */
+  public abstract Long getIdCategoriaProduto();
+  /**
+   * @ejbgen:local-method
+   */
+  public abstract void setIdCategoriaProduto(Long val);
+  
+  /**
+   * @ejbgen:cmp-field column = "ID_CATEGORIA_PAI"
+   * @ejbgen:local-method
+   */
+  public abstract Long getIdCategoriaPai();
+  /**
+   * @ejbgen:local-method
+   */
+  public abstract void setIdCategoriaPai(Long val);
+  
+  /**
+   * @ejbgen:cmp-field column = "NOME"
+   * @ejbgen:local-method
+   */
+  public abstract String getNome();
+  /**
+   * @ejbgen:local-method
+   */
+  public abstract void setNome(String val);
+  
+
     /**
-    * @ejbgen:cmp-field ordering-number="10" column = "ID_CATEGORIA_PRODUTO"
-    *  primkey-field="true"
-    * @ejbgen:local-method
-    */
-    public abstract Long getIdCategoriaProduto();
-    /**
-    * @ejbgen:local-method
-    */
-    public abstract void setIdCategoriaProduto(Long val);
-    
-    /**
-    * @ejbgen:cmp-field column = "NOME"
-    * @ejbgen:local-method
-    */
-    public abstract String getNomeCategoriaProduto();
-    /**
-    * @ejbgen:local-method
-    */
-    public abstract void setNomeCategoriaProduto(String val);
-    
-    /**
-    * @ejbgen:cmr-field
-    * @ejbgen:local-method
-    */
+     * @ejbgen:cmr-field
+     * @ejbgen:local-method
+     */
     public abstract CategoriaProduto getCategoriaProduto();
-    
+
     /**
-    * @ejbgen:local-method
-    */
+     * @ejbgen:local-method
+     */
     public abstract void setCategoriaProduto(CategoriaProduto arg);
     
-    /**
-    * @ejbgen:local-method
-    */
-    public abstract void setListaProdutoCategoriaProduto(ArrayList listaProdutoCategoriaProduto);
-    
     public void setData(CategoriaProdutoVO categoriaProdutoVO) throws DesafioException{
-        this.setNomeCategoriaProduto(categoriaProdutoVO.getNomeCategoriaProduto() == null ? null : categoriaProdutoVO.getNomeCategoriaProduto().trim());
+      this.setNome(categoriaProdutoVO.getNomeCategoriaProduto() == null ? null : categoriaProdutoVO.getNomeCategoriaProduto().trim());
     }
     /**
-     * Método obtem os dados do Bean para o VO
-     *
-     * @return CategoriaProdutoVO
-     * @throws DesafioException
-     * @ejbgen:local-method transaction-attribute="Supports"
-     */
+    * Método obtem os dados do Bean para o VO
+    *
+    * @return CategoriaProdutoVO
+    * @throws DesafioException
+    * @ejbgen:local-method transaction-attribute="Supports"
+    */
     public CategoriaProdutoVO getData() throws DesafioException {
-        CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
-    
-        categoriaProdutoVO.setIdCategoriaProduto(this.getIdCategoriaProduto() == null ? 0 : this.getIdCategoriaProduto().longValue());
-        categoriaProdutoVO.setNomeCategoriaProduto(this.getNomeCategoriaProduto());
-    
-        return categoriaProdutoVO;
+      CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
+      
+      categoriaProdutoVO.setIdCategoriaProduto(this.getIdCategoriaProduto() == null ? 0 : this.getIdCategoriaProduto().longValue());
+      categoriaProdutoVO.setNomeCategoriaProduto(this.getNome());
+      
+      return categoriaProdutoVO;
     }
     
     
     /**
-     * Método valida os dados do Value Object
-     *
-     * @param CategoriaProduto com os dados a serem validados
-     * @throws DesafioException
-     * @ejbgen:local-method transaction-attribute="Supports"
-     */
+    * Método valida os dados do Value Object
+    *
+    * @param CategoriaProduto com os dados a serem validados
+    * @throws DesafioException
+    * @ejbgen:local-method transaction-attribute="Supports"
+    */
     
     public void validaCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws DesafioException{
-        if ((categoriaProdutoVO == null) ||
-           (categoriaProdutoVO.getNomeCategoriaProduto() == null) ||
-           (categoriaProdutoVO.getNomeCategoriaProduto().trim().equals(""))){
-                throw new DesafioException("Desafio001 - CategoriaProduto: Dados incompletos");
-           }
-        }
+      if ((categoriaProdutoVO == null) ||
+      (categoriaProdutoVO.getNomeCategoriaProduto() == null) ||
+      (categoriaProdutoVO.getNomeCategoriaProduto().trim().equals(""))){
+        throw new DesafioException("Desafio001 - CategoriaProduto: Dados incompletos");
+      }
+    }
+
     
-    /**
+     /**
      * Método retorna o nome jndi para lookup
      *
      * @return String
@@ -138,4 +143,4 @@ extends GenericEntityBean
         return (CategoriaProdutoHome) ServiceLocator.getInstance().getLocalHome(getLocalJndiName());
     }
 }
-    
+

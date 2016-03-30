@@ -3,7 +3,6 @@ package desafio.ejb.geral;
 import desafio.ProdutoVO;
 import desafio.infra.DesafioException;
 import itaipu.util.ServiceLocator;
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.ejb.CreateException;
 import javax.naming.NamingException;
@@ -11,119 +10,118 @@ import javax.naming.NamingException;
 import weblogic.ejb.GenericEntityBean;
 
 /**
- * @ejbgen:entity enable-call-by-reference="true" default-transaction="Supports"
- *   ejb-name = "ProdutoBean"
- *   data-source-name = "dsDesafio"
- *   table-name = "PRODUTO"
- *   prim-key-class = "java.lang.Long"
- *
- * @ejbgen:jndi-name
- *   local = "ejb.DesafioEjbs.ProdutoBeanHome"
- *
- * @ejbgen:file-generation local-class = "true" local-class-name = "Produto" local-home = "true" local-home-name = "ProdutoHome" remote-class = "false" remote-class-name = "ProdutoRemote" remote-home = "false" remote-home-name = "ProdutoRemoteHome" value-class = "false" value-class-name = "ProdutoValue" pk-class = "true"
- * @ejbgen:automatic-key-generation name="PRODUTO_SEQ" cache-size="1" type="Oracle"
- * @ejbgen:relation role-name="ProdutoBean-has-ProdutoCategoriaProdutoBeans" target-ejb="ProdutoCategoriaProdutoBean" multiplicity="One" name="ProdutoBean-ProdutoCategoriaProdutoBean"
- */
+* @ejbgen:entity enable-call-by-reference="true" default-transaction="Supports"
+*   ejb-name = "ProdutoBean"
+*   data-source-name = "dsDesafio"
+*   table-name = "PRODUTO"
+*   prim-key-class = "java.lang.Long"
+*
+* @ejbgen:jndi-name
+*   local = "ejb.DesafioEjbs.ProdutoBeanHome"
+*
+* @ejbgen:file-generation local-class = "true" local-class-name = "Produto" local-home = "true" local-home-name = "ProdutoHome" remote-class = "false" remote-class-name = "ProdutoRemote" remote-home = "false" remote-home-name = "ProdutoRemoteHome" value-class = "false" value-class-name = "ProdutoValue" pk-class = "true"
+* @ejbgen:relation role-name="ProdutoBean-has-ProdutoCategoriaProdutoBeans" target-ejb="ProdutoCategoriaProdutoBean" multiplicity="One" name="ProdutoCategoriaProdutoBean-ProdutoBean"
+* @ejbgen:automatic-key-generation cache-size="1" name="PRODUTO_SEQ" type="Oracle"
+*/
 
 public abstract class ProdutoBean 
-  extends GenericEntityBean
+extends GenericEntityBean
 {
-
-  public java.lang.Long ejbCreate(ProdutoVO produtoVO, ArrayList listaProdutoCategoriaProduto)
-    throws CreateException, DesafioException
-  {
+    
+    public java.lang.Long ejbCreate(ProdutoVO produtoVO) 
+        throws CreateException, DesafioException
+    {
         this.validaProduto(produtoVO);
         this.setData(produtoVO);
-    return null;
-  }
-  
-  public void ejbPostCreate(ProdutoVO produtoVO, ArrayList listaProdutoCategoriaProduto) 
+        return null;
+    }
+    
+    public void ejbPostCreate(ProdutoVO produtoVO) 
     throws CreateException
-  {
-        this.setListaProdutoCategoriaProduto(listaProdutoCategoriaProduto);
-  }
-
-
-  /**
-   * @ejbgen:cmp-field ordering-number="10" column = "ID_PRODUTO"
-   *  primkey-field="true"
-   * @ejbgen:local-method
-   */
-  public abstract Long getIdProduto();
-  /**
-   * @ejbgen:local-method
-   */
-  public abstract void setIdProduto(Long val);
-  
-  /**
-   * @ejbgen:cmp-field column = "NOME"
-   * @ejbgen:local-method
-   */
-  public abstract String getNomeProduto();
-  /**
-   * @ejbgen:local-method
-   */
-  public abstract void setNomeProduto(String val);
-  
-  
-  /**
-   * @ejbgen:local-method
-   */
-  public abstract void setListaProdutoCategoriaProduto(ArrayList listaProdutoCategoriaProduto);
-  
-  public void setData(ProdutoVO produtoVO) throws DesafioException{
-    this.setNomeProduto(produtoVO.getNomeProduto() == null ? null : produtoVO.getNomeProduto().trim());
-  }
-  	/**
-	 * Método obtem os dados do Bean para o VO
+    {}
+    
+    
+    /**
+    * @ejbgen:cmp-field ordering-number="10" column = "ID_PRODUTO"
+    *  primkey-field="true"
+    * @ejbgen:local-method
+    */
+    public abstract Long getIdProduto();
+    /**
+    * @ejbgen:local-method
+    */
+    public abstract void setIdProduto(Long val);
+    
+    /**
+    * @ejbgen:cmp-field column = "NOME"
+    * @ejbgen:local-method
+    */
+    public abstract String getNome();
+    /**
+    * @ejbgen:local-method
+    */
+    public abstract void setNome(String val);
+    
+    /**
+	 * M�todo seta os dados do VO para bean
 	 *
-	 * @return ProdutoVO
+	 * @param ProdutoVO
 	 * @throws DesafioException
 	 * @ejbgen:local-method transaction-attribute="Supports"
 	 */
-	public ProdutoVO getData() throws DesafioException {
-		ProdutoVO produtoVO = new ProdutoVO();
-
-		produtoVO.setIdProduto(this.getIdProduto() == null ? 0 : this.getIdProduto().longValue());
-		produtoVO.setNomeProduto(this.getNomeProduto());
-
-		return produtoVO;
-	}
-
-  
-  	/**
-	 * Método valida os dados do Value Object
-	 *
-	 * @param Produto com os dados a serem validados
-	 * @throws DesafioException
-	 * @ejbgen:local-method transaction-attribute="Supports"
-	 */
-  
-      public void validaProduto(ProdutoVO produtoVO) throws DesafioException{
+    public void setData(ProdutoVO produtoVO) throws DesafioException{
+        this.setNome(produtoVO.getNomeProduto() == null ? null : produtoVO.getNomeProduto().trim());
+    }
+    
+    /**
+    * Método obtem os dados do Bean para o VO
+    *
+    * @return ProdutoVO
+    * @throws DesafioException
+    * @ejbgen:local-method transaction-attribute="Supports"
+    */
+    public ProdutoVO getData() throws DesafioException {
+        ProdutoVO produtoVO = new ProdutoVO();
+        
+        produtoVO.setIdProduto(this.getIdProduto() == null ? 0 : this.getIdProduto().longValue());
+        produtoVO.setNomeProduto(this.getNome());
+        
+        return produtoVO;
+    }
+    
+    /**
+    * Método valida os dados do Value Object
+    *
+    * @param Produto com os dados a serem validados
+    * @throws DesafioException
+    * @ejbgen:local-method transaction-attribute="Supports"
+    */
+    
+    public void validaProduto(ProdutoVO produtoVO) throws DesafioException{
         if ((produtoVO == null) ||
            (produtoVO.getNomeProduto() == null) ||
            (produtoVO.getNomeProduto().trim().equals(""))){
                 throw new DesafioException("Desafio002 - Produto: Dados incompletos");
            }
-      }
-  
-  	/**
-	 * Método retorna o nome jndi para lookup
-	 *
-	 * @return String
-	 */
-	public static String getLocalJndiName() {
-		return "ejb.DesafioEjbs.ProdutoBeanHome";
-	}
+    }
     
-     /**
-	 * Método retorna a classe home do bean
-	 *
-	 * @return ProdutoHome
-	 * @throws NamingException
-	 */
-	public static ProdutoHome getHome() throws NamingException {
-		return (ProdutoHome) ServiceLocator.getInstance().getLocalHome(getLocalJndiName());
-	}
+    /**
+    * Método retorna o nome jndi para lookup
+    *
+    * @return String
+    */
+    public static String getLocalJndiName() {
+        return "ejb.DesafioEjbs.ProdutoBeanHome";
+    }
+    
+    /**
+    * Método retorna a classe home do bean 
+    *
+    * @return ProdutoHome
+    * @throws NamingException 
+    */
+    public static ProdutoHome getHome() throws NamingException {
+        return (ProdutoHome) ServiceLocator.getInstance().getLocalHome(getLocalJndiName());
+    }
 }
 

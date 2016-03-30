@@ -1,5 +1,0 @@
-package desafio.jcs; 
-
-public class JCSProgManImpl implements JCSProgMan
-{ 
-} 

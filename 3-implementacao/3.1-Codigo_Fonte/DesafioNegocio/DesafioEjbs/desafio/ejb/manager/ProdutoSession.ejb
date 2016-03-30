@@ -5,15 +5,17 @@ import desafio.ejb.geral.Produto;
 import desafio.ejb.geral.ProdutoBean;
 import desafio.ejb.geral.ProdutoHome;
 import desafio.infra.DesafioException;
+import itaipu.util.ServiceLocator;
 import javax.ejb.*;
+import javax.naming.NamingException;
 import weblogic.ejb.*;
 
 /**
- * @ejbgen:session type="Stateless" enable-call-by-reference="true" default-transaction="Required"
+ * @ejbgen:session enable-call-by-reference="true" type="Stateless" default-transaction="Required"
  *   ejb-name = "ProdutoSession"
  *
  * @ejbgen:jndi-name
- *   remote = "ejb.ProdutoSessionRemoteHome"
+ *   remote = "ejb.DesafioEjbs.ProdutoSessionRemoteHome"
  *
  * @ejbgen:file-generation remote-class = "true" remote-class-name = "ProdutoSessionRemote" remote-home = "true" remote-home-name = "ProdutoSessionHome" local-class = "false" local-class-name = "ProdutoSessionLocal" local-home = "false" local-home-name = "ProdutoSessionLocalHome"
  */
@@ -24,36 +26,113 @@ public class ProdutoSession
   private Produto produto;
   private ProdutoHome produtoHome;
   
+  public void ejbCreate() { }
   
-  public void ejbCreate() {
-    // Your code here
-  }
-   /**
-	* M�todo respons�vel pela inicaliza��o do atributo do contexto
-	* @param produtoVO value objecdt a incializar
-	* @throws DesafioException, EJBException
-	*/
-   private void inicializa(ProdutoVO produtoVO) throws DesafioException, EJBException{
-        this.produto = null;
-        this.produtoHome = null;
+    /**
+    * M�todo respons�vel pelo carregamento do Bean principal (master) em vari�veis globais
+    * 
+    * @param solicitacaoEquipamentoVO - SolicitacaoEquipamentoVO
+    * @throws GSMException
+    */
+    private void inicializa(ProdutoVO produtoVO) throws DesafioException {
         
-        try{
+        this.produto = null;
+        this.produtoHome = null;     
+                
+        try {
             this.produtoHome = ProdutoBean.getHome();
             
             if((produtoVO != null) &&
-                produtoVO.getIdProduto() > 0 ){
-                    this.produto = produtoHome.findByPrimaryKey (new Long( produtoVO.getIdProduto()));
+            (produtoVO.getIdProduto() > 0)){
+                
+                this.produto = this.produtoHome.findByPrimaryKey(new Long(produtoVO.getIdProduto()));
+                
             }else{
+                
                 throw new ObjectNotFoundException();
+            }            
+        } catch (ObjectNotFoundException e) {
+            throw new DesafioException("Desafio010 - Produto: Produto não encontrado ou não existente");
+        } catch (Exception e) {
+            throw new EJBException(e);
+        }
+    }
+    
+    
+    /**
+    * @ejbgen:remote-method transaction-attribute="Required"
+    */
+    public void eliminarProduto( ProdutoVO produtoVO ) 	throws DesafioException
+    {
+        try{
+            
+            this.inicializa( produtoVO );
+            this.produto.remove();
+            
+        }catch( RemoveException e){
+            throw new DesafioException("Desafio011 - Produto: Impossível excluir registro");
+        }
+    }
+    
+    /**
+    * @ejbgen:remote-method transaction-attribute="Required"
+    */
+    public ProdutoVO obterProduto(ProdutoVO produtoVO) throws DesafioException
+    {
+        this.inicializa( produtoVO );
+        return produto.getData();
+    }
+    
+        /**
+     * M�todo respons�vel pela inser��o/altera��o da Solicita��o de Equipamento
+     * 
+     * @param solicitacaoEquipamentoVO - SolicitacaoEquipamentoVO
+     * @return SolicitacaoEquipamentoVO
+     * @throws GSMException
+     * @ejbgen:remote-method transaction-attribute="Required"
+     */
+     public ProdutoVO atualizarProduto(ProdutoVO produtoVO) throws DesafioException
+     {
+        try{
+            
+            this.inicializa(produtoVO);
+            
+        } catch(DesafioException e){
+        } catch(Exception e)   { 
+            throw new DesafioException (e); 
+        }
+        
+        try{
+            if(this.produto == null){
+                this.produto = produtoHome.create( produtoVO );
+            }else{
+                this.produto.validaProduto( produtoVO );
+                this.produto.setData( produtoVO );
             }
+        }catch ( CreateException e ){
+            throw new EJBException(e);
         }
-        catch(ObjectNotFoundException e){
-            throw new DesafioException("Desafio0010 - Produto: Produto não encontrado");
-        }
-        catch (Exception e){
-			throw new EJBException(e);
-		}
-   }
+        
+        return this.produto.getData();
+     }
+    /**
+     * M�todo retorna o nome jndi para lookup
+     *
+     * @return String
+     */
+    public static String getRemoteJndiName() {
+        return "ejb.DesafioEjbs.ProdutoSessionRemoteHome";
+    }
+    
+    /**
+     * M�todo retorna a classe Home do Bean
+     * 
+     * @return ProdutoSessionHome
+     * @throws NamingException
+     */
+    public static ProdutoSessionHome getRemoteHome() throws NamingException {
+        return (ProdutoSessionHome) ServiceLocator.getInstance().getRemoteHome(getRemoteJndiName(), ProdutoSessionHome.class);
+    }
 }
 
 
