@@ -1,8 +1,13 @@
 package desafio.ejb.manager;
 
+import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
 import desafio.ejb.geral.Produto;
 import desafio.ejb.geral.ProdutoBean;
+import desafio.ejb.geral.ProdutoCategoriaProduto;
+import desafio.ejb.geral.ProdutoCategoriaProdutoBean;
+import desafio.ejb.geral.ProdutoCategoriaProdutoBeanPK;
+import desafio.ejb.geral.ProdutoCategoriaProdutoHome;
 import desafio.ejb.geral.ProdutoHome;
 import desafio.infra.DesafioException;
 import itaipu.util.ServiceLocator;
@@ -86,9 +91,9 @@ public class ProdutoSession
         /**
      * M�todo respons�vel pela inser��o/altera��o da Solicita��o de Equipamento
      * 
-     * @param solicitacaoEquipamentoVO - SolicitacaoEquipamentoVO
-     * @return SolicitacaoEquipamentoVO
-     * @throws GSMException
+     * @param produtoVO
+     * @return ProdutoVO
+     * @throws DesafioException
      * @ejbgen:remote-method transaction-attribute="Required"
      */
      public ProdutoVO atualizarProduto(ProdutoVO produtoVO) throws DesafioException
@@ -115,8 +120,103 @@ public class ProdutoSession
         
         return this.produto.getData();
      }
+     
+      /**
+     * M�todo respons�vel pelo carregamento do ProdutoCategoriaProdutoBean
+     * 
+     * @param produtoCategoriaProdutoVO
+     * @return Bean - produtoCategoriaProdutoVO
+     * @throws DesafioException
+     */
+     private ProdutoCategoriaProduto inicializaProdutoCategoriaProduto (ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException, EJBException {
+		ProdutoCategoriaProduto produtoCategoriaProduto = null;
+		ProdutoCategoriaProdutoHome produtoCategoriaProdutoHome = null;
+
+		try {
+                if((produtoCategoriaProdutoVO != null) &&
+                (produtoCategoriaProdutoVO.getProduto() != null) &&
+                (produtoCategoriaProdutoVO.getProduto().getIdProduto() > 0)&&
+                (produtoCategoriaProdutoVO.getCategoriaProduto() != null)&&
+                (produtoCategoriaProdutoVO.getCategoriaProduto().getIdCategoriaProduto() > 0)){
+                    produtoCategoriaProdutoHome = ProdutoCategoriaProdutoBean.getHome();
+                    
+                    //Chave Composta
+                    ProdutoCategoriaProdutoBeanPK produtoCategoriaProdutoPK = new ProdutoCategoriaProdutoBeanPK(new Long(produtoCategoriaProdutoVO.getCategoriaProduto().getIdCategoriaProduto()),
+                                                                                                                new Long(produtoCategoriaProdutoVO.getProduto().getIdProduto()));
+                        
+                    produtoCategoriaProduto = produtoCategoriaProdutoHome.findByPrimaryKey(produtoCategoriaProdutoPK);
+			} else
+				throw new ObjectNotFoundException();
+		} catch (ObjectNotFoundException e) {
+			throw new DesafioException("Desafio013 - Produto: ProdutoCategoriaProduto não encontrato");
+		} catch (Exception e) {
+			throw new EJBException(e);
+		}
+
+		return produtoCategoriaProduto;
+	}
+     
+     /**
+     * Método responsável por inserir na lista de Produto
+     * 
+     * @param produtoCategoriaProdutoVO - produtoVO
+     * @return ProdutoVO
+     * @throws DesafioException
+     * @ejbgen:remote-method transaction-attribute="Required"
+     */
+     public ProdutoVO addProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, ProdutoVO produtoVO)  throws DesafioException {
+        ProdutoCategoriaProduto produtoCategoriaProduto = null;
+        ProdutoCategoriaProdutoHome produtoCategoriaProdutoHome = null;
+        
+        try{
+            produtoVO = this.atualizarProduto(produtoVO);
+            
+            if (produtoCategoriaProdutoVO != null){
+                produtoCategoriaProdutoHome = ProdutoCategoriaProdutoBean.getHome();
+                
+                produtoCategoriaProduto = produtoCategoriaProdutoHome.create(produtoCategoriaProdutoVO);
+            }
+        } catch (Exception e) {
+			throw new EJBException(e);
+		}
+        return produtoVO;
+     }
+     
+      /**
+     * M�todo responsável por excluir da lista de Produto
+     * 
+     * @param produtoCategoriaProdutoVO - produtoVO
+     * @return ProdutoVO
+     * @throws DesafioException
+     * @ejbgen:remote-method transaction-attribute="Required"
+     */
+     public void delProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, ProdutoVO produtoVO)  throws DesafioException {
+        try{
+            /*
+			 * busca o produto
+			 */
+			inicializa(produtoVO);
+
+			/*
+			 * recupera o produtoCategoriaProduto
+			 */
+			ProdutoCategoriaProduto produtoCategoriaProduto = this.inicializaProdutoCategoriaProduto(produtoCategoriaProdutoVO);
+
+			/*
+			 * remove o bean da lista do produto
+			 */
+			produtoCategoriaProduto.remove();
+
+        } catch (EJBException e){
+            throw new EJBException(e);
+        } catch (Exception e){
+            throw new DesafioException("Desafio014 Produto - Não é possível excluir ProdutoCategoriaProduto");
+        }
+     }
+     
+    
     /**
-     * M�todo retorna o nome jndi para lookup
+     * Método retorna o nome jndi para lookup
      *
      * @return String
      */
