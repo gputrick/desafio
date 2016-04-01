@@ -92,7 +92,14 @@ public abstract class ProdutoCategoriaProdutoBean
      * @ejbgen:local-method
      */
     public abstract void setProduto(Produto arg);
-        
+    
+        /**
+	 * M�todo seta os dados do VO para bean
+	 *
+	 * @param produtoCategoriaProdutoVO
+	 * @throws DesafioException
+	 * @ejbgen:local-method transaction-attribute="Supports"
+	 */  
     public void setData(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException{
     }
     /**

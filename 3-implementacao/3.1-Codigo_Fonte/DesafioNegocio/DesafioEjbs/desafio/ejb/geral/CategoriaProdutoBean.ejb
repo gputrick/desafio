@@ -22,7 +22,7 @@ import weblogic.ejb.GenericEntityBean;
  *
  * @ejbgen:file-generation local-class = "true" local-class-name = "CategoriaProduto" local-home = "true" local-home-name = "CategoriaProdutoHome" remote-class = "false" remote-class-name = "CategoriaProdutoRemote" remote-home = "false" remote-home-name = "CategoriaProdutoRemoteHome" value-class = "false" value-class-name = "CategoriaProdutoValue" pk-class = "true"
  * @ejbgen:relation role-name="CategoriaProdutoBean-has-ProdutoCategoriaProdutoBeans" target-ejb="ProdutoCategoriaProdutoBean" multiplicity="One" name="ProdutoCategoriaProdutoBean-CategoriaProdutoBean"
- * @ejbgen:relation role-name="CategoriaProdutoBeans-have-CategoriaProdutoBean" fk-column="ID_CATEGORIA_PAI" cmr-field="categoriaProduto" target-ejb="CategoriaProdutoBean" multiplicity="Many" name="CategoriaProdutoBean-CategoriaProdutoBean"
+ * @ejbgen:relation role-name="CategoriaProdutoBeans-have-CategoriaProdutoBean" fk-column="ID_CATEGORIA_PAI" cmr-field="categoriaPai" target-ejb="CategoriaProdutoBean" multiplicity="Many" name="CategoriaProdutoBean-CategoriaProdutoBean"
  * @ejbgen:relation role-name="CategoriaProdutoBean-has-CategoriaProdutoBeans" target-ejb="CategoriaProdutoBean" multiplicity="One" name="CategoriaProdutoBean-CategoriaProdutoBean"
  * @ejbgen:automatic-key-generation cache-size="1" name="CATEGORIA_PRODUTO_SEQ" type="Oracle"
  */
@@ -42,6 +42,7 @@ public abstract class CategoriaProdutoBean
   public void ejbPostCreate(CategoriaProdutoVO categoriaProdutoVO, CategoriaProduto categoriaPai) 
     throws CreateException
   { 
+    this.setCategoriaPai(categoriaPai);
   }
 
 
@@ -81,12 +82,12 @@ public abstract class CategoriaProdutoBean
      * @ejbgen:cmr-field
      * @ejbgen:local-method
      */
-    public abstract CategoriaProduto getCategoriaProduto();
+    public abstract CategoriaProduto getCategoriaPai(); //CategoriaPai
 
     /**
      * @ejbgen:local-method
      */
-    public abstract void setCategoriaProduto(CategoriaProduto arg);
+    public abstract void setCategoriaPai(CategoriaProduto arg); //CategoriaPai
     
         /**
     * Método obtem os dados do Bean para o VO

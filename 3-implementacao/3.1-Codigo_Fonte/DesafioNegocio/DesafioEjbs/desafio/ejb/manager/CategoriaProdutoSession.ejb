@@ -61,7 +61,37 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         }
     }
     
-    
+	/**
+   * @param categoriaProdutoVO
+   * @return CategoriaProduto //Categoria Pai
+   * @throws DesafioException
+   */
+    private CategoriaProduto inicializaCategoriaPai(CategoriaProdutoVO categoriaProdutoVO) throws DesafioException, EJBException {
+        
+        CategoriaProdutoVO categoriaPaiVO = null;
+        CategoriaProduto categoriaPai = null;
+        CategoriaProdutoHome categoriaPaiHome = null;
+                
+        try {
+            if((categoriaProdutoVO != null) &&
+            (categoriaProdutoVO.getCategoriaPai() != null ) &&
+            (categoriaProdutoVO.getCategoriaPai().getIdCategoriaProduto() > 0))
+            {
+                categoriaPaiHome = CategoriaProdutoBean.getHome();
+                categoriaPai = categoriaPaiHome.findByPrimaryKey(new Long(categoriaProdutoVO.getCategoriaPai().getIdCategoriaProduto()));
+                categoriaPaiVO = categoriaPai.getData();
+            }
+        }
+        catch (ObjectNotFoundException e)
+        {
+          throw new DesafioException("Desafio015 - CategoriaProduto: CategoriaPai não existente");
+        }
+        catch (Exception e)
+        {
+          throw new EJBException(e);
+        } 
+        return categoriaPai;
+    }
     /**
     * @ejbgen:remote-method transaction-attribute="Required"
     */
@@ -86,9 +116,7 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         return categoriaProduto.getData();
     }
     
-        /**
-     * M�todo respons�vel pela inser��o/altera��o da Solicita��o de Equipamento
-     * 
+    /**
      * @param categoriaProdutoVO
      * @return CategoriaProdutoVO
      * @throws DesafioException
@@ -106,15 +134,20 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         }
         
         try{
+            CategoriaProduto categoriaPai = inicializaCategoriaPai(categoriaProdutoVO);
+            
             if(this.categoriaProduto == null){
                 this.categoriaProduto = categoriaProdutoHome.create( categoriaProdutoVO, null);
             }else{
                 this.categoriaProduto.validaCategoriaProduto( categoriaProdutoVO );
                 this.categoriaProduto.setData( categoriaProdutoVO );
+                this.categoriaProduto.setCategoriaPai(categoriaPai);
             }
         }catch ( CreateException e ){
             throw new EJBException(e);
         }
+        
+        
         
         return this.categoriaProduto.getData();
      }

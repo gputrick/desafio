@@ -34,10 +34,10 @@ public class ProdutoSession
   public void ejbCreate() { }
   
     /**
-    * M�todo respons�vel pelo carregamento do Bean principal (master) em vari�veis globais
+    * M�todo responsável pelo carregamento do Bean principal (master) em vari�veis globais
     * 
-    * @param solicitacaoEquipamentoVO - SolicitacaoEquipamentoVO
-    * @throws GSMException
+    * @param produtoVO
+    * @throws DesafioException
     */
     private void inicializa(ProdutoVO produtoVO) throws DesafioException {
         
@@ -57,7 +57,7 @@ public class ProdutoSession
                 throw new ObjectNotFoundException();
             }            
         } catch (ObjectNotFoundException e) {
-            throw new DesafioException("Desafio010 - Produto: Produto não encontrado ou não existente");
+            throw new DesafioException("Desafio020 - Produto: Produto não encontrado ou não existente");
         } catch (Exception e) {
             throw new EJBException(e);
         }
@@ -75,7 +75,7 @@ public class ProdutoSession
             this.produto.remove();
             
         }catch( RemoveException e){
-            throw new DesafioException("Desafio011 - Produto: Impossível excluir registro");
+            throw new DesafioException("Desafio021 - Produto: Impossível excluir registro");
         }
     }
     
@@ -88,9 +88,7 @@ public class ProdutoSession
         return produto.getData();
     }
     
-        /**
-     * M�todo respons�vel pela inser��o/altera��o da Solicita��o de Equipamento
-     * 
+    /**
      * @param produtoVO
      * @return ProdutoVO
      * @throws DesafioException
@@ -148,7 +146,7 @@ public class ProdutoSession
 			} else
 				throw new ObjectNotFoundException();
 		} catch (ObjectNotFoundException e) {
-			throw new DesafioException("Desafio013 - Produto: ProdutoCategoriaProduto não encontrato");
+			throw new DesafioException("Desafio023 - Produto: ProdutoCategoriaProduto não encontrato");
 		} catch (Exception e) {
 			throw new EJBException(e);
 		}
@@ -210,7 +208,7 @@ public class ProdutoSession
         } catch (EJBException e){
             throw new EJBException(e);
         } catch (Exception e){
-            throw new DesafioException("Desafio014 Produto - Não é possível excluir ProdutoCategoriaProduto");
+            throw new DesafioException("Desafio024 Produto - Não é possível excluir ProdutoCategoriaProduto");
         }
      }
      
