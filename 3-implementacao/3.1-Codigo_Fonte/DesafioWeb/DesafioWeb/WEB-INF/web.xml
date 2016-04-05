@@ -96,5 +96,4 @@ Applications" documentation on edocs.bea.com. -->
         <taglib-location>/WEB-INF/netui-tags-template.tld</taglib-location>
     </taglib>
 
-
 </web-app>

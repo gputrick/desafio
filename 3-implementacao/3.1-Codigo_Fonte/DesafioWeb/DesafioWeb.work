@@ -21,8 +21,8 @@
       <option name="project.path" value="./DesafioWeb" />
       <option name="type" value="urn:com-bea-ide:project.type:WebApp" />
       <components>
+        <component name="Checked Netui Library Upgrade" />
         <component name="com.bea.ide.debug.IDebugData" />
-        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
       </components>
     </project>
   </projects>

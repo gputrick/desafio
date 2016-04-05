@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /Controller.jpf on Thu Mar 24 09:37:15 GMT-03:00 2016 -->
+<!-- Generated from /Controller.jpf on Tue Apr 05 10:17:30 GMT-03:00 2016 -->
 <struts-config>
-  <form-beans/>
+  <form-beans>
+    <form-bean type="Controller$LoginForm" name="loginForm"/>
+  </form-beans>
   <global-exceptions/>
   <global-forwards/>
   <action-mappings>
-    <action validate="false" scope="request" type="Controller" path="/acTrocaIdioma">
-      <forward path="/begin.do" name="success"/>
-    </action>
     <action validate="false" scope="request" type="Controller" path="/begin">
       <forward path="/index.jsp" name="index"/>
+    </action>
+    <action validate="false" scope="request" type="Controller" name="loginForm" path="/loginForm">
+      <forward path="/resources/jsp/Produto/ConsultarProduto.jsp" name="success"/>
     </action>
   </action-mappings>
   <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">

@@ -1,0 +1,21 @@
+package desafio.jcs; 
+
+import com.bea.control.*;
+/**
+ * @editor-info:code-gen control-interface="true"
+ */
+public class JSCProdutoImpl implements JSCProduto, ControlSource
+{ 
+    /**
+     * @common:control
+     */
+    private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
+
+    /**
+     * @common:control
+     */
+    private desafio.jcx.DBProduto dBProduto;
+
+
+    static final long serialVersionUID = 1L;
+} 

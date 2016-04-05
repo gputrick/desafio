@@ -9,12 +9,11 @@
   </head>
   <body>
     <p>
-      An error has occurred: ALo
+      An error has occurred:
     </p>
     <blockquote>
       <netui:label value="{request.errorMessage}" defaultValue="" />
       <br/>
-      <netui:exceptions showMessage="true" />
     </blockquote>
   </body>
 </netui:html>

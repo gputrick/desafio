@@ -1,0 +1,97 @@
+package desafio.jcx;
+import java.sql.SQLException;
+import javax.sql.RowSet;
+import com.bea.control.DatabaseControl;
+import com.bea.control.DatabaseFilter;
+import com.bea.control.ControlExtension;
+
+/**
+ * @jc:connection data-source-jndi-name="dsDesafio"
+ * @common:schema file="#rowset-schemas" inline="true"
+ * @common:define name="rowset-schemas" value::
+ *    <xsd:schema targetNamespace="java:///desafio.jcx" xmlns="java:///desafio.jcx" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wld="http://www.bea.com/2002/10/weblogicdata" elementFormDefault="qualified" attributeFormDefault="unqualified">
+ *     <xsd:element name="PRODUTORowSet" wld:DefaultNamespace="java:///desafio.jcx" wld:RowSet="true" wld:WriteTable="WEBLOGIC.PRODUTO">
+ *      <xsd:complexType>
+ *       <xsd:choice maxOccurs="unbounded">
+ *        <xsd:element name="PRODUTORow" wld:DatabaseProductName="Oracle">
+ *         <xsd:complexType>
+ *          <xsd:sequence>
+ *           <xsd:element name="ID_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0" wld:PrimaryKey="true" wld:ReadOnly="true" wld:TableName="WEBLOGIC.PRODUTO">
+ *           </xsd:element>
+ *           <xsd:element name="NOME" type="xsd:string" wld:JDBCType="VARCHAR" minOccurs="0" wld:TableName="WEBLOGIC.PRODUTO">
+ *           </xsd:element>
+ *          </xsd:sequence>
+ *          <xsd:anyAttribute namespace="http://www.bea.com/2002/10/weblogicdata" processContents="skip">
+ *          </xsd:anyAttribute>
+ *         </xsd:complexType>
+ *        </xsd:element>
+ *       </xsd:choice>
+ *      </xsd:complexType>
+ *     </xsd:element>
+ *    </xsd:schema>::
+ * 
+ */
+public interface DBProduto extends ControlExtension, DatabaseControl
+{
+    /** Disable default Java serialization */
+    public final static long serialVersionUID = 1L;
+
+    /**
+     * @jc:sql command-type="grid"
+     *   rowset-name="PRODUTORowSet"
+     *   max-rows="1000" 
+     *   statement::
+     *   SELECT ID_PRODUTO,NOME FROM WEBLOGIC.PRODUTO {sql: filter.getWhereClause ()} {sql: filter.getOrderByClause ()}
+     *   ::
+     */
+    public RowSet getAllProduto(DatabaseFilter filter)
+        throws SQLException;
+
+    /**
+     * @jc:sql command-type="detail"
+     *   rowset-name="PRODUTORowSet"
+     *   statement::
+     *   SELECT ID_PRODUTO,NOME FROM WEBLOGIC.PRODUTO WHERE ID_PRODUTO = {x}
+     *   ::
+     */
+    public RowSet detailsProduto(java.math.BigDecimal x)
+        throws SQLException;
+
+    /**
+     * @jc:sql command-type="update"
+     *   rowset-name="PRODUTORowSet"
+     */
+    public RowSet updateProduto(RowSet changedRs)
+        throws SQLException;
+
+    /**
+     * @jc:sql command-type="delete"
+     *   rowset-name="PRODUTORowSet"
+     */
+    public void deleteProduto(RowSet oldRs)
+        throws SQLException;
+
+    /**
+     * @jc:sql command-type="templateRow"
+     *   rowset-name="PRODUTORowSet"
+     */
+    public RowSet detailsProdutoTemplate()
+        throws SQLException;
+
+    /**
+     * @jc:sql command-type="insert"
+     *   rowset-name="PRODUTORowSet"
+     */
+    public RowSet insertProduto(RowSet changedRs)
+        throws SQLException;
+
+    /**
+     * @jc:sql command-type="newKey"
+     *   statement::
+     *   SELECT PRODUTO_SEQ.NEXTVAL AS ID_PRODUTO FROM DUAL
+     *   ::
+     */
+    public RowSet getNewKey()
+        throws SQLException;
+
+}
