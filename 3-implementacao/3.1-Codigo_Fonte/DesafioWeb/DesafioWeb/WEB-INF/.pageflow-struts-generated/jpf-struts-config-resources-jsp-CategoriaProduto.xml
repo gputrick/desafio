@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /Controller.jpf on Wed Apr 06 15:57:00 GMT-03:00 2016 -->
+<!-- Generated from /resources/jsp/CategoriaProduto/CategoriaProdutoController.jpf on Wed Apr 06 10:50:37 GMT-03:00 2016 -->
 <struts-config>
-  <form-beans>
-    <form-bean type="Controller$LoginForm" name="loginForm"/>
-  </form-beans>
+  <form-beans/>
   <global-exceptions/>
   <global-forwards/>
   <action-mappings>
-    <action validate="false" scope="request" type="Controller" path="/begin">
-      <forward path="/index.jsp" name="index"/>
+    <action validate="false" scope="request" type="resources.jsp.CategoriaProduto.CategoriaProdutoController" path="/CadastrarCategoriaProduto">
+      <forward path="/CadastrarCategoriaProduto.jsp" name="success"/>
     </action>
-    <action validate="false" scope="request" type="Controller" name="loginForm" path="/loginForm">
-      <forward path="/desafio/categoriaProduto/manter/CategoriaProdutoController.jpf" name="success"/>
+    <action validate="false" scope="request" type="resources.jsp.CategoriaProduto.CategoriaProdutoController" path="/begin">
+      <forward path="/ConsultarCategoriaProduto.jsp" name="success"/>
     </action>
   </action-mappings>
   <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">

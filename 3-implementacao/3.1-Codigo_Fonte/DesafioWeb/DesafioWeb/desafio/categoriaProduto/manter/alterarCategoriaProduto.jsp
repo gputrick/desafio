@@ -8,7 +8,7 @@
             Desafio
         </title>
         <link rel="stylesheet" href="">
-        <link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <link rel="stylesheet" type="text/css" href="/DesafioWeb/resources/css/style.css">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body class="container">
@@ -18,7 +18,7 @@
         </div>
         
         <h2 class="subtitle">Alterar</h2>
-        <h1 class="title">Produto</h1>
+        <h1 class="title">CategoriaProduto</h1>
         
         <h3 class="subtitle">Nome</h3>
         <input type="text" class="input"/>
@@ -26,11 +26,11 @@
         
         <input type="text" class="input"/><i class="fa fa-search"></i>
         
-        <button id="vincularCategoriaButton" class="right-button"><i class="fa fa-plus"></i> Vincular Categoria</button>
+        <button id="vinculaCategoriaButton" class="right-button"><i class="fa fa-plus"></i> Vincular Categoria</button>
         
         <table class="table">
             <tr>
-                <th>Nome Categoria</th>
+                <th>Nome Sub-Categoria</th>
                 <th></th>
             </tr>
             <tr>
@@ -52,50 +52,47 @@
                 </td>
             </tr>
         </table>
-        <br>
         
         <button class="right-button"><i class="fa fa-check"></i> Confirmar</button>
-        <button class="right-button"><i class="fa fa-close"></i> Cancelar</button>
+        <netui:anchor action="cancel"><button class="right-button"><i class="fa fa-close"></i> Cancelar</button></netui:anchor>
         
-        <div id="vinculaCategoriaModal" class="modal">
+            <div id="vinculaCategoriaModal" class="modal">
             <div class="modal-content">
-                <span class="close">x</span>
+                <span class="close fa fa-close"></span>
                 <br>
                 <div align="center">
-                    <h2>Escolha as categorias</h2>
-                    
-                    <input type="text" class="input"/><i class="fa fa-search"></i>
+                    <h2 class="title-modal">Escolha as sub-categorias</h2>
+                    <input type="text" class="search-input-modal"/><i class="fa fa-search"></i>
                 </div>
                 <table class="table">
                     <tr>
-                        <th>Nome Categoria</th>
+                        <th>Nome Sub-Categoria</th>
                         <th></th>
                     </tr>
                     <tr>
                         <td>Celular e Smartphone</td>
                         <td class="table-button">
-                            <i class="fa fa-eye"></i>
+                            <input type="checkbox"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Televisão</td>
                         <td class="table-button">
-                            <i class="fa fa-eye"></i>
+                            <input type="checkbox"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Notebook</td>
                         <td class="table-button">
-                            <i class="fa fa-eye"></i>
+                            <input type="checkbox"/>
                         </td>
                     </tr>
                 </table>
                 
-                <button><i class="fa fa-check"></i> Vincular</button>
-                <button id="closeButton"><i class="fa fa-close"></i> Cancelar</button>
+                <button class="right-button"><i class="fa fa-check"></i> Vincular</button>
+                <button id="closeButton" class="right-button"><i class="fa fa-close"></i> Cancelar</button>
             </div>
         </div>
     </body>
     <script src="/DesafioWeb/resources/js/modalVincularCategoria.js"></script>
-    </body>
 </netui:html>

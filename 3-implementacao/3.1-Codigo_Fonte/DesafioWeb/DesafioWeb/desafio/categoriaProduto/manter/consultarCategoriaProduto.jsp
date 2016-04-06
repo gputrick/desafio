@@ -8,7 +8,7 @@
             Desafio
         </title>
         <link rel="stylesheet" href="">
-        <link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <link rel="stylesheet" type="text/css" href="/DesafioWeb/resources/css/style.css">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body class="container">
@@ -21,9 +21,9 @@
         <h1 class="title">Categoria Produto</h1>
         
         <input type="text" class="input"/><i class="fa fa-search"></i>
-        
-        <button class="right-button"><i class="fa fa-plus"></i> Cadastrar</button>
-        
+        <div class="right-button">
+            <netui:anchor action="cadastrarCategoriaProduto"><button class="right-button"><i class="fa fa-plus"></i>Cadastrar</button></netui:anchor>
+        </div>
         <table class="table">
             <tr>
                 <th>Nome Categoria</th>
@@ -32,8 +32,8 @@
             <tr>
                 <td>Celular e Smartphone</td>
                 <td class="table-button">
-                    <i class="fa fa-eye"></i>
-                    <i class="fa fa-edit"></i>
+                    <netui:anchor action="visualizarCategoriaProduto"><i class="fa fa-eye"></i></netui:anchor>
+                    <netui:anchor action="alterarCategoriaProduto"><i class="fa fa-edit"></i></netui:anchor>
                     <i class="fa fa-trash"></i>
                 </td>
             </tr>

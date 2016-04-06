@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- Generated from /desafio/categoriaProduto/manter/CategoriaProdutoController.jpf on Wed Apr 06 15:31:43 GMT-03:00 2016 -->
+<struts-config>
+  <form-beans/>
+  <global-exceptions/>
+  <global-forwards/>
+  <action-mappings>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/alterarCategoriaProduto">
+      <forward path="/alterarCategoriaProduto.jsp" name="success"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/begin">
+      <forward path="/consultarCategoriaProduto.jsp" name="success"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/cadastrarCategoriaProduto">
+      <forward path="/cadastrarCategoriaProduto.jsp" name="success"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/cancel">
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="previousPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/visualizarCategoriaProduto">
+      <forward path="/visualizarCategoriaProduto.jsp" name="success"/>
+    </action>
+  </action-mappings>
+  <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">
+    <set-property value="true" property="isReturnToActionDisabled"/>
+  </controller>
+</struts-config>

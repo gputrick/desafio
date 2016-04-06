@@ -49,14 +49,13 @@
                 </td>
             </tr>
         </table>
-        <br>
         
-        <button id="deleteProdutoButton" class="right-button"><i class="fa fa-trash"></i> Excluir</button>
-        <button class="right-button"><i class="fa fa-edit"></i> Alterar</button>
+        <button id="deleteButton" class="right-button"><i class="fa fa-trash"></i> Excluir</button>
+        <netui:anchor action="alterarProduto"> <button class="right-button"><i class="fa fa-edit"></i> Alterar</button></netui:anchor>
         
         <div id="deleteModal" class="modal">
             <div class="modal-content">
-                <span class="close">x</span>
+                <span class="close fa fa-close"></span>
                 <br>
                 <div align="center">
                     <h2>Atenção</h2>
@@ -69,6 +68,6 @@
                 
             </div>
         </div>
+        <script src="/DesafioWeb/resources/js/modalConfirmacao.js"></script>
     </body>
-    <script src="/DesafioWeb/resources/js/modalConfirmacao.js"></script>
 </netui:html>

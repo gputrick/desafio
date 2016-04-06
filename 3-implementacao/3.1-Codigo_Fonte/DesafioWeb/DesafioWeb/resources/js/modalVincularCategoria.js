@@ -1,8 +1,8 @@
 // Get the modal
-var modal = document.getElementById('deleteModal');
+var modal = document.getElementById('vinculaCategoriaModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("vincularCategoriaButton");
+var btn = document.getElementById("vinculaCategoriaButton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];

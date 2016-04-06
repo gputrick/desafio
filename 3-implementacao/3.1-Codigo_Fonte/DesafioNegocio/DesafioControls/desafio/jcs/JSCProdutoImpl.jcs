@@ -6,10 +6,6 @@ import com.bea.control.*;
  */
 public class JSCProdutoImpl implements JSCProduto, ControlSource
 { 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
 
     /**
      * @common:control

@@ -1,0 +1,186 @@
+package desafio.produto.manter;
+import com.bea.wlw.netui.pageflow.Forward;
+import com.bea.wlw.netui.pageflow.PageFlowController;
+
+/**
+ * @jpf:controller
+ * @jpf:view-properties view-properties::
+ * <!-- This data is auto-generated. Hand-editing this section is not recommended. -->
+ * <view-properties>
+ * <pageflow-object id="pageflow:/desafio/produto/manter/ProdutoController.jpf"/>
+ * <pageflow-object id="action:cadastrarProduto.do">
+ *   <property value="120" name="x"/>
+ *   <property value="260" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:visualizarProduto.do">
+ *   <property value="300" name="x"/>
+ *   <property value="260" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:alterarProduto.do">
+ *   <property value="440" name="x"/>
+ *   <property value="260" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:cancel.do">
+ *   <property value="280" name="x"/>
+ *   <property value="460" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:cadastrarProduto.jsp">
+ *   <property value="100" name="x"/>
+ *   <property value="360" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:consultarProduto.jsp">
+ *   <property value="300" name="x"/>
+ *   <property value="160" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:visualizarProduto.jsp">
+ *   <property value="280" name="x"/>
+ *   <property value="360" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:alterarProduto.jsp">
+ *   <property value="440" name="x"/>
+ *   <property value="360" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#cadastrarProduto.jsp#@action:cadastrarProduto.do@">
+ *   <property value="120,120,100,100" name="elbowsX"/>
+ *   <property value="304,310,310,317" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#visualizarProduto.jsp#@action:visualizarProduto.do@">
+ *   <property value="300,300,280,280" name="elbowsX"/>
+ *   <property value="304,310,310,317" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#alterarProduto.jsp#@action:alterarProduto.do@">
+ *   <property value="440,440,440,440" name="elbowsX"/>
+ *   <property value="304,310,310,317" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#previousPage#@action:cancel.do@@">
+ *   <property value="280" name="x"/>
+ *   <property value="560" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#previousPage#@action:cancel.do@">
+ *   <property value="280,280,280,280" name="elbowsX"/>
+ *   <property value="504,510,510,517" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:begin.do">
+ *   <property value="300" name="x"/>
+ *   <property value="60" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#consultarProduto.jsp#@action:begin.do@">
+ *   <property value="300,300,300,300" name="elbowsX"/>
+ *   <property value="104,110,110,117" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarProduto.jsp@#@action:visualizarProduto.do@">
+ *   <property value="300,300,300,300" name="elbowsX"/>
+ *   <property value="204,210,210,217" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarProduto.jsp@#@action:alterarProduto.do@">
+ *   <property value="336,370,370,404" name="elbowsX"/>
+ *   <property value="153,153,253,253" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarProduto.jsp@#@action:cadastrarProduto.do@">
+ *   <property value="264,210,210,156" name="elbowsX"/>
+ *   <property value="153,153,253,253" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:cancel.do@">
+ *   <property value="136,190,190,244" name="elbowsX"/>
+ *   <property value="353,353,453,453" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarProduto.jsp@#@action:cancel.do@">
+ *   <property value="404,360,360,316" name="elbowsX"/>
+ *   <property value="353,353,453,453" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:alterarCategoriaProduto.do">
+ *   <property value="100" name="x"/>
+ *   <property value="80" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarProduto.jsp@#@action:alterarCategoriaProduto.do@">
+ *   <property value="244,190,190,136" name="elbowsX"/>
+ *   <property value="353,353,73,73" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * </view-properties>
+ * ::
+ */
+public class ProdutoController extends PageFlowController
+{
+
+
+    // Uncomment this declaration to access Global.app.
+    // 
+    //     protected global.Global globalApp;
+    // 
+
+    // For an example of page flow exception handling see the example "catch" and "exception-handler"
+    // annotations in {project}/WEB-INF/src/global/Global.app
+
+    /**
+     * This method represents the point of entry into the pageflow
+     * @jpf:action
+     * @jpf:forward name="success" path="consultarProduto.jsp"
+     */
+    protected Forward begin()
+    {
+        return new Forward("success");
+    }
+    
+        /**
+     * @jpf:action
+     * @jpf:forward name="success" path="cadastrarProduto.jsp"
+     */
+    protected Forward cadastrarProduto()
+    {
+        return new Forward("success");
+    }
+
+    /**
+     * @jpf:action
+     * @jpf:forward name="success" path="visualizarProduto.jsp"
+     */
+    protected Forward visualizarProduto()
+    {
+        return new Forward("success");
+    }
+
+    /**
+     * @jpf:action
+     * @jpf:forward name="success" path="alterarProduto.jsp"
+     */
+    protected Forward alterarProduto()
+    {
+        return new Forward("success");
+    }
+
+    /**
+     * @jpf:action
+     * @jpf:forward name="success" return-to="previousPage"
+     */
+    protected Forward cancel()
+    {
+        return new Forward("success");
+    }
+}
