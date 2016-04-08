@@ -1,22 +1,135 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-  <!DOCTYPE weblogic-web-app 
-    PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" 
-    "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd">
 <weblogic-web-app>
-    
-    <jsp-descriptor>
-        <!-- Comment the jspServlet param out to go back to weblogic's jspc -->
-        <jsp-param>
-            <param-name>jspServlet</param-name>
-            <param-value>weblogic.servlet.WlwJSPServlet</param-value>
-        </jsp-param>
-        <jsp-param>
-            <param-name>debug</param-name>
-            <param-value>true</param-value>
-        </jsp-param>
-    </jsp-descriptor>
-    
-    <url-match-map>
-       weblogic.servlet.utils.SimpleApacheURLMatchMap
-    </url-match-map>
+  <security-role-assignment>
+    <role-name>PortalSystemAdministrator</role-name>
+    <externally-defined/>
+  </security-role-assignment>
+  <reference-descriptor>
+    <resource-description>
+      <res-ref-name>jdbc/commercePool</res-ref-name>
+      <jndi-name>weblogic.jdbc.jts.commercePool</jndi-name>
+    </resource-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PreferencePersistenceManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.PreferencePersistenceManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PortletDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.PortletDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PortalPresentationManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.PortalPresentationManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/LocalizationManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.LocalizationManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/MarkupDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.MarkupDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/DesktopDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.DesktopDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/ShellDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.ShellDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/LookAndFeelDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.LookAndFeelDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PageDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.PageDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/BookDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.BookDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PortalDefinitionManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.PortalDefinitionManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PortalCustomizationManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_netuix.PortalCustomizationManager</jndi-name>
+    </ejb-reference-description>
+    <!-- PortalServices: EJB reference links -->
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/ContentManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.DocumentManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/DocumentManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.DocumentManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PropertySetManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.PropertySetManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/UserManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.UserManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/RulesManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.RulesManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/GroupManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.GroupManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/EjbAdvisor</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.EjbAdvisor</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PlaceholderService</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.PlaceholderService</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/AdService</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.AdService</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/AdBucketService</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.AdBucketService</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/EventService</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.EventService</jndi-name>
+    </ejb-reference-description>
+  </reference-descriptor>
+  <jsp-descriptor>
+    <!-- Comment the jspServlet param out to go back to weblogic's jspc -->
+    <jsp-param>
+      <param-name>jspServlet</param-name>
+      <param-value>weblogic.servlet.WlwJSPServlet</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>pageCheckSeconds</param-name>
+      <param-value>1</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </jsp-param>
+    <!--
+    Uncomment the following to automatically define portlet implicit
+         objects for JSR 168
+    <jsp-param>
+        <param-name>superclass</param-name>
+        <param-value>com.bea.portlet.jsp.PortletJspBase</param-value>
+    </jsp-param>
+    -->
+  </jsp-descriptor>
+  <url-match-map>weblogic.servlet.utils.SimpleApacheURLMatchMap</url-match-map>
 </weblogic-web-app>

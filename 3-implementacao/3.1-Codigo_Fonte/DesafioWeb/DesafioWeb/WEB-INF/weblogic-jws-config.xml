@@ -1,0 +1,14 @@
+<config>
+ <!--
+ <protocol>http</protocol>
+ <hostname>localhost</hostname>
+ <http-port>7001</http-port>
+ <https-port>7002</https-port>
+ <jws>
+  <class-name>HelloWorld</class-name>
+  <protocol>http</protocol>
+ </jws>
+ <transaction-isolation-level>TRANSACTION_READ_COMMITTED</transaction-isolation-level>
+ -->
+ <ejb-concurrency-strategy>Exclusive</ejb-concurrency-strategy>
+</config>

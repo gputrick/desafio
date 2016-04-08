@@ -1,0 +1,18 @@
+
+form
+{
+    margin: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cccce5;
+    background-color: #f7f7ff;
+}
+
+input, select, textarea
+{
+    margin: 2px;
+    border-width: 1px;
+    border-color: #666699;
+    font-size: small;
+}

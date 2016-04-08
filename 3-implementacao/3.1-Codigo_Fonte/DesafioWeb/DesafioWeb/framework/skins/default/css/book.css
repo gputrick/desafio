@@ -1,0 +1,418 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Primary Book
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-primary
+{
+    padding: 0px;
+    margin: 0px;
+    font-size: small;
+    width: 100%;
+    background-color: #f0f0ff;
+}
+
+.bea-portal-book-primary-content
+{
+    padding: 0px;
+    vertical-align: top;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Primary Book Page
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-primary-page
+{
+    padding: 8px;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Standard Book
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book
+{
+    margin: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #333366;
+}
+
+.bea-portal-book-content
+{
+    scrollbar-base-color:#d8d8e5;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Standard Book Page
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-page
+{
+    background-color: #ffffff;
+    padding: 4px;
+    font-size: small;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Primary Book Root Menu, Multi-Level
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-primary-menu
+{
+    display: none;
+}
+
+.bea-portal-book-primary-menu-root, .bea-portal-book-primary-menu-root-item a, .bea-portal-book-primary-menu-root-item-active a
+{
+    margin: 0px;
+    padding: 4px;
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    border-color: #9999cc;
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.bea-portal-book-primary-menu-root
+{
+    font-size: small;
+    padding: 4px 0px;
+}
+
+.bea-portal-book-primary-menu-root a
+{
+    color: #333366;
+}
+
+.bea-portal-book-primary-menu-root a:hover
+{
+    color: #000033;
+    background-color: #e5e5ff;
+    border-color: #cc6666;
+    text-decoration: none;
+}
+
+.bea-portal-book-primary-menu-root ul
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-primary-menu-root li
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-primary-menu-root-item
+{
+}
+
+.bea-portal-book-primary-menu-root-item-active a
+{
+    color: #000033;
+    border-color: #990000;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Primary Book Nested Menu, Multi-Level
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-primary-menu-nested
+{
+    font-size: x-small;
+}
+
+.bea-portal-book-primary-menu-nested-item a, .bea-portal-book-primary-menu-nested-item-active a
+{
+    padding: 1px 4px;
+    display: block;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 1px 0px;
+    border-color: #cccce5;
+    width: 150px;
+}
+
+.bea-portal-book-primary-menu-nested-item a:hover, .bea-portal-book-primary-menu-nested-item-active a:hover
+{
+    color: #000033;
+    background-color: #b2b2e5;
+    border-color: #cccce5;
+}
+
+.bea-portal-book-primary-menu-nested-item a
+{
+    color: #f0f0ff;
+    background-color: #9999cc;
+}
+
+.bea-portal-book-primary-menu-nested-item-active a
+{
+    color: #f0f0ff;
+    background-color: #9999cc;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Standard Book Root Menu, Multi-Level
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-menu
+{
+    display: none;
+}
+
+.bea-portal-book-menu-root, .bea-portal-book-menu-root-item a, .bea-portal-book-menu-root-item-active a
+{
+    margin: 0px;
+    padding: 4px;
+    font-weight: bold;
+    background-color: #d8d8e5;
+}
+
+.bea-portal-book-menu-root
+{
+    font-size: x-small;
+    padding: 4px 0px;
+}
+
+.bea-portal-book-menu-root a
+{
+    color: #333366;
+}
+
+.bea-portal-book-menu-root a:hover
+{
+    color: #000033;
+    background-color: #ffffff;
+    border-color: #cc6666;
+    text-decoration: none;
+}
+
+.bea-portal-book-menu-root ul
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-menu-root li
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-menu-root-item
+{
+}
+
+.bea-portal-book-menu-root-item-active a
+{
+    color: #000033;
+    border-color: #990000;
+    background-color: #ffffff;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Standard Book Nested Menu, Multi-Level
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-menu-nested
+{
+    font-size: x-small;
+}
+
+.bea-portal-book-menu-nested-item a, .bea-portal-book-menu-nested-item-active a
+{
+    padding: 1px 4px;
+    display: block;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 1px 0px;
+    border-color: #cccce5;
+    width: 150px;
+}
+
+.bea-portal-book-menu-nested-item a:hover, .bea-portal-book-menu-nested-item-active a:hover
+{
+    color: #000033;
+    background-color: #b2b2e5;
+    border-color: #cccce5;
+}
+
+.bea-portal-book-menu-nested-item a
+{
+    color: #f0f0ff;
+    background-color: #9999cc;
+}
+
+.bea-portal-book-menu-nested-item-active a
+{
+    color: #f0f0ff;
+    background-color: #9999cc;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Primary Book Menu, Single-Level
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-primary-menu-single-container
+{
+}
+
+.bea-portal-book-primary-menu-single, .bea-portal-book-primary-menu-single a, .bea-portal-book-primary-menu-single span
+{
+    margin: 0px;
+    padding: 4px;
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    border-color: #9999cc;
+    color: #333366;
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.bea-portal-book-primary-menu-single
+{
+    font-size: small;
+    padding: 4px 0px;
+}
+
+.bea-portal-book-primary-menu-single a
+{
+}
+
+.bea-portal-book-primary-menu-single a:hover
+{
+    color: #000033;
+    background-color: #e5e5ff;
+    border-color: #cc6666;
+    text-decoration: none;
+}
+
+.bea-portal-book-primary-menu-single span
+{
+    color: #000033;
+    border-color: #990000;
+}
+
+.bea-portal-book-primary-menu-single ul
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-primary-menu-single li
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-primary-menu-single-item
+{
+}
+
+.bea-portal-book-primary-menu-single-item-active
+{
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Standard Book Menu, Single-Level
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-book-menu-single-container
+{
+    background-color: #d8d8e5;
+    vertical-align: bottom;
+}
+
+.bea-portal-book-menu-single
+{
+    margin: 0px;
+    padding: 4px 0px;
+    font-size: x-small;
+    font-weight: bold;
+}
+
+.bea-portal-book-menu-single a, .bea-portal-book-menu-single span
+{
+    color: #333366;
+    padding: 4px;
+}
+
+.bea-portal-book-menu-single a
+{
+}
+
+.bea-portal-book-menu-single a:hover
+{
+    color: #660000;
+    text-decoration: none;
+}
+
+.bea-portal-book-menu-single span
+{
+    color: #000033;
+    background-color: #ffffff;
+}
+
+.bea-portal-book-menu-single ul
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-menu-single li
+{
+    display: inline;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-book-menu-single-item
+{
+}
+
+.bea-portal-book-menu-single-item-active
+{
+}
+
+.bea-portal-book-menu-single-item-buttons
+{
+    background-color: #d8d8e5;
+}

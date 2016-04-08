@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsrp-producer-registry
+    xmlns="http://www.bea.com/servers/weblogic/wsrp-producer-registry/8.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.bea.com/servers/weblogic/wsrp-producer-registry/8.0 wsrp-producer-registry.xsd">
+
+    <!-- Timeout HTTP connections after 60 seconds -->
+    <connection-timeout-msecs>60000</connection-timeout-msecs>
+    
+    <!-- Upper limit on uploaded files -->
+    <upload-read-limit>1048576</upload-read-limit>
+
+    <!-- Enable this to avoid SOAP/network overhead to aggregate portlets from
+    Producers deployed on the same WebLogic server -->
+    <enable-local-proxy>false</enable-local-proxy>
+
+    <!-- For each url-template name specified below, there should be a
+    template defined in url-template-config.xml. -->
+    <url-templates>
+        <url-template-ref type="default" name="wsrp-default"/>
+        <url-template-ref type="blockingAction" name="wsrp-blockingAction"/>
+        <url-template-ref type="secureBlockingAction" name="wsrp-secureBlockingAction"/>
+        <url-template-ref type="resource" name="wsrp-resource"/>
+        <url-template-ref type="secureResource" name="wsrp-secureResource"/>
+        <url-template-ref type="render" name="wsrp-render"/>
+        <url-template-ref type="secureRender" name="wsrp-secureRender"/>
+    </url-templates>
+
+</wsrp-producer-registry>

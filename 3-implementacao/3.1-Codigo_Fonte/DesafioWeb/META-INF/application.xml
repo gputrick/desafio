@@ -3,6 +3,12 @@
   <application>
     <display-name>DesafioWeb</display-name>
     <module>
+      <ejb>netuix.jar</ejb>
+    </module>
+    <module>
+      <ejb>p13n_ejb.jar</ejb>
+    </module>
+    <module>
       <web>
         <web-uri>DesafioWeb</web-uri>
         <context-root>DesafioWeb</context-root>

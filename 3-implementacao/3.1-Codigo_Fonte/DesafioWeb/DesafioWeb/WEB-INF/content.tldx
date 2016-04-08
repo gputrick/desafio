@@ -1,0 +1,184 @@
+<taglib>
+    <uri>http://www.bea.com/servers/portal/tags/content</uri>
+    <palettegenerator>com.bea.portal.ide.taglibs.DefaultPaletteGenerator</palettegenerator>
+    <palette-priority>6</palette-priority>
+    <tag>
+        <name>search</name>
+        <palette-image-name>/com/bea/portal/ide/placeholder/images/query.gif</palette-image-name>
+        <renderer>com.bea.portal.ide.taglibs.content.ContentQueryRenderer</renderer>
+        <attribute>
+            <name>contentHome</name>
+            <category>Search Parameters</category>
+        </attribute>
+        <attribute>
+            <name>max</name>
+            <category>Search Parameters</category>
+            <propertyclass>com.bea.portal.ide.taglibs.LongPropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>sortBy</name>
+            <category>Search Parameters</category>
+            <propertyclass>com.bea.portal.ide.taglibs.MultiLinePropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>query</name>
+            <category>Search Parameters</category>
+            <propertyclass>com.bea.portal.ide.taglibs.content.ContentQueryPropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>expression</name>
+            <category>Search Parameters</category>
+        </attribute>
+        <attribute>
+            <name>id</name>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <propertyclass>com.bea.portal.ide.taglibs.BooleanPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.BooleanPropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>contextParams</name>
+            <category>Search Parameters</category>
+            <propertyclass>com.bea.portal.ide.taglibs.MultiLinePropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>useCache</name>
+            <category>JSP Level Cache</category>
+            <propertyclass>com.bea.portal.ide.taglibs.BooleanPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.BooleanPropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>cacheScope</name>
+            <category>JSP Level Cache</category>
+            <propertyclass>com.bea.portal.ide.taglibs.content.CacheScopePropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.content.CacheScopePropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>cacheId</name>
+            <category>JSP Level Cache</category>
+        </attribute>
+        <attribute>
+            <name>cacheTimeout</name>
+            <category>JSP Level Cache</category>
+            <propertyclass>com.bea.portal.ide.taglibs.LongPropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>searchPaths</name>
+            <category>Search Parameters</category>
+        </attribute>
+    </tag>
+    <tag>
+        <name>getNode</name>
+        <palette-image-name>/com/bea/portal/ide/placeholder/images/query.gif</palette-image-name>
+        <renderer>com.bea.portal.ide.taglibs.content.ContentQueryRenderer</renderer>
+        <attribute>
+            <name>path</name>
+            <category>Search Parameters</category>
+        </attribute>
+        <attribute>
+            <name>id</name>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <propertyclass>com.bea.portal.ide.taglibs.BooleanPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.BooleanPropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>useCache</name>
+            <category>JSP Level Cache</category>
+            <propertyclass>com.bea.portal.ide.taglibs.BooleanPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.BooleanPropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>cacheScope</name>
+            <category>JSP Level Cache</category>
+            <propertyclass>com.bea.portal.ide.taglibs.content.CacheScopePropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.content.CacheScopePropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>cacheId</name>
+            <category>JSP Level Cache</category>
+        </attribute>
+        <attribute>
+            <name>cacheTimeout</name>
+            <category>JSP Level Cache</category>
+            <propertyclass>com.bea.portal.ide.taglibs.LongPropertyClass</propertyclass>
+        </attribute>
+    </tag>
+    <tag>
+        <name>getProperty</name>
+        <!--<palette-image-name>/com/bea/portal/ide/placeholder/images/query.gif</palette-image-name>-->
+        <palette-image-name>/com/bea/portal/ide/propertysets/images/property.gif</palette-image-name>
+        <renderer>com.bea.portal.ide.taglibs.content.GetPropertyRenderer</renderer>
+        <attribute>
+            <name>id</name>
+        </attribute>
+        <attribute>
+            <name>resultId</name>
+        </attribute>
+        <attribute>
+            <name>resultType</name>
+            <propertyclass>com.bea.portal.ide.taglibs.ListPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.ListPropertyClass</completionhandler>
+            <possiblevalues>java.lang.Boolean|java.lang.Number|java.lang.Long|java.lang.Double|java.lang.String|java.lang.Object|java.util.Calendar|com.bea.content.BinaryValue|java.util.Collection</possiblevalues>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <propertyclass>com.bea.portal.ide.taglibs.content.PropertyNamePropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.content.PropertyNamePropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>default</name>
+            <category>Formatting</category>
+            <propertyclass>com.bea.portal.ide.taglibs.MultiLinePropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>conversionType</name>
+            <category>Formatting</category>
+            <propertyclass>com.bea.portal.ide.taglibs.content.EncodePropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.content.EncodePropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>dateFormat</name>
+            <category>Formatting</category>
+        </attribute>
+        <attribute>
+            <name>numFormat</name>
+            <category>Formatting</category>
+        </attribute>
+        <attribute>
+            <name>blockSize</name>
+            <category>Formatting</category>
+            <propertyclass>com.bea.portal.ide.taglibs.LongPropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>startIndex</name>
+            <category>Formatting</category>
+            <propertyclass>com.bea.portal.ide.taglibs.LongPropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>endIndex</name>
+            <category>Formatting</category>
+            <propertyclass>com.bea.portal.ide.taglibs.LongPropertyClass</propertyclass>
+        </attribute>
+        <attribute>
+            <name>baseHref</name>
+        </attribute>
+        <attribute>
+            <name>isMultiple</name>
+            <propertyclass>com.bea.portal.ide.taglibs.BooleanPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.BooleanPropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <propertyclass>com.bea.portal.ide.taglibs.BooleanPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.BooleanPropertyClass</completionhandler>
+        </attribute>
+        <attribute>
+            <name>transactionTimeout</name>
+            <propertyclass>com.bea.portal.ide.taglibs.PositiveIntegerPropertyClass</propertyclass>
+            <completionhandler>com.bea.portal.ide.taglibs.PositiveIntegerPropertyClass</completionhandler>
+        </attribute>
+    </tag>
+</taglib>

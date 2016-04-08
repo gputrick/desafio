@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portal:root xmlns:html="http://www.w3.org/1999/xhtml-netuix-modified/1.0.0"
+    xmlns:netuix="http://www.bea.com/servers/netuix/xsd/controls/netuix/1.0.0"
+    xmlns:portal="http://www.bea.com/servers/netuix/xsd/portal/support/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/servers/netuix/xsd/portal/support/1.0.0 portal-support-1_0_0.xsd">
+    <portal:directive.page contentType="text/html;charset=UTF-8"/>
+    <netuix:desktop definitionLabel="desafio" markupName="desktop" markupType="Desktop"
+        title="desafio" treeOptimizationEnabled="true">
+        <netuix:lookAndFeel definitionLabel="defaultLookAndFeel"
+            description="The system default look and feel" markupName="defaultLookAndFeel"
+            markupType="LookAndFeel" title="default"/>
+        <netuix:shell
+            description="A header with a link to the contentUri for the edit mode of the main book."
+            markupName="visitorToolsShell" markupType="Shell" title="Visitor Tools Shell">
+            <netuix:head/>
+            <netuix:body>
+                <netuix:header>
+                    <netuix:jspContent contentUri="/framework/markup/shell/support/header.jsp"/>
+                </netuix:header>
+                <netuix:book defaultPage="desafio_page_1" definitionLabel="desafio_book_1"
+                    markupName="book" markupType="Book" title="Main Page Book">
+                    <netuix:singleLevelMenu
+                        description="This menu provides a single level of tabs used to navigate across pages."
+                        markupName="singleLevelMenu" markupType="Menu" title="Single Level Menu"/>
+                    <netuix:content>
+                        <netuix:page definitionLabel="desafio_page_1" markupName="page"
+                            markupType="Page" title="Desafio Eits">
+                            <netuix:content>
+                                <netuix:gridLayout columns="2"
+                                    description="This layout has two columns (left, right) and the portlets flow vertically in the columns."
+                                    htmlLayoutUri="/framework/markup/layout/twocolumn.html.txt"
+                                    iconUri="/framework/markup/layout/twocolumn.gif"
+                                    markupName="twoColumnLayout" markupType="Layout" title="Two Column Layout">
+                                    <netuix:placeholder
+                                        description="The left most placeholder in this layout."
+                                        flow="vertical" markupName="twoColumn_left"
+                                        markupType="Placeholder" title="left" usingFlow="true" width="30%"/>
+                                    <netuix:placeholder
+                                        description="The right most placeholder in this layout."
+                                        flow="vertical" markupName="twoColumn_right"
+                                        markupType="Placeholder" title="right" usingFlow="true" width="70%">
+                                        <netuix:portletInstance
+                                            contentUri="/resources/portlet/telaInicial/telaInicial.portlet"
+                                            instanceLabel="portlet_1_5" markupType="Portlet" title="Apresentação"/>
+                                    </netuix:placeholder>
+                                </netuix:gridLayout>
+                            </netuix:content>
+                        </netuix:page>
+                        <netuix:book defaultPage="desafio_page_13" definitionLabel="desafio_book_5"
+                            markupName="book" markupType="Book" title="Produto">
+                            <netuix:singleLevelMenu markupName="singleLevelMenu" markupType="Menu"/>
+                            <netuix:content>
+                                <netuix:page definitionLabel="desafio_page_13" markupName="page"
+                                    markupType="Page" title="Produto">
+                                    <netuix:content>
+                                        <netuix:gridLayout columns="2"
+                                            description="This layout has two columns (left, right) and the portlets flow vertically in the columns."
+                                            htmlLayoutUri="/framework/markup/layout/twocolumn.html.txt"
+                                            iconUri="/framework/markup/layout/twocolumn.gif"
+                                            markupName="twoColumnLayout" markupType="Layout" title="Two Column Layout">
+                                            <netuix:placeholder
+                                                description="The left most placeholder in this layout."
+                                                flow="vertical" markupName="twoColumn_left"
+                                                markupType="Placeholder" title="left"
+                                                usingFlow="true" width="30%"/>
+                                            <netuix:placeholder
+                                                description="The right most placeholder in this layout."
+                                                flow="vertical" markupName="twoColumn_right"
+                                                markupType="Placeholder" title="right"
+                                                usingFlow="true" width="70%">
+                                                <netuix:portletInstance
+                                                  contentUri="/desafio/produto/manter/ProdutoController.portlet"
+                                                  instanceLabel="portlet_3_1" markupType="Portlet" title="ProdutoController"/>
+                                            </netuix:placeholder>
+                                        </netuix:gridLayout>
+                                    </netuix:content>
+                                </netuix:page>
+                            </netuix:content>
+                        </netuix:book>
+                        <netuix:book defaultPage="desafio_page_17" definitionLabel="desafio_book_8"
+                            markupName="book" markupType="Book" title="Categoria Produto">
+                            <netuix:singleLevelMenu markupName="singleLevelMenu" markupType="Menu"/>
+                            <netuix:content>
+                                <netuix:page definitionLabel="desafio_page_17" markupName="page"
+                                    markupType="Page" title="Categoria Produto">
+                                    <netuix:content>
+                                        <netuix:gridLayout columns="2"
+                                            description="This layout has two columns (left, right) and the portlets flow vertically in the columns."
+                                            htmlLayoutUri="/framework/markup/layout/twocolumn.html.txt"
+                                            iconUri="/framework/markup/layout/twocolumn.gif"
+                                            markupName="twoColumnLayout" markupType="Layout" title="Two Column Layout">
+                                            <netuix:placeholder
+                                                description="The left most placeholder in this layout."
+                                                flow="vertical" markupName="twoColumn_left"
+                                                markupType="Placeholder" title="left"
+                                                usingFlow="true" width="30%"/>
+                                            <netuix:placeholder
+                                                description="The right most placeholder in this layout."
+                                                flow="vertical" markupName="twoColumn_right"
+                                                markupType="Placeholder" title="right"
+                                                usingFlow="true" width="70%">
+                                                <netuix:portletInstance
+                                                  contentUri="/desafio/categoriaProduto/manter/CategoriaProdutoController.portlet"
+                                                  instanceLabel="portlet_2_3" markupType="Portlet" title="CategoriaProdutoController"/>
+                                            </netuix:placeholder>
+                                        </netuix:gridLayout>
+                                    </netuix:content>
+                                </netuix:page>
+                            </netuix:content>
+                        </netuix:book>
+                    </netuix:content>
+                </netuix:book>
+                <netuix:footer/>
+            </netuix:body>
+        </netuix:shell>
+    </netuix:desktop>
+</portal:root>

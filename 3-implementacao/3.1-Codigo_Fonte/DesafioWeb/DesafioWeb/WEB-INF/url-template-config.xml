@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<url-template-config
+    xmlns="http://www.bea.com/servers/weblogic/url-template-config/8.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.bea.com/servers/weblogic/url-template-config/8.0 url-template-config.xsd">
+
+    <!-- URL templates -->
+    <url-template name="default">
+        {url:scheme}://{url:domain}:{url:port}/{url:path}?{url:queryString}{url:currentPage}
+    </url-template>
+    <url-template name="default-complete">
+        {url:scheme}://{url:domain}:{url:port}/{url:prefix}/{url:path}?{url:queryString}{url:currentPage}
+    </url-template>
+    <url-template name="portlet-default">
+        http://{url:domain}:{url:port}/{url:path}?{url:queryString}{url:currentPage}
+    </url-template>
+    <url-template name="portlet-secure-default">
+        https://{url:domain}:{url:securePort}/{url:path}?{url:queryString}{url:currentPage}
+    </url-template>
+    <url-template name="portlet-action">
+        http://{url:domain}:{url:port}/{url:path}?{url:queryString}{url:currentPage}
+    </url-template>
+    <url-template name="portlet-secure-action">
+        https://{url:domain}:{url:securePort}/{url:path}?{url:queryString}{url:currentPage}
+    </url-template>
+    <url-template name="portlet-resource">
+        http://{url:domain}:{url:port}/{url:path}?{url:queryString}
+    </url-template>
+    <url-template name="portlet-secure-resource">
+        https://{url:domain}:{url:securePort}/{url:path}?{url:queryString}
+    </url-template>
+
+    <!-- Templates for remote portlets -->
+    <url-template name="wsrp-default">
+        http://{url:domain}:{url:port}/{url:path}?{url:queryString}{url:currentPage}&amp;wsrp-urlType={wsrp-urlType}&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}&amp;wsrp-navigationalState={wsrp-navigationalState}&amp;wsrp-interactionState={wsrp-interactionState}&amp;wsrp-mode={wsrp-mode}&amp;wsrp-windowState={wsrp-windowState}
+    </url-template>
+    <url-template name="wsrp-blockingAction">
+        http://{url:domain}:{url:port}/{url:path}?{url:queryString}{url:currentPage}&amp;wsrp-urlType=blockingAction&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}&amp;wsrp-navigationalState={wsrp-navigationalState}&amp;wsrp-interactionState={wsrp-interactionState}&amp;wsrp-mode={wsrp-mode}&amp;wsrp-windowState={wsrp-windowState}
+    </url-template>
+    <url-template name="wsrp-render">
+        http://{url:domain}:{url:port}/{url:path}?{url:queryString}{url:currentPage}&amp;wsrp-urlType=render&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}&amp;wsrp-navigationalState={wsrp-navigationalState}&amp;wsrp-interactionState={wsrp-interactionState}&amp;wsrp-mode={wsrp-mode}&amp;wsrp-windowState={wsrp-windowState}
+    </url-template>
+    <url-template name="wsrp-resource">
+        http://{url:domain}:{url:port}/{url:path}/resource?{url:queryString}&amp;wsrp-urlType=resource&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}
+    </url-template>
+    <url-template name="wsrp-secureBlockingAction">
+        https://{url:domain}:{url:securePort}/{url:path}?{url:queryString}{url:currentPage}&amp;wsrp-urlType=blockingAction&amp;wsrp-secureURL=true&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}&amp;wsrp-navigationalState={wsrp-navigationalState}&amp;wsrp-interactionState={wsrp-interactionState}&amp;wsrp-mode={wsrp-mode}&amp;wsrp-windowState={wsrp-windowState}
+    </url-template>
+    <url-template name="wsrp-secureRender">
+        https://{url:domain}:{url:securePort}/{url:path}?{url:queryString}{url:currentPage}&amp;wsrp-urlType=render&amp;wsrp-secureURL=true&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}&amp;wsrp-navigationalState={wsrp-navigationalState}&amp;wsrp-interactionState={wsrp-interactionState}&amp;wsrp-mode={wsrp-mode}&amp;wsrp-windowState={wsrp-windowState}
+    </url-template>
+    <url-template name="wsrp-secureResource">
+        https://{url:domain}:{url:securePort}/{url:path}/resource?{url:queryString}&amp;wsrp-urlType=resource&amp;wsrp-secureURL=true&amp;wsrp-url={wsrp-url}&amp;wsrp-requiresRewrite={wsrp-requiresRewrite}
+    </url-template>
+
+    <!-- Map pageflow URLs to the templates defined above. -->
+    <jpf-url-templates>
+        <url-template-ref type="action" name="portlet-action"/>
+        <url-template-ref type="secure-action" name="portlet-secure-action"/>
+        <url-template-ref type="resource" name="portlet-resource"/>
+        <url-template-ref type="secure-resource" name="portlet-secure-resource"/>
+    </jpf-url-templates>
+
+    <!-- Map Java portlet URLs to the templates defined above. -->
+    <java-portlet-url-templates>
+        <url-template-ref type="action" name="portlet-action"/>
+        <url-template-ref type="secure-action" name="portlet-secure-action"/>
+        <url-template-ref type="resource" name="portlet-resource"/>
+        <url-template-ref type="secure-resource" name="portlet-secure-resource"/>
+        <url-template-ref type="render" name="portlet-default"/>
+        <url-template-ref type="secure-render" name="portlet-secure-default"/>
+    </java-portlet-url-templates>
+
+</url-template-config>

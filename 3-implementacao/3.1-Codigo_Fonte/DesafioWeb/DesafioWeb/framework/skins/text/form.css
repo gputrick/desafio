@@ -1,0 +1,13 @@
+
+form
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+input, select, textarea
+{
+    border-width: 1px;
+    border-color: #999999;
+    font-size: small;
+}

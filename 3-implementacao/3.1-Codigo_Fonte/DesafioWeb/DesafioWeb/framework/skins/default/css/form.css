@@ -1,0 +1,12 @@
+
+form
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+input, select, textarea
+{
+    margin: 2px;
+    font-size: small;
+}

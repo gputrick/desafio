@@ -12,10 +12,6 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body class="container">
-        <%String email = (String)request.getSession().getAttribute("email");%>
-        <div align="right">
-            <netui:label value="<%=email%>"/> <i class="fa fa-unlock"></i>
-        </div>
         
         <h2 class="subtitle">Alterar</h2>
         <h1 class="title">CategoriaProduto</h1>

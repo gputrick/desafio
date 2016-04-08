@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsrp-producer-config
+    xmlns="http://www.bea.com/servers/weblogic/wsrp-producer-config/8.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.bea.com/servers/weblogic/wsrp-producer-config/8.0 wsrp-producer-config.xsd">
+
+    <description>
+       This is a WSRP Producer
+    </description>
+
+    <!-- This element describes the capabilities of this producer. Set
+    the secure attribute to "true" if you require this producer offer
+    any port over SSL. -->
+    <service-config>
+        <registration required="true" secure="false"/>
+        <service-description secure="false"/>
+        <!-- Set accepts-mime to true to more efficiently process uploaded files when
+        the consumer is a WebLogic Portal. -->
+        <markup secure="false" rewrite-urls="true" transport="string" accepts-mime="false"/>
+        <portlet-management required="true" secure="false"/>
+    </service-config>
+
+    <supported-locales>
+        <locale>en</locale>
+        <locale>en-US</locale>
+    </supported-locales>
+</wsrp-producer-config>

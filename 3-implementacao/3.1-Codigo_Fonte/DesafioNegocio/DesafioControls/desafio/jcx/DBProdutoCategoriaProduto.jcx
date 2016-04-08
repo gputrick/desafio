@@ -1,98 +1,81 @@
-package desafio.jcx;
+package desafio.jcx; 
+
+import com.bea.control.*;
+import desafio.CategoriaProdutoVO;
+import desafio.ProdutoCategoriaProdutoVO;
+import desafio.ProdutoVO; 
 import java.sql.SQLException;
-import javax.sql.RowSet;
-import com.bea.control.DatabaseControl;
-import com.bea.control.DatabaseFilter;
-import com.bea.control.ControlExtension;
+import javax.sql.RowSet; 
 
-/**
- * @jc:connection data-source-jndi-name="dsDesafio"
- * @common:schema file="#rowset-schemas" inline="true"
- * @common:define name="rowset-schemas" value::
- *    <xsd:schema targetNamespace="java:///desafio.jcx" xmlns="java:///desafio.jcx" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wld="http://www.bea.com/2002/10/weblogicdata" elementFormDefault="qualified" attributeFormDefault="unqualified">
- *     <xsd:element name="PRODUTO_CATEGORIA_PRODUTORowSet" wld:DefaultNamespace="java:///desafio.jcx" wld:RowSet="true" wld:WriteTable="WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO">
- *      <xsd:complexType>
- *       <xsd:choice maxOccurs="unbounded">
- *        <xsd:element name="PRODUTO_CATEGORIA_PRODUTORow" wld:DatabaseProductName="Oracle">
- *         <xsd:complexType>
- *          <xsd:sequence>
- *           <xsd:element name="ID_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0" wld:PrimaryKey="true" wld:ReadOnly="true" wld:TableName="WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO" wld:EditMode="insert">
- *           </xsd:element>
- *           <xsd:element name="ID_CATEGORIA_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0" wld:PrimaryKey="true" wld:ReadOnly="true" wld:TableName="WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO" wld:EditMode="insert">
- *           </xsd:element>
- *          </xsd:sequence>
- *          <xsd:anyAttribute namespace="http://www.bea.com/2002/10/weblogicdata" processContents="skip">
- *          </xsd:anyAttribute>
- *         </xsd:complexType>
- *        </xsd:element>
- *       </xsd:choice>
- *      </xsd:complexType>
- *     </xsd:element>
- *    </xsd:schema>::
+/** 
+ * Defines a new database control. 
  * 
- */
-public interface DBProdutoCategoriaProduto extends ControlExtension, DatabaseControl
-{
-    /** Disable default Java serialization */
-    public final static long serialVersionUID = 1L;
+ * The @jc:connection tag indicates which WebLogic data source will be used by 
+ * this database control. Please change this to suit your needs. You can see a 
+ * list of available data sources by going to the WebLogic console in a browser 
+ * (typically http://localhost:7001/console) and clicking Services, JDBC, 
+ * Data Sources. 
+ * 
+ * @jc:connection data-source-jndi-name="dsDesafio" 
+ * @common:define value::
+ * <xsd:schema targetNamespace="java:///desafio/jcx" xmlns="java:///desafio/jcx" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wld="http://www.bea.com/2002/10/weblogicdata" elementFormDefault="qualified" attributeFormDefault="unqualified">
+ *   <xsd:element name="ListaProdutoCategoriaProdutoSchema" wld:DefaultNamespace="java:///desafio/jcx" wld:RowSet="true">
+ *     <xsd:complexType>
+ *       <xsd:choice maxOccurs="unbounded">
+ *         <xsd:element name="ListaProdutoCategoriaProdutoSchemaRow">
+ *           <xsd:complexType>
+ *             <xsd:sequence>
+ *               <xsd:element name="ID_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0"></xsd:element>
+ *               <xsd:element name="ID_CATEGORIA_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0"></xsd:element>
+ *             </xsd:sequence>
+ *             <xsd:anyAttribute namespace="http://www.bea.com/2002/10/weblogicdata" processContents="skip"></xsd:anyAttribute>
+ *           </xsd:complexType>
+ *         </xsd:element>
+ *       </xsd:choice>
+ *     </xsd:complexType>
+ *   </xsd:element>
+ * </xsd:schema>::
+ * name="rowset-schemas"
+ */ 
+public interface DBProdutoCategoriaProduto extends DatabaseControl, com.bea.control.ControlExtension
+{ 
+    // Sample database function.  Uncomment to use 
 
+    // static public class Customer 
+    // { 
+    //   public int id; 
+    //   public String name; 
+    // } 
+    // 
+    // /** 
+    //  * @jc:sql statement="SELECT ID, NAME FROM CUSTOMERS WHERE ID = {id}" 
+    //  */ 
+    // Customer findCustomer(int id);
+
+    // Add "throws SQLException" to request that SQLExeptions be thrown on errors.
+
+    static final long serialVersionUID = 1L;
+    
+    	/**
+    * @jc:sql rowset-name="ListaProdutoCategoriaProdutoSchema"  statement::
+    * SELECT *       
+    * FROM PRODUTO_CATEGORIA_PRODUTO
+    *  {sql: filter.getWhereClause() }
+    *  {sql: whereClause }
+    *  {sql: filter.getOrderByClause() }
+    *  {sql: orderByClause }
+    *     ::
+    */
+    RowSet getListaProdutoCategoriaProduto(String whereClause, String orderByClause, DatabaseFilter filter);
+    
     /**
-     * @jc:sql command-type="grid"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     *   max-rows="1000" 
-     *   statement::
-     *   SELECT ID_PRODUTO,ID_CATEGORIA_PRODUTO FROM WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO {sql: filter.getWhereClause ()} {sql: filter.getOrderByClause ()}
-     *   ::
+     * @jc:sql statement="SELECT * FROM PRODUTO_CATEGORIA_PRODUTO WHERE ID_PRODUTO = {produtoVO.IdProduto}}"
      */
-    public RowSet getAllProdutoCategoriaProduto(DatabaseFilter filter)
-        throws SQLException;
-
+    ProdutoCategoriaProdutoVO obterListaProdutoCategoriaProdutoPorProduto(ProdutoVO produtoVO);
+    
     /**
-     * @jc:sql command-type="detail"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     *   statement::
-     *   SELECT ID_PRODUTO,ID_CATEGORIA_PRODUTO FROM WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO WHERE ID_PRODUTO = {x} AND ID_CATEGORIA_PRODUTO = {x1}
-     *   ::
+     * @jc:sql statement="SELECT * FROM PRODUTO_CATEGORIA_PRODUTO WHERE ID_CATEGORIA_PRODUTO = {categoriaProdutoVO.IdCategoriaProduto}"
      */
-    public RowSet detailsProdutoCategoriaProduto(java.math.BigDecimal x,java.math.BigDecimal x1)
-        throws SQLException;
-
-    /**
-     * @jc:sql command-type="update"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     */
-    public RowSet updateProdutoCategoriaProduto(RowSet changedRs)
-        throws SQLException;
-
-    /**
-     * @jc:sql command-type="delete"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     */
-    public void deleteProdutoCategoriaProduto(RowSet oldRs)
-        throws SQLException;
-
-    /**
-     * @jc:sql command-type="templateRow"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     */
-    public RowSet detailsProdutoCategoriaProdutoTemplate()
-        throws SQLException;
-
-    /**
-     * @jc:sql command-type="insert"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     */
-    public RowSet insertProdutoCategoriaProduto(RowSet changedRs)
-        throws SQLException;
-
-    /**
-     * @jc:sql command-type="insertedRow"
-     *   rowset-name="PRODUTO_CATEGORIA_PRODUTORowSet"
-     *   statement::
-     *   SELECT ID_PRODUTO,ID_CATEGORIA_PRODUTO FROM WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO WHERE ID_PRODUTO = ( TODO: Add sql to retrieve newly inserted row for user entered primary keys-WEBLOGIC.PRODUTO_CATEGORIA_PRODUTO)
-     *   ::
-     */
-    public RowSet getInserted()
-        throws SQLException;
-
+    ProdutoCategoriaProdutoVO obterListaProdutoCategoriaProdutoPorCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO);
+    
 }

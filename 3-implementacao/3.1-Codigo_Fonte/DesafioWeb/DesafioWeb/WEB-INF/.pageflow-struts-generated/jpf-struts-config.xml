@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /Controller.jpf on Wed Apr 06 15:57:00 GMT-03:00 2016 -->
+<!-- Generated from /Controller.jpf on Fri Apr 08 10:10:43 GMT-03:00 2016 -->
 <struts-config>
   <form-beans>
     <form-bean type="Controller$LoginForm" name="loginForm"/>
@@ -12,7 +12,7 @@
       <forward path="/index.jsp" name="index"/>
     </action>
     <action validate="false" scope="request" type="Controller" name="loginForm" path="/loginForm">
-      <forward path="/desafio/categoriaProduto/manter/CategoriaProdutoController.jpf" name="success"/>
+      <forward path="/desafio.portal" name="success"/>
     </action>
   </action-mappings>
   <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">

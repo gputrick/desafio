@@ -1,99 +1,568 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-  <!DOCTYPE web-app PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-    "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <!-- The web.xml file is a configuration file used to control the behavior of WebLogic server.
 In most cases, you will not need to modify this file. For more information on web.xml, please
 consult the Web.xml Deployment Descriptor Elements chapter of the "Developing WebLogic Server
 Applications" documentation on edocs.bea.com. -->
-
-
 <web-app>
-    <display-name>Workshop Application</display-name>
-
-
-    <filter>
-        <filter-name>PageFlowJspFilter</filter-name>
-        <filter-class>com.bea.wlw.netui.pageflow.PageFlowJspFilter</filter-class>
-    </filter>
-
-
-    <filter-mapping>
-        <filter-name>PageFlowJspFilter</filter-name>
-        <url-pattern>*.jsp</url-pattern>
-    </filter-mapping>
-
-
-    <listener>
-        <listener-class>
-            com.bea.wlw.runtime.core.servlet.WebappContextListener
-        </listener-class>
-    </listener>
-
-
-    <!-- Standard Action Servlet Configuration (with debugging) -->
-    <servlet>
-        <servlet-name>action</servlet-name>
-        <servlet-class>com.bea.wlw.netui.pageflow.PageFlowActionServlet</servlet-class>
-        <init-param>
-            <param-name>config</param-name>
-            <param-value>/WEB-INF/.pageflow-struts-generated/jpf-struts-config.xml</param-value>
-        </init-param>
-        <init-param>
-            <param-name>config/-global</param-name>
-            <param-value>/WEB-INF/.pageflow-struts-generated/jpf-struts-config--global.xml</param-value>
-        </init-param>
-        <init-param>
-            <param-name>debug</param-name>
-            <param-value>2</param-value>
-        </init-param>
-        <init-param>
-            <param-name>detail</param-name>
-            <param-value>2</param-value>
-        </init-param>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
-
-    <!-- Struts Action Servlet Mappings -->
-    <!-- Note that because Struts takes the *last* mapping here as the extension to add to
+  <display-name>Workshop Application</display-name>
+  <context-param>
+    <param-name>genDir</param-name>
+    <param-value>_tmp_war_demoServer_demoServer_demo</param-value>
+  </context-param>
+  <context-param>
+    <param-name>usernameCookieName</param-name>
+    <param-value>PORTAL_USERNAME</param-value>
+    <description>Name of the cookie for user name for autologin.</description>
+  </context-param>
+  <context-param>
+    <param-name>passwordCookieName</param-name>
+    <param-value>PORTAL_PASSWORD</param-value>
+    <description>Name of the cookie for password for autologin.</description>
+  </context-param>
+  <context-param>
+    <param-name>weblogic.httpd.inputCharset./*</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
+  <context-param>
+    <param-name>timerPeriod</param-name>
+    <param-value>3600000</param-value>
+    <description>Period of timer (millisecs) to delete proxy portlets.</description>
+  </context-param>
+  <filter>
+    <filter-name>PageFlowJspFilter</filter-name>
+    <filter-class>com.bea.wlw.netui.pageflow.PageFlowJspFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>PortalServletFilter</filter-name>
+    <filter-class>com.bea.p13n.servlets.PortalServletFilter</filter-class>
+    <init-param>
+      <param-name>skipRequestPattern</param-name>
+      <param-value>/css/, /js/, /image*/, /wlwdir, /ensureAppDeployment</param-value>
+      <description>Skip over these type of requests (no profile manipulation).  Pattern is glob-style.  This entry defaults to the above pattern.</description>
+    </init-param>
+    <init-param>
+      <param-name>fireSessionLoginEvent</param-name>
+      <param-value>true</param-value>
+      <description>Option to fire SessionLoginEvent , defaults to false if not set</description>
+    </init-param>
+    <init-param>
+      <param-name>createAnonymousProfile</param-name>
+      <param-value>true</param-value>
+      <description>Filter will create an anonymous profile for every session. Defaults to true if not set</description>
+    </init-param>
+    <init-param>
+      <param-name>enableTrackedAnonymous</param-name>
+      <param-value>false</param-value>
+      <description>Option to track anonymous users , defaults to false if not set.  'createAnonymousProfile' is ignored if this is true</description>
+    </init-param>
+    <init-param>
+      <param-name>trackedAnonymousVisitDuration</param-name>
+      <param-value>5</param-value>
+      <description>Length in seconds visitor must be on site before we start tracking them . Defaults to 60 seconds if not set</description>
+    </init-param>
+  </filter>
+  <filter>
+    <filter-name>WsrpPageflowFilter</filter-name>
+    <filter-class>com.bea.wsrp.producer.adapter.pageflow.WsrpPageflowFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PageFlowJspFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>PortalServletFilter</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>WsrpPageflowFilter</filter-name>
+    <url-pattern>/producer/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>com.bea.wlw.runtime.core.servlet.WebappContextListener</listener-class>
+  </listener>
+  <!-- Standard Action Servlet Configuration (with debugging) -->
+  <listener>
+    <listener-class>com.bea.p13n.servlets.AnonymousProfileListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.bea.p13n.usermgmt.hierarchy.AtnHierarchyListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.bea.p13n.tracking.listeners.SessionEventListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.bea.wsrp.consumer.management.portlet.ProxyPortletRemoveListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>com.bea.wlw.netui.pageflow.PageFlowActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/.pageflow-struts-generated/jpf-struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>config/-global</param-name>
+      <param-value>/WEB-INF/.pageflow-struts-generated/jpf-struts-config--global.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>moduleConfigLocators</param-name>
+      <param-value>com.bea.struts.adapter.util.ModuleConfigLocator</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <!-- Struts Action Servlet Mappings -->
+  <!-- Note that because Struts takes the *last* mapping here as the extension to add to
          actions posted from forms, we must have *.do come after *.jpf. -->
-    <servlet-mapping>
-        <servlet-name>action</servlet-name>
-        <url-pattern>*.jpf</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>action</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
-
-
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
-    <error-page>
-        <error-code>500</error-code>
-        <location>/error.jsp</location>
-    </error-page>
-
-
-    <!-- Define the NetUI tag library TLDs -->
-    <taglib>
-        <taglib-uri>netui-tags-html.tld</taglib-uri>
-        <taglib-location>/WEB-INF/netui-tags-html.tld</taglib-location>
-    </taglib>
-
-    <taglib>
-        <taglib-uri>netui-tags-databinding.tld</taglib-uri>
-        <taglib-location>/WEB-INF/netui-tags-databinding.tld</taglib-location>
-    </taglib>
-
-    <taglib>
-        <taglib-uri>netui-tags-template.tld</taglib-uri>
-        <taglib-location>/WEB-INF/netui-tags-template.tld</taglib-location>
-    </taglib>
-
+  <servlet>
+    <servlet-name>AppManagerServlet</servlet-name>
+    <servlet-class>com.bea.netuix.servlets.manager.PortalServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>PortletServlet</servlet-name>
+    <servlet-class>com.bea.netuix.servlets.manager.PortletServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>com.bea.wsrp.producer.WsrpServer</servlet-name>
+    <servlet-class>com.bea.wsrp.producer.WsrpServer</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>ResourceProxyServlet</servlet-name>
+    <servlet-class>com.bea.wsrp.consumer.resource.ResourceProxyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>com.bea.wsrp.logging.MessageMonitor</servlet-name>
+    <servlet-class>com.bea.wsrp.logging.MessageMonitor</servlet-class>
+    <init-param>
+      <param-name>enableSoapMessageLogging</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowPropertyServlet</servlet-name>
+    <servlet-class>com.bea.content.manager.servlets.ShowPropertyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DownloadBinaryServlet</servlet-name>
+    <servlet-class>com.bea.content.manager.servlets.DownloadBinaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>adClickThru</servlet-name>
+    <servlet-class>com.bea.p13n.ad.servlets.AdClickThruServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>com.bea.portlet.server.PortletHttpServer</servlet-name>
+    <servlet-class>com.bea.portlet.server.PortletHttpServer</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.jpf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppManagerServlet</servlet-name>
+    <url-pattern>/appmanager/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppManagerServlet</servlet-name>
+    <url-pattern>*.portion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppManagerServlet</servlet-name>
+    <url-pattern>*.portal</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PortletServlet</servlet-name>
+    <url-pattern>/portletmanager/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PortletServlet</servlet-name>
+    <url-pattern>*.portlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>com.bea.wsrp.producer.WsrpServer</servlet-name>
+    <url-pattern>/producer/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResourceProxyServlet</servlet-name>
+    <url-pattern>/resource/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>com.bea.wsrp.logging.MessageMonitor</servlet-name>
+    <url-pattern>/monitor</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowPropertyServlet</servlet-name>
+    <url-pattern>/ShowDoc/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowPropertyServlet</servlet-name>
+    <url-pattern>/ShowBinary/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowPropertyServlet</servlet-name>
+    <url-pattern>/ShowProperty/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadBinaryServlet</servlet-name>
+    <url-pattern>/DownloadBinary/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adClickThru</servlet-name>
+    <url-pattern>/AdClickThru/*</url-pattern>
+  </servlet-mapping>
+  <mime-mapping>
+    <extension>css</extension>
+    <mime-type>text/css</mime-type>
+  </mime-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+  <!-- Define the NetUI tag library TLDs -->
+  <taglib>
+    <taglib-uri>netui-tags-html.tld</taglib-uri>
+    <taglib-location>/WEB-INF/netui-tags-html.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>netui-tags-databinding.tld</taglib-uri>
+    <taglib-location>/WEB-INF/netui-tags-databinding.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>netui-tags-template.tld</taglib-uri>
+    <taglib-location>/WEB-INF/netui-tags-template.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>render.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/render_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>l10n.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/l10n_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>http://www.bea.com/servers/netuix/xsd/controls/netuix/1.0.0</taglib-uri>
+    <taglib-location>/WEB-INF/lib/netuix_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>http://www.w3.org/1999/xhtml-netuix-modified/1.0.0</taglib-uri>
+    <taglib-location>/WEB-INF/lib/html_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>client.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/client_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>preferences.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/prefs_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>ad.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/ad_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>auth.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/auth_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>content.tld</taglib-uri>
+    <taglib-location>/WEB-INF/content.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>es.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/es_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>i18n.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/i18n_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>ph.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/ph_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>pz.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/pz_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>ps.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/ps_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>um.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/um_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>ugm.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/ugm_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>profile.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/profile_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>tracking.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/tracking_taglib.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>weblogic.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/weblogic-tags.jar</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/struts-bean.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/struts-logic.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/struts-adapter-html.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/struts-adapter-nested.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/struts-adapter-tiles.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/WEB-INF/struts-adapter-naming.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/struts-adapter-naming.tld</taglib-location>
+  </taglib>
+  <resource-ref>
+    <res-ref-name>jdbc/commercePool</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>CONTAINER</res-auth>
+  </resource-ref>
+  <security-constraint>
+    <display-name>CampaignEmails</display-name>
+    <web-resource-collection>
+      <web-resource-name>CampaignEmails</web-resource-name>
+      <description>Protect /campaigns/emails from web-side access.
+            The campaign engine will access campaign email files as the
+            'portaladmin' user in the PortalSystemAdministrator role, which
+            should have permissions here. This will allow the campaign engine
+            to execute the web resources to generate emails, but prevent
+            unauthenticated users from directly accessing the web resources.</description>
+      <url-pattern>/campaigns/emails/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Portal system administrators</description>
+      <role-name>PortalSystemAdministrator</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+  </login-config>
+  <security-role>
+    <description>Portal system administrators</description>
+    <role-name>PortalSystemAdministrator</role-name>
+  </security-role>
+  <ejb-ref>
+    <description>Preference persistence manager</description>
+    <ejb-ref-name>ejb/PreferencePersistenceManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.portlet.prefs.PreferencePersistenceManagerHome</home>
+    <remote>com.bea.portlet.prefs.PreferencePersistenceManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Portlet Definition Manager</description>
+    <ejb-ref-name>ejb/PortletDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.PortletDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.PortletDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Portlal Presentation Manager</description>
+    <ejb-ref-name>ejb/PortalPresentationManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.PortalPresentationManagerHome</home>
+    <remote>com.bea.netuix.application.manager.PortalPresentationManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Localization Manager</description>
+    <ejb-ref-name>ejb/LocalizationManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.LocalizationManagerHome</home>
+    <remote>com.bea.netuix.application.manager.LocalizationManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Markup Definition Manager</description>
+    <ejb-ref-name>ejb/MarkupDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.MarkupDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.MarkupDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Shell Manager</description>
+    <ejb-ref-name>ejb/ShellDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.ShellDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.ShellDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Look And Feel Manager</description>
+    <ejb-ref-name>ejb/LookAndFeelDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.LookAndFeelDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.LookAndFeelDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Page Manager</description>
+    <ejb-ref-name>ejb/PageDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.PageDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.PageDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Book Manager</description>
+    <ejb-ref-name>ejb/BookDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.BookDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.BookDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Desktop Definition manager</description>
+    <ejb-ref-name>ejb/DesktopDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.persistence.DesktopDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.persistence.DesktopDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Portal Definition manager</description>
+    <ejb-ref-name>ejb/PortalDefinitionManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.persistence.PortalDefinitionManagerHome</home>
+    <remote>com.bea.netuix.application.manager.persistence.PortalDefinitionManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Portal Customization Manager - used by the visitor tools</description>
+    <ejb-ref-name>ejb/PortalCustomizationManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.netuix.application.manager.PortalCustomizationManagerHome</home>
+    <remote>com.bea.netuix.application.manager.PortalCustomizationManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The old ContentManager for this webapp</description>
+    <ejb-ref-name>ejb/ContentManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.content.document.DocumentManagerHome</home>
+    <remote>com.bea.p13n.content.document.DocumentManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The DocumentManager for this webapp</description>
+    <ejb-ref-name>ejb/DocumentManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.content.document.DocumentManagerHome</home>
+    <remote>com.bea.p13n.content.document.DocumentManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>User Management</description>
+    <ejb-ref-name>ejb/UserManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.usermgmt.UserManagerHome</home>
+    <remote>com.bea.p13n.usermgmt.UserManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Group Management</description>
+    <ejb-ref-name>ejb/GroupManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.usermgmt.GroupManagerHome</home>
+    <remote>com.bea.p13n.usermgmt.GroupManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Rules Manager</description>
+    <ejb-ref-name>ejb/RulesManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.rules.manager.RulesManagerHome</home>
+    <remote>com.bea.p13n.rules.manager.RulesManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The EjbAdvisor for this webapp</description>
+    <ejb-ref-name>ejb/EjbAdvisor</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.advisor.EjbAdvisorHome</home>
+    <remote>com.bea.p13n.advisor.EjbAdvisor</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The PropertySetManager for this webapp</description>
+    <ejb-ref-name>ejb/PropertySetManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.property.PropertySetManagerHome</home>
+    <remote>com.bea.p13n.property.PropertySetManager</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The PlaceholderService Session EJB for the placeholder tag.</description>
+    <ejb-ref-name>ejb/PlaceholderService</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.placeholder.PlaceholderServiceHome</home>
+    <remote>com.bea.p13n.placeholder.PlaceholderService</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The AdService for this webapp</description>
+    <ejb-ref-name>ejb/AdService</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.ad.AdServiceHome</home>
+    <remote>com.bea.p13n.ad.AdService</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>The AdBucketService for this webapp</description>
+    <ejb-ref-name>ejb/AdBucketService</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.ad.AdBucketServiceHome</home>
+    <remote>com.bea.p13n.ad.AdBucketService</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>Event Service</description>
+    <ejb-ref-name>ejb/EventService</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.event.EventServiceHome</home>
+    <remote>com.bea.p13n.event.EventService</remote>
+  </ejb-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ProxyPortletManagerLocal</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <local-home>com.bea.wsrp.services.persistence.ProxyPortletPersistenceManagerLocalHome</local-home>
+    <local>com.bea.wsrp.services.persistence.ProxyPortletPersistenceManagerLocal</local>
+    <ejb-link>netuix.jar#ProxyPortletPersistenceManager</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ProducerPersistenceManagerLocal</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <local-home>com.bea.wsrp.services.persistence.ProducerPersistenceManagerLocalHome</local-home>
+    <local>com.bea.wsrp.services.persistence.ProducerPersistenceManagerLocal</local>
+    <ejb-link>netuix.jar#ProducerPersistenceManager</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ConsumerRegistrationServiceLocal</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <local-home>com.bea.wsrp.services.registration.ConsumerRegistrationServiceLocalHome</local-home>
+    <local>com.bea.wsrp.services.registration.ConsumerRegistrationServiceLocal</local>
+    <ejb-link>netuix.jar#ConsumerRegistrationService</ejb-link>
+  </ejb-local-ref>
 </web-app>

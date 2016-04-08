@@ -1,0 +1,60 @@
+package desafio.jcs; 
+
+import com.bea.control.*;
+import desafio.ProdutoCategoriaProdutoVO;
+import desafio.ProdutoVO;
+import javax.sql.RowSet;
+/**
+ * @editor-info:code-gen control-interface="true"
+ */
+public class JCSProdutoImpl implements JCSProduto, ControlSource
+{ 
+    /**
+     * @common:control
+     */
+    private desafio.jcx.DBProduto dBProduto;
+
+    /**
+     * @common:operation
+     */
+    public RowSet obterListaProduto(String nomeProduto, DatabaseFilter filter) throws Exception
+    {
+        String orderByClause = " ORDER BY NOME";
+        StringBuffer whereClause = new StringBuffer();
+        boolean concatenou = false;
+        
+        if((nomeProduto != null) &&
+        (!nomeProduto.trim().equals(""))){
+            if( concatenou )
+            {  
+                whereClause.append(" AND ");
+            }
+            else
+            {
+                whereClause.append(" WHERE ");
+                concatenou = true;
+            }
+            
+            whereClause.append(" (UPPER( NOME ) LIKE UPPER('%")
+            .append(nomeProduto.trim())
+            .append("%') )");
+        }
+        if ( filter != null )
+        {
+            if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
+            {
+                whereClause = new StringBuffer();			
+            }
+            if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
+            {
+                orderByClause = "";
+            }
+        }
+        else
+        {
+            filter = new DatabaseFilter();
+        }	 
+        return this.dBProduto.getListaProduto(whereClause.toString(), orderByClause, filter);
+        
+    }    
+} 

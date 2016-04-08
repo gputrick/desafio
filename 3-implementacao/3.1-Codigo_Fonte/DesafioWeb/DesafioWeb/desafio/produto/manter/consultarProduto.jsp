@@ -12,10 +12,6 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body class="container">
-        <%String email = (String)request.getSession().getAttribute("email");%>
-        <div align="right">
-            <netui:label value="<%=email%>"/> <i class="fa fa-unlock"></i>
-        </div>
         
         <h2 class="subtitle">Consultar</h2>
         <h1 class="title">Produto</h1>
@@ -24,35 +20,14 @@
         
         <netui:anchor action="cadastrarProduto"><button class="right-button"><i class="fa fa-plus"></i>Cadastrar</button></netui:anchor>
         
-        <table class="table">
-            <tr>
-                <th>Nome Produto</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Celular e Smartphone</td>
-                <td class="table-button">
-                    <netui:anchor action="visualizarProduto"><i class="fa fa-eye"></i></netui:anchor>
-                    <netui:anchor action="alterarProduto"><i class="fa fa-edit"></i></netui:anchor>
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Televisão</td>
-                <td class="table-button">
-                    <i class="fa fa-eye"></i>
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Notebook</td>
-                <td class="table-button">
-                    <i class="fa fa-eye"></i>
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-        </table>
+        <script language="javascript" src='<%=request.getContextPath() +
+        "/resources/grid/_grid.js"%>' type="text/javascript"></script>
+        <netui-data:grid dataSource="{pageFlow.listaProduto}" name="{pageFlow.gridListaProduto}">
+            <netui-data:pager renderInFooter="true" action="obterListaProduto"></netui-data:pager>
+            <netui-data:columns>
+                <netui-data:anchorColumn title="Nome Categoria" action="visualizarProduto" name="nome"></netui-data:anchorColumn>
+            </netui-data:columns>
+        </netui-data:grid>
+        
     </body>
 </netui:html>

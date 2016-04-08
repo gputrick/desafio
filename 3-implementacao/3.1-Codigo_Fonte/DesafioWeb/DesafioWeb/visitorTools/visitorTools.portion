@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portal:root xmlns:netuix="http://www.bea.com/servers/netuix/xsd/controls/netuix/1.0.0"
+             xmlns:html="http://www.w3.org/1999/xhtml-netuix-modified/1.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:portal="http://www.bea.com/servers/netuix/xsd/portal/support/1.0.0"
+             xsi:schemaLocation="http://www.bea.com/servers/netuix/xsd/portal/support/1.0.0 portal-support-1_0_0.xsd">
+    <netuix:book title="Visitor Tools" markupType="Book" markupName="book" definitionLabel="VisitorToolsBook" defaultPage="VisitorToolsMainPage" hidden="true">
+        <netuix:content>
+            <netuix:page markupType="Page" markupName="page" definitionLabel="VisitorToolsMainPage" title="Main Page" hidden="true" presentationClass="none">
+                <netuix:content>
+                    <netuix:gridLayout columns="1" markupType="Layout" markupName="singleColumnLayout">
+                        <netuix:placeholder markupType="Placeholder" markupName="placeholder">
+                            <netuix:portlet title="Visitor Tools Main" definitionLabel="visitorToolsMain" instanceLabel="VisitorTools_1" presentationClass="none">
+                              <netuix:content>
+                                 <netuix:jspContent contentUri="/visitorTools/visitorToolsMain.jsp"
+                                     backingFile="com.bea.jsptools.portal.backing.VisitorToolsMainBacking"/>
+                              </netuix:content>
+                            </netuix:portlet>
+                        </netuix:placeholder>
+                    </netuix:gridLayout>
+                </netuix:content>
+            </netuix:page>
+            <netuix:page markupType="Page" markupName="page" definitionLabel="VisitorToolsEditPage" title="Edit Page" hidden="true" presentationClass="none">
+                <netuix:content>
+                    <netuix:gridLayout columns="1" markupType="Layout" markupName="singleColumnLayout">
+                        <netuix:placeholder markupType="Placeholder" markupName="placeholder">
+                            <netuix:portlet title="Visitor Tools Edit Page" definitionLabel="visitorToolsEditPage" instanceLabel="VisitorTools_2" presentationClass="none">
+                              <netuix:content>
+                                 <netuix:jspContent contentUri="/visitorTools/visitorToolsEditPage.jsp"
+                                     backingFile="com.bea.jsptools.portal.backing.VisitorToolsEditPageBacking"/>
+                              </netuix:content>
+                            </netuix:portlet>
+                        </netuix:placeholder>
+                    </netuix:gridLayout>
+                </netuix:content>
+            </netuix:page>
+            <netuix:page markupType="Page" markupName="page" definitionLabel="VisitorToolsEditBook" title="Edit Book" hidden="true" presentationClass="none">
+                <netuix:content>
+                    <netuix:gridLayout columns="1" markupType="Layout" markupName="singleColumnLayout">
+                        <netuix:placeholder markupType="Placeholder" markupName="placeholder">
+                            <netuix:portlet title="Visitor Tools Edit Book" definitionLabel="visitorToolsEditBook" instanceLabel="VisitorTools_3" presentationClass="none">
+                              <netuix:content>
+                                 <netuix:jspContent contentUri="/visitorTools/visitorToolsEditBook.jsp"
+                                     backingFile="com.bea.jsptools.portal.backing.VisitorToolsEditBookBacking"/>
+                              </netuix:content>
+                            </netuix:portlet>
+                        </netuix:placeholder>
+                    </netuix:gridLayout>
+                </netuix:content>
+            </netuix:page>
+        </netuix:content>
+    </netuix:book>
+</portal:root>

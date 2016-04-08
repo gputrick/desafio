@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /desafio/produto/manter/ProdutoController.jpf on Wed Apr 06 15:47:03 GMT-03:00 2016 -->
+<!-- Generated from /desafio/produto/manter/ProdutoController.jpf on Thu Apr 07 14:23:16 GMT-03:00 2016 -->
 <struts-config>
   <form-beans/>
   <global-exceptions/>
@@ -17,6 +17,11 @@
     </action>
     <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/cancel">
       <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="previousPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+    </action>
+    <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/obterListaProduto">
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
         <set-property value="true" property="returnToPage"/>
       </forward>
     </action>

@@ -7,23 +7,27 @@
   <head>
     <title>Desafio</title>
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-        
+    
   </head>
     <body>
         <div class="center">
             <h1>Login</h1>
             <netui:form action="loginForm">
                 <table>
-                    <tr valign="top">
+                    <tr>
                         <td>Email </td>
+                    </tr>
+                    <tr>
                         <td>
-                        <netui:textBox dataSource="{actionForm.email}"/>
+                            <netui:textBox dataSource="{actionForm.email}"/>
                         </td>
                     </tr>
-                    <tr valign="top">
+                    <tr>
                         <td>Senha </td>
+                    </tr>
+                    <tr>
                         <td>
-                        <netui:textBox dataSource="{actionForm.senha}" password="true"/>
+                            <netui:textBox dataSource="{actionForm.senha}" password="true"/>
                         </td>
                     </tr>
                 </table>

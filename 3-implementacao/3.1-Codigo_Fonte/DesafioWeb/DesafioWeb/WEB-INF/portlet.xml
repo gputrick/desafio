@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<portlet-app version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet"
+    xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+
+</portlet-app>

@@ -42,15 +42,15 @@ import com.bea.wlw.netui.pageflow.Forward;
  * <pageflow-object id="formbeanprop:Controller.LoginForm#email#java.lang.String"/>
  * <pageflow-object id="formbeanprop:Controller.LoginForm#senha#java.lang.String"/>
  * <pageflow-object id="formbean:Controller.LoginForm"/>
- * <pageflow-object id="external-jpf:desafio/categoriaProduto/manter/CategoriaProdutoController.jpf">
- *   <property value="160" name="x"/>
+ * <pageflow-object id="page:desafio.portal">
+ *   <property value="440" name="x"/>
  *   <property value="360" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="forward:path#success#desafio/categoriaProduto/manter/CategoriaProdutoController.jpf#@action:loginForm.do#Controller.LoginForm@">
- *   <property value="164,160,160,160" name="elbowsX"/>
- *   <property value="253,253,285,317" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
+ * <pageflow-object id="forward:path#success#desafio.portal#@action:loginForm.do#Controller.LoginForm@">
+ *   <property value="236,320,320,404" name="elbowsX"/>
+ *   <property value="253,253,353,353" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * </view-properties>
@@ -70,7 +70,7 @@ public class Controller extends PageFlowController
 
     /**
      * @jpf:action
-     * @jpf:forward name="success" path="desafio/categoriaProduto/manter/CategoriaProdutoController.jpf"
+     * @jpf:forward name="success" path="desafio.portal"
      */
     protected Forward loginForm(LoginForm form)
     {

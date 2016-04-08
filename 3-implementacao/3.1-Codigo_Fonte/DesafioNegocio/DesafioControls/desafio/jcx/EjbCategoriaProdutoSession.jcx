@@ -1,0 +1,15 @@
+package desafio.jcx; 
+
+import com.bea.control.*; 
+
+/**
+ *   @jc:ejb home-jndi-name="ejb.DesafioEjbs.CategoriaProdutoSessionRemoteHome"
+ */
+public interface EjbCategoriaProdutoSession 
+        extends desafio.ejb.manager.CategoriaProdutoSessionHome,    // home interface
+                desafio.ejb.manager.CategoriaProdutoSessionRemote,    // bean interface
+                com.bea.control.SessionEJBControl,     // control interface
+                com.bea.control.ControlExtension     // control extension marker
+{ 
+    static final long serialVersionUID = 1L;
+} 

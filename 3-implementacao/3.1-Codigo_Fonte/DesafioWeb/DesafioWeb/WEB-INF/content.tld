@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>cm</short-name>
+    <uri>http://www.bea.com/servers/portal/tags/content</uri>
+    <display-name>Portal Content</display-name>
+    <small-icon>com/bea/content/manager/servlets/jsp/taglib/content.gif</small-icon>
+    <description>
+    This taglib provides tags to 
+    1) Search for nodes based on a predefined query syntax
+       and place them in a specified id location.
+    2) Get a Node based on the path and place it in a specified 
+        id location.
+    3)  Given a Node, retrieve a specified Property and either set it's value(s) in the 
+    PageContext or inline the value(s) into the JSP output writer
+  </description>
+    <tag>
+        <name>search</name>
+        <tag-class>com.bea.content.manager.servlets.jsp.taglib.SearchTag</tag-class>
+        <tei-class>com.bea.content.manager.servlets.jsp.taglib.SearchTagExtraInfo</tei-class>
+        <body-content>empty</body-content>
+        <display-name>Search</display-name>
+        <description>Search for Nodes based upon a query syntax string and place them in a script variable for use.</description>
+        <attribute>
+            <name>max</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The maximum number of Nodes to return from the search.</description>
+        </attribute>
+        <attribute>
+            <name>sortBy</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>A list of content properties to sort the content by. The syntax follows the SQL 'order by' clause. For the BEA Repository, this is only used for explicit properties.</description>
+        </attribute>
+        <attribute>
+            <name>query</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The query to execute the search for. This is used if the expression isn't specified. This is what most will use as a String.</description>
+        </attribute>
+        <attribute>
+            <name>expression</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The com.bea.p13n.expression.Expression to execute the search for.</description>
+        </attribute>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>The name of the script variable to contain the array of com.bea.content.Node objects found.</description>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>True to throw a JspTagException if any error occurs; false to return an empty array on error.</description>
+        </attribute>
+        <attribute>
+            <name>contextParams</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The search context parameters. Either the java.util.Map or comma-separated list of name=value pairs to pass along with the search request. These are simply parameters passed to the search engine that may be required to fulfill the request.  It is based on the repository implementation.</description>
+        </attribute>
+        <attribute>
+            <name>useCache</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>Set to true if the search results should be cached at the webapp level. Searches are generally automatically cached at the RepositoryManager level. This can be used for more controlled caching.</description>
+        </attribute>
+        <attribute>
+            <name>cacheScope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The scope to cache the results at.  Can be either "application", "request", "page", or "session".</description>
+        </attribute>
+        <attribute>
+            <name>cacheId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The id for the cached results. Defaults to the id attribute.</description>
+        </attribute>
+        <attribute>
+            <name>cacheTimeout</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The number of milliseconds to keep the cached results.</description>
+        </attribute>
+        <attribute>
+            <name>searchPaths</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The comma-delimited repository search paths on which to execute the query.</description>
+        </attribute>
+    </tag>
+    <tag>
+        <name>getNode</name>
+        <tag-class>com.bea.content.manager.servlets.jsp.taglib.GetNodeTag</tag-class>
+        <tei-class>com.bea.content.manager.servlets.jsp.taglib.GetNodeTagExtraInfo</tei-class>
+        <body-content>empty</body-content>
+        <display-name>Get Node</display-name>
+        <description>Select a Node based upon its path and place it in a script variable for use.</description>
+        <attribute>
+            <name>path</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The path of the Node to get. Must start with "/" + the repository name.</description>
+        </attribute>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>The name of the script variable where the Node will be placed.</description>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>True to throw a JspTagException if any error occurs; false to return a null on error.</description>
+        </attribute>
+        <attribute>
+            <name>useCache</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>Set to true if Node should be cached at the webapp level. Searches are generally automatically cached at the RepositoryManager level. This can be used for more controlled caching.</description>
+        </attribute>
+        <attribute>
+            <name>cacheScope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The scope to cache the results at.  Can be either "application", "request", "page", or "session"..</description>
+        </attribute>
+        <attribute>
+            <name>cacheId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The id for the cached Node. Defaults to the id attribute.</description>
+        </attribute>
+        <attribute>
+            <name>cacheTimeout</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The number of milliseconds to keep the cached results.</description>
+        </attribute>
+    </tag>
+    <tag>
+        <name>getProperty</name>
+        <tag-class>com.bea.content.manager.servlets.jsp.taglib.GetPropertyTag</tag-class>
+        <tei-class>com.bea.content.manager.servlets.jsp.taglib.GetPropertyTagExtraInfo</tei-class>
+        <body-content>empty</body-content>
+        <display-name>Get Property</display-name>
+        <description>Retrieve the value(s) of a specified Property a Node and either set a script variable with the value(s) or print the value(s).</description>
+        <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The name of the script variable which should contain the com.bea.content.Node object to get the property from. One of either id or node should be specified.</description>
+        </attribute>
+        <attribute>
+            <name>node</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The com.bea.content.Node to use. Will check this node first and if not found will get the Node using from id.</description>
+        </attribute>
+        <attribute>
+            <name>resultId</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>The name of the script variable to store the value of the property in. If this is not specified, the value of the property will be printed in the JSP instead.</description>
+        </attribute>
+        <attribute>
+            <name>resultType</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>The type of the single valued property. May only be used if isMultiple is False.</description>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The name of the Property to get. If this is a system property (cm_createdBy, cm_createdDate, cm_modifiedDate, and cm_path) then the value on the Node will be used. If not specified then the primaryProperty will be used if defined.</description>
+        </attribute>
+        <attribute>
+            <name>default</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>If resultId is not set, this specifies the string value to print if the property doesn't exist on the specific object or if the specified property does not contain any values.</description>
+        </attribute>
+        <attribute>
+            <name>conversionType</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>If resultId is not set, this specifies how to encode the property value when printing it to the JSP. This should be one of: html, url, or none. html will convert HTML special characters to their entity form; url will convert the text via the java.net.URLEncoder.</description>
+        </attribute>
+        <attribute>
+            <name>dateFormat</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>If resultId is not set, this specifies the java.text.SimpleDateFormat date format string to use when printing date property values.</description>
+        </attribute>
+        <attribute>
+            <name>numFormat</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>If the resultId is not set, this specifies the java.text.DecimalFormat string to use when printing numeric property values.</description>
+        </attribute>
+        <attribute>
+            <name>blockSize</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The size of the blocks in bytes,  to read the bytes of a Binary Property.</description>
+        </attribute>
+        <attribute>
+            <name>startIndex</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The index (from 0) in the document's bytes at which to start printing.</description>
+        </attribute>
+        <attribute>
+            <name>endIndex</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The index (from 0) in the document's bytes at which to stop printing.</description>
+        </attribute>
+        <attribute>
+            <name>baseHref</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>The base href to the ShowBinaryServlet to use to display/retrieve other documents relative to the printed document. This should typically be request.getContextPath() + "/ShowBinary", and is only needed when displaying binaries that need to resolve relative links.</description>
+        </attribute>
+        <attribute>
+            <name>isMultiple</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>True if the resultId should be set to a Collection, False if it should be set to an Object that may be cast to the property type. The default is True.</description>
+        </attribute>
+        <attribute>
+            <name>failOnError</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>True to throw a JspTagException if any error occurs; false to return a null on error.</description>
+        </attribute>
+        <attribute>
+            <name>transactionTimeout</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>When the result is streamed to the output (id is not specified), the call to the CM system is wrapped in a Transaction.
+            The default transaction timeout is set by the system, but might be too short for large content.
+            This attribute sets the timeout of that transaction (in seconds).
+            A value of 0 (zero) sets the timeout to the system's default value.
+            </description>
+        </attribute>
+    </tag>
+</taglib>

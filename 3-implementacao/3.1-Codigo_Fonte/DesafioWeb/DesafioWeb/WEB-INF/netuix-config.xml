@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-portal-app
+    xmlns="http://www.bea.com/servers/portal/weblogic-portal/8.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.bea.com/servers/portal/weblogic-portal/8.0 netuix-config.xsd">
+
+    <!-- Enable or disable customization -->
+    <customization>
+        <enable>true</enable>
+        <propagate-preferences-on-deploy propagate-to-instances="false"/>
+        <reload-database-on-redeploy reload="false"/>
+    </customization>
+
+    <!-- Enables or disables servlet filter chain for skeleton jsps  -->
+    <servlet-filters-for-skeleton-jsps enable="false"/>
+
+    <!-- Enable Disable pageflow -->
+    <pageflow>
+        <enable>true</enable>
+    </pageflow>
+
+    <!-- Validation -->
+    <validation>
+        <include-files enable="true"/>
+        <dot-files enable="true"/>
+    </validation>
+
+    <!-- Entitlements -->
+    <entitlements>
+        <enable>true</enable>
+    </entitlements>
+
+    <!-- Enable or disable localization -->
+    <localization>
+        <enable>true</enable>
+        <default-locale language="en"/>
+    </localization>
+
+    <!-- State management -->
+    <control-state-location>
+        <session/>
+    </control-state-location>
+
+    <!-- Container supported widow states -->
+    <window-state name="minimized">
+        <activate-image>titlebar-button-minimize.gif</activate-image>
+        <deactivate-image>titlebar-button-unminimize.gif</deactivate-image>
+        <alt-text>
+            <locale language="en">
+                <activate>Minimize</activate>
+                <deactivate>Restore</deactivate>
+            </locale>
+            <locale language="es">
+                <activate>Aminore</activate>
+                <deactivate>Restaure</deactivate>
+            </locale>
+        </alt-text>
+    </window-state>
+    <window-state name="maximized">
+        <activate-image>titlebar-button-maximize.gif</activate-image>
+        <deactivate-image>titlebar-button-unmaximize.gif</deactivate-image>
+        <alt-text>
+            <locale language="en">
+                <activate>Maximize</activate>
+                <deactivate>Restore</deactivate>
+            </locale>
+            <locale language="es">
+                <activate>Lleve al m෩mo</activate>
+                <deactivate>Restaure</deactivate>
+            </locale>
+        </alt-text>
+    </window-state>
+    <window-state name="delete">
+        <activate-image>titlebar-button-delete.gif</activate-image>
+        <alt-text>
+            <locale language="en">
+                <activate>Delete</activate>
+            </locale>
+            <locale language="es">
+                <activate>Borre</activate>
+            </locale>
+        </alt-text>
+    </window-state>
+    <window-state name="float">
+        <activate-image>titlebar-button-float.gif</activate-image>
+        <alt-text>
+            <locale language="en">
+                <activate>Float</activate>
+            </locale>
+            <locale language="es">
+                <activate>La Flota</activate>
+            </locale>
+        </alt-text>
+    </window-state>
+
+    <!-- Container supported window modes -->
+    <window-mode name="help">
+        <activate-image>titlebar-button-help.gif</activate-image>
+        <deactivate-image>titlebar-button-help-exit.gif</deactivate-image>
+        <alt-text>
+            <locale language="en">
+                <activate>Help</activate>
+                <deactivate>Leave Help</deactivate>
+            </locale>
+            <locale language="es">
+                <activate>la ayuda</activate>
+                <deactivate>salga ayuda</deactivate>
+            </locale>
+        </alt-text>
+    </window-mode>
+    <window-mode name="edit">
+        <activate-image>titlebar-button-edit.gif</activate-image>
+        <deactivate-image>titlebar-button-edit-exit.gif</deactivate-image>
+        <alt-text>
+            <locale language="en">
+                <activate>Edit</activate>
+                <deactivate>Leave Edit</deactivate>
+            </locale>
+            <locale language="es">
+                <activate>Redacte</activate>
+                <deactivate>La hoja Redacta</deactivate>
+            </locale>
+        </alt-text>
+    </window-mode>
+
+</weblogic-portal-app>

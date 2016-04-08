@@ -16,6 +16,7 @@
     </component>
     <component name="com.bea.portal.ide.actions.OpenAdministrationPageAction" />
   </components>
+  <modules />
   <projects>
     <project name="DesafioWeb">
       <option name="project.path" value="./DesafioWeb" />
@@ -23,6 +24,8 @@
       <components>
         <component name="Checked Netui Library Upgrade" />
         <component name="com.bea.ide.debug.IDebugData" />
+        <component name="workshop.workspace.project.build.ProjectBuilderPrefs" />
+        <component name="workshop.workspace.project.build.WebAppBuilderPrefs" />
       </components>
     </project>
   </projects>
