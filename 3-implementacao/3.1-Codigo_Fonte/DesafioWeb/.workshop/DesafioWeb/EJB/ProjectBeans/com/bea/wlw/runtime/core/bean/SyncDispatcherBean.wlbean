@@ -1,0 +1,21 @@
+    <weblogic-enterprise-bean>
+        <ejb-name>SyncDispatcher</ejb-name>
+                <stateless-session-descriptor>
+            
+        </stateless-session-descriptor>
+        <transaction-descriptor>
+            <trans-timeout-seconds>300</trans-timeout-seconds>
+        </transaction-descriptor>
+
+        <reference-descriptor>
+            <resource-description>
+                <res-ref-name>jms/QCF</res-ref-name>
+                <jndi-name>weblogic.jws.jms.QueueConnectionFactory</jndi-name>
+            </resource-description>
+</reference-descriptor>
+
+        
+        <jndi-name>DesafioWeb.bean.SyncDispatcher</jndi-name>
+        
+    </weblogic-enterprise-bean>
+

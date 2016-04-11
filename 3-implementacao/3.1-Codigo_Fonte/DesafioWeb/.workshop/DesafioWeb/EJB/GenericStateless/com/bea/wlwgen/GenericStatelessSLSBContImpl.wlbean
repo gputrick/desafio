@@ -1,0 +1,18 @@
+    <weblogic-enterprise-bean>
+        <ejb-name>StatelessContainer</ejb-name>
+                <stateless-session-descriptor>
+            
+        </stateless-session-descriptor>
+
+        <reference-descriptor>
+            <resource-description>
+                <res-ref-name>jms/QCF</res-ref-name>
+                <jndi-name>weblogic.jws.jms.QueueConnectionFactory</jndi-name>
+            </resource-description>
+</reference-descriptor>
+
+        
+        <local-jndi-name>DesafioWeb.GenericStateless.bean.StatelessContainer</local-jndi-name>
+        
+    </weblogic-enterprise-bean>
+

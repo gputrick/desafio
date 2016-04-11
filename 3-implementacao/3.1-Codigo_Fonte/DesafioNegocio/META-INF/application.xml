@@ -3,7 +3,13 @@
   <application>
     <display-name>DesafioNegocio</display-name>
     <module>
+      <ejb>.workshop/DesafioWebTest/EJB/GenericStateless</ejb>
+    </module>
+    <module>
       <ejb>DesafioEjbs.jar</ejb>
+    </module>
+    <module>
+      <ejb>.workshop/DesafioWebTest/EJB/ProjectBeans</ejb>
     </module>
     <module>
       <web>

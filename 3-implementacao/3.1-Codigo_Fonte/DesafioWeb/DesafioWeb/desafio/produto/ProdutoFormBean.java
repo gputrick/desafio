@@ -2,8 +2,9 @@ package desafio.produto;
 
 import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
+import org.apache.struts.action.ActionForm;
 
-public class ProdutoFormBean 
+public class ProdutoFormBean extends ActionForm
 { 
     private ProdutoVO produtoVO;
     private long idProdutoFiltro;

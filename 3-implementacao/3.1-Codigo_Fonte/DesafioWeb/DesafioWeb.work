@@ -10,6 +10,7 @@
     <component name="com.bea.ide.debug.IDebugClient">
       <option name="SrcPath0_currproject_" value="Current Project" />
       <option name="SrcPath1_project_" value="DesafioWeb" />
+      <option name="SrcPath2_path_.path" value="/home/eits/git/Desafio-eits/3-implementacao/3.1-Codigo_Fonte/DesafioNegocio/DesafioControls" />
     </component>
     <component name="com.bea.ide.workspace.IWorkspace">
       <node name="ApplicationBuild" />

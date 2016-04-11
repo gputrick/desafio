@@ -13,6 +13,16 @@
         <module-ref>
           <module-uri>DesafioWeb</module-uri>
         </module-ref>
+        <classloader-structure>
+          <module-ref>
+            <module-uri>.workshop/DesafioWeb/EJB/ProjectBeans</module-uri>
+          </module-ref>
+        </classloader-structure>
+        <classloader-structure>
+          <module-ref>
+            <module-uri>.workshop/DesafioWeb/EJB/GenericStateless</module-uri>
+          </module-ref>
+        </classloader-structure>
       </classloader-structure>
     </classloader-structure>
 

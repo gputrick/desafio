@@ -5,33 +5,44 @@ import java.io.Serializable;
 
 public class CategoriaProdutoVO implements Serializable
 { 
-    private long idCategoriaProduto;
-    private String nomeCategoriaProduto;
-    private CategoriaProdutoVO categoriaPai;
+    private long id_categoria_produto;
+    private String nome_categoria_produto;
+    private long id_categoria_pai;
+    
+    private CategoriaProdutoVO categoriaPaiVO;
     private ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto;
     
     public long getIdCategoriaProduto(){
-        return this.idCategoriaProduto;
+        return this.id_categoria_produto;
     }
     
-    public void setIdCategoriaProduto(long idCategoriaProduto){
-        this.idCategoriaProduto = idCategoriaProduto;
+    public void setIdCategoriaProduto(long id_categoria_produto){
+        this.id_categoria_produto = id_categoria_produto;
     }
     
-    public CategoriaProdutoVO getCategoriaPai(){
-        return this.categoriaPai;
+    public long getIdCategoriaPai(){
+        return this.id_categoria_pai;
     }
     
-    public void setCategoriaPai(CategoriaProdutoVO categoriaPai){
-        this.categoriaPai = categoriaPai;
+    public void setIdCategoriaPai(long id_categoria_pai){
+        this.id_categoria_pai = id_categoria_pai;
+    }
+    
+    
+    public CategoriaProdutoVO getCategoriaPaiVO(){
+        return this.categoriaPaiVO;
+    }
+    
+    public void setCategoriaPaiVO(CategoriaProdutoVO categoriaPai){
+        this.categoriaPaiVO = categoriaPaiVO;
     }
     
     public String getNomeCategoriaProduto(){
-        return this.nomeCategoriaProduto;
+        return this.nome_categoria_produto;
     }
     
-    public void setNomeCategoriaProduto(String nomeCategoriaProduto){
-        this.nomeCategoriaProduto = nomeCategoriaProduto;
+    public void setNomeCategoriaProduto(String nome_categoria_produto){
+        this.nome_categoria_produto = nome_categoria_produto;
     }
     
     public ProdutoCategoriaProdutoVO[] getListaProdutoCategoriaProduto(){

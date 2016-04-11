@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /desafio/produto/manter/ProdutoController.jpf on Thu Apr 07 14:23:16 GMT-03:00 2016 -->
+<!-- Generated from /desafio/produto/manter/ProdutoController.jpf on Mon Apr 11 17:26:55 GMT-03:00 2016 -->
 <struts-config>
-  <form-beans/>
+  <form-beans>
+    <form-bean type="desafio.produto.ProdutoFormBean" name="produtoFormBean"/>
+  </form-beans>
   <global-exceptions/>
   <global-forwards/>
   <action-mappings>
+    <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/acIrParaAtualizarProduto"/>
+    <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" name="produtoFormBean" path="/acObterListaProduto">
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+    </action>
+    <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/acPaginacaoProduto">
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+    </action>
     <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/alterarProduto">
       <forward path="/alterarProduto.jsp" name="success"/>
     </action>
-    <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/begin">
+    <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" name="produtoFormBean" path="/begin">
       <forward path="/consultarProduto.jsp" name="success"/>
     </action>
     <action validate="false" scope="request" type="desafio.produto.manter.ProdutoController" path="/cadastrarProduto">

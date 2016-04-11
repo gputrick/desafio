@@ -3,10 +3,16 @@
   <application>
     <display-name>DesafioWeb</display-name>
     <module>
+      <ejb>.workshop/DesafioWeb/EJB/GenericStateless</ejb>
+    </module>
+    <module>
       <ejb>netuix.jar</ejb>
     </module>
     <module>
       <ejb>p13n_ejb.jar</ejb>
+    </module>
+    <module>
+      <ejb>.workshop/DesafioWeb/EJB/ProjectBeans</ejb>
     </module>
     <module>
       <web>

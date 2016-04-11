@@ -74,11 +74,11 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
                 
         try {
             if((categoriaProdutoVO != null) &&
-            (categoriaProdutoVO.getCategoriaPai() != null ) &&
-            (categoriaProdutoVO.getCategoriaPai().getIdCategoriaProduto() > 0))
+            (categoriaProdutoVO.getCategoriaPaiVO() != null ) &&
+            (categoriaProdutoVO.getCategoriaPaiVO().getIdCategoriaProduto() > 0))
             {
                 categoriaPaiHome = CategoriaProdutoBean.getHome();
-                categoriaPai = categoriaPaiHome.findByPrimaryKey(new Long(categoriaProdutoVO.getCategoriaPai().getIdCategoriaProduto()));
+                categoriaPai = categoriaPaiHome.findByPrimaryKey(new Long(categoriaProdutoVO.getCategoriaPaiVO().getIdCategoriaProduto()));
                 categoriaPaiVO = categoriaPai.getData();
             }
         }

@@ -5,7 +5,9 @@ import desafio.ProdutoVO;
 import java.io.Serializable;
 
 public class ProdutoCategoriaProdutoVO implements Serializable
-{ 
+{   
+    private long id_produto;
+    private long id_categoria_produto;
     private ProdutoVO produto;
     private CategoriaProdutoVO categoriaProduto;
     

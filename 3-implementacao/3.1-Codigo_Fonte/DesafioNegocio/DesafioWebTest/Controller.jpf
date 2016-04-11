@@ -1,5 +1,9 @@
+import com.bea.control.ControlException;
 import com.bea.wlw.netui.pageflow.PageFlowController;
 import com.bea.wlw.netui.pageflow.Forward;
+import desafio.ProdutoVO;
+import desafio.jcs.JCSProduto;
+import javax.sql.RowSet;
 
 /**
  * This is the default controller for a blank web application.
@@ -8,36 +12,48 @@ import com.bea.wlw.netui.pageflow.Forward;
  * @jpf:view-properties view-properties::
  * <!-- This data is auto-generated. Hand-editing this section is not recommended. -->
  * <view-properties>
- *     <pageflow-object id="action:begin.do">
- *         <property name="x" value="60"/>
- *         <property name="y" value="80"/>
- *     </pageflow-object>
- *     <pageflow-object id="page:index.jsp">
- *         <property name="x" value="220"/>
- *         <property name="y" value="80"/>
- *     </pageflow-object>
- *     <pageflow-object id="page:error.jsp">
- *         <property name="x" value="220"/>
- *         <property name="y" value="160"/>
- *     </pageflow-object>
- *     <pageflow-object id="forward:path#index#index.jsp#@action:begin.do@">
- *         <property name="elbowsY" value="72,72,72,72"/>
- *         <property name="elbowsX" value="96,140,140,184"/>
- *         <property name="toPort" value="West_1"/>
- *         <property name="fromPort" value="East_1"/>
- *         <property name="label" value="index"/>
- *     </pageflow-object>
- *     <pageflow-object id="pageflow:/Controller.jpf"/>
- * </view-properties>::
+ * <pageflow-object id="pageflow:/Controller.jpf"/>
+ * <pageflow-object id="action:begin.do">
+ *   <property name="x" value="60"/>
+ *   <property name="y" value="80"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:index.jsp">
+ *   <property name="x" value="220"/>
+ *   <property name="y" value="80"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:error.jsp">
+ *   <property name="x" value="220"/>
+ *   <property name="y" value="160"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#index#index.jsp#@action:begin.do@">
+ *   <property name="elbowsY" value="72,72,72,72"/>
+ *   <property name="elbowsX" value="96,140,140,184"/>
+ *   <property name="toPort" value="West_1"/>
+ *   <property name="fromPort" value="East_1"/>
+ *   <property name="label" value="index"/>
+ * </pageflow-object>
+ * <pageflow-object id="control:desafio.jcs.JCSProduto#jCSProduto">
+ *   <property value="26" name="x"/>
+ *   <property value="33" name="y"/>
+ * </pageflow-object>
+ * </view-properties>
+ * ::
  */
 public class Controller extends PageFlowController
 {
     /**
+	* @common:control
+	*/
+    private JCSProduto jCSProduto;
+    
+     /**
      * @jpf:action
      * @jpf:forward name="index" path="index.jsp"
      */
-    protected Forward begin()
+    protected Forward begin() throws ControlException, Exception
     {
+        RowSet produtoRowSet = this.jCSProduto.obterListaProduto(null,null);
+        
         return new Forward("index");
     }
 

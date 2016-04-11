@@ -14,7 +14,7 @@ import javax.sql.RowSet;
  * (typically http://localhost:7001/console) and clicking Services, JDBC, 
  * Data Sources. 
  * 
- * @jc:connection data-source-jndi-name="dsDesafio" 
+ * @jc:connection data-source-jndi-name="dsDesafio"
  * @common:define value::
  * <xsd:schema targetNamespace="java:///desafio/jcx" xmlns="java:///desafio/jcx" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wld="http://www.bea.com/2002/10/weblogicdata" elementFormDefault="qualified" attributeFormDefault="unqualified">
  *   <xsd:element name="ListaProdutoSchema" wld:DefaultNamespace="java:///desafio/jcx" wld:RowSet="true">
@@ -24,7 +24,7 @@ import javax.sql.RowSet;
  *           <xsd:complexType>
  *             <xsd:sequence>
  *               <xsd:element name="ID_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0" wld:PrimaryKey="true"></xsd:element>
- *               <xsd:element name="NOME" type="xsd:string" wld:JDBCType="VARCHAR" minOccurs="0"></xsd:element>
+ *               <xsd:element name="NOME_PRODUTO" type="xsd:string" wld:JDBCType="VARCHAR" minOccurs="0"></xsd:element>
  *             </xsd:sequence>
  *             <xsd:anyAttribute namespace="http://www.bea.com/2002/10/weblogicdata" processContents="skip"></xsd:anyAttribute>
  *           </xsd:complexType>
@@ -34,7 +34,7 @@ import javax.sql.RowSet;
  *   </xsd:element>
  * </xsd:schema>::
  * name="rowset-schemas"
- */ 
+ */
 public interface DBProduto extends DatabaseControl, com.bea.control.ControlExtension
 { 
     // Sample database function.  Uncomment to use 
@@ -65,10 +65,4 @@ public interface DBProduto extends DatabaseControl, com.bea.control.ControlExten
     *     ::
     */
     RowSet getListaProduto(String whereClause, String orderByClause, DatabaseFilter filter);
-		
-
-    /**
-     * @jc:sql statement="SELECT * FROM PRODUTO ORDER BY NAME"
-     */
-    ProdutoVO obterListaProduto();
 }

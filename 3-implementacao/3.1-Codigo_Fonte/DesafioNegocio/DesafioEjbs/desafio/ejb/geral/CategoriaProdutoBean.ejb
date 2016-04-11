@@ -68,14 +68,14 @@ public abstract class CategoriaProdutoBean
   public abstract void setIdCategoriaPai(Long val);
   
   /**
-   * @ejbgen:cmp-field column = "NOME"
+   * @ejbgen:cmp-field column = "NOME_CATEGORIA_PRODUTO"
    * @ejbgen:local-method
    */
-  public abstract String getNome();
+  public abstract String getNomeCategoriaProduto();
   /**
    * @ejbgen:local-method
    */
-  public abstract void setNome(String val);
+  public abstract void setNomeCategoriaProduto(String val);
   
 
     /**
@@ -97,7 +97,7 @@ public abstract class CategoriaProdutoBean
     * @ejbgen:local-method transaction-attribute="Supports"
     */
     public void setData(CategoriaProdutoVO categoriaProdutoVO) throws DesafioException{
-      this.setNome(categoriaProdutoVO.getNomeCategoriaProduto() == null ? null : categoriaProdutoVO.getNomeCategoriaProduto().trim());
+      this.setNomeCategoriaProduto(categoriaProdutoVO.getNomeCategoriaProduto() == null ? null : categoriaProdutoVO.getNomeCategoriaProduto().trim());
     }
     /**
     * Método obtem os dados do Bean para o VO
@@ -110,7 +110,8 @@ public abstract class CategoriaProdutoBean
       CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
       
       categoriaProdutoVO.setIdCategoriaProduto(this.getIdCategoriaProduto() == null ? 0 : this.getIdCategoriaProduto().longValue());
-      categoriaProdutoVO.setNomeCategoriaProduto(this.getNome());
+      categoriaProdutoVO.setIdCategoriaPai(this.getIdCategoriaPai() == null ? 0 : this.getIdCategoriaPai().longValue());
+      categoriaProdutoVO.setNomeCategoriaProduto(this.getNomeCategoriaProduto());
       
       return categoriaProdutoVO;
     }

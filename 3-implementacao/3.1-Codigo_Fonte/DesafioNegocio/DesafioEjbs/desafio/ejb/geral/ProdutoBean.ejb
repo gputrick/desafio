@@ -53,14 +53,14 @@ extends GenericEntityBean
     public abstract void setIdProduto(Long val);
     
     /**
-    * @ejbgen:cmp-field column = "NOME"
+    * @ejbgen:cmp-field column = "NOME_PRODUTO"
     * @ejbgen:local-method
     */
-    public abstract String getNome();
+    public abstract String getNomeProduto();
     /**
     * @ejbgen:local-method
     */
-    public abstract void setNome(String val);
+    public abstract void setNomeProduto(String val);
     
     /**
 	 * M�todo seta os dados do VO para bean
@@ -70,7 +70,7 @@ extends GenericEntityBean
 	 * @ejbgen:local-method transaction-attribute="Supports"
 	 */
     public void setData(ProdutoVO produtoVO) throws DesafioException{
-        this.setNome(produtoVO.getNomeProduto() == null ? null : produtoVO.getNomeProduto().trim());
+        this.setNomeProduto(produtoVO.getNomeProduto() == null ? null : produtoVO.getNomeProduto().trim());
     }
     
     /**
@@ -84,7 +84,7 @@ extends GenericEntityBean
         ProdutoVO produtoVO = new ProdutoVO();
         
         produtoVO.setIdProduto(this.getIdProduto() == null ? 0 : this.getIdProduto().longValue());
-        produtoVO.setNomeProduto(this.getNome());
+        produtoVO.setNomeProduto(this.getNomeProduto());
         
         return produtoVO;
     }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+<ejb-jar>
+    <enterprise-beans>
+        <session>
+            <ejb-name>StatelessContainer</ejb-name>
+            <local-home>com.bea.wlwgen.GenericStatelessSLSBContHome</local-home>
+            <local>com.bea.wlwgen.GenericStatelessSLSBContIntf</local>
+            
+            <ejb-class>com.bea.wlwgen.GenericStatelessSLSBContImpl</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            
+            <env-entry>
+                <env-entry-name>WlwComponentURI</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>/DesafioWebTest/GenericStateless.jcx</env-entry-value>
+            </env-entry>
+            <env-entry>
+                <env-entry-name>WlwBeanName</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>StatelessContainer</env-entry-value>
+            </env-entry>
+            
+            <ejb-ref>
+                <ejb-ref-name>DesafioWebTest.bean.SyncDispatcher</ejb-ref-name>
+                <ejb-ref-type>Session</ejb-ref-type>
+                <home>com.bea.wlw.runtime.core.bean.SyncDispatcherHome</home>
+                <remote>com.bea.wlw.runtime.core.bean.SyncDispatcher</remote>
+                <ejb-link>.workshop/DesafioWebTest/EJB/ProjectBeans#SyncDispatcher</ejb-link>
+            </ejb-ref>
+            <ejb-local-ref>
+                <ejb-ref-name>DesafioWebTest.GenericStateless.bean.StatelessContainer</ejb-ref-name>
+                <ejb-ref-type>Session</ejb-ref-type>
+                <local-home>com.bea.wlwgen.GenericStatelessSLSBContHome</local-home>
+                <local>com.bea.wlwgen.GenericStatelessSLSBContIntf</local>
+                <ejb-link>.workshop/DesafioWebTest/EJB/GenericStateless#StatelessContainer</ejb-link>
+            </ejb-local-ref>
+            
+            
+            
+            <resource-ref>
+                <res-ref-name>jms/QCF</res-ref-name>
+                <res-type>javax.jms.QueueConnectionFactory</res-type>
+                <res-auth>Container</res-auth>
+            </resource-ref>
+            
+        </session>
+        
+        
+    </enterprise-beans>
+    <assembly-descriptor>
+        
+        
+        <container-transaction>
+            <method>
+                <ejb-name>StatelessContainer</ejb-name>
+                <method-name>*</method-name>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+        
+    </assembly-descriptor>
+</ejb-jar>    
+

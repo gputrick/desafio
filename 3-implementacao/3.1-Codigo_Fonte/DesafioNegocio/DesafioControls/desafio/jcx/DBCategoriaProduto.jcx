@@ -24,7 +24,7 @@ import javax.sql.RowSet;
  *           <xsd:complexType>
  *             <xsd:sequence>
  *               <xsd:element name="ID_CATEGORIA_PRODUTO" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0"  wld:PrimaryKey="true"></xsd:element>
- *               <xsd:element name="NOME" type="xsd:string" wld:JDBCType="VARCHAR" minOccurs="0"></xsd:element>
+ *               <xsd:element name="NOME_CATEGORIA_PRODUTO" type="xsd:string" wld:JDBCType="VARCHAR" minOccurs="0"></xsd:element>
  *               <xsd:element name="ID_CATEGORIA_PAI" type="xsd:integer" wld:JDBCType="NUMERIC" minOccurs="0" nillable="true"></xsd:element>
  *             </xsd:sequence>
  *             <xsd:anyAttribute namespace="http://www.bea.com/2002/10/weblogicdata" processContents="skip"></xsd:anyAttribute>
@@ -68,7 +68,7 @@ public interface DBCategoriaProduto extends DatabaseControl, com.bea.control.Con
     RowSet getListaCategoriaProduto(String whereClause, String orderByClause, DatabaseFilter filter);
     
     /**
-     * @jc:sql statement="SELECT * FROM CATEGORIA_PRODUTO WHERE ID_CATEGORIA_PAI={categoriaPaiVO.idCategoriaProduto} ORDER BY NOME"
+     * @jc:sql statement="SELECT ID_CATEGORIA_PAI FROM CATEGORIA_PRODUTO WHERE ID_CATEGORIA_PAI={categoriaPaiVO.idCategoriaProduto} ORDER BY NOME_CATEGORIA_PRODUTO"
      */
     CategoriaProdutoVO[] obterListaCategoriaPorCategoriaPai(CategoriaProdutoVO categoriaPaiVO);
 }

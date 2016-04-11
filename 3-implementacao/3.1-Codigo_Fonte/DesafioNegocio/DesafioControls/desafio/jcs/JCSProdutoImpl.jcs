@@ -9,6 +9,17 @@ import javax.sql.RowSet;
  */
 public class JCSProdutoImpl implements JCSProduto, ControlSource
 { 
+    static final long serialVersionUID = 1L;    
+    /**
+     * @common:control
+     */
+    private desafio.jcx.EjbProdutoSession ejBProdutoSession;
+
+    /**
+     * @common:control
+     */
+    private desafio.jcx.EjbProdutoSession ejBCategoriaProdutoSession;
+
     /**
      * @common:control
      */
@@ -17,9 +28,10 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     /**
      * @common:operation
      */
+    
     public RowSet obterListaProduto(String nomeProduto, DatabaseFilter filter) throws Exception
     {
-        String orderByClause = " ORDER BY NOME";
+        String orderByClause = " ORDER BY NOME_PRODUTO";
         StringBuffer whereClause = new StringBuffer();
         boolean concatenou = false;
         
@@ -35,25 +47,26 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
                 concatenou = true;
             }
             
-            whereClause.append(" (UPPER( NOME ) LIKE UPPER('%")
+            whereClause.append(" (UPPER( NOME_PRODUTO ) LIKE UPPER('%")
             .append(nomeProduto.trim())
             .append("%') )");
         }
-        if ( filter != null )
-        {
-            if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
-            {
-                whereClause = new StringBuffer();			
-            }
-            if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
-            {
-                orderByClause = "";
-            }
-        }
+	if ( filter != null )
+			{
+				if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
+				{
+					whereClause = new StringBuffer();			
+				}
+				if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
+				{
+					orderByClause = "";
+				}
+			}
         else
         {
             filter = new DatabaseFilter();
-        }	 
+        }
+        //this.dBProduto.fazNada();
         return this.dBProduto.getListaProduto(whereClause.toString(), orderByClause, filter);
         
     }    

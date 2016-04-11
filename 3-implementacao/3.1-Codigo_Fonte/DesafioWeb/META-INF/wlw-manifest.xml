@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:wlw-manifest xmlns:con="http://www.bea.com/2003/03/wlw/config/">
-    <con:project name="DesafioWeb"/>
+    <con:project name="DesafioWeb">
+        <con:top-level-component class-name="desafio.jcs.JCSProduto" component-type="Control">
+            <con:external-callbacks/>
+            <con:security-roles>
+                <con:role-name xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            </con:security-roles>
+        </con:top-level-component>
+    </con:project>
 </con:wlw-manifest>

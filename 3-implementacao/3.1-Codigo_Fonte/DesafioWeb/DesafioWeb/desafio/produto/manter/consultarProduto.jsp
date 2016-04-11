@@ -12,22 +12,26 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body class="container">
-        
         <h2 class="subtitle">Consultar</h2>
         <h1 class="title">Produto</h1>
-
-        <input type="text" class="input"/><i class="fa fa-search"></i>
+        <netui:form action="acObterListaProduto">
+             <h3 class="subtitle">Nome</h3>
+            <netui:textBox dataSource="{actionForm.nomeProdutoFiltro}"/>
+            <netui:anchor formSubmit="true" action="acObterListaProduto">
+                <i class="fa fa-search"></i>
+            </netui:anchor>
+        </netui:form>
         
-        <netui:anchor action="cadastrarProduto"><button class="right-button"><i class="fa fa-plus"></i>Cadastrar</button></netui:anchor>
-        
-        <script language="javascript" src='<%=request.getContextPath() +
-        "/resources/grid/_grid.js"%>' type="text/javascript"></script>
+        <netui:anchor action="cadastrarProduto" styleClass="right-button">
+            <i class="fa fa-plus"></i>Cadastrar
+        </netui:anchor>
         <netui-data:grid dataSource="{pageFlow.listaProduto}" name="{pageFlow.gridListaProduto}">
-            <netui-data:pager renderInFooter="true" action="obterListaProduto"></netui-data:pager>
-            <netui-data:columns>
-                <netui-data:anchorColumn title="Nome Categoria" action="visualizarProduto" name="nome"></netui-data:anchorColumn>
+            <netui-data:gridStyle styleClassPrefix="grid"/>
+            <netui-data:pager renderInHeader="false" action="acPaginacaoProduto" renderInFooter="true"/>
+            <netui-data:columns filterAction="acFiltroListaProduto" sortAction="acOrdenaListaProduto">
+                <netui-data:anchorColumn action="acSelecionaProduto" title="Nome Produto" name="NOME_PRODUTO"/>
+                <netui-data:anchorColumn action="acIrParaVisualizarProduto" title="" styleClassPrefix="fa fa-eye "/>
             </netui-data:columns>
         </netui-data:grid>
-        
     </body>
 </netui:html>

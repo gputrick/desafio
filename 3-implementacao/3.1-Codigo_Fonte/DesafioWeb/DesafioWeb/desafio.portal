@@ -51,7 +51,7 @@
                             <netuix:singleLevelMenu markupName="singleLevelMenu" markupType="Menu"/>
                             <netuix:content>
                                 <netuix:page definitionLabel="desafio_page_13" markupName="page"
-                                    markupType="Page" title="Produto">
+                                    markupType="Page" title="Consultar Produto">
                                     <netuix:content>
                                         <netuix:gridLayout columns="2"
                                             description="This layout has two columns (left, right) and the portlets flow vertically in the columns."
