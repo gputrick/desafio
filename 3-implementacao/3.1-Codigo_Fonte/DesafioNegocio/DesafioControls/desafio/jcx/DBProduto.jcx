@@ -57,7 +57,7 @@ public interface DBProduto extends DatabaseControl, com.bea.control.ControlExten
     
     	/**
     * @jc:sql rowset-name="ListaProdutoSchema"  statement::
-    * SELECT *       
+    * SELECT PRODUTO.ID_PRODUTO, PRODUTO.NOME_PRODUTO       
     * FROM PRODUTO
     *  {sql: filter.getWhereClause() }
     *  {sql: whereClause }

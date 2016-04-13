@@ -11,84 +11,47 @@
         <link rel="stylesheet" type="text/css" href="/DesafioWeb/resources/css/style.css">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
-    <body class="container">
-        
-        <h2 class="subtitle">Alterar</h2>
-        <h1 class="title">Produto</h1>
-        
-        <h3 class="subtitle">Nome</h3>
-        <input type="text" class="input"/>
-        <br>
-        
-        <input type="text" class="input"/><i class="fa fa-search"></i>
-        
-        <button id="vinculaCategoriaButton" class="right-button"><i class="fa fa-plus"></i> Vincular Categoria</button>
-        
-        <table class="table">
-            <tr>
-                <th>Nome Categoria</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Celular e Smartphone</td>
-                <td class="table-button">
-                    <i class="fa fa-ban"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Televisão</td>
-                <td class="table-button">
-                    <i class="fa fa-ban"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Notebook</td>
-                <td class="table-button">
-                    <i class="fa fa-ban"></i>
-                </td>
-            </tr>
-        </table>
-        
-        <button class="right-button"><i class="fa fa-check"></i> Confirmar</button>
-        <netui:anchor action="cancel"><button class="right-button"><i class="fa fa-close"></i> Cancelar</button></netui:anchor>
-        
-        <div id="vinculaCategoriaModal" class="modal">
-            <div class="modal-content">
-                <span class="close fa fa-close"></span>
-                <br>
-                <div align="center">
-                    <h2 class="title-modal">Escolha as categorias</h2>
-                    <input type="text" class="search-input-modal"/><i class="fa fa-search"></i>
-                </div>
-                <table class="table">
-                    <tr>
-                        <th>Nome Categoria</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Celular e Smartphone</td>
-                        <td class="table-button">
-                            <input type="checkbox"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Televisão</td>
-                        <td class="table-button">
-                            <input type="checkbox"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Notebook</td>
-                        <td class="table-button">
-                            <input type="checkbox"/>
-                        </td>
-                    </tr>
-                </table>
-                
-                <button class="right-button"><i class="fa fa-check"></i> Vincular</button>
-                <button id="closeButton" class="right-button"><i class="fa fa-close"></i> Cancelar</button>
-            </div>
+    <body>
+        <div class="container">
+            <h2 class="subtitle">Alterar</h2>
+            <h1 class="title">Produto</h1>
+            
+            <h3 class="subtitle">Nome</h3>
+            <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}"/>
+            
+            
+            <netui:anchor href="javascript:confirmaExclusao();">
+                <button class="right-button">
+                    <i class="fa fa-plus">Vincular</i>
+                </button>                
+            </netui:anchor>
+            
+            <netui-data:grid dataSource="{pageFlow.listaCategoriaProduto}" name="{pageFlow.gridListaCategoriaProduto}">
+                <netui-data:gridStyle styleClassPrefix="grid"/>
+                <netui-data:pager renderInHeader="false" action="acPaginacaoCategoriaProduto" renderInFooter="true"/>
+                <netui-data:columns filterAction="acFiltroListaCategoriaProduto" sortAction="acOrdenaListaCategoriaProduto">
+                    <netui-data:anchorColumn action="acSelecionaCategoriaProduto" styleClassPrefix="left" addRowId="true" title="Nome Categoria" name="NOME_CATEGORIA_PRODUTO"/>
+                    <netui-data:anchorColumn action="acSelecionaCategoriaProduto" styleClassPrefix="right" addRowId="true" title="&nbsp;" src="/DesafioWeb/resources/images/eye-icon.png" width="16"/>
+                    <netui-data:expressionColumn value="<a href='javascript:confirmaExclusao(\"{container.item.id_categoria_produto}\");'><img src='/DesafioWeb/resources/images/trash-icon.png' width='16'/></a>" title="&nbsp;" styleClassPrefix="right"/>
+                </netui-data:columns>
+            </netui-data:grid>
+            
+            <netui:form tagId="formEliminarProduto" action="acEliminarProduto">
+                <netui:hidden tagId="codigo" dataSource="{pageFlow.produtoFormBean.produtoVO.id_produto}" />
+            </netui:form>
+                        
+            <netui:anchor href="javascript:confirmaExclusao();" >
+                <button class="right-button">
+                    <i class="fa fa-check">Confirmar</i>
+                </button>
+            </netui:anchor>
+
+            <netui:anchor href="javascript:confirmaExclusao();" >
+                <button class="right-button">
+                    <i class="fa fa-close">Cancelar</i>
+                </button>
+            </netui:anchor>
+            
         </div>
     </body>
-    <script src="/DesafioWeb/resources/js/modalVincularCategoria.js"></script>
 </netui:html>

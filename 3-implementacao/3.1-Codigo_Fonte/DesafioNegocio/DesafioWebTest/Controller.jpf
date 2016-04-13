@@ -1,13 +1,16 @@
 import com.bea.wlw.netui.pageflow.FormData;
 import com.bea.wlw.netui.pageflow.Forward;
 import com.bea.wlw.netui.pageflow.PageFlowController;
+import desafio.CategoriaProdutoVO;
 import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
+import desafio.jcs.JCSCategoriaProduto;
 import desafio.jcs.JCSProduto;
 import desafio.jcx.DBProduto;
 import itaipu.util.exceptions.AppException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.sql.RowSet;
 import org.apache.struts.Globals;
 
 /**
@@ -49,6 +52,10 @@ import org.apache.struts.Globals;
  *   <property value="31" name="x"/>
  *   <property value="33" name="y"/>
  * </pageflow-object>
+ * <pageflow-object id="control:desafio.jcs.JCSCategoriaProduto#jCSCategoriaProduto">
+ *   <property value="35" name="x"/>
+ *   <property value="33" name="y"/>
+ * </pageflow-object>
  * </view-properties>
  * ::
  */
@@ -70,6 +77,11 @@ public class Controller extends PageFlowController
     private JCSProduto jCSProduto;
     
     /**
+	* @common:control
+	*/
+    private JCSCategoriaProduto jCSCategoriaProduto;
+    
+    /**
      * This method represents the point of entry into the pageflow
      * @jpf:action
      * @jpf:forward name="success" path="index.jsp"
@@ -77,11 +89,11 @@ public class Controller extends PageFlowController
      */
     protected Forward begin() throws Exception
     {
-        ProdutoVO produtoVO = new ProdutoVO();
-        produtoVO.setId_produto(4);
-        produtoVO.getId_produto();
+        CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
+        categoriaProdutoVO.setId_categoria_produto(3);
         
-        this.jCSProduto.eliminarProduto(produtoVO);
+        RowSet test = this.jCSProduto.obterListaProduto(categoriaProdutoVO, "escova", null);
+        
         return new Forward("success");
     }
     

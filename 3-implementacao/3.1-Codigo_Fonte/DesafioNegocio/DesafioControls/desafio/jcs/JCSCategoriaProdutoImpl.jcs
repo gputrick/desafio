@@ -1,0 +1,124 @@
+package desafio.jcs; 
+
+import com.bea.control.*;
+import desafio.CategoriaProdutoVO;
+import desafio.ProdutoCategoriaProdutoVO;
+import desafio.ProdutoVO;
+import javax.sql.RowSet;
+/**
+ * @editor-info:code-gen control-interface="true"
+ */
+public class JCSCategoriaProdutoImpl implements JCSCategoriaProduto, ControlSource
+{ 
+    /**
+     * @common:control
+     */
+    private desafio.jcx.EJBCategoriaProdutoSession ejBCategoriaProdutoSession;
+
+    /**
+     * @common:control
+     */
+    private desafio.jcx.DBCategoriaProduto dBCategoriaProduto;
+
+    /**
+     * @common:control
+     */
+    private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
+
+    /**
+     * @common:control
+     */
+    private desafio.jcx.EJBProdutoCategoriaProdutoSession ejBProdutoCategoriaProdutoSession;
+
+    static final long serialVersionUID = 1L;    
+
+    /**
+     * @common:operation
+     */
+    
+    public RowSet obterListaCategoriaProduto(ProdutoVO produtoVOFiltro, String nomeCategoriaProduto, DatabaseFilter filter) throws Exception
+    {
+        String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
+        StringBuffer whereClause = new StringBuffer();
+        boolean concatenou = false;
+        
+        if((produtoVOFiltro != null) &&
+        (produtoVOFiltro.getId_produto() > 0)){
+            whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
+            .append(" ON CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO ")
+            .append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO = ")
+            .append(produtoVOFiltro.getId_produto())
+            .append(" ");
+            concatenou = true;
+        }
+        
+        if((nomeCategoriaProduto != null) &&
+        (!nomeCategoriaProduto.trim().equals(""))){
+            if( concatenou )
+            {  
+                whereClause.append(" AND ");
+            }
+            else
+            {
+                whereClause.append(" WHERE ");
+                concatenou = true;
+            }
+            
+            whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
+            .append(nomeCategoriaProduto.trim())
+            .append("%') )");
+        }
+	if ( filter != null )
+			{
+				if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
+				{
+					whereClause = new StringBuffer();			
+				}
+				if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
+				{
+					orderByClause = "";
+				}
+			}
+        else
+        {
+            filter = new DatabaseFilter();
+        }
+        
+        return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
+        
+    }   
+
+    /**
+     * @common:operation
+     */
+    public void eliminarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception
+    {
+        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto = this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorCategoriaProduto(categoriaProdutoVO);
+        if(listaProdutoCategoriaProduto.length > 0){
+            for(int i = 0; i < listaProdutoCategoriaProduto.length; i++){
+                this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProduto[i]);
+            }
+        }
+        this.ejBCategoriaProdutoSession.eliminarCategoriaProduto(categoriaProdutoVO);
+    }
+    
+    
+    /**
+     * @common:operation
+     */
+    public void atualizarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception
+    {
+        this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(categoriaProdutoVO);
+    }
+    
+    /**
+     * @common:operation
+     */
+    public CategoriaProdutoVO obterCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception
+    {
+        categoriaProdutoVO = this.ejBCategoriaProdutoSession.obterCategoriaProduto(categoriaProdutoVO);
+        categoriaProdutoVO.setListaProdutoCategoriaProduto(this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorCategoriaProduto(categoriaProdutoVO));
+        
+        return categoriaProdutoVO;
+    }
+} 

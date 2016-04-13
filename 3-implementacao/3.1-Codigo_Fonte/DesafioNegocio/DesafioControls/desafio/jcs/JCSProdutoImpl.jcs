@@ -1,6 +1,7 @@
 package desafio.jcs; 
 
 import com.bea.control.*;
+import desafio.CategoriaProdutoVO;
 import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
 import javax.sql.RowSet;
@@ -34,12 +35,21 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     /**
      * @common:operation
      */
-    
-    public RowSet obterListaProduto(String nomeProduto, DatabaseFilter filter) throws Exception
+    public RowSet obterListaProduto(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeProduto, DatabaseFilter filter) throws Exception
     {
-        String orderByClause = " ORDER BY NOME_PRODUTO";
+        String orderByClause = " ORDER BY PRODUTO.NOME_PRODUTO";
         StringBuffer whereClause = new StringBuffer();
         boolean concatenou = false;
+        
+        if((categoriaProdutoVOFiltro != null) &&
+        (categoriaProdutoVOFiltro.getId_categoria_produto() > 0)){
+            whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
+            .append(" ON PRODUTO.ID_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO ")
+            .append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = ")
+            .append(categoriaProdutoVOFiltro.getId_categoria_produto())
+            .append(" ");
+            concatenou = true;
+        }
         
         if((nomeProduto != null) &&
         (!nomeProduto.trim().equals(""))){
@@ -53,7 +63,7 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
                 concatenou = true;
             }
             
-            whereClause.append(" (UPPER( NOME_PRODUTO ) LIKE UPPER('%")
+            whereClause.append(" (UPPER( PRODUTO.NOME_PRODUTO ) LIKE UPPER('%")
             .append(nomeProduto.trim())
             .append("%') )");
         }
@@ -72,7 +82,7 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
         {
             filter = new DatabaseFilter();
         }
-        //this.dBProduto.fazNada();
+        
         return this.dBProduto.getListaProduto(whereClause.toString(), orderByClause, filter);
         
     }
@@ -95,7 +105,7 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     /**
      * @common:operation
      */
-    public void atualizaProduto(ProdutoVO produtoVO) throws Exception
+    public void atualizarProduto(ProdutoVO produtoVO) throws Exception
     {
         this.ejBProdutoSession.atualizarProduto(produtoVO);
     }

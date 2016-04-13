@@ -7,5 +7,11 @@
                 <con:role-name xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
             </con:security-roles>
         </con:top-level-component>
+        <con:top-level-component class-name="desafio.jcs.JCSCategoriaProduto" component-type="Control">
+            <con:external-callbacks/>
+            <con:security-roles>
+                <con:role-name xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            </con:security-roles>
+        </con:top-level-component>
     </con:project>
 </con:wlw-manifest>
