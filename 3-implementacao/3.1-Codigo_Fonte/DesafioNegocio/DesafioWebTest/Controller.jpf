@@ -89,10 +89,10 @@ public class Controller extends PageFlowController
      */
     protected Forward begin() throws Exception
     {
-        CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
-        categoriaProdutoVO.setId_categoria_produto(3);
+        ProdutoVO produtoVO = new ProdutoVO();
+        produtoVO.setId_produto(3);
         
-        RowSet test = this.jCSProduto.obterListaProduto(categoriaProdutoVO, "escova", null);
+        CategoriaProdutoVO[] test = this.jCSCategoriaProduto.obterListaCategoriaProdutoPorProduto(produtoVO, null);
         
         return new Forward("success");
     }

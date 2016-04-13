@@ -26,15 +26,24 @@
                 </button>                
             </netui:anchor>
             
-            <netui-data:grid dataSource="{pageFlow.listaCategoriaProduto}" name="{pageFlow.gridListaCategoriaProduto}">
-                <netui-data:gridStyle styleClassPrefix="grid"/>
-                <netui-data:pager renderInHeader="false" action="acPaginacaoCategoriaProduto" renderInFooter="true"/>
-                <netui-data:columns filterAction="acFiltroListaCategoriaProduto" sortAction="acOrdenaListaCategoriaProduto">
-                    <netui-data:anchorColumn action="acSelecionaCategoriaProduto" styleClassPrefix="left" addRowId="true" title="Nome Categoria" name="NOME_CATEGORIA_PRODUTO"/>
-                    <netui-data:anchorColumn action="acSelecionaCategoriaProduto" styleClassPrefix="right" addRowId="true" title="&nbsp;" src="/DesafioWeb/resources/images/eye-icon.png" width="16"/>
-                    <netui-data:expressionColumn value="<a href='javascript:confirmaExclusao(\"{container.item.id_categoria_produto}\");'><img src='/DesafioWeb/resources/images/trash-icon.png' width='16'/></a>" title="&nbsp;" styleClassPrefix="right"/>
-                </netui-data:columns>
-            </netui-data:grid>
+            <netui-data:repeater dataSource="{pageFlow.listaCategoriaProdutoVO}">
+                <netui-data:repeaterHeader>
+                    <table class="grid-table">
+                    <tr>
+                        <td>
+                            Nome Categoria
+                        </td>
+                    <tr>
+                </netui-data:repeaterHeader>
+                <netui-data:repeaterItem>
+                    <tr>
+                        <td>
+                            <netui:label value="{container.item.nome_categoria_produto}" />    
+                        </td>
+                    <tr>
+                </netui-data:repeaterItem>
+                    </table>
+            </netui-data:repeater>
             
             <netui:form tagId="formEliminarProduto" action="acEliminarProduto">
                 <netui:hidden tagId="codigo" dataSource="{pageFlow.produtoFormBean.produtoVO.id_produto}" />
@@ -46,7 +55,7 @@
                 </button>
             </netui:anchor>
 
-            <netui:anchor href="javascript:confirmaExclusao();" >
+            <netui:anchor action="acVoltarAPaginaAnterior" >
                 <button class="right-button">
                     <i class="fa fa-close">Cancelar</i>
                 </button>
