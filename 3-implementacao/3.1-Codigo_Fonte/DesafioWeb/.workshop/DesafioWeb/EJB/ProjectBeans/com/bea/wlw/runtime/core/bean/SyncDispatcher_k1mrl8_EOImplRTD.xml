@@ -16,6 +16,11 @@
 </lifecycle>
 
 <method
+    name="getHandle()"
+    requires-transaction="true"
+>
+</method>
+<method
     name="getEJBHome()"
     requires-transaction="true"
 >
@@ -42,11 +47,6 @@
 </method>
 <method
     name="remove()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getHandle()"
     requires-transaction="true"
 >
 </method>

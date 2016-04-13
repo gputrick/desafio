@@ -1,0 +1,129 @@
+package desafio.produto;
+import com.bea.wlw.netui.pageflow.FormData;
+import com.bea.wlw.netui.pageflow.Forward;
+import com.bea.wlw.netui.pageflow.PageFlowController;
+import desafio.produto.ProdutoFormBean;
+import itaipu.util.exceptions.AppException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
+import org.apache.struts.Globals;
+
+/**
+ * @jpf:controller
+ * @jpf:view-properties view-properties::
+ * <!-- This data is auto-generated. Hand-editing this section is not recommended. -->
+ * <view-properties>
+ * <pageflow-object id="pageflow:/desafio/produto/JPFProdutoController.jpf"/>
+ * <pageflow-object id="action:begin.do">
+ *   <property value="80" name="x"/>
+ *   <property value="100" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:errorException.jsp">
+ *   <property value="60" name="x"/>
+ *   <property value="40" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#/desafio/produto/manter/JPFManterProdutoController.jpf#@action:begin.do@">
+ *   <property value="80,80,80,80" name="elbowsX"/>
+ *   <property value="144,160,160,177" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:acVerificaUltimaPagina.do">
+ *   <property value="120" name="x"/>
+ *   <property value="100" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:acExitManter.do">
+ *   <property value="140" name="x"/>
+ *   <property value="120" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#erro#/resources/jsp/errorException.jsp#@action:begin.do@">
+ *   <property value="69,52,52,124" name="elbowsX"/>
+ *   <property value="57,57,133,133" name="elbowsY"/>
+ *   <property value="North_0" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ *   <property value="erro" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#previousPage#@action:acVerificaUltimaPagina.do@@">
+ *   <property value="220" name="x"/>
+ *   <property value="220" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#previousPage#@action:acVerificaUltimaPagina.do@">
+ *   <property value="156,170,170,184" name="elbowsX"/>
+ *   <property value="93,93,213,213" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#begin.do#@action:acExitManter.do@">
+ *   <property value="104,97,97,91" name="elbowsX"/>
+ *   <property value="113,113,57,57" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="North_2" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:/resources/jsp/errorException.jsp">
+ *   <property value="160" name="x"/>
+ *   <property value="140" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="external-jpf:/desafio/produto/manter/JPFManterProdutoController.jpf">
+ *   <property value="80" name="x"/>
+ *   <property value="220" name="y"/>
+ * </pageflow-object>
+ * </view-properties>
+ * ::
+ */
+public class JPFProdutoController extends PageFlowController
+{
+
+
+    public ProdutoFormBean produtoFormBean = new ProdutoFormBean();
+
+  /**
+     * This method represents the point of entry into the pageflow
+     * @jpf:action
+     * @jpf:forward name="success" path="/desafio/produto/manter/JPFManterProdutoController.jpf"
+     * @jpf:forward name="erro" path="/resources/jsp/errorException.jsp"
+     */
+    protected Forward begin()
+    {
+      return new Forward("success", produtoFormBean);
+    }
+		
+		  /**
+  * @jpf:action 
+  * @jpf:forward name="success" return-to="previousPage"
+  * @jpf:catch type="Exception" method="exceptionHandler" 
+  */  
+  protected Forward acVerificaUltimaPagina()throws Exception {
+    return new Forward("success");
+  }  
+	
+	/**
+  * @jpf:action
+  * @jpf:forward name="success" path="begin.do"
+  */
+  protected Forward acExitManter() {
+    return new Forward("success");
+  }  
+	
+	 /**
+  * @jpf:exception-handler
+  * @jpf:forward name="errorPage" path="errorException.jsp"
+  */
+  protected Forward exceptionHandler(Exception ex, String actionName, String mesage, FormData form) {
+    String displayMesage;
+    //internacionaliza��o da mensagem de erro
+    if(AppException.isMensagemNegocio(ex)){
+      String keyError = AppException.obtemKeyErro(ex);
+      ResourceBundle msgs;
+      msgs= ResourceBundle.getBundle("msgs", (Locale)this.getRequest().getSession().getAttribute(Globals.LOCALE_KEY));
+      displayMesage = "Erro: " + actionName + " - " + msgs.getString("MSG_ERROR_"+ keyError);
+      getRequest().setAttribute("errorMessage",displayMesage);
+    } else {
+      displayMesage = "Erro: " + actionName + " - " + ex.getMessage();
+    }   
+    return new Forward( "errorPage" );   
+  }
+}

@@ -1,6 +1,7 @@
 package desafio.jcx; 
 
 import com.bea.control.*;
+import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO; 
 import java.sql.SQLException;
 import javax.sql.RowSet; 
@@ -65,4 +66,10 @@ public interface DBProduto extends DatabaseControl, com.bea.control.ControlExten
     *     ::
     */
     RowSet getListaProduto(String whereClause, String orderByClause, DatabaseFilter filter);
+
+    
+    /**
+     * @jc:sql statement="SELECT * FROM PRODUTO WHERE ID_PRODUTO = {produtoCategoriaProdutoVO.id_produto}"
+     */
+    ProdutoVO[] obterListaProdutoPorProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO);
 }

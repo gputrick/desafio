@@ -69,8 +69,8 @@
                                                 markupType="Placeholder" title="right"
                                                 usingFlow="true" width="70%">
                                                 <netuix:portletInstance
-                                                  contentUri="/desafio/produto/manter/ProdutoController.portlet"
-                                                  instanceLabel="portlet_3_1" markupType="Portlet" title="ProdutoController"/>
+                                                  contentUri="/desafio/produto/PORProdutoController.portlet"
+                                                  instanceLabel="portlet_3_3" markupType="Portlet" title="JPFProdutoController"/>
                                             </netuix:placeholder>
                                         </netuix:gridLayout>
                                     </netuix:content>

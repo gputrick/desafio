@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /Controller.jpf on Mon Apr 11 15:56:48 GMT-03:00 2016 -->
+<!-- Generated from /Controller.jpf on Wed Apr 13 08:10:10 GMT-03:00 2016 -->
 <struts-config>
   <form-beans/>
   <global-exceptions/>
   <global-forwards/>
   <action-mappings>
     <action validate="false" scope="request" type="Controller" path="/begin">
-      <forward path="/index.jsp" name="index"/>
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/index.jsp" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/errorException.jsp" name="errorPage"/>
     </action>
   </action-mappings>
   <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">

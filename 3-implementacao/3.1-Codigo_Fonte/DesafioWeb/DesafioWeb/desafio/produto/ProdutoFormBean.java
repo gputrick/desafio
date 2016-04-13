@@ -40,5 +40,9 @@ public class ProdutoFormBean extends ActionForm
         }
         return this.produtoVO;
     }
+    
+    public void setProdutoVO(ProdutoVO produtoVO){
+        this.produtoVO = produtoVO;
+    }
 } 
 

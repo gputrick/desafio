@@ -4,14 +4,6 @@
  <%@ taglib uri="netui-tags-html.tld" prefix="netui"%>
  <%@ taglib uri="netui-tags-template.tld" prefix="netui-template"%>
  <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
- 
- <netui-data:declareBundle bundlePath="msgs" name="msg" country="{session.country}" language="{session.language}"/>
- 
-<%
-  ResourceBundle msgs;
-  Locale locale = (Locale)request.getSession().getAttribute(org.apache.struts.Globals.LOCALE_KEY);
-  msgs = ResourceBundle.getBundle("msgs",locale); 
-%>
 
 <netui-template:template templatePage="/resources/jsp/template.jsp">
   <netui-template:section name="bodySection">           
@@ -26,11 +18,8 @@
 
     <div id="bodyPortletException" class="divBodyPortlet" >              
       <div style="background-color:#eaeaea; border: 1px solid #a1a1a1; margin:10px; padding:10px;">
-        <div style="float:left;">
-          <img src="<%=msgs.getString("PATHBTICONE")+"imgIconeError.gif"%>"/>
-        </div>      
         <div style="margin-left:80px; overflow:hidden;">
-          <netui:label value="{bundle.msg.LBL_MSG_ERRO_OCORREU}:" style="color:#ff0066; font-weight:bold"/>
+          <netui:label value="Ocorreu o Seguinte Erro:" style="color:#ff0066; font-weight:bold"/>
           <br><br>                    
           <netui:label value="{request.errorMessage}" defaultValue=""/>          
           <br>
@@ -41,12 +30,12 @@
           </div>        
         </div>          
         <div id="divBotaoDetalhe" style="margin-left:80px;">
-          <a href="#" onclick="exibe(); return false;" style="color:#ff0066;"><netui:content value="{bundle.msg.LBL_VER_DETALHE_ERRO}" /></a>
+          <a href="#" onclick="exibe(); return false;" style="color:#ff0066;"><netui:content value="Ver Detalhe" /></a>
         </div>
         <br>        
         <div align="left" style="margin-left:80px;">
           <netui:anchor action="acVerificaUltimaPagina" style="font-weight:bold;">
-            <netui:content value="{bundle.msg.LBL_MSG_VOLTAR}"/>
+            <netui:content value="Voltar"/>
           </netui:anchor>                    
         </div>                
         <br>        

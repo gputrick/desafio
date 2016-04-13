@@ -16,34 +16,8 @@
         <h1 class="title">Produto</h1>
         
         <h3 class="subtitle">Nome</h3>
-        <h1 class="name"><netui:label value="Sansung"/></h1>
+        <netui:textBox tagId="nome_local" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}" readonly="true" styleClass="campoDisable"/>
         
-        <input type="text" class="input"/><i class="fa fa-search"></i>
-        
-        <table class="table">
-            <tr>
-                <th>Nome Categoria</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Celular e Smartphone</td>
-                <td class="table-button">
-                    <i class="fa fa-eye"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Televisão</td>
-                <td class="table-button">
-                    <i class="fa fa-eye"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Notebook</td>
-                <td class="table-button">
-                    <i class="fa fa-eye"></i>
-                </td>
-            </tr>
-        </table>
         
         <button id="deleteButton" class="right-button"><i class="fa fa-trash"></i> Excluir</button>
         <netui:anchor action="alterarProduto"> <button class="right-button"><i class="fa fa-edit"></i> Alterar</button></netui:anchor>

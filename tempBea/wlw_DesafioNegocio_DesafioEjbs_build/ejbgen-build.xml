@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a build file for ant  -->
+
+  <taskdef name="ejbgen" classname="weblogic.ant.taskdefs.j2ee.Ejbgen"/>
+
+  <target name="all" depends="compile">
+  </target>
+
+  <target name="all" >
+    <ejbgen
+      tmpDir = "gen"
+      ejbs = "$sourceFiles"
+      srcPath = "desafio/ejb/geral"
+      outputJar = "project.jar"
+      />
+  </target>
+</project>

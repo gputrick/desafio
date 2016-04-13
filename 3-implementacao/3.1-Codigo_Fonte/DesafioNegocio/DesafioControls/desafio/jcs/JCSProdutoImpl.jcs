@@ -9,16 +9,22 @@ import javax.sql.RowSet;
  */
 public class JCSProdutoImpl implements JCSProduto, ControlSource
 { 
-    static final long serialVersionUID = 1L;    
     /**
      * @common:control
      */
-    private desafio.jcx.EjbProdutoSession ejBProdutoSession;
+    private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
 
     /**
      * @common:control
      */
-    private desafio.jcx.EjbProdutoSession ejBCategoriaProdutoSession;
+    private desafio.jcx.EJBProdutoCategoriaProdutoSession ejBProdutoCategoriaProdutoSession;
+
+    /**
+     * @common:control
+     */
+    private desafio.jcx.EJBProdutoSession ejBProdutoSession;
+
+    static final long serialVersionUID = 1L;    
 
     /**
      * @common:control
@@ -69,5 +75,39 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
         //this.dBProduto.fazNada();
         return this.dBProduto.getListaProduto(whereClause.toString(), orderByClause, filter);
         
-    }    
+    }
+
+    /**
+     * @common:operation
+     */
+    public void eliminarProduto(ProdutoVO produtoVO) throws Exception
+    {
+        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto = this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO);
+        if(listaProdutoCategoriaProduto.length > 0){
+            for(int i = 0; i < listaProdutoCategoriaProduto.length; i++){
+                this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProduto[i]);
+            }
+        }
+        this.ejBProdutoSession.eliminarProduto(produtoVO);
+    }
+    
+    
+    /**
+     * @common:operation
+     */
+    public void atualizaProduto(ProdutoVO produtoVO) throws Exception
+    {
+        this.ejBProdutoSession.atualizarProduto(produtoVO);
+    }
+    
+    /**
+     * @common:operation
+     */
+    public ProdutoVO obterProduto(ProdutoVO produtoVO) throws Exception
+    {
+        produtoVO = this.ejBProdutoSession.obterProduto(produtoVO);
+        produtoVO.setListaProdutoCategoriaProduto(this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO));
+        
+        return produtoVO;
+    }
 } 

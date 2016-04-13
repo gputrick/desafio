@@ -1,39 +1,52 @@
-import com.bea.control.ControlException;
-import com.bea.wlw.netui.pageflow.PageFlowController;
+import com.bea.wlw.netui.pageflow.FormData;
 import com.bea.wlw.netui.pageflow.Forward;
+import com.bea.wlw.netui.pageflow.PageFlowController;
+import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
 import desafio.jcs.JCSProduto;
-import javax.sql.RowSet;
+import desafio.jcx.DBProduto;
+import itaipu.util.exceptions.AppException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import org.apache.struts.Globals;
 
 /**
- * This is the default controller for a blank web application.
- *
  * @jpf:controller
  * @jpf:view-properties view-properties::
  * <!-- This data is auto-generated. Hand-editing this section is not recommended. -->
  * <view-properties>
  * <pageflow-object id="pageflow:/Controller.jpf"/>
  * <pageflow-object id="action:begin.do">
- *   <property name="x" value="60"/>
- *   <property name="y" value="80"/>
+ *   <property value="80" name="x"/>
+ *   <property value="100" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="page:index.jsp">
- *   <property name="x" value="220"/>
- *   <property name="y" value="80"/>
+ *   <property value="240" name="x"/>
+ *   <property value="100" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="page:error.jsp">
- *   <property name="x" value="220"/>
- *   <property name="y" value="160"/>
+ * <pageflow-object id="action:acVerificaUltimaPagina.do">
+ *   <property value="200" name="x"/>
+ *   <property value="180" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="forward:path#index#index.jsp#@action:begin.do@">
- *   <property name="elbowsY" value="72,72,72,72"/>
- *   <property name="elbowsX" value="96,140,140,184"/>
- *   <property name="toPort" value="West_1"/>
- *   <property name="fromPort" value="East_1"/>
- *   <property name="label" value="index"/>
+ * <pageflow-object id="action-call:@page:errorException.jsp@#@action:acVerificaUltimaPagina.do@">
+ *   <property value="96,130,130,164" name="elbowsX"/>
+ *   <property value="33,33,173,173" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:errorException.jsp">
+ *   <property value="60" name="x"/>
+ *   <property value="40" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#index.jsp#@action:begin.do@">
+ *   <property value="116,160,160,204" name="elbowsX"/>
+ *   <property value="93,93,93,93" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="control:desafio.jcs.JCSProduto#jCSProduto">
- *   <property value="26" name="x"/>
+ *   <property value="31" name="x"/>
  *   <property value="33" name="y"/>
  * </pageflow-object>
  * </view-properties>
@@ -41,20 +54,53 @@ import javax.sql.RowSet;
  */
 public class Controller extends PageFlowController
 {
-    /**
+
+
+    // Uncomment this declaration to access Global.app.
+    // 
+    //     protected global.Global globalApp;
+    // 
+
+    // For an example of page flow exception handling see the example "catch" and "exception-handler"
+    // annotations in {project}/WEB-INF/src/global/Global.app
+    
+   /**
 	* @common:control
 	*/
     private JCSProduto jCSProduto;
     
-     /**
+    /**
+     * This method represents the point of entry into the pageflow
      * @jpf:action
-     * @jpf:forward name="index" path="index.jsp"
+     * @jpf:forward name="success" path="index.jsp"
+     * @jpf:catch type="Exception" method="exceptionHandler"
      */
-    protected Forward begin() throws ControlException, Exception
+    protected Forward begin() throws Exception
     {
-        RowSet produtoRowSet = this.jCSProduto.obterListaProduto(null,null);
+        ProdutoVO produtoVO = new ProdutoVO();
+        produtoVO.setId_produto(4);
+        produtoVO.getId_produto();
         
-        return new Forward("index");
+        this.jCSProduto.eliminarProduto(produtoVO);
+        return new Forward("success");
     }
-
+    
+/**
+  * @jpf:exception-handler
+  * @jpf:forward name="errorPage" path="errorException.jsp"
+  */
+  protected Forward exceptionHandler(Exception ex, String actionName, String mesage, FormData form) {
+    String displayMesage;
+    //internacionaliza��o da mensagem de erro
+    if(AppException.isMensagemNegocio(ex)){
+      String keyError = AppException.obtemKeyErro(ex);
+      ResourceBundle msgs;
+      msgs= ResourceBundle.getBundle("msgs", (Locale)this.getRequest().getSession().getAttribute(Globals.LOCALE_KEY));
+      displayMesage = "Erro: " + actionName + " - " + msgs.getString("MSG_ERROR_"+ keyError);
+      getRequest().setAttribute("errorMessage",displayMesage);
+    } else {
+      displayMesage = "Erro: " + actionName + " - " + ex.getMessage();
+    }   
+    return new Forward( "errorPage" );   
+  }
 }
