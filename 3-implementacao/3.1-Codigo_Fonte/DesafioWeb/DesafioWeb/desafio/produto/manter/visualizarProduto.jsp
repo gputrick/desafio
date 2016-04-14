@@ -16,15 +16,22 @@
             <h2 class="subtitle">Visualizar</h2>
             <h1 class="title">Produto</h1>
             
-            <h3 class="subtitle">Nome</h3>
+            <h3 class="subtitle">Nome Produto</h3>
             <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}" readonly="true"/>
+            
+            <netui:form action="acObterListaCategoriaProduto">
+                 <h3 class="subtitle">Nome Categoria</h3>
+                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}"/>
+                <netui:anchor formSubmit="true">
+                    <i class="fa fa-search"></i>
+                </netui:anchor>
+            </netui:form>
             
             <netui-data:grid dataSource="{pageFlow.listaCategoriaProduto}" name="{pageFlow.gridListaCategoriaProduto}">
                 <netui-data:gridStyle styleClassPrefix="grid"/>
                 <netui-data:pager renderInHeader="false" action="acPaginacaoCategoriaProduto" renderInFooter="true"/>
                 <netui-data:columns filterAction="acFiltroListaCategoriaProduto" sortAction="acOrdenaListaCategoriaProduto">
-                    <netui-data:anchorColumn action="acSelecionaCategoriaProduto" styleClassPrefix="left" addRowId="true" title="Nome Categoria" name="NOME_CATEGORIA_PRODUTO"/>
-                    <netui-data:anchorColumn action="acSelecionaCategoriaProduto" styleClassPrefix="right" addRowId="true" title="&nbsp;" src="/DesafioWeb/resources/images/eye-icon.png" width="16"/>
+                    <netui-data:basicColumn styleClassPrefix="left" title="Nome Categoria" name="NOME_CATEGORIA_PRODUTO"/>
                 </netui-data:columns>
             </netui-data:grid>
             
@@ -38,6 +45,12 @@
             <netui:anchor action="acIrParaAlterarProduto">
                 <button class="right-button">
                     <i class="fa fa-edit">Alterar</i>
+                </button>
+            </netui:anchor>
+            
+            <netui:anchor action="acIrParaConsultarProduto">
+                <button class="right-button" >
+                    <i class="fa fa-arrow-left">Voltar</i>
                 </button>
             </netui:anchor>
             

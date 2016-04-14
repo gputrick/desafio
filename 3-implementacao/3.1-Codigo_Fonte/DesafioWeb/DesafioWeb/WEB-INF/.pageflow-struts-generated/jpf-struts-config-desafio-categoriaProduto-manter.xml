@@ -1,27 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /desafio/categoriaProduto/manter/CategoriaProdutoController.jpf on Wed Apr 06 17:06:27 GMT-03:00 2016 -->
+<!-- Generated from /desafio/categoriaProduto/manter/JPFManterCategoriaProdutoController.jpf on Thu Apr 14 17:15:27 GMT-03:00 2016 -->
 <struts-config>
-  <form-beans/>
+  <form-beans>
+    <form-bean type="desafio.produto.CategoriaProdutoFormBean" name="categoriaProdutoFormBean"/>
+  </form-beans>
   <global-exceptions/>
   <global-forwards/>
   <action-mappings>
-    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/alterarCategoriaProduto">
-      <forward path="/alterarCategoriaProduto.jsp" name="success"/>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acCadastrarCategoriaProduto"/>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acDesvincularSubCategoria">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
     </action>
-    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/begin">
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acEliminarCategoriaProduto">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/acObterListaCategoriaProduto.do" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acIrParaAlterarCategoriaProduto">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/alterarCategoriaProduto.jsp" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acIrParaConsultarCategoriaProduto">
       <forward path="/consultarCategoriaProduto.jsp" name="success"/>
     </action>
-    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/cadastrarCategoriaProduto">
-      <forward path="/cadastrarCategoriaProduto.jsp" name="success"/>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acIrParaVisualizarCategoriaProduto">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/visualizarCategoriaProduto.jsp" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
     </action>
-    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/cancel">
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" name="categoriaProdutoFormBean" path="/acObterListaCategoriaProduto">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/consultarCategoriaProduto.jsp" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" name="categoriaProdutoFormBean" path="/acObterListaSubCategoria">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/visualizarCategoriaProduto.jsp" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" name="categoriaProdutoFormBean" path="/acObterListaSubCategoriaVO">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acPaginacaoCategoriaPai">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acPaginacaoCategoriaProduto">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="currentPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acSelecionaCategoriaProduto">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/acIrParaVisualizarCategoriaProduto.do" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/acVoltarAPaginaAnterior">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
       <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="previousPage" name="success">
         <set-property value="true" property="returnToPage"/>
       </forward>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
     </action>
-    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.CategoriaProdutoController" path="/visualizarCategoriaProduto">
-      <forward path="/visualizarCategoriaProduto.jsp" name="success"/>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.manter.JPFManterCategoriaProdutoController" path="/begin">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward path="/consultarCategoriaProduto.jsp" name="success"/>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/../errorException.jsp" name="errorPage"/>
     </action>
   </action-mappings>
   <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">

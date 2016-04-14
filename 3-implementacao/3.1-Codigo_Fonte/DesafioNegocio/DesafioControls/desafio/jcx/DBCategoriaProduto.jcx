@@ -80,9 +80,9 @@ public interface DBCategoriaProduto extends DatabaseControl, com.bea.control.Con
     CategoriaProdutoVO[] getListaCategoriaProdutoPorProduto(String whereClause, String orderByClause);
     
     /**
-     * @jc:sql statement="SELECT * FROM CATEGORIA_PRODUTO WHERE ID_CATEGORIA_PRODUTO={categoriaVO.id_categoria_pai} ORDER BY NOME_CATEGORIA_PRODUTO"
+     * @jc:sql statement="SELECT * FROM CATEGORIA_PRODUTO WHERE ID_CATEGORIA_PAI={categoriaPaiVO.id_categoria_produto} ORDER BY NOME_CATEGORIA_PRODUTO"
      */
-    CategoriaProdutoVO[] obterListaCategoriaProdutoPorCategoriaPai(CategoriaProdutoVO categoriaVO);
+    CategoriaProdutoVO[] obterListaCategoriaProdutoPorCategoriaPai(CategoriaProdutoVO categoriaPaiVO);
     
     
     /**

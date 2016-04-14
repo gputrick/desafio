@@ -87,7 +87,68 @@ public class JCSCategoriaProdutoImpl implements JCSCategoriaProduto, ControlSour
         return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
         
     }
+    /**
+     * @common:operation
+     */
+    public CategoriaProdutoVO[] obterListaCategoriaProdutoPorCategoriaPai(CategoriaProdutoVO categoriaPaiVO){
+        
+        return this.dBCategoriaProduto.obterListaCategoriaProdutoPorCategoriaPai(categoriaPaiVO);
+    }
+    
+      /**
+     * @common:operation
+     */
 
+    public RowSet obterListaSubCategoria(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeCategoriaProdutoFiltro, DatabaseFilter filter) throws Exception
+    {
+        String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
+        StringBuffer whereClause = new StringBuffer();
+        boolean concatenou = false;
+        
+        if((categoriaProdutoVOFiltro != null) &&
+        (categoriaProdutoVOFiltro.getId_categoria_produto()) > 0){
+            whereClause.append(" WHERE CATEGORIA_PRODUTO.ID_CATEGORIA_PAI = ")
+            .append(categoriaProdutoVOFiltro.getId_categoria_produto())
+            .append(" ");
+            concatenou = true;
+        }
+        
+        if((nomeCategoriaProdutoFiltro != null) &&
+        (!nomeCategoriaProdutoFiltro.trim().equals(""))){
+            if( concatenou )
+            {  
+                whereClause.append(" AND ");
+            }
+            else
+            {
+                whereClause.append(" WHERE ");
+                concatenou = true;
+            }
+            
+            whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
+            .append(nomeCategoriaProdutoFiltro.trim())
+            .append("%') )");
+        }
+	if ( filter != null )
+			{
+				if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
+				{
+					whereClause = new StringBuffer();			
+				}
+				if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
+				{
+					orderByClause = "";
+				}
+			}
+        else
+        {
+            filter = new DatabaseFilter();
+        }
+        
+        return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
+        
+    }
+    
     /**
      * @common:operation
      */

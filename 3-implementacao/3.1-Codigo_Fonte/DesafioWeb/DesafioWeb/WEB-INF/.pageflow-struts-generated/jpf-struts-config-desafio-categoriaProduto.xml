@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- Generated from /desafio/categoriaProduto/JPFCategoriaProdutoController.jpf on Thu Apr 14 14:13:59 GMT-03:00 2016 -->
+<struts-config>
+  <form-beans/>
+  <global-exceptions/>
+  <global-forwards/>
+  <action-mappings>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.JPFCategoriaProdutoController" path="/acExitManter">
+      <forward path="/begin.do" name="success"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.JPFCategoriaProdutoController" path="/acVerificaUltimaPagina">
+      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
+        <set-property value="true" property="isHandlerMethod"/>
+      </exception>
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="previousPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+      <!-- forward "errorPage" from exception-handler exceptionHandler -->
+      <forward path="/errorException.jsp" name="errorPage"/>
+    </action>
+    <action validate="false" scope="request" type="desafio.categoriaProduto.JPFCategoriaProdutoController" path="/begin">
+      <forward contextRelative="true" path="/desafio/categoriaProduto/manter/JPFManterCategoriaProdutoController.jpf" name="success"/>
+      <forward contextRelative="true" path="/resources/jsp/errorException.jsp" name="erro"/>
+    </action>
+  </action-mappings>
+  <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">
+    <set-property value="true" property="isReturnToActionDisabled"/>
+  </controller>
+</struts-config>

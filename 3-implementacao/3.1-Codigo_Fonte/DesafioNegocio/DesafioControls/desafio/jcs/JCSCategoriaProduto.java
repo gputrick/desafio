@@ -16,4 +16,8 @@ public interface JCSCategoriaProduto extends Control
     javax.sql.RowSet obterListaCategoriaProduto(desafio.ProdutoVO produtoVOFiltro, java.lang.String nomeCategoriaProduto, com.bea.control.DatabaseFilter filter) throws java.lang.Exception;
 
     desafio.CategoriaProdutoVO[] obterListaCategoriaProdutoPorProduto(desafio.ProdutoVO produtoVOFiltro, java.lang.String nomeCategoriaProdutoFiltro) throws java.lang.Exception;
+
+    desafio.CategoriaProdutoVO[] obterListaCategoriaProdutoPorCategoriaPai(desafio.CategoriaProdutoVO categoriaPaiVO);
+
+    javax.sql.RowSet obterListaSubCategoria(desafio.CategoriaProdutoVO categoriaProdutoVOFiltro, java.lang.String nomeCategoriaProdutoFiltro, com.bea.control.DatabaseFilter filter) throws java.lang.Exception;
 } 

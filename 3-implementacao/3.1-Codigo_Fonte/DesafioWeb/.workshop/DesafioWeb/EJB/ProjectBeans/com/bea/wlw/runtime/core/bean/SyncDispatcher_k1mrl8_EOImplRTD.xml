@@ -16,17 +16,7 @@
 </lifecycle>
 
 <method
-    name="getPrimaryKey()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="confirmDeployment(java.lang.String)"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getEJBHome()"
+    name="getHandle()"
     requires-transaction="true"
 >
 </method>
@@ -36,7 +26,7 @@
 >
 </method>
 <method
-    name="isIdentical(javax.ejb.EJBObject)"
+    name="confirmDeployment(java.lang.String)"
     requires-transaction="true"
 >
 </method>
@@ -46,7 +36,17 @@
 >
 </method>
 <method
-    name="getHandle()"
+    name="getEJBHome()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="getPrimaryKey()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="isIdentical(javax.ejb.EJBObject)"
     requires-transaction="true"
 >
 </method>

@@ -17,13 +17,11 @@
             <h1 class="title">Produto</h1>
             
             <netui:form action="acObterListaProduto">
-                 <h3 class="subtitle">Nome</h3>
+                 <h3 class="subtitle">Nome Produto</h3>
                 <netui:textBox dataSource="{actionForm.nomeProdutoFiltro}"/>
                 <netui:anchor formSubmit="true" action="acObterListaProduto">
                     <i class="fa fa-search"></i>
                 </netui:anchor>
-                
-                <netui:hidden tagId="codigo" dataSource="{pageFlow.produtoFormBean.produtoVO.id_produto}" />
     
                 <netui:anchor action="cadastrarProduto">
                     <button class="right-button">

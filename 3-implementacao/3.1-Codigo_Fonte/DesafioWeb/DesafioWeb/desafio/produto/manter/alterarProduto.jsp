@@ -16,38 +16,54 @@
             <h2 class="subtitle">Alterar</h2>
             <h1 class="title">Produto</h1>
             
-            <h3 class="subtitle">Nome</h3>
+            <h3 class="subtitle">Nome Produto</h3>
             <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}"/>
             
+            <netui:form action="acObterListaCategoriaProdutoVO">
+                 <h3 class="subtitle">Nome Categoria</h3>
+                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}"/>
+                <netui:anchor formSubmit="true">
+                    <i class="fa fa-search"></i>
+                </netui:anchor>
+                
+                <netui:anchor action="acIrParaVincularCategoria">
+                    <button class="right-button">
+                        <i class="fa fa-plus">Vincular</i>
+                    </button>                
+                </netui:anchor>
+            </netui:form>
             
-            <netui:anchor href="javascript:confirmaExclusao();">
-                <button class="right-button">
-                    <i class="fa fa-plus">Vincular</i>
-                </button>                
-            </netui:anchor>
+            <netui:form tagId="formDesvincularCategoriaProduto" action="acDesvincularCategoriaProduto">
+                <netui:hidden tagId="codigo" dataSource="{pageFlow.categoriaProdutoFormBean.categoriaProdutoVO.id_categoria_produto}" />
+            </netui:form>
             
-            <netui-data:repeater dataSource="{pageFlow.listaCategoriaProdutoVO}">
+            <netui-data:repeater dataSource="{pageFlow.listaCategoriaProdutoVOFiltrada}">
                 <netui-data:repeaterHeader>
                     <table class="grid-table">
-                    <tr>
-                        <td>
-                            Nome Categoria
-                        </td>
-                    <tr>
+                        <tr class="grid-tr-header">
+                            <td class="left-td-header">
+                                Nome Categoria
+                            </td>
+                            <td class="right-td-header">
+                            </td>
+                        </tr>
                 </netui-data:repeaterHeader>
                 <netui-data:repeaterItem>
-                    <tr>
-                        <td>
-                            <netui:label value="{container.item.nome_categoria_produto}" />    
-                        </td>
-                    <tr>
+                        <tr class="grid-tr-data">
+                            <td class="left-td-data">
+                                <netui:label value="{container.item.nome_categoria_produto}" />    
+                            </td>
+                            <td class="right-td-data">
+                                <netui:anchor href="javascript:desvinculaCategoriaProduto({container.item.id_categoria_produto});">
+                                    <i class="fa fa-close"></i>
+                                </netui:anchor>
+                            </td>
+                        </tr>
                 </netui-data:repeaterItem>
+                <netui-data:repeaterFooter>
                     </table>
+                </netui-data:repeaterFooter>
             </netui-data:repeater>
-            
-            <netui:form tagId="formEliminarProduto" action="acEliminarProduto">
-                <netui:hidden tagId="codigo" dataSource="{pageFlow.produtoFormBean.produtoVO.id_produto}" />
-            </netui:form>
                         
             <netui:anchor href="javascript:confirmaExclusao();" >
                 <button class="right-button">
@@ -61,6 +77,15 @@
                 </button>
             </netui:anchor>
             
+            
+            
+            <script type="text/javascript">
+                function desvinculaCategoriaProduto(codigo){
+                    forme = document.forms[getNetuiTagName("formDesvincularCategoriaProduto", this)];
+                    forme[getNetuiTagName("codigo",this)].value = codigo;
+                    forme.submit();
+                }
+            </script>
         </div>
     </body>
 </netui:html>

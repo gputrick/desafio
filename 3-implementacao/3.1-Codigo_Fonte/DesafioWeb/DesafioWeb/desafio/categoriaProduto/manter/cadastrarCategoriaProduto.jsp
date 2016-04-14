@@ -39,12 +39,12 @@
                 <span class="close fa fa-close"></span>
                 <br>
                 <div align="center">
-                    <h2 class="title-modal">Escolha as sub-categorias</h2>
+                    <h2 class="title-modal">Escolha as categorias</h2>
                     <input type="text" class="search-input-modal"/><i class="fa fa-search"></i>
                 </div>
                 <table class="table">
                     <tr>
-                        <th>Nome Sub-Categoria</th>
+                        <th>Nome Categoria</th>
                         <th></th>
                     </tr>
                     <tr>

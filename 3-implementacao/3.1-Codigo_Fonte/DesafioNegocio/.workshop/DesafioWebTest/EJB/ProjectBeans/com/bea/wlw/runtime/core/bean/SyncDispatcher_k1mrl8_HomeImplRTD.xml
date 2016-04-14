@@ -21,19 +21,7 @@
 >
 </method>
 <method
-    name="getHomeHandle()"
-    requires-transaction="true"
-    idempotent="true"
->
-</method>
-<method
     name="getEJBMetaData()"
-    requires-transaction="true"
-    idempotent="true"
->
-</method>
-<method
-    name="remove(java.lang.Object)"
     requires-transaction="true"
     idempotent="true"
 >
@@ -46,6 +34,18 @@
 </method>
 <method
     name="remove(javax.ejb.Handle)"
+    requires-transaction="true"
+    idempotent="true"
+>
+</method>
+<method
+    name="remove(java.lang.Object)"
+    requires-transaction="true"
+    idempotent="true"
+>
+</method>
+<method
+    name="getHomeHandle()"
     requires-transaction="true"
     idempotent="true"
 >
