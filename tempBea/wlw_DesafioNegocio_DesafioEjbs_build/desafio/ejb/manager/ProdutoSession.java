@@ -106,7 +106,7 @@ public class ProdutoSession
         
         try{
             if(this.produto == null){
-                this.produto = produtoHome.create( produtoVO );
+                this.produto = this.produtoHome.create( produtoVO );
             }else{
                 this.produto.validaProduto( produtoVO );
                 this.produto.setData( produtoVO );

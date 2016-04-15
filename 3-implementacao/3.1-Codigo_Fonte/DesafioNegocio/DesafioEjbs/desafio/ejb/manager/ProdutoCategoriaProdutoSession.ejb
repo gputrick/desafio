@@ -172,4 +172,33 @@ public class ProdutoCategoriaProdutoSession
         return (ProdutoCategoriaProdutoSessionHome) ServiceLocator.getInstance().getRemoteHome(getRemoteJndiName(), ProdutoCategoriaProdutoSessionHome.class);
     }
     
+        /**
+     * @param produtoVO
+     * @return ProdutoVO
+     * @throws DesafioException
+     * @ejbgen:remote-method transaction-attribute="Required"
+     */
+     public ProdutoCategoriaProdutoVO atualizarProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException, NamingException
+     {
+        try{
+            this.inicializa(produtoCategoriaProdutoVO);
+            
+        } catch(DesafioException e){
+        } catch(Exception e)   { 
+            throw new DesafioException (e); 
+        }
+        try{
+            if(this.produtoCategoriaProduto == null){
+                this.produtoCategoriaProdutoHome = ProdutoCategoriaProdutoBean.getHome();
+                this.produtoCategoriaProduto = this.produtoCategoriaProdutoHome.create( produtoCategoriaProdutoVO );
+            }else{
+                this.produtoCategoriaProduto.validaProdutoCategoriaProduto( produtoCategoriaProdutoVO );
+                this.produtoCategoriaProduto.setData( produtoCategoriaProdutoVO );
+            }
+        }catch ( CreateException e ){
+            throw new EJBException(e);
+        }
+        return this.produtoCategoriaProduto.getData();
+     }
+    
 }

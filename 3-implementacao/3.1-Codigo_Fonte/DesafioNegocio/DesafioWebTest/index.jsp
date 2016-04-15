@@ -9,6 +9,7 @@
         </title>
     </head>
     <body>
+        <netui:anchor action="begin">BEGIN</netui:anchor>
         <p>
             New Web Application Page
         </p>

@@ -22,13 +22,13 @@
                 <netui:anchor formSubmit="true" action="acObterListaProduto">
                     <i class="fa fa-search"></i>
                 </netui:anchor>
-    
-                <netui:anchor action="cadastrarProduto">
-                    <button class="right-button">
-                        <i class="fa fa-plus">Cadastrar</i>
-                    </button>
-                </netui:anchor>
             </netui:form>
+            
+            <netui:anchor action="acIrParaCadastrarProduto">
+                <button class="right-button">
+                    <i class="fa fa-plus">Cadastrar</i>
+                </button>
+            </netui:anchor>
             
             <netui:form tagId="formEliminarProduto" action="acEliminarProduto">
                 <netui:hidden tagId="codigo" dataSource="{pageFlow.produtoFormBean.produtoVO.id_produto}" />

@@ -105,9 +105,57 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     /**
      * @common:operation
      */
-    public void atualizarProduto(ProdutoVO produtoVO) throws Exception
+    public void atualizarProduto(ProdutoVO produtoVO, ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVOAtualizada) throws Exception
     {
+        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO);
+        
+        boolean isInserido;
+        for(int i = 0; i < listaProdutoCategoriaProdutoVOAtualizada.length; i++){
+            isInserido = true;
+            for(int j = 0; j < listaProdutoCategoriaProdutoVO.length; j++){
+                if(listaProdutoCategoriaProdutoVOAtualizada[i].getId_categoria_produto() == listaProdutoCategoriaProdutoVO[j].getId_categoria_produto()){
+                    isInserido = false;
+                    break;
+                }
+            }
+            if(isInserido){
+                this.ejBProdutoCategoriaProdutoSession.atualizarProdutoCategoriaProduto(listaProdutoCategoriaProdutoVOAtualizada[i]);
+            }
+        }
+        
+        boolean isExcluido;
+        for(int i = 0; i < listaProdutoCategoriaProdutoVO.length; i++){
+            isExcluido = true;
+            for(int j = 0; j < listaProdutoCategoriaProdutoVOAtualizada.length; j++){
+                if(listaProdutoCategoriaProdutoVO[i].getId_categoria_produto() == listaProdutoCategoriaProdutoVOAtualizada[j].getId_categoria_produto()){
+                    isExcluido = false;
+                    break;
+                }
+            }
+            if(isExcluido){
+                this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProdutoVO[i]);
+            }
+        }
+        
         this.ejBProdutoSession.atualizarProduto(produtoVO);
+    }
+    
+     /**
+     * @common:operation
+     */
+    public ProdutoVO cadastrarProduto(ProdutoVO produtoVO, CategoriaProdutoVO[] listaCategoriaProdutoVO) throws Exception
+    {
+        produtoVO = this.ejBProdutoSession.atualizarProduto(produtoVO);
+        
+        ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO;
+        for(int i = 0; i < listaCategoriaProdutoVO.length; i++){
+            produtoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO();
+            produtoCategoriaProdutoVO.setId_produto(produtoVO.getId_produto());
+            produtoCategoriaProdutoVO.setId_categoria_produto(listaCategoriaProdutoVO[i].getId_categoria_produto());
+            this.ejBProdutoCategoriaProdutoSession.atualizarProdutoCategoriaProduto(produtoCategoriaProdutoVO);
+        }
+        
+        return produtoVO;
     }
     
     /**
@@ -121,3 +169,4 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
         return produtoVO;
     }
 } 
+

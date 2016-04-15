@@ -318,6 +318,17 @@
     </container-transaction>
     <container-transaction>
       <method>
+        <ejb-name>ProdutoCategoriaProdutoSession</ejb-name>
+        <method-intf>Remote</method-intf>
+        <method-name>atualizarProdutoCategoriaProduto</method-name>
+        <method-params>
+          <method-param>desafio.ProdutoCategoriaProdutoVO</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
         <ejb-name>ProdutoSession</ejb-name>
         <method-intf>Remote</method-intf>
         <method-name>obterProduto</method-name>

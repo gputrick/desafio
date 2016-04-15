@@ -1,5 +1,5 @@
 /**
-* This code was automatically generated at 16:43:59 on 12/04/2016
+* This code was automatically generated at 15:39:30 on 15/04/2016
 * by weblogic.ejb20.ejbc.Ejb2Rmi -- do not edit.
 *
 * @version WebLogic Server 8.1 SP6  Wed Jun 21 08:18:55 PDT 2006 781680 
@@ -13,8 +13,9 @@ extends    weblogic.ejb20.internal.StatelessEJBHome
 implements desafio.ejb.manager.ProdutoCategoriaProdutoSessionHome, weblogic.utils.PlatformConstants
 
 {
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_obterProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_atualizarProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_eliminarProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_obterProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
   
   
   public weblogic.ejb20.internal.MethodDescriptor md_ejbCreate;

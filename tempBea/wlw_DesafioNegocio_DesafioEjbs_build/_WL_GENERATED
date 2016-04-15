@@ -1,9 +1,9 @@
-#Tue Apr 12 16:44:00 GMT-03:00 2016
+#Fri Apr 15 15:39:31 GMT-03:00 2016
 desafio.ejb.manager.ProdutoSession=1445673380
-desafio.ejb.manager.ProdutoCategoriaProdutoSessionRemote=3664494284
-desafio.ejb.manager.ProdutoCategoriaProdutoSession=2082804360
+desafio.ejb.manager.ProdutoCategoriaProdutoSessionRemote=2230185867
+desafio.ejb.manager.ProdutoCategoriaProdutoSession=224829623
 WLS_RELEASE_BUILD_VERSION_8=8.1.6.0
-META-INF/ejb-jar.xml=1988765248
+META-INF/ejb-jar.xml=3003155593
 desafio.ejb.manager.CategoriaProdutoSessionHome=3174862643
 desafio.ejb.geral.CategoriaProdutoBean=3848029907
 desafio.ejb.geral.Produto=558083235

@@ -35,11 +35,10 @@ public abstract class ProdutoCategoriaProdutoBean
   {
     this.validaProdutoCategoriaProduto(produtoCategoriaProdutoVO);
     
-    this.setId_categoria_produto(new Long(produtoCategoriaProdutoVO.getCategoriaProduto().getId_categoria_produto()));
-    this.setId_produto(new Long(produtoCategoriaProdutoVO.getProduto().getId_produto()));
+    this.setId_categoria_produto(new Long(produtoCategoriaProdutoVO.getId_categoria_produto()));
+    this.setId_produto(new Long(produtoCategoriaProdutoVO.getId_produto()));
     
     this.setData(produtoCategoriaProdutoVO);
-
     return null;
   }
   
@@ -139,17 +138,6 @@ public abstract class ProdutoCategoriaProdutoBean
     public void validaProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException{
         if ((produtoCategoriaProdutoVO == null)){
             throw new DesafioException("Desafio003 - Produto Categoria Produto: Dados incompletos");
-        }
-        
-        if ((produtoCategoriaProdutoVO.getProduto() == null) ||
-        (produtoCategoriaProdutoVO.getProduto().getId_produto() <= 0)){
-            throw new DesafioException("Desafio004 - Produto Categoria Produto: Produto deve ser informado");
-        }
-        
-        if ((produtoCategoriaProdutoVO.getCategoriaProduto() == null) ||
-        (produtoCategoriaProdutoVO.getCategoriaProduto().getId_categoria_produto() <= 0)){
-        
-            throw new DesafioException("Desafio004 - Produto Categoria Produto: Categoria Produto deve ser informado");
         }
     }
   	/**

@@ -1,5 +1,5 @@
 /**
-* This code was automatically generated at 16:43:59 on 12/04/2016
+* This code was automatically generated at 15:39:30 on 15/04/2016
 * by weblogic.ejb20.ejbc.Ejb2Rmi -- do not edit.
 *
 * @version WebLogic Server 8.1 SP6  Wed Jun 21 08:18:55 PDT 2006 781680 
@@ -14,13 +14,13 @@ implements desafio.ejb.geral.ProdutoHome, weblogic.utils.PlatformConstants
 
 , weblogic.ejb.QueryLocalHome
 {
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_validaProduto_desafio_ProdutoVO;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getId_produto;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_setId_produto_L;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_getData;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_setData_desafio_ProdutoVO;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_getData;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_setNome_produto_S;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getNome_produto;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_validaProduto_desafio_ProdutoVO;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_setId_produto_L;
   
   
   public weblogic.ejb20.internal.MethodDescriptor md_ejbCreate_desafio_ProdutoVO;

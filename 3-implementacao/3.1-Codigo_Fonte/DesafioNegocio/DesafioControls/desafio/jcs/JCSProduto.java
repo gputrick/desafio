@@ -8,11 +8,13 @@ import javax.sql.RowSet;
 public interface JCSProduto extends Control
 { 
     
-    desafio.ProdutoVO obterProduto(desafio.ProdutoVO produtoVO) throws java.lang.Exception;
-    
     void eliminarProduto(desafio.ProdutoVO produtoVO) throws java.lang.Exception;
-    
-    void atualizarProduto(desafio.ProdutoVO produtoVO) throws java.lang.Exception;
 
     javax.sql.RowSet obterListaProduto(desafio.CategoriaProdutoVO categoriaProdutoVOFiltro, java.lang.String nomeProduto, com.bea.control.DatabaseFilter filter) throws java.lang.Exception;
+
+    void atualizarProduto(desafio.ProdutoVO produtoVO, desafio.ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVOAtualizada) throws java.lang.Exception;
+
+    desafio.ProdutoVO cadastrarProduto(desafio.ProdutoVO produtoVO, desafio.CategoriaProdutoVO[] listaCategoriaProdutoVO) throws java.lang.Exception;
+
+    desafio.ProdutoVO obterProduto(desafio.ProdutoVO produtoVO) throws java.lang.Exception;
 } 

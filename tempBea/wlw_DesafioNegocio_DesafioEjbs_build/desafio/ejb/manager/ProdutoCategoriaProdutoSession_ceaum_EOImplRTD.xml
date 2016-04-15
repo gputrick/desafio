@@ -15,22 +15,12 @@
 </lifecycle>
 
 <method
-    name="obterProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO)"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getHandle()"
-    requires-transaction="true"
->
-</method>
-<method
     name="remove()"
     requires-transaction="true"
 >
 </method>
 <method
-    name="getPrimaryKey()"
+    name="atualizarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO)"
     requires-transaction="true"
 >
 </method>
@@ -40,7 +30,22 @@
 >
 </method>
 <method
+    name="getHandle()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="getPrimaryKey()"
+    requires-transaction="true"
+>
+</method>
+<method
     name="eliminarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO)"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="obterProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO)"
     requires-transaction="true"
 >
 </method>

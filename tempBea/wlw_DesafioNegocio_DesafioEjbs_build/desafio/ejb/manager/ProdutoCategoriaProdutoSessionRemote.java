@@ -34,6 +34,13 @@ import weblogic.ejb.*;
 
 public interface ProdutoCategoriaProdutoSessionRemote extends EJBObject {
 
+
+  /**
+   * @param produtoVO
+   * @return ProdutoVO
+   * @throws DesafioException
+   */
+  public desafio.ProdutoCategoriaProdutoVO atualizarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException, javax.naming.NamingException;
   public void eliminarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
   public desafio.ProdutoCategoriaProdutoVO obterProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
 

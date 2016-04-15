@@ -10,6 +10,8 @@ public class ProdutoFormBean extends ActionForm
     private long idProdutoFiltro;
     private String nomeProdutoFiltro;
     private ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto;
+    private String displayPopup;
+    private String mensagem;
     
     public long getIdProdutoFiltro(){
         return this.idProdutoFiltro;
@@ -43,6 +45,22 @@ public class ProdutoFormBean extends ActionForm
     
     public void setProdutoVO(ProdutoVO produtoVO){
         this.produtoVO = produtoVO;
+    }
+    
+    public String getDisplayPopup(){
+        return this.displayPopup;
+    }
+    
+    public void setDisplayPopup(String displayPopup){
+        this.displayPopup = displayPopup;
+    }
+    
+    public String getMensagem(){
+        return this.mensagem;
+    }
+    
+    public void setMensagem(String mensagem){
+        this.mensagem = mensagem;
     }
 } 
 

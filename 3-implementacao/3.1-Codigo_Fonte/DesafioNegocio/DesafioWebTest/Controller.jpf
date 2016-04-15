@@ -23,22 +23,22 @@ import org.apache.struts.Globals;
  *   <property value="80" name="x"/>
  *   <property value="100" name="y"/>
  * </pageflow-object>
+ * <pageflow-object id="action:acVerificaUltimaPagina.do">
+ *   <property value="200" name="x"/>
+ *   <property value="40" name="y"/>
+ * </pageflow-object>
  * <pageflow-object id="page:index.jsp">
  *   <property value="240" name="x"/>
  *   <property value="100" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action:acVerificaUltimaPagina.do">
- *   <property value="200" name="x"/>
- *   <property value="180" name="y"/>
- * </pageflow-object>
  * <pageflow-object id="action-call:@page:errorException.jsp@#@action:acVerificaUltimaPagina.do@">
- *   <property value="96,130,130,164" name="elbowsX"/>
- *   <property value="33,33,173,173" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
+ *   <property value="404,320,320,236" name="elbowsX"/>
+ *   <property value="33,33,33,33" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="page:errorException.jsp">
- *   <property value="60" name="x"/>
+ *   <property value="440" name="x"/>
  *   <property value="40" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#index.jsp#@action:begin.do@">
@@ -46,6 +46,17 @@ import org.apache.struts.Globals;
  *   <property value="93,93,93,93" name="elbowsY"/>
  *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#previousPage#@action:acVerificaUltimaPagina.do@@">
+ *   <property value="140" name="x"/>
+ *   <property value="140" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#previousPage#@action:acVerificaUltimaPagina.do@">
+ *   <property value="200,200,188,176" name="elbowsX"/>
+ *   <property value="84,133,133,133" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="control:desafio.jcs.JCSProduto#jCSProduto">
@@ -89,10 +100,17 @@ public class Controller extends PageFlowController
      */
     protected Forward begin() throws Exception
     {
-        ProdutoVO produtoVO = new ProdutoVO();
-        produtoVO.setId_produto(3);
+        ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO();
         
-        CategoriaProdutoVO[] test = this.jCSCategoriaProduto.obterListaCategoriaProdutoPorProduto(produtoVO, null);
+        ProdutoVO produtoVO = new ProdutoVO();
+        produtoVO.setId_produto(13);
+        
+        produtoCategoriaProdutoVO.setId_produto(13);
+        produtoCategoriaProdutoVO.setId_categoria_produto(1);
+        
+        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO[1];
+        listaProdutoCategoriaProdutoVO[0] = produtoCategoriaProdutoVO;
+        //this.jCSProduto.atualizarProduto(produtoVO, listaProdutoCategoriaProdutoVO);
         
         return new Forward("success");
     }
@@ -115,4 +133,13 @@ public class Controller extends PageFlowController
     }   
     return new Forward( "errorPage" );   
   }
+
+    /**
+     * @jpf:action
+     * @jpf:forward name="success" return-to="previousPage"
+     */
+    protected Forward acVerificaUltimaPagina()
+    {
+        return new Forward("success");
+    }
 }

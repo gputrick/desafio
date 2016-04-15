@@ -1,5 +1,5 @@
 /**
-* This code was automatically generated at 16:43:59 on 12/04/2016
+* This code was automatically generated at 15:39:30 on 15/04/2016
 * by weblogic.ejb20.ejbc.Ejb2Rmi -- do not edit.
 *
 * @version WebLogic Server 8.1 SP6  Wed Jun 21 08:18:55 PDT 2006 781680 
@@ -17,14 +17,14 @@ implements desafio.ejb.manager.ProdutoCategoriaProdutoSessionRemote, weblogic.ut
   
   public ProdutoCategoriaProdutoSession_ceaum_EOImpl() {}
   
-  public desafio.ProdutoCategoriaProdutoVO obterProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO arg0)
-  throws java.rmi.RemoteException, desafio.infra.DesafioException
+  public desafio.ProdutoCategoriaProdutoVO atualizarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO arg0)
+  throws java.rmi.RemoteException, desafio.infra.DesafioException, javax.naming.NamingException
   {
     java.lang.Throwable __ee = null;
     
     weblogic.ejb20.internal.InvocationWrapper __wrap;
     weblogic.ejb20.internal.MethodDescriptor __md = 
-    ((ProdutoCategoriaProdutoSession_ceaum_HomeImpl)getEJBHome()).md_eo_obterProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
+    ((ProdutoCategoriaProdutoSession_ceaum_HomeImpl)getEJBHome()).md_eo_atualizarProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
     try {
       __wrap = super.preInvoke(
       __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
@@ -43,7 +43,7 @@ implements desafio.ejb.manager.ProdutoCategoriaProdutoSessionRemote, weblogic.ut
     try {
       __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
       
-      result =  __bean.obterProdutoCategoriaProduto( arg0);
+      result =  __bean.atualizarProdutoCategoriaProduto( arg0);
       
     } catch (java.lang.Throwable t) {
       __ee = t;
@@ -61,10 +61,12 @@ implements desafio.ejb.manager.ProdutoCategoriaProdutoSessionRemote, weblogic.ut
       } 
       else if (e instanceof desafio.infra.DesafioException) {
         throw (desafio.infra.DesafioException) e;
+      }else if (e instanceof javax.naming.NamingException) {
+        throw (javax.naming.NamingException) e;
       }
       else {
         throw new java.rmi.UnexpectedException("Unexpected exception in " +
-        "desafio.ejb.manager.ProdutoCategoriaProdutoSession.obterProdutoCategoriaProduto():" + EOL +	
+        "desafio.ejb.manager.ProdutoCategoriaProdutoSession.atualizarProdutoCategoriaProduto():" + EOL +	
         weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
       } 
     }
@@ -123,6 +125,60 @@ implements desafio.ejb.manager.ProdutoCategoriaProdutoSessionRemote, weblogic.ut
       } 
     }
     // No return result
+  }
+  
+  public desafio.ProdutoCategoriaProdutoVO obterProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO arg0)
+  throws java.rmi.RemoteException, desafio.infra.DesafioException
+  {
+    java.lang.Throwable __ee = null;
+    
+    weblogic.ejb20.internal.InvocationWrapper __wrap;
+    weblogic.ejb20.internal.MethodDescriptor __md = 
+    ((ProdutoCategoriaProdutoSession_ceaum_HomeImpl)getEJBHome()).md_eo_obterProdutoCategoriaProduto_desafio_ProdutoCategoriaProdutoVO;
+    try {
+      __wrap = super.preInvoke(
+      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
+    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
+      __wrap = super.preInvoke(
+      __md, new weblogic.ejb20.internal.EJBContextHandler(
+      __md, new Object [] {  arg0}));          
+    }
+    
+    ProdutoCategoriaProdutoSession_ceaum_Intf __bean = (ProdutoCategoriaProdutoSession_ceaum_Intf) __wrap.getBean();
+    
+    desafio.ProdutoCategoriaProdutoVO result = null;
+    
+    int __oldState = __bean.__WL_getMethodState();
+    
+    try {
+      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
+      
+      result =  __bean.obterProdutoCategoriaProduto( arg0);
+      
+    } catch (java.lang.Throwable t) {
+      __ee = t;
+    }
+    finally {
+      __bean.__WL_setMethodState(__oldState);
+    }
+    
+    try {
+      super.postInvoke(__wrap, __ee);
+      
+    } catch (java.lang.Exception e) {
+      if (e instanceof java.rmi.RemoteException) {
+        throw (java.rmi.RemoteException)e;
+      } 
+      else if (e instanceof desafio.infra.DesafioException) {
+        throw (desafio.infra.DesafioException) e;
+      }
+      else {
+        throw new java.rmi.UnexpectedException("Unexpected exception in " +
+        "desafio.ejb.manager.ProdutoCategoriaProdutoSession.obterProdutoCategoriaProduto():" + EOL +	
+        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
+      } 
+    }
+    return result;
   }
   
   

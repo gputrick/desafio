@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /Controller.jpf on Thu Apr 14 16:32:59 GMT-03:00 2016 -->
+<!-- Generated from /Controller.jpf on Fri Apr 15 16:27:50 GMT-03:00 2016 -->
 <struts-config>
   <form-beans/>
   <global-exceptions/>
   <global-forwards/>
   <action-mappings>
+    <action validate="false" scope="request" type="Controller" path="/acVerificaUltimaPagina">
+      <forward className="com.bea.wlw.netui.pageflow.config.PageFlowActionForward" path="previousPage" name="success">
+        <set-property value="true" property="returnToPage"/>
+      </forward>
+    </action>
     <action validate="false" scope="request" type="Controller" path="/begin">
       <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
         <set-property value="true" property="isHandlerMethod"/>
@@ -16,7 +21,6 @@
     </action>
   </action-mappings>
   <controller className="com.bea.wlw.netui.pageflow.config.PageFlowControllerConfig" multipartClass="com.bea.wlw.netui.pageflow.upload.PageFlowMultipartRequestHandler" inputForward="true" processorClass="com.bea.wlw.netui.pageflow.PageFlowRequestProcessor">
-    <set-property value="true" property="isReturnToPageDisabled"/>
     <set-property value="true" property="isReturnToActionDisabled"/>
   </controller>
 </struts-config>

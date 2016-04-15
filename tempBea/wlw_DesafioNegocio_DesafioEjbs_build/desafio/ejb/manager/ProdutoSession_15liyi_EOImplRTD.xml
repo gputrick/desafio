@@ -15,32 +15,7 @@
 </lifecycle>
 
 <method
-    name="remove()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="isIdentical(javax.ejb.EJBObject)"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getPrimaryKey()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="addProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO,desafio.ProdutoVO)"
-    requires-transaction="true"
->
-</method>
-<method
-    name="delProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO,desafio.ProdutoVO)"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getEJBHome()"
+    name="atualizarProduto(desafio.ProdutoVO)"
     requires-transaction="true"
 >
 </method>
@@ -50,7 +25,12 @@
 >
 </method>
 <method
-    name="atualizarProduto(desafio.ProdutoVO)"
+    name="remove()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="getPrimaryKey()"
     requires-transaction="true"
 >
 </method>
@@ -60,7 +40,27 @@
 >
 </method>
 <method
+    name="delProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO,desafio.ProdutoVO)"
+    requires-transaction="true"
+>
+</method>
+<method
     name="eliminarProduto(desafio.ProdutoVO)"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="addProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO,desafio.ProdutoVO)"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="getEJBHome()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="isIdentical(javax.ejb.EJBObject)"
     requires-transaction="true"
 >
 </method>
