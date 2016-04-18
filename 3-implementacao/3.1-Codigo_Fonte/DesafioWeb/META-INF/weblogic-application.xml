@@ -4,6 +4,9 @@
       <start-mdbs-with-application>False</start-mdbs-with-application>
     </ejb>
 
+    <security>
+    </security>
+
     <application-param>
       <param-name>webapp.encoding.default</param-name>
       <param-value>UTF-8</param-value>

@@ -31,6 +31,6 @@
       </components>
     </project>
   </projects>
-  <node name="roles" />
+  <roles />
 </application>
 

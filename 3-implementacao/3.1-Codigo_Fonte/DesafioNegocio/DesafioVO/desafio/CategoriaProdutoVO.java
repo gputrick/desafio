@@ -35,7 +35,7 @@ public class CategoriaProdutoVO implements Serializable
         return this.categoriaPaiVO;
     }
     
-    public void setCategoriaPaiVO(CategoriaProdutoVO categoriaPai){
+    public void setCategoriaPaiVO(CategoriaProdutoVO categoriaPaiVO){
         this.categoriaPaiVO = categoriaPaiVO;
     }
     

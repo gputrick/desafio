@@ -16,6 +16,21 @@
 </lifecycle>
 
 <method
+    name="getPrimaryKey()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="getHandle()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="confirmDeployment(java.lang.String)"
+    requires-transaction="true"
+>
+</method>
+<method
     name="getEJBHome()"
     requires-transaction="true"
 >
@@ -26,27 +41,12 @@
 >
 </method>
 <method
-    name="getPrimaryKey()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="confirmDeployment(java.lang.String)"
+    name="remove()"
     requires-transaction="true"
 >
 </method>
 <method
     name="invoke(com.bea.wlw.runtime.core.request.Request)"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getHandle()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="remove()"
     requires-transaction="true"
 >
 </method>

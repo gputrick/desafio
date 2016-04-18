@@ -24,511 +24,545 @@ import org.apache.struts.action.ActionForm;
  * <view-properties>
  * <pageflow-object id="pageflow:/desafio/categoriaProduto/manter/JPFManterCategoriaProdutoController.jpf"/>
  * <pageflow-object id="action:begin.do">
- *   <property value="1560" name="x"/>
- *   <property value="60" name="y"/>
+ *   <property value="340" name="x"/>
+ *   <property value="760" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acPaginacaoCategoriaProduto.do">
- *   <property value="1080" name="x"/>
- *   <property value="260" name="y"/>
+ *   <property value="480" name="x"/>
+ *   <property value="240" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action:acPaginacaoSubCategoriaProduto.do">
- *   <property value="2020" name="x"/>
- *   <property value="180" name="y"/>
+ * <pageflow-object id="action:acPaginacaoSubCategoria.do">
+ *   <property value="2220" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acObterListaCategoriaProduto.do#desafio.categoriaProduto.CategoriaProdutoFormBean">
- *   <property value="1720" name="x"/>
- *   <property value="660" name="y"/>
+ *   <property value="540" name="x"/>
+ *   <property value="760" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acEliminarCategoriaProduto.do">
- *   <property value="1700" name="x"/>
- *   <property value="560" name="y"/>
+ *   <property value="840" name="x"/>
+ *   <property value="660" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acSelecionaCategoriaProduto.do">
- *   <property value="1440" name="x"/>
- *   <property value="260" name="y"/>
+ *   <property value="500" name="x"/>
+ *   <property value="440" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acIrParaVisualizarCategoriaProduto.do">
- *   <property value="1420" name="x"/>
- *   <property value="360" name="y"/>
+ *   <property value="480" name="x"/>
+ *   <property value="540" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:acIrParaVisualizarCategoriaPai.do">
+ *   <property value="90" name="x"/>
+ *   <property value="70" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean">
- *   <property value="1740" name="x"/>
- *   <property value="260" name="y"/>
+ *   <property value="1040" name="x"/>
+ *   <property value="360" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean">
- *   <property value="220" name="x"/>
- *   <property value="760" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="action:acCadastrarCategoriaProduto.do">
- *   <property value="840" name="x"/>
- *   <property value="260" name="y"/>
+ *   <property value="540" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acIrParaAlterarCategoriaProduto.do">
- *   <property value="940" name="x"/>
- *   <property value="560" name="y"/>
+ *   <property value="1460" name="x"/>
+ *   <property value="660" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean">
- *   <property value="620" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="1560" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acVoltarAPaginaAnterior.do">
- *   <property value="420" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="740" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acDesvincularSubCategoria.do">
- *   <property value="1580" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="1180" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acIrParaConsultarCategoriaProduto.do">
- *   <property value="1740" name="x"/>
- *   <property value="40" name="y"/>
+ *   <property value="480" name="x"/>
+ *   <property value="660" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acAbrirPopupVincularSubCategoria.do">
- *   <property value="860" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="960" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acVinculaSubCategoria.do">
- *   <property value="1080" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="1900" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acApagarMesagem.do">
- *   <property value="1240" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="2060" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acFechaPopup.do">
  *   <property value="1740" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acAlterarCategoriaProduto.do">
- *   <property value="2140" name="x"/>
- *   <property value="760" name="y"/>
+ *   <property value="1360" name="x"/>
+ *   <property value="860" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acIrParaCadastrarCategoriaProduto.do">
- *   <property value="1920" name="x"/>
- *   <property value="660" name="y"/>
+ *   <property value="1620" name="x"/>
+ *   <property value="160" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acSelecionaCategoriaProduto.do@">
- *   <property value="1524,1500,1500,1476" name="elbowsX"/>
- *   <property value="153,153,253,253" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acEliminarCategoriaProduto.do@">
- *   <property value="1596,1630,1630,1664" name="elbowsX"/>
- *   <property value="164,164,553,553" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaAlterarCategoriaProduto.do@">
- *   <property value="1524,1250,1250,976" name="elbowsX"/>
- *   <property value="164,164,553,553" name="elbowsY"/>
- *   <property value="West_2" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ * <pageflow-object id="action:acCadastrarCategoriaProduto.do">
+ *   <property value="280" name="x"/>
+ *   <property value="440" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acObterListaCategoriaProduto.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1596,1640,1640,1684" name="elbowsX"/>
- *   <property value="164,164,653,653" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
+ *   <property value="744,660,660,576" name="elbowsX"/>
+ *   <property value="144,144,742,742" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaCadastrarCategoriaProduto.do@">
+ *   <property value="816,1200,1200,1584" name="elbowsX"/>
+ *   <property value="133,133,153,153" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acEliminarCategoriaProduto.do@">
+ *   <property value="780,780,840,840" name="elbowsX"/>
+ *   <property value="184,400,400,617" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acPaginacaoCategoriaProduto.do@">
- *   <property value="1524,1320,1320,1116" name="elbowsX"/>
- *   <property value="164,164,253,253" name="elbowsY"/>
+ *   <property value="744,630,630,516" name="elbowsX"/>
+ *   <property value="144,144,233,233" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaAlterarCategoriaProduto.do@">
+ *   <property value="816,1120,1120,1424" name="elbowsX"/>
+ *   <property value="144,144,642,642" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acSelecionaCategoriaProduto.do@">
+ *   <property value="744,640,640,536" name="elbowsX"/>
+ *   <property value="133,133,433,433" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="page:consultarCategoriaProduto.jsp">
- *   <property value="1560" name="x"/>
- *   <property value="160" name="y"/>
+ *   <property value="780" name="x"/>
+ *   <property value="140" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="page:../errorException.jsp">
- *   <property value="100" name="x"/>
- *   <property value="860" name="y"/>
+ *   <property value="200" name="x"/>
+ *   <property value="960" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaVisualizarCategoriaPai.do@">
+ *   <property value="1004,565,565,126" name="elbowsX"/>
+ *   <property value="542,542,63,63" name="elbowsY"/>
+ *   <property value="West_0" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaAlterarCategoriaProduto.do@">
- *   <property value="1704,1340,1340,976" name="elbowsX"/>
- *   <property value="453,453,542,542" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_0" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1740,1740,1740,1740" name="elbowsX"/>
- *   <property value="417,360,360,304" name="elbowsY"/>
- *   <property value="North_1" name="fromPort"/>
- *   <property value="South_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaConsultarCategoriaProduto.do@">
- *   <property value="1729,1729,1740,1740" name="elbowsX"/>
- *   <property value="417,250,250,84" name="elbowsY"/>
- *   <property value="North_0" name="fromPort"/>
- *   <property value="South_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoriaProduto.do@">
- *   <property value="1776,1880,1880,1984" name="elbowsX"/>
- *   <property value="453,453,173,173" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
+ *   <property value="1076,1250,1250,1424" name="elbowsX"/>
+ *   <property value="564,564,653,653" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
+ *   <property value="1076,1630,1630,2184" name="elbowsX"/>
+ *   <property value="553,553,842,842" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acEliminarCategoriaProduto.do@">
- *   <property value="1740,1740,1700,1700" name="elbowsX"/>
- *   <property value="504,510,510,517" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="page:visualizarCategoriaProduto.jsp">
- *   <property value="1740" name="x"/>
- *   <property value="460" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="action:acPaginacaoSubCategoria.do">
- *   <property value="1400" name="x"/>
- *   <property value="760" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
- *   <property value="1156,1260,1260,1364" name="elbowsX"/>
- *   <property value="664,664,753,753" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acAlterarCategoriaProduto.do@">
- *   <property value="1156,1630,1630,2104" name="elbowsX"/>
- *   <property value="653,653,753,753" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
- *   <property value="1120,1120,1080,1080" name="elbowsX"/>
- *   <property value="704,710,710,717" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
- *   <property value="1156,1180,1180,1204" name="elbowsX"/>
- *   <property value="664,664,753,753" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acAbrirPopupVincularSubCategoria.do@">
- *   <property value="1084,990,990,896" name="elbowsX"/>
- *   <property value="664,664,753,753" name="elbowsY"/>
+ *   <property value="1004,940,940,876" name="elbowsX"/>
+ *   <property value="564,564,653,653" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1040,1040,1029,1029" name="elbowsX"/>
+ *   <property value="517,460,460,404" name="elbowsY"/>
+ *   <property value="North_1" name="fromPort"/>
+ *   <property value="South_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaConsultarCategoriaProduto.do@">
+ *   <property value="1004,760,760,516" name="elbowsX"/>
+ *   <property value="564,564,653,653" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:visualizarCategoriaProduto.jsp">
+ *   <property value="1040" name="x"/>
+ *   <property value="560" name="y"/>
+ * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1084,670,670,256" name="elbowsX"/>
- *   <property value="664,664,753,753" name="elbowsY"/>
+ *   <property value="1444,1010,1010,576" name="elbowsX"/>
+ *   <property value="764,764,853,853" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acAlterarCategoriaProduto.do@">
+ *   <property value="1444,1420,1420,1396" name="elbowsX"/>
+ *   <property value="764,764,853,853" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVoltarAPaginaAnterior.do@">
- *   <property value="1084,770,770,456" name="elbowsX"/>
- *   <property value="653,653,753,753" name="elbowsY"/>
+ *   <property value="1444,1110,1110,776" name="elbowsX"/>
+ *   <property value="753,753,853,853" name="elbowsY"/>
  *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1084,870,870,656" name="elbowsX"/>
- *   <property value="664,664,753,753" name="elbowsY"/>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acDesvincularSubCategoria.do@">
+ *   <property value="1444,1330,1330,1216" name="elbowsX"/>
+ *   <property value="764,764,842,842" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ *   <property value="East_0" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
- *   <property value="1156,1430,1430,1704" name="elbowsX"/>
- *   <property value="664,664,753,753" name="elbowsY"/>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
+ *   <property value="1516,1690,1690,1864" name="elbowsX"/>
+ *   <property value="764,764,853,853" name="elbowsY"/>
  *   <property value="East_2" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acDesvincularSubCategoria.do@">
- *   <property value="1156,1350,1350,1544" name="elbowsX"/>
- *   <property value="653,653,753,753" name="elbowsY"/>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
+ *   <property value="1516,1850,1850,2184" name="elbowsX"/>
+ *   <property value="764,764,853,853" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1480,1480,1549,1549" name="elbowsX"/>
+ *   <property value="804,810,810,817" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
+ *   <property value="1516,1770,1770,2024" name="elbowsX"/>
+ *   <property value="753,753,853,853" name="elbowsY"/>
  *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="page:alterarCategoriaProduto.jsp">
- *   <property value="1120" name="x"/>
- *   <property value="660" name="y"/>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
+ *   <property value="1516,1610,1610,1704" name="elbowsX"/>
+ *   <property value="764,764,853,853" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="page:cadastrarCategoriaProduto.jsp">
- *   <property value="1940" name="x"/>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acAbrirPopupVincularSubCategoria.do@">
+ *   <property value="1444,1220,1220,996" name="elbowsX"/>
+ *   <property value="764,764,853,853" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:alterarCategoriaProduto.jsp">
+ *   <property value="1480" name="x"/>
  *   <property value="760" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="forward:path#success#consultarCategoriaProduto.jsp#@action:begin.do@">
- *   <property value="1560,1560,1560,1560" name="elbowsX"/>
- *   <property value="104,110,110,117" name="elbowsY"/>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acCadastrarCategoriaProduto.do@">
+ *   <property value="1584,950,950,316" name="elbowsX"/>
+ *   <property value="264,264,433,433" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acAbrirPopupVincularSubCategoria.do@">
+ *   <property value="1584,1290,1290,996" name="elbowsX"/>
+ *   <property value="253,253,842,842" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
+ *   <property value="1656,1760,1760,1864" name="elbowsX"/>
+ *   <property value="253,253,842,842" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
+ *   <property value="1656,1840,1840,2024" name="elbowsX"/>
+ *   <property value="264,264,842,842" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
+ *   <property value="1656,1680,1680,1704" name="elbowsX"/>
+ *   <property value="264,264,842,842" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1620,1620,1560,1560" name="elbowsX"/>
+ *   <property value="304,560,560,817" name="elbowsY"/>
  *   <property value="South_1" name="fromPort"/>
  *   <property value="North_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1584,1080,1080,576" name="elbowsX"/>
+ *   <property value="264,264,842,842" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acDesvincularSubCategoria.do@">
+ *   <property value="1584,1400,1400,1216" name="elbowsX"/>
+ *   <property value="264,264,853,853" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acVoltarAPaginaAnterior.do@">
+ *   <property value="1584,1180,1180,776" name="elbowsX"/>
+ *   <property value="264,264,842,842" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
+ *   <property value="1656,1920,1920,2184" name="elbowsX"/>
+ *   <property value="264,264,842,842" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="page:cadastrarCategoriaProduto.jsp">
+ *   <property value="1620" name="x"/>
+ *   <property value="260" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#consultarCategoriaProduto.jsp#@action:begin.do@">
+ *   <property value="376,560,560,744" name="elbowsX"/>
+ *   <property value="742,742,144,144" name="elbowsY"/>
+ *   <property value="East_0" name="fromPort"/>
+ *   <property value="West_2" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acPaginacaoCategoriaProduto.do@@">
- *   <property value="1080" name="x"/>
- *   <property value="360" name="y"/>
+ *   <property value="480" name="x"/>
+ *   <property value="340" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="forward:return-to#success#currentPage#@action:acPaginacaoCategoriaProduto.do@">
- *   <property value="1080,1080,1080,1080" name="elbowsX"/>
- *   <property value="304,310,310,317" name="elbowsY"/>
+ *   <property value="480,480,480,480" name="elbowsX"/>
+ *   <property value="284,290,290,297" name="elbowsY"/>
  *   <property value="South_1" name="fromPort"/>
  *   <property value="North_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acPaginacaoSubCategoriaProduto.do@@">
- *   <property value="140" name="x"/>
- *   <property value="140" name="y"/>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acPaginacaoSubCategoria.do@@">
+ *   <property value="2180" name="x"/>
+ *   <property value="960" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acPaginacaoSubCategoriaProduto.do@">
- *   <property value="1864,1020,1020,176" name="elbowsX"/>
- *   <property value="542,542,133,133" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acPaginacaoSubCategoria.do@">
+ *   <property value="2220,2220,2180,2180" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#consultarCategoriaProduto.jsp#@action:acObterListaCategoriaProduto.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1684,1640,1640,1596" name="elbowsX"/>
- *   <property value="653,653,164,164" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_2" name="toPort"/>
+ *   <property value="576,660,660,744" name="elbowsX"/>
+ *   <property value="742,742,144,144" name="elbowsY"/>
+ *   <property value="East_0" name="fromPort"/>
+ *   <property value="West_2" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#acObterListaCategoriaProduto.do#@action:acEliminarCategoriaProduto.do@">
- *   <property value="1700,1700,1720,1720" name="elbowsX"/>
- *   <property value="604,610,610,617" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
+ *   <property value="804,690,690,576" name="elbowsX"/>
+ *   <property value="653,653,753,753" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#acIrParaVisualizarCategoriaProduto.do#@action:acSelecionaCategoriaProduto.do@">
- *   <property value="1440,1440,1420,1420" name="elbowsX"/>
- *   <property value="304,310,310,317" name="elbowsY"/>
+ *   <property value="500,500,480,480" name="elbowsX"/>
+ *   <property value="484,490,490,497" name="elbowsY"/>
  *   <property value="South_1" name="fromPort"/>
  *   <property value="North_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#visualizarCategoriaProduto.jsp#@action:acIrParaVisualizarCategoriaProduto.do@">
- *   <property value="1456,1580,1580,1704" name="elbowsX"/>
- *   <property value="364,364,453,453" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
+ *   <property value="516,760,760,1004" name="elbowsX"/>
+ *   <property value="522,522,553,553" name="elbowsY"/>
+ *   <property value="East_0" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
+ * <pageflow-object id="forward:path#success#acIrParaVisualizarCategoriaProduto.do#@action:acIrParaVisualizarCategoriaPai.do@">
+ *   <property value="126,285,285,444" name="elbowsX"/>
+ *   <property value="74,74,522,522" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
  * <pageflow-object id="forward:path#success#visualizarCategoriaProduto.jsp#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1729,1729,1729,1729" name="elbowsX"/>
- *   <property value="304,360,360,417" name="elbowsY"/>
- *   <property value="South_0" name="fromPort"/>
- *   <property value="North_0" name="toPort"/>
+ *   <property value="1040,1040,1040,1040" name="elbowsX"/>
+ *   <property value="404,460,460,517" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@@">
- *   <property value="240" name="x"/>
- *   <property value="860" name="y"/>
+ *   <property value="560" name="x"/>
+ *   <property value="960" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="forward:return-to#success#currentPage#@action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="220,220,204,204" name="elbowsX"/>
- *   <property value="804,814,814,853" name="elbowsY"/>
+ *   <property value="540,540,524,524" name="elbowsX"/>
+ *   <property value="904,914,914,953" name="elbowsY"/>
  *   <property value="South_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#alterarCategoriaProduto.jsp#@action:acIrParaAlterarCategoriaProduto.do@">
- *   <property value="976,1030,1030,1084" name="elbowsX"/>
- *   <property value="564,564,642,642" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
- *   <property value="West_0" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@@">
- *   <property value="660" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="620,620,622,624" name="elbowsX"/>
- *   <property value="804,853,853,853" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#previousPage#@action:acVoltarAPaginaAnterior.do@@">
- *   <property value="420" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#previousPage#@action:acVoltarAPaginaAnterior.do@">
- *   <property value="420,420,420,420" name="elbowsX"/>
- *   <property value="804,810,810,817" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acDesvincularSubCategoria.do@@">
- *   <property value="1540" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acDesvincularSubCategoria.do@">
- *   <property value="1580,1580,1540,1540" name="elbowsX"/>
- *   <property value="804,810,810,817" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="forward:path#success#begin.do#@action:acIrParaConsultarCategoriaProduto.do@">
- *   <property value="1704,1650,1650,1596" name="elbowsX"/>
- *   <property value="33,33,53,53" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acAbrirPopupVincularSubCategoria.do@@">
- *   <property value="900" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acAbrirPopupVincularSubCategoria.do@">
- *   <property value="860,860,862,864" name="elbowsX"/>
- *   <property value="804,853,853,853" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acVinculaSubCategoria.do@@">
- *   <property value="1100" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acVinculaSubCategoria.do@">
- *   <property value="1080,1080,1064,1064" name="elbowsX"/>
- *   <property value="804,814,814,853" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acApagarMesagem.do@@">
- *   <property value="1280" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acApagarMesagem.do@">
- *   <property value="1240,1240,1242,1244" name="elbowsX"/>
- *   <property value="804,853,853,853" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acFechaPopup.do@@">
- *   <property value="1780" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acFechaPopup.do@">
- *   <property value="1740,1740,1742,1744" name="elbowsX"/>
- *   <property value="804,853,853,853" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="forward:path#success#acIrParaVisualizarCategoriaProduto.do#@action:acAlterarCategoriaProduto.do@">
- *   <property value="2104,1780,1780,1456" name="elbowsX"/>
- *   <property value="753,753,353,353" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#error#currentPage#@action:acAlterarCategoriaProduto.do@@">
- *   <property value="2160" name="x"/>
- *   <property value="860" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#error#currentPage#@action:acAlterarCategoriaProduto.do@">
- *   <property value="2140,2140,2124,2124" name="elbowsX"/>
- *   <property value="804,814,814,853" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- *   <property value="error" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="forward:path#success#cadastrarCategoriaProduto.jsp#@action:acIrParaCadastrarCategoriaProduto.do@">
- *   <property value="1920,1920,1940,1940" name="elbowsX"/>
+ *   <property value="1460,1460,1480,1480" name="elbowsX"/>
  *   <property value="704,710,710,717" name="elbowsY"/>
  *   <property value="South_1" name="fromPort"/>
  *   <property value="North_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
- * <pageflow-object id="control:desafio.jcs.JCSCategoriaProduto#jCSCategoriaProduto">
- *   <property value="780" name="x"/>
- *   <property value="860" name="y"/>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@@">
+ *   <property value="1580" name="x"/>
+ *   <property value="960" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acAbrirPopupVincularSubCategoria.do@">
- *   <property value="1904,1400,1400,896" name="elbowsX"/>
- *   <property value="753,753,742,742" name="elbowsY"/>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1560,1560,1580,1580" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#previousPage#@action:acVoltarAPaginaAnterior.do@@">
+ *   <property value="740" name="x"/>
+ *   <property value="960" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#previousPage#@action:acVoltarAPaginaAnterior.do@">
+ *   <property value="740,740,740,740" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acDesvincularSubCategoria.do@@">
+ *   <property value="1180" name="x"/>
+ *   <property value="960" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acDesvincularSubCategoria.do@">
+ *   <property value="1180,1180,1180,1180" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#begin.do#@action:acIrParaConsultarCategoriaProduto.do@">
+ *   <property value="444,410,410,376" name="elbowsX"/>
+ *   <property value="653,653,753,753" name="elbowsY"/>
  *   <property value="West_1" name="fromPort"/>
- *   <property value="East_0" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
- *   <property value="1904,1510,1510,1116" name="elbowsX"/>
- *   <property value="742,742,753,753" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
+ *   <property value="success" name="label"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
- *   <property value="1904,1590,1590,1276" name="elbowsX"/>
- *   <property value="742,742,753,753" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acAbrirPopupVincularSubCategoria.do@@">
+ *   <property value="980" name="x"/>
+ *   <property value="960" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1904,1280,1280,656" name="elbowsX"/>
- *   <property value="742,742,742,742" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_0" name="toPort"/>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acAbrirPopupVincularSubCategoria.do@">
+ *   <property value="960,960,980,980" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1904,1080,1080,256" name="elbowsX"/>
- *   <property value="742,742,742,742" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_0" name="toPort"/>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acVinculaSubCategoria.do@@">
+ *   <property value="1860" name="x"/>
+ *   <property value="960" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
- *   <property value="1904,1670,1670,1436" name="elbowsX"/>
- *   <property value="742,742,753,753" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acVinculaSubCategoria.do@">
+ *   <property value="1900,1900,1860,1860" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acDesvincularSubCategoria.do@">
- *   <property value="1904,1760,1760,1616" name="elbowsX"/>
- *   <property value="742,742,753,753" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acApagarMesagem.do@@">
+ *   <property value="2080" name="x"/>
+ *   <property value="960" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acVoltarAPaginaAnterior.do@">
- *   <property value="1904,1180,1180,456" name="elbowsX"/>
- *   <property value="742,742,742,742" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_0" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
- *   <property value="1904,1840,1840,1776" name="elbowsX"/>
- *   <property value="742,742,753,753" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaCadastrarCategoriaProduto.do@">
- *   <property value="1596,1740,1740,1884" name="elbowsX"/>
- *   <property value="153,153,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acApagarMesagem.do@">
+ *   <property value="2060,2060,2044,2044" name="elbowsX"/>
+ *   <property value="904,914,914,953" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
+ *   <property value="success" name="label"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acCadastrarCategoriaProduto.do@">
- *   <property value="1904,1390,1390,876" name="elbowsX"/>
- *   <property value="742,742,253,253" name="elbowsY"/>
- *   <property value="West_0" name="fromPort"/>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acFechaPopup.do@@">
+ *   <property value="1760" name="x"/>
+ *   <property value="960" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acFechaPopup.do@">
+ *   <property value="1740,1740,1760,1760" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#acIrParaVisualizarCategoriaProduto.do#@action:acAlterarCategoriaProduto.do@">
+ *   <property value="1324,920,920,516" name="elbowsX"/>
+ *   <property value="853,853,533,533" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#error#currentPage#@action:acAlterarCategoriaProduto.do@@">
+ *   <property value="1380" name="x"/>
+ *   <property value="960" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#error#currentPage#@action:acAlterarCategoriaProduto.do@">
+ *   <property value="1360,1360,1380,1380" name="elbowsX"/>
+ *   <property value="904,910,910,917" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="error" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#cadastrarCategoriaProduto.jsp#@action:acIrParaCadastrarCategoriaProduto.do@">
+ *   <property value="1620,1620,1620,1620" name="elbowsX"/>
+ *   <property value="204,210,210,217" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="forward:path#success#acIrParaVisualizarCategoriaProduto.do#@action:acCadastrarCategoriaProduto.do@">
- *   <property value="876,1130,1130,1384" name="elbowsX"/>
- *   <property value="264,264,353,353" name="elbowsY"/>
+ *   <property value="316,380,380,444" name="elbowsX"/>
+ *   <property value="444,444,533,533" name="elbowsY"/>
  *   <property value="East_2" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="return-to:@forward:return-to#error#currentPage#@action:acCadastrarCategoriaProduto.do@@">
+ *   <property value="240" name="x"/>
+ *   <property value="540" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#error#currentPage#@action:acCadastrarCategoriaProduto.do@">
+ *   <property value="280,280,240,240" name="elbowsX"/>
+ *   <property value="484,490,490,497" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="error" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="control:desafio.jcs.JCSCategoriaProduto#jCSCategoriaProduto">
+ *   <property value="360" name="x"/>
+ *   <property value="960" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:acSelecionaSubCategoria.do">
  *   <property value="60" name="x"/>
  *   <property value="40" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="forward:return-to#error#currentPage#@action:acCadastrarCategoriaProduto.do@">
- *   <property value="804,450,450,96" name="elbowsX"/>
- *   <property value="253,253,33,33" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
+ * <pageflow-object id="forward:path#success#acIrParaVisualizarCategoriaProduto.do#@action:acSelecionaSubCategoria.do@">
+ *   <property value="96,270,270,444" name="elbowsX"/>
+ *   <property value="44,44,522,522" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="action:acSelecionarSubCategoria.do">
+ *   <property value="120" name="x"/>
+ *   <property value="100" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acSelecionarSubCategoria.do@">
+ *   <property value="1004,580,580,156" name="elbowsX"/>
+ *   <property value="542,542,93,93" name="elbowsY"/>
+ *   <property value="West_0" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
- *   <property value="error" name="label"/>
  * </pageflow-object>
  * </view-properties>
  * ::
@@ -595,7 +629,7 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
      */
-    protected Forward acPaginacaoSubCategoriaProduto()
+    protected Forward acPaginacaoSubCategoria()
     {
         this.sortFilterService = SortFilterService.getInstance(getRequest()); 
         return new Forward("success");
@@ -641,6 +675,20 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
         }
         return new Forward("success");    
       }		
+    
+    /**
+    * @jpf:action
+    * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"
+    * @jpf:catch type="Exception" method="exceptionHandler"
+    */
+      protected Forward acSelecionaSubCategoria() throws Exception {      
+        String id_categoria_produto = SortFilterService.decodeUniqueIdentifier(getRequest(), this.gridListaSubCategoria, "id_categoria_produto");
+        if(id_categoria_produto != null){
+            this.categoriaProdutoFormBean.setCategoriaProdutoVO(new CategoriaProdutoVO());
+            this.categoriaProdutoFormBean.getCategoriaProdutoVO().setId_categoria_produto(Long.parseLong(id_categoria_produto));
+        }
+        return new Forward("success");    
+      }	
       
     /**
       * @jpf:exception-handler
@@ -667,11 +715,35 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     */
     protected Forward acIrParaVisualizarCategoriaProduto() throws Exception
     {
-        this.categoriaProdutoFormBean.setCategoriaProdutoVO(this.jCSCategoriaProduto.obterCategoriaProduto(this.categoriaProdutoFormBean.getCategoriaProdutoVO()));
+        CategoriaProdutoVO categoriaProdutoVO = this.jCSCategoriaProduto.obterCategoriaProduto(this.categoriaProdutoFormBean.getCategoriaProdutoVO());
+        
+        CategoriaProdutoVO categoriaPaiVO = new CategoriaProdutoVO();
+        if(categoriaProdutoVO.getId_categoria_pai() > 0){
+            categoriaPaiVO.setId_categoria_produto(categoriaProdutoVO.getId_categoria_pai());
+            categoriaProdutoVO.setCategoriaPaiVO(this.jCSCategoriaProduto.obterCategoriaProduto(categoriaPaiVO));
+        }else{
+            categoriaPaiVO.setNome_categoria_produto("Não possui categoria pai.");
+            categoriaProdutoVO.setCategoriaPaiVO(categoriaPaiVO);
+        }
         
         this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaSubCategoria = this.jCSCategoriaProduto.obterListaSubCategoria(this.categoriaProdutoFormBean.getCategoriaProdutoVO(), null , this.sortFilterService.getDatabaseFilter(this.gridListaSubCategoria));
+        this.listaSubCategoria = this.jCSCategoriaProduto.obterListaSubCategoria(categoriaProdutoVO, null , this.sortFilterService.getDatabaseFilter(this.gridListaSubCategoria));
+        
+        this.categoriaProdutoFormBean.setCategoriaProdutoVO(categoriaProdutoVO);
 
+        return new Forward("success");
+    }
+    
+    /**
+	* @jpf:action
+    * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"
+    * @jpf:catch type="Exception"  method="exceptionHandler"
+    */
+    protected Forward acIrParaVisualizarCategoriaPai() throws Exception
+    {
+        if(this.categoriaProdutoFormBean.getCategoriaProdutoVO().getId_categoria_pai() > 0){
+            this.categoriaProdutoFormBean.setCategoriaProdutoVO(this.categoriaProdutoFormBean.getCategoriaProdutoVO().getCategoriaPaiVO());
+        }
         return new Forward("success");
     }
     
@@ -810,32 +882,38 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
         
         if(id_categoria_produto == categoriaProdutoFormBean.getCategoriaProdutoVO().getId_categoria_produto()){
             this.categoriaProdutoFormBean.setMensagem("Uma categoria não pode ser vinculada com ela mesma!");
-        }else{
-            
-            for(int i = 0; i < this.listaSubCategoriaVO.length; i++){
-                if(id_categoria_produto == this.listaSubCategoriaVO[i].getId_categoria_produto()){
-                    categoriaJaVinculada = true;
-                    this.categoriaProdutoFormBean.setMensagem("Sub-categoria já vinculada!");
-                    break;
-                }
-            }
+            return new Forward("success");
+        }
         
-            if(!categoriaJaVinculada){
-                CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
-                categoriaProdutoVO.setId_categoria_produto(id_categoria_produto);
-                
-                categoriaProdutoVO = this.jCSCategoriaProduto.obterCategoriaProduto(categoriaProdutoVO);
-                
-                CategoriaProdutoVO[] listaSubCategoriaVO = new CategoriaProdutoVO[this.listaSubCategoriaVO.length+1];
-                for(int j = 0; j < this.listaSubCategoriaVO.length; j++){
-                    listaSubCategoriaVO[j] = this.listaSubCategoriaVO[j];
-                }
-                listaSubCategoriaVO[this.listaSubCategoriaVO.length] = categoriaProdutoVO;
-                
-                this.listaSubCategoriaVO = listaSubCategoriaVO;
-                this.listaSubCategoriaVOFiltrada = this.listaSubCategoriaVO;
-                this.categoriaProdutoFormBean.setDisplayPopup("none");
+        CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
+        categoriaProdutoVO.setId_categoria_produto(id_categoria_produto);
+        categoriaProdutoVO = this.jCSCategoriaProduto.obterCategoriaProduto(categoriaProdutoVO);
+        CategoriaProdutoVO[] listaVerificaSubCategoria = this.jCSCategoriaProduto.obterListaCategoriaProdutoPorCategoriaPai(categoriaProdutoVO);
+        
+        if(listaVerificaSubCategoria.length > 0){
+            this.categoriaProdutoFormBean.setMensagem("Esta categoria já possui outras sub-categorias. Só é permitido o vínculo de categorias que não possuem sub-categorias.");
+            return new Forward("success");
+        }
+        
+        for(int i = 0; i < this.listaSubCategoriaVO.length; i++){
+            if(id_categoria_produto == this.listaSubCategoriaVO[i].getId_categoria_produto()){
+                categoriaJaVinculada = true;
+                this.categoriaProdutoFormBean.setMensagem("Sub-categoria já vinculada!");
+                break;
             }
+        }
+    
+        if(!categoriaJaVinculada){
+            
+            CategoriaProdutoVO[] listaSubCategoriaVO = new CategoriaProdutoVO[this.listaSubCategoriaVO.length+1];
+            for(int j = 0; j < this.listaSubCategoriaVO.length; j++){
+                listaSubCategoriaVO[j] = this.listaSubCategoriaVO[j];
+            }
+            listaSubCategoriaVO[this.listaSubCategoriaVO.length] = categoriaProdutoVO;
+            
+            this.listaSubCategoriaVO = listaSubCategoriaVO;
+            this.listaSubCategoriaVOFiltrada = this.listaSubCategoriaVO;
+            this.categoriaProdutoFormBean.setDisplayPopup("none");
         }
         return new Forward("success");
     }
