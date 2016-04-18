@@ -27,13 +27,13 @@
 >
 </method>
 <method
-    name="create()"
+    name="remove(java.lang.Object)"
     requires-transaction="true"
     idempotent="true"
 >
 </method>
 <method
-    name="getEJBMetaData()"
+    name="create()"
     requires-transaction="true"
     idempotent="true"
 >
@@ -45,7 +45,7 @@
 >
 </method>
 <method
-    name="remove(java.lang.Object)"
+    name="getEJBMetaData()"
     requires-transaction="true"
     idempotent="true"
 >

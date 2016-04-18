@@ -15,13 +15,21 @@
         <div class="container">
             <h2 class="subtitle">Alterar</h2>
             <h1 class="title">Produto</h1>
+            
             <netui:form tagId="formAlterarProduto" action="acAlterarProduto">
                 <h3 class="subtitle">Nome Produto</h3>
-                <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}"/>   
+                <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}" maxlength="144"/>   
+                
+                <netui:anchor formSubmit="true" action="acAbrirPopupVincularCategoria">
+                    <button class="right-button">
+                        <i class="fa fa-plus">Vincular</i>
+                    </button>                
+                </netui:anchor>
             </netui:form>
+            
             <netui:form action="acObterListaCategoriaProdutoVO">
                  <h3 class="subtitle">Nome Categoria</h3>
-                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}"/>
+                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}" maxlength="144"/>
                 <netui:anchor formSubmit="true">
                     <i class="fa fa-search"></i>
                 </netui:anchor>
@@ -30,15 +38,11 @@
             <netui:form tagId="formDesvincularCategoriaProduto" action="acDesvincularCategoriaProduto">
                 <netui:hidden tagId="codigo" dataSource="{pageFlow.categoriaProdutoFormBean.categoriaProdutoVO.id_categoria_produto}" />
             </netui:form>
+            
             <netui:form tagId="formVincularCategoriaProduto" action="acApagarMesagem">
                 <netui:hidden tagId="displayPopup" dataSource="{pageFlow.produtoFormBean.displayPopup}" />
                 <netui:hidden tagId="mensagem" dataSource="{pageFlow.produtoFormBean.mensagem}" />
             </netui:form>
-            <netui:anchor action="acAbrirPopupVincularCategoria" id="vinculaCategoriaButton">
-                <button class="right-button">
-                    <i class="fa fa-plus">Vincular</i>
-                </button>                
-            </netui:anchor>
             
             <netui-data:repeater dataSource="{pageFlow.listaCategoriaProdutoVOFiltrada}" defaultText="Nenhum Resultado Encontrado" ignoreNulls="true">
                 <netui-data:repeaterHeader>
@@ -87,7 +91,7 @@
                     <div align="center">
                         <netui:form action="acObterListaCategoriaProdutoPopup">
                             <h2 class="title-modal">Escolha a categoria</h2>
-                            <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltroPopup}"/>
+                            <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltroPopup}" maxlength="144"/>
                             <netui:anchor formSubmit="true">
                                 <i class="fa fa-search"></i>
                             </netui:anchor>    

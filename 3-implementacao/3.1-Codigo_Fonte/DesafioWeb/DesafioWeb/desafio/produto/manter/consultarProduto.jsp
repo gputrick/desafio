@@ -18,17 +18,17 @@
             
             <netui:form action="acObterListaProduto">
                  <h3 class="subtitle">Nome Produto</h3>
-                <netui:textBox dataSource="{actionForm.nomeProdutoFiltro}"/>
+                <netui:textBox dataSource="{actionForm.nomeProdutoFiltro}" maxlength="144"/>
                 <netui:anchor formSubmit="true" action="acObterListaProduto">
                     <i class="fa fa-search"></i>
                 </netui:anchor>
+                
+                <netui:anchor formSubmit="true" action="acIrParaCadastrarProduto">
+                    <button class="right-button">
+                        <i class="fa fa-plus">Cadastrar</i>
+                    </button>
+                </netui:anchor>
             </netui:form>
-            
-            <netui:anchor action="acIrParaCadastrarProduto">
-                <button class="right-button">
-                    <i class="fa fa-plus">Cadastrar</i>
-                </button>
-            </netui:anchor>
             
             <netui:form tagId="formEliminarProduto" action="acEliminarProduto">
                 <netui:hidden tagId="codigo" dataSource="{pageFlow.produtoFormBean.produtoVO.id_produto}" />

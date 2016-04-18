@@ -1,5 +1,5 @@
 /**
-* This code was automatically generated at 15:39:30 on 15/04/2016
+* This code was automatically generated at 11:20:45 on 18/04/2016
 * by weblogic.ejb20.ejbc.Ejb2Rmi -- do not edit.
 *
 * @version WebLogic Server 8.1 SP6  Wed Jun 21 08:18:55 PDT 2006 781680 
@@ -16,14 +16,14 @@ implements desafio.ejb.geral.CategoriaProdutoHome, weblogic.utils.PlatformConsta
 {
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getId_categoria_pai;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getId_categoria_produto;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_setCategoriaPai_desafio_ejb_geral_CategoriaProduto;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_validaCategoriaProduto_desafio_CategoriaProdutoVO;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_setId_categoria_produto_L;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getData;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getCategoriaPai;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_setNome_categoria_produto_S;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_setId_categoria_produto_L;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_setId_categoria_pai_L;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_setCategoriaPai_desafio_ejb_geral_CategoriaProduto;
+  public weblogic.ejb20.internal.MethodDescriptor md_eo_setNome_categoria_produto_S;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_getNome_categoria_produto;
-  public weblogic.ejb20.internal.MethodDescriptor md_eo_validaCategoriaProduto_desafio_CategoriaProdutoVO;
   public weblogic.ejb20.internal.MethodDescriptor md_eo_setData_desafio_CategoriaProdutoVO;
   
   

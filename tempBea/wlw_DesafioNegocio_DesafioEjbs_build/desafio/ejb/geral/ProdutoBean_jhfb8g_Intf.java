@@ -1,5 +1,5 @@
 /**
- * This code was automatically generated at 15:39:30 on 15/04/2016
+ * This code was automatically generated at 11:20:46 on 18/04/2016
  * by weblogic.ejb20.cmp.rdbms.codegen.RDBMSCodeGenerator -- do not edit.
  *
  * @version WebLogic Server 8.1 SP6  Wed Jun 21 08:18:55 PDT 2006 781680 

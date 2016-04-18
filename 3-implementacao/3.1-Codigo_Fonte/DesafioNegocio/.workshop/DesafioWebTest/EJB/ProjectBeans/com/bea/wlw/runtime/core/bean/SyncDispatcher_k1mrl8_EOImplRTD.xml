@@ -16,17 +16,17 @@
 </lifecycle>
 
 <method
-    name="remove()"
+    name="getEJBHome()"
+    requires-transaction="true"
+>
+</method>
+<method
+    name="isIdentical(javax.ejb.EJBObject)"
     requires-transaction="true"
 >
 </method>
 <method
     name="getPrimaryKey()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getHandle()"
     requires-transaction="true"
 >
 </method>
@@ -41,12 +41,12 @@
 >
 </method>
 <method
-    name="isIdentical(javax.ejb.EJBObject)"
+    name="getHandle()"
     requires-transaction="true"
 >
 </method>
 <method
-    name="getEJBHome()"
+    name="remove()"
     requires-transaction="true"
 >
 </method>

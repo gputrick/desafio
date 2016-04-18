@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /desafio/produto/manter/JPFManterProdutoController.jpf on Fri Apr 15 17:35:57 GMT-03:00 2016 -->
+<!-- Generated from /desafio/produto/manter/JPFManterProdutoController.jpf on Mon Apr 18 14:19:16 GMT-03:00 2016 -->
 <struts-config>
   <form-beans>
     <form-bean type="desafio.produto.ProdutoFormBean" name="produtoFormBean"/>
-    <form-bean type="desafio.produto.CategoriaProdutoFormBean" name="categoriaProdutoFormBean"/>
+    <form-bean type="desafio.categoriaProduto.CategoriaProdutoFormBean" name="categoriaProdutoFormBean"/>
   </form-beans>
   <global-exceptions/>
   <global-forwards/>
@@ -84,15 +84,7 @@
       <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
         <set-property value="true" property="isHandlerMethod"/>
       </exception>
-      <forward path="/consultarProduto.jsp" name="success"/>
-      <!-- forward "errorPage" from exception-handler exceptionHandler -->
-      <forward path="/../errorException.jsp" name="errorPage"/>
-    </action>
-    <action validate="false" scope="request" type="desafio.produto.manter.JPFManterProdutoController" path="/acIrParaVincularCategoria">
-      <exception className="com.bea.wlw.netui.pageflow.config.PageFlowExceptionConfig" handler="exceptionHandler" key="" type="java.lang.Exception">
-        <set-property value="true" property="isHandlerMethod"/>
-      </exception>
-      <forward contextRelative="true" path="/desafio/produto/popUpProduto/vincularCategoriaProduto.jsp" name="success"/>
+      <forward path="/begin.do" name="success"/>
       <!-- forward "errorPage" from exception-handler exceptionHandler -->
       <forward path="/../errorException.jsp" name="errorPage"/>
     </action>

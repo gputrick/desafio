@@ -96,7 +96,6 @@ public class ProdutoSession
      public ProdutoVO atualizarProduto(ProdutoVO produtoVO) throws DesafioException
      {
         try{
-            
             this.inicializa(produtoVO);
             
         } catch(DesafioException e){

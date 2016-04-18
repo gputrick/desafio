@@ -9,7 +9,10 @@ public class CategoriaProdutoFormBean extends ActionForm
     private CategoriaProdutoVO categoriaProdutoVO;
     private long idCategoriaProdutoFiltro;
     private String nomeCategoriaProdutoFiltro;
+    private String nomeCategoriaProdutoFiltroPopup;
     private ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto;
+    private String displayPopup;
+    private String mensagem;
     
     public long getIdCategoriaProdutoFiltro(){
         return this.idCategoriaProdutoFiltro;
@@ -25,6 +28,15 @@ public class CategoriaProdutoFormBean extends ActionForm
     
     public void setNomeCategoriaProdutoFiltro(String nomeCategoriaProdutoFiltro){
         this.nomeCategoriaProdutoFiltro = nomeCategoriaProdutoFiltro;
+    }
+    
+        
+    public String getNomeCategoriaProdutoFiltroPopup(){
+        return this.nomeCategoriaProdutoFiltroPopup;
+    }
+    
+    public void setNomeCategoriaProdutoFiltroPopup(String nomeCategoriaProdutoFiltroPopup){
+        this.nomeCategoriaProdutoFiltroPopup = nomeCategoriaProdutoFiltroPopup;
     }
     
     public ProdutoCategoriaProdutoVO[] getListaProdutoCategoriaProduto(){
@@ -43,6 +55,22 @@ public class CategoriaProdutoFormBean extends ActionForm
     
     public void setCategoriaProdutoVO(CategoriaProdutoVO categoriaProdutoVO){
         this.categoriaProdutoVO = categoriaProdutoVO;
+    }
+    
+    public String getDisplayPopup(){
+        return this.displayPopup;
+    }
+    
+    public void setDisplayPopup(String displayPopup){
+        this.displayPopup = displayPopup;
+    }
+    
+    public String getMensagem(){
+        return this.mensagem;
+    }
+    
+    public void setMensagem(String mensagem){
+        this.mensagem = mensagem;
     }
 } 
 

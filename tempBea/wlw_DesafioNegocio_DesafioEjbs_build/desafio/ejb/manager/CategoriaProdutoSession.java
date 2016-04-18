@@ -74,11 +74,10 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
                 
         try {
             if((categoriaProdutoVO != null) &&
-            (categoriaProdutoVO.getCategoriaPaiVO() != null ) &&
-            (categoriaProdutoVO.getCategoriaPaiVO().getId_categoria_produto() > 0))
+            (categoriaProdutoVO.getId_categoria_pai() > 0))
             {
                 categoriaPaiHome = CategoriaProdutoBean.getHome();
-                categoriaPai = categoriaPaiHome.findByPrimaryKey(new Long(categoriaProdutoVO.getCategoriaPaiVO().getId_categoria_produto()));
+                categoriaPai = categoriaPaiHome.findByPrimaryKey(new Long(categoriaProdutoVO.getId_categoria_pai()));
                 categoriaPaiVO = categoriaPai.getData();
             }
         }
@@ -134,21 +133,18 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         }
         
         try{
-            CategoriaProduto categoriaPai = inicializaCategoriaPai(categoriaProdutoVO);
+            CategoriaProduto categoriaPai = this.inicializaCategoriaPai(categoriaProdutoVO);
             
             if(this.categoriaProduto == null){
                 this.categoriaProduto = categoriaProdutoHome.create( categoriaProdutoVO, null);
             }else{
                 this.categoriaProduto.validaCategoriaProduto( categoriaProdutoVO );
                 this.categoriaProduto.setData( categoriaProdutoVO );
-                this.categoriaProduto.setCategoriaPai(categoriaPai);
+                this.categoriaProduto.setCategoriaPai( categoriaPai );
             }
         }catch ( CreateException e ){
             throw new EJBException(e);
         }
-        
-        
-        
         return this.categoriaProduto.getData();
      }
       /**

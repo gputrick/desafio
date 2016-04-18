@@ -82,12 +82,12 @@ public abstract class CategoriaProdutoBean
      * @ejbgen:cmr-field
      * @ejbgen:local-method
      */
-    public abstract CategoriaProduto getCategoriaPai(); //CategoriaPai
+    public abstract CategoriaProduto getCategoriaPai();
 
     /**
      * @ejbgen:local-method
      */
-    public abstract void setCategoriaPai(CategoriaProduto arg); //CategoriaPai
+    public abstract void setCategoriaPai(CategoriaProduto arg);
     
         /**
     * Método obtem os dados do Bean para o VO

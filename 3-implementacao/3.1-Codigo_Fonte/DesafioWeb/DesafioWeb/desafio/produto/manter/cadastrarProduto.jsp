@@ -17,11 +17,17 @@
             <h1 class="title">Produto</h1>
             <netui:form tagId="formAlterarProduto" action="acCadastrarProduto">
                 <h3 class="subtitle">Nome Produto</h3>
-                <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}"/>
+                <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}" maxlength="144"/>
+                
+                <netui:anchor formSubmit="true" action="acAbrirPopupVincularCategoria" id="vinculaCategoriaButton">
+                    <button class="right-button">
+                        <i class="fa fa-plus">Vincular</i>
+                    </button>                
+                </netui:anchor>
             </netui:form>
             <netui:form action="acObterListaCategoriaProdutoVO">
                  <h3 class="subtitle">Nome Categoria</h3>
-                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}"/>
+                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}" maxlength="144"/>
                 <netui:anchor formSubmit="true">
                     <i class="fa fa-search"></i>
                 </netui:anchor>
@@ -34,11 +40,6 @@
                 <netui:hidden tagId="displayPopup" dataSource="{pageFlow.produtoFormBean.displayPopup}" />
                 <netui:hidden tagId="mensagem" dataSource="{pageFlow.produtoFormBean.mensagem}" />
             </netui:form>
-            <netui:anchor action="acAbrirPopupVincularCategoria" id="vinculaCategoriaButton">
-                <button class="right-button">
-                    <i class="fa fa-plus">Vincular</i>
-                </button>                
-            </netui:anchor>
             
             <netui-data:repeater dataSource="{pageFlow.listaCategoriaProdutoVOFiltrada}" defaultText="Nenhum Resultado Encontrado" ignoreNulls="true">
                 <netui-data:repeaterHeader>
@@ -85,8 +86,13 @@
                     </netui:anchor>
                     <br>
                     <div align="center">
-                        <h2 class="title-modal">Escolha a categoria</h2>
-                        <input type="text" class="search-input-modal"/><i class="fa fa-search"></i>
+                         <netui:form action="acObterListaCategoriaProdutoPopup">
+                            <h2 class="title-modal">Escolha a categoria</h2>
+                            <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltroPopup}" maxlength="144"/>
+                            <netui:anchor formSubmit="true">
+                                <i class="fa fa-search"></i>
+                            </netui:anchor>    
+                        </netui:form>
                     </div>
                     
                     <netui-data:grid dataSource="{pageFlow.listaCategoriaProduto}" name="{pageFlow.gridListaCategoriaProduto}">

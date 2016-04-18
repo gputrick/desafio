@@ -27,6 +27,12 @@ import org.apache.struts.Globals;
  *   <property value="200" name="x"/>
  *   <property value="40" name="y"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:index.jsp@#@action:begin.do@">
+ *   <property value="204,160,160,116" name="elbowsX"/>
+ *   <property value="93,93,93,93" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
  * <pageflow-object id="page:index.jsp">
  *   <property value="240" name="x"/>
  *   <property value="100" name="y"/>
@@ -100,17 +106,13 @@ public class Controller extends PageFlowController
      */
     protected Forward begin() throws Exception
     {
-        ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO();
+        CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
+        categoriaProdutoVO.setId_categoria_produto(2);
         
-        ProdutoVO produtoVO = new ProdutoVO();
-        produtoVO.setId_produto(13);
+        categoriaProdutoVO = this.jCSCategoriaProduto.obterCategoriaProduto(categoriaProdutoVO);
         
-        produtoCategoriaProdutoVO.setId_produto(13);
-        produtoCategoriaProdutoVO.setId_categoria_produto(1);
-        
-        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO[1];
-        listaProdutoCategoriaProdutoVO[0] = produtoCategoriaProdutoVO;
-        //this.jCSProduto.atualizarProduto(produtoVO, listaProdutoCategoriaProdutoVO);
+        categoriaProdutoVO.setId_categoria_pai(1);
+        categoriaProdutoVO = this.jCSCategoriaProduto.atualizarCategoriaProduto(categoriaProdutoVO, null);
         
         return new Forward("success");
     }

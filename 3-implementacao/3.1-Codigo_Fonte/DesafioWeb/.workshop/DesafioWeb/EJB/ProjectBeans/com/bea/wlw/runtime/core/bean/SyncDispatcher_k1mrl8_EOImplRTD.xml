@@ -16,6 +16,11 @@
 </lifecycle>
 
 <method
+    name="confirmDeployment(java.lang.String)"
+    requires-transaction="true"
+>
+</method>
+<method
     name="isIdentical(javax.ejb.EJBObject)"
     requires-transaction="true"
 >
@@ -26,12 +31,7 @@
 >
 </method>
 <method
-    name="getPrimaryKey()"
-    requires-transaction="true"
->
-</method>
-<method
-    name="getHandle()"
+    name="remove()"
     requires-transaction="true"
 >
 </method>
@@ -41,12 +41,12 @@
 >
 </method>
 <method
-    name="confirmDeployment(java.lang.String)"
+    name="getPrimaryKey()"
     requires-transaction="true"
 >
 </method>
 <method
-    name="remove()"
+    name="getHandle()"
     requires-transaction="true"
 >
 </method>

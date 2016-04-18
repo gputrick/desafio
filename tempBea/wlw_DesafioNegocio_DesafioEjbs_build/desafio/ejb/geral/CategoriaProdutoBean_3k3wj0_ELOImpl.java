@@ -1,5 +1,5 @@
 /**
-* This code was automatically generated at 15:39:30 on 15/04/2016
+* This code was automatically generated at 11:20:45 on 18/04/2016
 * by weblogic.ejb20.ejbc.Ejb2Rmi -- do not edit.
 *
 * @version WebLogic Server 8.1 SP6  Wed Jun 21 08:18:55 PDT 2006 781680 
@@ -127,13 +127,14 @@ implements desafio.ejb.geral.CategoriaProduto, weblogic.utils.PlatformConstants,
     return result;
   }
   
-  public void setCategoriaPai(desafio.ejb.geral.CategoriaProduto arg0)
+  public void validaCategoriaProduto(desafio.CategoriaProdutoVO arg0)
+  throws desafio.infra.DesafioException
   {
     java.lang.Throwable __ee = null;
     
     weblogic.ejb20.internal.InvocationWrapper __wrap;
     weblogic.ejb20.internal.MethodDescriptor __md = 
-    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_setCategoriaPai_desafio_ejb_geral_CategoriaProduto;
+    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_validaCategoriaProduto_desafio_CategoriaProdutoVO;
     try {
       __wrap = super.preInvoke(
       __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
@@ -152,7 +153,7 @@ implements desafio.ejb.geral.CategoriaProduto, weblogic.utils.PlatformConstants,
     try {
       __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
       
-      __bean.setCategoriaPai(
+      __bean.validaCategoriaProduto(
       arg0);
       ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
       
@@ -170,10 +171,67 @@ implements desafio.ejb.geral.CategoriaProduto, weblogic.utils.PlatformConstants,
       if (e instanceof javax.ejb.EJBException) {
         throw (javax.ejb.EJBException) e;
       } 
+      else if (e instanceof desafio.infra.DesafioException) {
+        throw (desafio.infra.DesafioException) e;
+      }
+      else {
+        throw new javax.ejb.EJBException("Unexpected exception in " +
+        "desafio.ejb.geral.CategoriaProdutoBean.validaCategoriaProduto():" + EOL +	
+        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
+        
+        
+      } 
+    }
+    // No return result
+  }
+  
+  public void setId_categoria_produto(java.lang.Long arg0)
+  {
+    java.lang.Throwable __ee = null;
+    
+    weblogic.ejb20.internal.InvocationWrapper __wrap;
+    weblogic.ejb20.internal.MethodDescriptor __md = 
+    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_setId_categoria_produto_L;
+    try {
+      __wrap = super.preInvokeLite(
+      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
+    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
+      __wrap = super.preInvokeLite(
+      __md, new weblogic.ejb20.internal.EJBContextHandler(
+      __md, new Object [] {  arg0}));          
+    }
+    
+    CategoriaProdutoBean_3k3wj0_Intf __bean = (CategoriaProdutoBean_3k3wj0_Intf) __wrap.getBean();
+    
+    // No return value
+    
+    int __oldState = __bean.__WL_getMethodState();
+    
+    try {
+      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
+      
+      __bean.setId_categoria_produto(
+      arg0);
+      ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
+      
+    } catch (java.lang.Throwable t) {
+      __ee = t;
+    }
+    finally {
+      __bean.__WL_setMethodState(__oldState);
+    }
+    
+    try {
+      super.postInvokeLite(__wrap, __ee);
+      
+    } catch (java.lang.Exception e) {
+      if (e instanceof javax.ejb.EJBException) {
+        throw (javax.ejb.EJBException) e;
+      } 
       
       else {
         throw new javax.ejb.EJBException("Unexpected exception in " +
-        "desafio.ejb.geral.CategoriaProdutoBean.setCategoriaPai():" + EOL +	
+        "desafio.ejb.geral.CategoriaProdutoBean.setId_categoria_produto():" + EOL +	
         weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
         
         
@@ -295,116 +353,6 @@ implements desafio.ejb.geral.CategoriaProduto, weblogic.utils.PlatformConstants,
     return result;
   }
   
-  public void setNome_categoria_produto(java.lang.String arg0)
-  {
-    java.lang.Throwable __ee = null;
-    
-    weblogic.ejb20.internal.InvocationWrapper __wrap;
-    weblogic.ejb20.internal.MethodDescriptor __md = 
-    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_setNome_categoria_produto_S;
-    try {
-      __wrap = super.preInvokeLite(
-      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
-    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
-      __wrap = super.preInvokeLite(
-      __md, new weblogic.ejb20.internal.EJBContextHandler(
-      __md, new Object [] {  arg0}));          
-    }
-    
-    CategoriaProdutoBean_3k3wj0_Intf __bean = (CategoriaProdutoBean_3k3wj0_Intf) __wrap.getBean();
-    
-    // No return value
-    
-    int __oldState = __bean.__WL_getMethodState();
-    
-    try {
-      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
-      
-      __bean.setNome_categoria_produto(
-      arg0);
-      ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
-      
-    } catch (java.lang.Throwable t) {
-      __ee = t;
-    }
-    finally {
-      __bean.__WL_setMethodState(__oldState);
-    }
-    
-    try {
-      super.postInvokeLite(__wrap, __ee);
-      
-    } catch (java.lang.Exception e) {
-      if (e instanceof javax.ejb.EJBException) {
-        throw (javax.ejb.EJBException) e;
-      } 
-      
-      else {
-        throw new javax.ejb.EJBException("Unexpected exception in " +
-        "desafio.ejb.geral.CategoriaProdutoBean.setNome_categoria_produto():" + EOL +	
-        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
-        
-        
-      } 
-    }
-    // No return result
-  }
-  
-  public void setId_categoria_produto(java.lang.Long arg0)
-  {
-    java.lang.Throwable __ee = null;
-    
-    weblogic.ejb20.internal.InvocationWrapper __wrap;
-    weblogic.ejb20.internal.MethodDescriptor __md = 
-    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_setId_categoria_produto_L;
-    try {
-      __wrap = super.preInvokeLite(
-      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
-    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
-      __wrap = super.preInvokeLite(
-      __md, new weblogic.ejb20.internal.EJBContextHandler(
-      __md, new Object [] {  arg0}));          
-    }
-    
-    CategoriaProdutoBean_3k3wj0_Intf __bean = (CategoriaProdutoBean_3k3wj0_Intf) __wrap.getBean();
-    
-    // No return value
-    
-    int __oldState = __bean.__WL_getMethodState();
-    
-    try {
-      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
-      
-      __bean.setId_categoria_produto(
-      arg0);
-      ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
-      
-    } catch (java.lang.Throwable t) {
-      __ee = t;
-    }
-    finally {
-      __bean.__WL_setMethodState(__oldState);
-    }
-    
-    try {
-      super.postInvokeLite(__wrap, __ee);
-      
-    } catch (java.lang.Exception e) {
-      if (e instanceof javax.ejb.EJBException) {
-        throw (javax.ejb.EJBException) e;
-      } 
-      
-      else {
-        throw new javax.ejb.EJBException("Unexpected exception in " +
-        "desafio.ejb.geral.CategoriaProdutoBean.setId_categoria_produto():" + EOL +	
-        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
-        
-        
-      } 
-    }
-    // No return result
-  }
-  
   public void setId_categoria_pai(java.lang.Long arg0)
   {
     java.lang.Throwable __ee = null;
@@ -452,6 +400,116 @@ implements desafio.ejb.geral.CategoriaProduto, weblogic.utils.PlatformConstants,
       else {
         throw new javax.ejb.EJBException("Unexpected exception in " +
         "desafio.ejb.geral.CategoriaProdutoBean.setId_categoria_pai():" + EOL +	
+        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
+        
+        
+      } 
+    }
+    // No return result
+  }
+  
+  public void setCategoriaPai(desafio.ejb.geral.CategoriaProduto arg0)
+  {
+    java.lang.Throwable __ee = null;
+    
+    weblogic.ejb20.internal.InvocationWrapper __wrap;
+    weblogic.ejb20.internal.MethodDescriptor __md = 
+    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_setCategoriaPai_desafio_ejb_geral_CategoriaProduto;
+    try {
+      __wrap = super.preInvoke(
+      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
+    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
+      __wrap = super.preInvoke(
+      __md, new weblogic.ejb20.internal.EJBContextHandler(
+      __md, new Object [] {  arg0}));          
+    }
+    
+    CategoriaProdutoBean_3k3wj0_Intf __bean = (CategoriaProdutoBean_3k3wj0_Intf) __wrap.getBean();
+    
+    // No return value
+    
+    int __oldState = __bean.__WL_getMethodState();
+    
+    try {
+      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
+      
+      __bean.setCategoriaPai(
+      arg0);
+      ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
+      
+    } catch (java.lang.Throwable t) {
+      __ee = t;
+    }
+    finally {
+      __bean.__WL_setMethodState(__oldState);
+    }
+    
+    try {
+      super.postInvoke(__wrap, __ee);
+      
+    } catch (java.lang.Exception e) {
+      if (e instanceof javax.ejb.EJBException) {
+        throw (javax.ejb.EJBException) e;
+      } 
+      
+      else {
+        throw new javax.ejb.EJBException("Unexpected exception in " +
+        "desafio.ejb.geral.CategoriaProdutoBean.setCategoriaPai():" + EOL +	
+        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
+        
+        
+      } 
+    }
+    // No return result
+  }
+  
+  public void setNome_categoria_produto(java.lang.String arg0)
+  {
+    java.lang.Throwable __ee = null;
+    
+    weblogic.ejb20.internal.InvocationWrapper __wrap;
+    weblogic.ejb20.internal.MethodDescriptor __md = 
+    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_setNome_categoria_produto_S;
+    try {
+      __wrap = super.preInvokeLite(
+      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
+    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
+      __wrap = super.preInvokeLite(
+      __md, new weblogic.ejb20.internal.EJBContextHandler(
+      __md, new Object [] {  arg0}));          
+    }
+    
+    CategoriaProdutoBean_3k3wj0_Intf __bean = (CategoriaProdutoBean_3k3wj0_Intf) __wrap.getBean();
+    
+    // No return value
+    
+    int __oldState = __bean.__WL_getMethodState();
+    
+    try {
+      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
+      
+      __bean.setNome_categoria_produto(
+      arg0);
+      ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
+      
+    } catch (java.lang.Throwable t) {
+      __ee = t;
+    }
+    finally {
+      __bean.__WL_setMethodState(__oldState);
+    }
+    
+    try {
+      super.postInvokeLite(__wrap, __ee);
+      
+    } catch (java.lang.Exception e) {
+      if (e instanceof javax.ejb.EJBException) {
+        throw (javax.ejb.EJBException) e;
+      } 
+      
+      else {
+        throw new javax.ejb.EJBException("Unexpected exception in " +
+        "desafio.ejb.geral.CategoriaProdutoBean.setNome_categoria_produto():" + EOL +	
         weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
         
         
@@ -513,64 +571,6 @@ implements desafio.ejb.geral.CategoriaProduto, weblogic.utils.PlatformConstants,
       } 
     }
     return result;
-  }
-  
-  public void validaCategoriaProduto(desafio.CategoriaProdutoVO arg0)
-  throws desafio.infra.DesafioException
-  {
-    java.lang.Throwable __ee = null;
-    
-    weblogic.ejb20.internal.InvocationWrapper __wrap;
-    weblogic.ejb20.internal.MethodDescriptor __md = 
-    ((CategoriaProdutoBean_3k3wj0_LocalHomeImpl)getEJBLocalHome()).md_eo_validaCategoriaProduto_desafio_CategoriaProdutoVO;
-    try {
-      __wrap = super.preInvoke(
-      __md, weblogic.ejb20.internal.DummyContextHandler.THE_ONE);
-    } catch (weblogic.ejb20.internal.NeedRealContextHandlerError e) {
-      __wrap = super.preInvoke(
-      __md, new weblogic.ejb20.internal.EJBContextHandler(
-      __md, new Object [] {  arg0}));          
-    }
-    
-    CategoriaProdutoBean_3k3wj0_Intf __bean = (CategoriaProdutoBean_3k3wj0_Intf) __wrap.getBean();
-    
-    // No return value
-    
-    int __oldState = __bean.__WL_getMethodState();
-    
-    try {
-      __bean.__WL_setMethodState(WLEnterpriseBean.STATE_BUSINESS_METHOD);
-      
-      __bean.validaCategoriaProduto(
-      arg0);
-      ((weblogic.ejb20.persistence.spi.CMPBean) __bean).__WL_checkExistsOnMethod();
-      
-    } catch (java.lang.Throwable t) {
-      __ee = t;
-    }
-    finally {
-      __bean.__WL_setMethodState(__oldState);
-    }
-    
-    try {
-      super.postInvoke(__wrap, __ee);
-      
-    } catch (java.lang.Exception e) {
-      if (e instanceof javax.ejb.EJBException) {
-        throw (javax.ejb.EJBException) e;
-      } 
-      else if (e instanceof desafio.infra.DesafioException) {
-        throw (desafio.infra.DesafioException) e;
-      }
-      else {
-        throw new javax.ejb.EJBException("Unexpected exception in " +
-        "desafio.ejb.geral.CategoriaProdutoBean.validaCategoriaProduto():" + EOL +	
-        weblogic.utils.StackTraceUtils.throwable2StackTrace(e), e);
-        
-        
-      } 
-    }
-    // No return result
   }
   
   public void setData(desafio.CategoriaProdutoVO arg0)

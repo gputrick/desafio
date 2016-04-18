@@ -17,11 +17,11 @@
             <h1 class="title">Produto</h1>
             
             <h3 class="subtitle">Nome Produto</h3>
-            <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}" readonly="true"/>
+            <netui:textBox tagId="nome_produto" dataSource="{pageFlow.produtoFormBean.produtoVO.nome_produto}" readonly="true" maxlength="144"/>
             
             <netui:form action="acObterListaCategoriaProduto">
                  <h3 class="subtitle">Nome Categoria</h3>
-                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}"/>
+                <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}" maxlength="144"/>
                 <netui:anchor formSubmit="true">
                     <i class="fa fa-search"></i>
                 </netui:anchor>

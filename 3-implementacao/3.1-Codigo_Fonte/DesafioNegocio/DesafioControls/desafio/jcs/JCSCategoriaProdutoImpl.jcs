@@ -167,9 +167,30 @@ public class JCSCategoriaProdutoImpl implements JCSCategoriaProduto, ControlSour
     /**
      * @common:operation
      */
-    public void atualizarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception
+    public CategoriaProdutoVO atualizarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO, CategoriaProdutoVO[] listaSubCategoriaVOAtualizada) throws Exception
     {
-        this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(categoriaProdutoVO);
+        boolean isExcluido;
+        
+        CategoriaProdutoVO[] listaSubCategoriaVO = this.obterListaCategoriaProdutoPorCategoriaPai(categoriaProdutoVO);
+        
+        for(int i = 0; i < listaSubCategoriaVO.length; i++){
+            isExcluido = true;
+            for(int j = 0; j < listaSubCategoriaVOAtualizada.length; j++){
+                if(listaSubCategoriaVO[i].getId_categoria_produto() == listaSubCategoriaVOAtualizada[j].getId_categoria_produto()){
+                    isExcluido = false;
+                }
+            }
+            if(isExcluido){
+                listaSubCategoriaVO[i].setId_categoria_pai(0);
+                this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(listaSubCategoriaVO[i]);
+            }
+        }
+        
+        for(int i = 0; i < listaSubCategoriaVOAtualizada.length; i++){
+            listaSubCategoriaVOAtualizada[i].setId_categoria_pai(categoriaProdutoVO.getId_categoria_produto());
+            this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(listaSubCategoriaVOAtualizada[i]);
+        }
+        return this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(categoriaProdutoVO);
     }
     
     /**
