@@ -33,6 +33,9 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     private desafio.jcx.DBProduto dBProduto;
 
     /**
+     * Método obtém a lista de produtos, caso houver categoriaVOFiltro
+     * realiza o join com a tabela associativa produto_categoria_produto
+     * 
      * @common:operation
      */
     public RowSet obterListaProduto(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeProduto, DatabaseFilter filter) throws Exception
@@ -88,6 +91,10 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     }
 
     /**
+     * Método elimina todas as ocorrências do produto
+     * na tabela associativa produto_categoria_produto
+     * e depois exclui produto
+     * 
      * @common:operation
      */
     public void eliminarProduto(ProdutoVO produtoVO) throws Exception
@@ -103,6 +110,11 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     
     
     /**
+     * Método verifica todas as ocorrencias de
+     * produto na tabela associativa produto_categoria_produto,
+     * compara com a lista atualizada, exclui quem foi excluido
+     * e insere os registros novos na tabela. Além de atualizar os dados primitivos
+     * 
      * @common:operation
      */
     public void atualizarProduto(ProdutoVO produtoVO, ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVOAtualizada) throws Exception
@@ -141,6 +153,10 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     }
     
      /**
+      * Método insere todas os registros da lista de
+      * produto_categoria_produto depois insere o produtoVO na tabela
+      * produto
+      * 
      * @common:operation
      */
     public ProdutoVO cadastrarProduto(ProdutoVO produtoVO, CategoriaProdutoVO[] listaCategoriaProdutoVO) throws Exception
@@ -159,6 +175,10 @@ public class JCSProdutoImpl implements JCSProduto, ControlSource
     }
     
     /**
+     * Método obtém além dos dados primitivos do produto a lista
+     * de categoria_produto de acordo com suas ocorrencias na tabela
+     * produto_categoria_produto
+     * 
      * @common:operation
      */
     public ProdutoVO obterProduto(ProdutoVO produtoVO) throws Exception

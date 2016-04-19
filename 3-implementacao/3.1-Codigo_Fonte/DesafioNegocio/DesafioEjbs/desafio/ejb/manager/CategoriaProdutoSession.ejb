@@ -32,7 +32,7 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
   public void ejbCreate() { }
   
     /**
-    * M�todo respons�vel pelo carregamento do Bean principal (master) em vari�veis globais
+    * Método responsável pelo carregamento do Bean principal (master) em variáveis globais
     * 
     * @param solicitacaoEquipamentoVO - SolicitacaoEquipamentoVO
     * @throws GSMException
@@ -61,7 +61,9 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         }
     }
     
-	/**
+    /**
+    * Método obtem os dados de categoriaProdutoPai a partir da primary key
+    * 
    * @param categoriaProdutoVO
    * @return CategoriaProduto //Categoria Pai
    * @throws DesafioException
@@ -92,6 +94,10 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         return categoriaPai;
     }
     /**
+     * Método que exclui categoriaProduto da persistência
+     * 
+    * @param categoriaProdutoVO
+    * @throws DesafioException
     * @ejbgen:remote-method transaction-attribute="Required"
     */
     public void eliminarCategoriaProduto( CategoriaProdutoVO categoriaProdutoVO ) 	throws DesafioException
@@ -107,6 +113,10 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
     }
     
     /**
+     * Metodo responsavel por obter os dados do objeto
+     * 
+    * @param categoriaProdutoVO
+    * @throws DesafioException
     * @ejbgen:remote-method transaction-attribute="Required"
     */
     public CategoriaProdutoVO obterCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws DesafioException
@@ -116,6 +126,8 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
     }
     
     /**
+     * Método responsável por atualizar os dados primitivos do objeto
+     * 
      * @param categoriaProdutoVO
      * @return CategoriaProdutoVO
      * @throws DesafioException
@@ -148,7 +160,7 @@ public class CategoriaProdutoSession extends GenericSessionBean implements Sessi
         return this.categoriaProduto.getData();
      }
       /**
-     * M�todo respons�vel pelo carregamento do ProdutoCategoriaProdutoBean
+     * Método responsável pelo carregamento do ProdutoCategoriaProdutoBean
      * 
      * @param produtoCategoriaProdutoVO
      * @return Bean - produtoCategoriaProdutoVO

@@ -65,6 +65,8 @@ public class ProdutoSession
     
     
     /**
+     * Método exclui o objeto da persistência
+     * 
     * @ejbgen:remote-method transaction-attribute="Required"
     */
     public void eliminarProduto( ProdutoVO produtoVO ) 	throws DesafioException
@@ -79,6 +81,8 @@ public class ProdutoSession
     }
     
     /**
+     * Método obtém os dados primitivos do objeto
+     * 
     * @ejbgen:remote-method transaction-attribute="Required"
     */
     public ProdutoVO obterProduto(ProdutoVO produtoVO) throws DesafioException
@@ -88,6 +92,8 @@ public class ProdutoSession
     }
     
     /**
+     * Método atualiza os dados primitivos do objeto
+     * 
      * @param produtoVO
      * @return ProdutoVO
      * @throws DesafioException

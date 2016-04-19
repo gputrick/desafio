@@ -121,12 +121,6 @@ import org.apache.struts.action.ActionForm;
  *   <property value="South_0" name="fromPort"/>
  *   <property value="North_2" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaCadastrarCategoriaProduto.do@">
- *   <property value="1036,1150,1150,1264" name="elbowsX"/>
- *   <property value="353,353,453,453" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acEliminarCategoriaProduto.do@">
  *   <property value="1011,1011,1080,1080" name="elbowsX"/>
  *   <property value="404,410,410,417" name="elbowsY"/>
@@ -138,6 +132,12 @@ import org.apache.struts.action.ActionForm;
  *   <property value="353,353,453,453" name="elbowsY"/>
  *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaCadastrarCategoriaProduto.do@">
+ *   <property value="1036,1150,1150,1264" name="elbowsX"/>
+ *   <property value="353,353,453,453" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaAlterarCategoriaProduto.do@">
  *   <property value="1036,1500,1500,1964" name="elbowsX"/>
@@ -158,6 +158,12 @@ import org.apache.struts.action.ActionForm;
  * <pageflow-object id="page:../errorException.jsp">
  *   <property value="100" name="x"/>
  *   <property value="760" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acSelecionaSubCategoria.do@">
+ *   <property value="1896,2210,2210,2524" name="elbowsX"/>
+ *   <property value="53,53,653,653" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaVisualizarCategoriaPai.do@">
  *   <property value="1896,2110,2110,2324" name="elbowsX"/>
@@ -205,6 +211,12 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
+ *   <property value="1216,1330,1330,1444" name="elbowsX"/>
+ *   <property value="553,553,653,653" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acAlterarCategoriaProduto.do@">
  *   <property value="1144,710,710,276" name="elbowsX"/>
  *   <property value="564,564,653,653" name="elbowsY"/>
@@ -222,12 +234,6 @@ import org.apache.struts.action.ActionForm;
  *   <property value="564,564,653,653" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
- *   <property value="1216,1330,1330,1444" name="elbowsX"/>
- *   <property value="553,553,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
  *   <property value="1216,1670,1670,2124" name="elbowsX"/>
@@ -398,6 +404,17 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@@">
+ *   <property value="1920" name="x"/>
+ *   <property value="260" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1960,1960,1920,1920" name="elbowsX"/>
+ *   <property value="204,210,210,217" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
  * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acObterListaSubCategoriaVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@@">
  *   <property value="460" name="x"/>
  *   <property value="760" name="y"/>
@@ -547,23 +564,6 @@ import org.apache.struts.action.ActionForm;
  *   <property value="1900" name="x"/>
  *   <property value="760" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acSelecionaSubCategoria.do@">
- *   <property value="1896,2210,2210,2524" name="elbowsX"/>
- *   <property value="53,53,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="forward:return-to#success#currentPage#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1960,1960,1920,1920" name="elbowsX"/>
- *   <property value="204,210,210,217" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@@">
- *   <property value="1920" name="x"/>
- *   <property value="260" name="y"/>
- * </pageflow-object>
  * </view-properties>
  * ::
  */
@@ -597,7 +597,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     // annotations in {project}/WEB-INF/src/global/Global.app
 
     /**
-     * This method represents the point of entry into the pageflow
+     * Método de Entrada do pageFlow
+     * 
      * @jpf:action
      * @jpf:forward name="success" path="consultarCategoriaProduto.jsp"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -613,6 +614,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
     /**
+     * Action que gerencia a paginação da grid de lista de categoriaProduto
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -625,6 +628,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
     /**
+     * Action  que gerencia a paginação da lista de subcategorias
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -636,6 +641,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
     /**
+     * Action que obtem a lista do tipo RowSet
+     * de todas as categoriaProduto 
+     * com o filtro caso houver
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="consultarCategoriaProduto.jsp"
@@ -649,6 +658,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
      /**
+      * Action que exclui uma categoriaProduto
+      * 
      * @jpf:action
      * @jpf:forward name="success" path="acObterListaCategoriaProduto.do"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -663,6 +674,9 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     
     
     /**
+     * Action que e seleciona uma categoria produto dentro da lista categoriaProduto
+     * para visualizá-la
+     * 
     * @jpf:action
     * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"
     * @jpf:catch type="Exception" method="exceptionHandler"
@@ -677,6 +691,9 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
       }		
     
     /**
+     * Action que e seleciona uma sub-categoria produto dentro da lista de sub-categorias
+     * para visualizá-la
+     * 
     * @jpf:action
     * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"
     * @jpf:catch type="Exception" method="exceptionHandler"
@@ -691,6 +708,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
       }	
       
     /**
+     *  Método que gerencia as exceções, chama a página errorException caso haja uma excessão
+     *  
       * @jpf:exception-handler
       * @jpf:forward name="errorPage" path="../errorException.jsp"
       */
@@ -709,6 +728,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }    
 
     /**
+     * Action que obtem dos dados da categoriaProduto selecionada,
+     * seta o categoriaProdutoFormBean com estes dados para ir
+     * para a página de visualização de categoriaProduto
+     * 
 	* @jpf:action
     * @jpf:forward name="success" path="visualizarCategoriaProduto.jsp"
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -735,6 +758,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
     /**
+     * Action que entra quando uma categoriaPai é selecionada
+     * dentro do fluxo visualizar categoriaProduto, para obter as informações do pai
+     * e seta-las no categoriaProdutoFormBean
+     * 
 	* @jpf:action
     * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -748,6 +775,11 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
      /**
+      * Action que obtem a lista de subCategorias do tipo RowSet
+      * pertencentes à categoriaProduto atual
+      * filtradas caso houver filtro
+      * para o componente grid da interface
+      * 
 	* @jpf:action
     * @jpf:forward name="success" return-to="currentPage"
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -760,6 +792,11 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
         return new Forward("success");
     }
     /**
+     * Action que obtém a lista de subCategorias do tipo VO[]
+     * pertencentes à categoriaProduto atual
+     * filtradas caso houver filtro
+     * para o componente repeater da interface
+     * 
 	* @jpf:action
     * @jpf:forward return-to="currentPage" name="success" 
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -782,7 +819,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
         return new Forward("success");
     }
 	
-/**
+    /**
+     * Action que obtem todos os dados de categoriaProduto
+     * para ir para a  pagina alterarCategoriaProduto
+     * 
   * @jpf:action
   * @jpf:forward name="success" path="alterarCategoriaProduto.jsp"
   * @jpf:catch type="Exception" method="exceptionHandler"
@@ -815,6 +855,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
   }
   
       /**
+       * Action que obtem a lista de subCategorias para o popup vincular SubCategoria
+       * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -828,6 +870,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     } 
     
     /**
+     * Action que volta para página anterior
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="previousPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -836,7 +880,11 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     {
         return new Forward("success");
     }
+    
     /**
+     * Action que desvincula temporariamente o VO
+     * da lista de subcategoriasVO
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -856,6 +904,9 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que volta para o begin,
+     * para que o fluxo vá para a pagina consultarCategoriaProduto
+     * 
      * @jpf:action
      * @jpf:forward name="success" path="begin.do"
      */
@@ -865,6 +916,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
     
     /**
+     * Action que otém a  lista de todas as categorias e
+     * abre o popup com esta lista para vincula-las
+     * à categoriaProduto atual
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      */
@@ -877,6 +932,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que verifica as condições da sub-categoria
+     * em caso de sucesso vincula temporariamente o VO da SubCategoria
+     * à categoriaProduto atual
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -926,6 +985,11 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que apaga a mensagem da interface,
+     * pois caso a mesagem seja nula, não será
+     * exibida na inicialização da página, alterar ou cadastrar 
+     * categoriaProduto
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      */
@@ -936,6 +1000,9 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que seta o display do popUp para none,
+     * que no caso deixa-o invisível
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      */
@@ -946,6 +1013,8 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que confirma as alterações da categoriaProduto e torna-os persistentes
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"
@@ -964,6 +1033,9 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que nula as informações de categoriaProdutoFormBean
+     * para ir para a página cadastrarCategoriaProduto
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="cadastrarCategoriaProduto.jsp"
@@ -977,6 +1049,10 @@ public class JPFManterCategoriaProdutoController extends PageFlowController
     }
 
     /**
+     * Action que confirma as alterarções de categoriaProduto
+     * a ser cadastrado e torna o objeto persistente
+     * com a lista de subcategorias
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="acIrParaVisualizarCategoriaProduto.do"

@@ -30,7 +30,9 @@ import weblogic.ejb.GenericEntityBean;
 public abstract class CategoriaProdutoBean 
   extends GenericEntityBean
 {
-
+/**
+ * Metodo executado quando o método create for chamado
+ */
   public java.lang.Long ejbCreate(CategoriaProdutoVO categoriaProdutoVO, CategoriaProduto categoriaPai)
     throws CreateException, DesafioException
     {
@@ -38,7 +40,10 @@ public abstract class CategoriaProdutoBean
         this.setData(categoriaProdutoVO);
         return null;
     }
-  
+    
+/**
+ * Método executado depois da execução do ejbcreate for chamado
+ */  
   public void ejbPostCreate(CategoriaProdutoVO categoriaProdutoVO, CategoriaProduto categoriaPai) 
     throws CreateException
   { 

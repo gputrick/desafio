@@ -70,6 +70,8 @@ public class ProdutoCategoriaProdutoSession
 	}
     
     /**
+     * Método obtém os dados primitivos do produto atravás da primary key
+     * 
     * @param produtoVO
     * @throws DesafioException
     */
@@ -98,7 +100,9 @@ public class ProdutoCategoriaProdutoSession
         return produto;
     }
     
-    /* 
+    /** 
+     * Método que obtem os dados primitivos do objeto pela primary key
+     * 
     * @param categoriaProdutoVO
     * @throws DesafioException
     */
@@ -130,6 +134,8 @@ public class ProdutoCategoriaProdutoSession
     
     
      /**
+      * Metodo exclui o objeto da presistência
+      * 
     * @ejbgen:remote-method transaction-attribute="Required"
     */
     public void eliminarProdutoCategoriaProduto( ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO ) 	throws DesafioException
@@ -145,6 +151,8 @@ public class ProdutoCategoriaProdutoSession
     }
     
      /**
+      * Método obtém os dados primitivos do objeto
+      * 
     * @ejbgen:remote-method transaction-attribute="Required"
     */
      public ProdutoCategoriaProdutoVO obterProdutoCategoriaProduto(ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO) throws DesafioException
@@ -173,6 +181,8 @@ public class ProdutoCategoriaProdutoSession
     }
     
         /**
+         * Método Atualiza os dados do objeto
+         * 
      * @param produtoVO
      * @return ProdutoVO
      * @throws DesafioException

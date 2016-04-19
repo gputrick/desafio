@@ -136,12 +136,6 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarProduto.jsp@#@action:acIrParaCadastrarProduto.do@">
- *   <property value="736,1020,1020,1304" name="elbowsX"/>
- *   <property value="53,53,153,153" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarProduto.jsp@#@action:acIrParaAlterarProduto.do@">
  *   <property value="736,800,800,864" name="elbowsX"/>
  *   <property value="64,64,653,653" name="elbowsY"/>
@@ -174,17 +168,17 @@ import org.apache.struts.action.ActionForm;
  *   <property value="South_1" name="fromPort"/>
  *   <property value="North_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarProduto.jsp@#@action:acIrParaAlterarProduto.do@">
- *   <property value="576,720,720,864" name="elbowsX"/>
- *   <property value="553,553,642,642" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_0" name="toPort"/>
- * </pageflow-object>
  * <pageflow-object id="action-call:@page:visualizarProduto.jsp@#@action:acObterListaCategoriaProduto.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
  *   <property value="504,390,390,276" name="elbowsX"/>
  *   <property value="553,553,553,553" name="elbowsY"/>
  *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarProduto.jsp@#@action:acIrParaAlterarProduto.do@">
+ *   <property value="576,720,720,864" name="elbowsX"/>
+ *   <property value="553,553,642,642" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="page:visualizarProduto.jsp">
  *   <property value="540" name="x"/>
@@ -208,6 +202,12 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_0" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarProduto.jsp@#@action:acVoltarAPaginaAnterior.do@">
+ *   <property value="1096,1530,1530,1964" name="elbowsX"/>
+ *   <property value="753,753,853,853" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarProduto.jsp@#@action:acDesvincularCategoriaProduto.do@">
  *   <property value="1096,1320,1320,1544" name="elbowsX"/>
  *   <property value="753,753,853,853" name="elbowsY"/>
@@ -225,12 +225,6 @@ import org.apache.struts.action.ActionForm;
  *   <property value="717,590,590,464" name="elbowsY"/>
  *   <property value="North_1" name="fromPort"/>
  *   <property value="South_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarProduto.jsp@#@action:acVoltarAPaginaAnterior.do@">
- *   <property value="1096,1530,1530,1964" name="elbowsX"/>
- *   <property value="753,753,853,853" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarProduto.jsp@#@action:acObterListaCategoriaProdutoVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
  *   <property value="1060,1060,1100,1100" name="elbowsX"/>
@@ -254,14 +248,14 @@ import org.apache.struts.action.ActionForm;
  *   <property value="1060" name="x"/>
  *   <property value="760" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acApagarMesagem.do@">
- *   <property value="1304,860,860,416" name="elbowsX"/>
- *   <property value="264,264,853,853" name="elbowsY"/>
- *   <property value="West_2" name="fromPort"/>
+ * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acObterListaCategoriaProdutoPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1304,1190,1190,1076" name="elbowsX"/>
+ *   <property value="253,253,413,413" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acVinculaCategoriaProduto.do@">
- *   <property value="1304,940,940,576" name="elbowsX"/>
+ * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acApagarMesagem.do@">
+ *   <property value="1304,860,860,416" name="elbowsX"/>
  *   <property value="264,264,853,853" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
@@ -271,6 +265,12 @@ import org.apache.struts.action.ActionForm;
  *   <property value="264,264,842,842" name="elbowsY"/>
  *   <property value="East_2" name="fromPort"/>
  *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acVinculaCategoriaProduto.do@">
+ *   <property value="1304,940,940,576" name="elbowsX"/>
+ *   <property value="264,264,853,853" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acObterListaCategoriaProdutoVO.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
  *   <property value="1304,1220,1220,1136" name="elbowsX"/>
@@ -529,11 +529,11 @@ import org.apache.struts.action.ActionForm;
  *   <property value="480" name="x"/>
  *   <property value="960" name="y"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarProduto.jsp@#@action:acObterListaCategoriaProdutoPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1304,1190,1190,1076" name="elbowsX"/>
- *   <property value="253,253,413,413" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ * <pageflow-object id="action-call:@page:consultarProduto.jsp@#@action:acIrParaCadastrarProduto.do@">
+ *   <property value="736,1020,1020,1304" name="elbowsX"/>
+ *   <property value="53,53,153,153" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * </view-properties>
  * ::
@@ -574,7 +574,8 @@ public class JPFManterProdutoController extends PageFlowController
     // annotations in {project}/WEB-INF/src/global/Global.app
 
     /**
-     * This method represents the point of entry into the pageflow
+     * Método de Entrada do pageFlow
+     * 
      * @jpf:action
      * @jpf:forward name="success" path="consultarProduto.jsp"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -592,6 +593,8 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que gerencia a paginação da grid de lista de produto
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -604,6 +607,8 @@ public class JPFManterProdutoController extends PageFlowController
     }
     
       /**
+       * Action que gerencia a paginação da grid de lista de categoriaProduto
+       * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -616,6 +621,10 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que obtem a lista do tipo RowSet
+     * de todas os Produtos
+     * com o filtro caso houver
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="consultarProduto.jsp"
@@ -629,6 +638,8 @@ public class JPFManterProdutoController extends PageFlowController
     }
     
      /**
+      * Action que exclui um produto
+      * 
      * @jpf:action
      * @jpf:forward name="success" path="acObterListaProduto.do"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -643,6 +654,9 @@ public class JPFManterProdutoController extends PageFlowController
     
     
     /**
+     * Action que e seleciona um produto dentro da lista produto
+     * para visualizá-lo
+     * 
     * @jpf:action
     * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
     * @jpf:catch type="Exception" method="exceptionHandler"
@@ -657,6 +671,8 @@ public class JPFManterProdutoController extends PageFlowController
       }		
       
     /**
+     *  Método que gerencia as exceções, chama a página errorException caso haja uma excessão
+     *  
       * @jpf:exception-handler
       * @jpf:forward name="errorPage" path="../errorException.jsp"
       */
@@ -675,6 +691,10 @@ public class JPFManterProdutoController extends PageFlowController
     }    
 
     /**
+     * Action que obtem dos dados do produto selecionada,
+     * seta o podutoFormBean com estes dados para ir
+     * para a página de visualização de produto
+     * 
 	* @jpf:action
     * @jpf:forward name="success" path="visualizarProduto.jsp"
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -691,6 +711,11 @@ public class JPFManterProdutoController extends PageFlowController
     
     
      /**
+      * Action que obtem a lista de categoriaProduto do tipo RowSet
+      * pertencentes ao produto atual
+      * filtradas caso houver filtro
+      * para o componente grid da interface
+      * 
 	* @jpf:action
     * @jpf:forward name="success" path="visualizarProduto.jsp"
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -707,6 +732,11 @@ public class JPFManterProdutoController extends PageFlowController
     
 
     /**
+     * Action que obtém a lista de categoriaProduto do tipo VO[]
+     * pertencentes ao produto atual
+     * filtradas caso houver filtro
+     * para o componente repeater da interface
+     * 
 	* @jpf:action
     * @jpf:forward return-to="currentPage" name="success" 
     * @jpf:catch type="Exception"  method="exceptionHandler"
@@ -730,7 +760,10 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
 	
-/**
+    /**
+    * Action que obtem todos os dados de categoriaProduto
+    * para ir para a página alterarCategoriaProduto
+    * 
   * @jpf:action
   * @jpf:forward name="success" path="alterarProduto.jsp"
   * @jpf:catch type="Exception" method="exceptionHandler"
@@ -753,6 +786,8 @@ public class JPFManterProdutoController extends PageFlowController
 		return new Forward("success");        
   } 
     /**
+     * Action que obtem a lista de categorias para o popup vincular categoriaProduto
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -766,6 +801,8 @@ public class JPFManterProdutoController extends PageFlowController
     }
     
     /**
+     * Action que volta para página anterior
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="previousPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -777,6 +814,9 @@ public class JPFManterProdutoController extends PageFlowController
 
   
     /**
+     * Action que desvincula temporariamente o VO
+     * da lista de categoriaProdutoVO
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -795,6 +835,9 @@ public class JPFManterProdutoController extends PageFlowController
         return new Forward("success");
     }
     /**
+     * Action que volta para o begin,
+     * para que o fluxo vá para a pagina consultarProduto
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="begin.do"
@@ -805,6 +848,10 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que otém a lista de todas as categorias e
+     * abre o popup com esta lista para vincula-las
+     * ao produto atual
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      */
@@ -817,6 +864,10 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que verifica as condições das categorias
+     * em caso de sucesso vincula temporariamente o VO da categoria
+     * ao produto atual
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      * @jpf:catch type="Exception" method="exceptionHandler"
@@ -855,6 +906,11 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que apaga a mensagem da interface,
+     * pois caso a mesagem seja nula, não será
+     * exibida na inicialização da página, alterar ou cadastrar 
+     * categoriaProduto
+     * 
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      */
@@ -865,6 +921,8 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que seta o display do popUp para none,
+     * que no caso deixa-o invisível
      * @jpf:action
      * @jpf:forward name="success" return-to="currentPage"
      */
@@ -875,6 +933,8 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que confirma as alterações do produto e torna-os persistentes
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
@@ -900,6 +960,9 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     *  Action que nula as informações do formBean
+     *  para ir para a página cadastrarProduto
+     *  
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="cadastrarProduto.jsp"
@@ -913,6 +976,10 @@ public class JPFManterProdutoController extends PageFlowController
     }
 
     /**
+     * Action que confirma as alterarções do produto
+     * a ser cadastrado e torna o objeto persistente
+     * com a lista de categorias
+     * 
      * @jpf:action
      * @jpf:catch type="Exception" method="exceptionHandler"
      * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"

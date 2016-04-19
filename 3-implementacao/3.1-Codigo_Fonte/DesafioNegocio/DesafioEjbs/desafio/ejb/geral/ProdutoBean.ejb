@@ -27,7 +27,9 @@ import weblogic.ejb.GenericEntityBean;
 public abstract class ProdutoBean 
 extends GenericEntityBean
 {
-    
+    /**
+     * Metodo executado quando é chamado o metodo create da classe
+     */
     public java.lang.Long ejbCreate(ProdutoVO produtoVO) 
         throws CreateException, DesafioException
     {
@@ -36,6 +38,9 @@ extends GenericEntityBean
         return null;
     }
     
+    /**
+     * Método executado depois da execução do ejbCreate
+     */
     public void ejbPostCreate(ProdutoVO produtoVO) 
     throws CreateException
     {}
