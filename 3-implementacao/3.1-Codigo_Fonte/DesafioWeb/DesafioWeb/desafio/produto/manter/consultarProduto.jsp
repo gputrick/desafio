@@ -16,17 +16,17 @@
             <h2 class="subtitle">Consultar</h2>
             <h1 class="title">Produto</h1>
             
+            <netui:anchor formSubmit="true" action="acIrParaCadastrarProduto">
+                <button class="right-button">
+                    <i class="fa fa-plus">Cadastrar</i>
+                </button>
+            </netui:anchor>
+            
             <netui:form action="acObterListaProduto">
                  <h3 class="subtitle">Nome Produto</h3>
                 <netui:textBox dataSource="{actionForm.nomeProdutoFiltro}" maxlength="144"/>
                 <netui:anchor formSubmit="true" action="acObterListaProduto">
                     <i class="fa fa-search"></i>
-                </netui:anchor>
-                
-                <netui:anchor formSubmit="true" action="acIrParaCadastrarProduto">
-                    <button class="right-button">
-                        <i class="fa fa-plus">Cadastrar</i>
-                    </button>
                 </netui:anchor>
             </netui:form>
             

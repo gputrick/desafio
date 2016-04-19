@@ -11,28 +11,24 @@ import com.bea.wlw.netui.pageflow.Forward;
  * <view-properties>
  * <pageflow-object id="pageflow:/Controller.jpf"/>
  * <pageflow-object id="action:begin.do">
- *   <property name="x" value="340"/>
- *   <property name="y" value="180"/>
- * </pageflow-object>
- * <pageflow-object id="action:loginForm.do#Controller.LoginForm">
- *   <property value="200" name="x"/>
- *   <property value="260" name="y"/>
- * </pageflow-object>
- * <pageflow-object id="page:index.jsp">
- *   <property name="x" value="160"/>
- *   <property name="y" value="160"/>
+ *   <property name="x" value="260"/>
+ *   <property name="y" value="60"/>
  * </pageflow-object>
  * <pageflow-object id="page:desafio.portal">
  *   <property value="440" name="x"/>
- *   <property value="360" name="y"/>
+ *   <property value="320" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="page:error.jsp">
  *   <property name="x" value="60"/>
  *   <property name="y" value="360"/>
  * </pageflow-object>
- * <pageflow-object id="forward:path#success#desafio.portal#@action:loginForm.do#Controller.LoginForm@">
- *   <property value="236,320,320,404" name="elbowsX"/>
- *   <property value="253,253,353,353" name="elbowsY"/>
+ * <pageflow-object id="page:index.jsp">
+ *   <property name="x" value="160"/>
+ *   <property name="y" value="160"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:path#success#desafio.portal#@action:begin.do@">
+ *   <property value="296,350,350,404" name="elbowsX"/>
+ *   <property value="53,53,313,313" name="elbowsY"/>
  *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
@@ -40,19 +36,6 @@ import com.bea.wlw.netui.pageflow.Forward;
  * <pageflow-object id="formbeanprop:Controller.LoginForm#email#java.lang.String"/>
  * <pageflow-object id="formbeanprop:Controller.LoginForm#senha#java.lang.String"/>
  * <pageflow-object id="formbean:Controller.LoginForm"/>
- * <pageflow-object id="forward:path#success#desafio.portal#@action:begin.do@">
- *   <property value="376,390,390,404" name="elbowsX"/>
- *   <property value="173,173,342,342" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_0" name="toPort"/>
- *   <property value="success" name="label"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:index.jsp@#@action:loginForm.do#Controller.LoginForm@">
- *   <property value="196,236,236,236" name="elbowsX"/>
- *   <property value="153,153,208,264" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="East_2" name="toPort"/>
- * </pageflow-object>
  * </view-properties>
  * ::
  */
@@ -64,19 +47,9 @@ public class Controller extends PageFlowController
      */
     protected Forward begin()
     {
-        return new Forward("index");
-    }
-
-
-    /**
-     * @jpf:action
-     * @jpf:forward name="success" path="desafio.portal"
-     */
-    protected Forward loginForm(LoginForm form)
-    {
-        this.getSession().setAttribute("email", form.getEmail());
         return new Forward("success");
     }
+
 
     /**
      * FormData get and set methods may be overwritten by the Form Bean editor.

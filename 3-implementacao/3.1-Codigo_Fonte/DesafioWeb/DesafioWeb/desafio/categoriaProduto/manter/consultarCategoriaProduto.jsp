@@ -16,18 +16,18 @@
             <h2 class="subtitle">Consultar</h2>
             <h1 class="title">Categoria Produto</h1>
             
+            <netui:anchor action="acIrParaCadastrarCategoriaProduto">
+                <button class="right-button">
+                    <i class="fa fa-plus">Cadastrar</i>
+                </button>
+            </netui:anchor>
+            
             <netui:form action="acObterListaCategoriaProduto">
                 <h3 class="subtitle">Nome Categoria Produto</h3>
                 <netui:textBox dataSource="{actionForm.nomeCategoriaProdutoFiltro}" maxlength="144"/>
                 <netui:anchor formSubmit="true">
                     <i class="fa fa-search"></i>
                 </netui:anchor>    
-                
-                <netui:anchor formSubmit="true" action="acIrParaCadastrarCategoriaProduto">
-                    <button class="right-button">
-                        <i class="fa fa-plus">Cadastrar</i>
-                    </button>
-                </netui:anchor>
             </netui:form>
                 
             <netui:form tagId="formEliminarCategoriaProduto" action="acEliminarCategoriaProduto">
