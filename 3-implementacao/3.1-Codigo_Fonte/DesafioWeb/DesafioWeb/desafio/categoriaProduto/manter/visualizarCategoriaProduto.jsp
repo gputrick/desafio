@@ -67,11 +67,19 @@
 
 		<netui:anchor action="acIrParaConsultarCategoriaProduto">
 			<button class="right-button">
-				<i class="fa fa-arrow-left">Voltar Para Consulta</i>
+				<i class="fa fa-home">Voltar Para Consulta</i>
 			</button>
 		</netui:anchor>
-
-
+        
+        <h2 class="subtitle">Lista de Produtos</h2>
+        <netui-data:grid dataSource="{pageFlow.listaProduto}" name="{pageFlow.gridListaProduto}">
+            <netui-data:gridStyle styleClassPrefix="grid"/>
+            <netui-data:pager renderInHeader="false" action="acPaginacaoProduto" renderInFooter="true"/>
+            <netui-data:columns>
+                <netui-data:basicColumn title="Nome Produto" name="NOME_PRODUTO"/>
+            </netui-data:columns>
+        </netui-data:grid>
+        
 		<netui:form tagId="formEliminarCategoriaProduto"
 			action="acEliminarCategoriaProduto">
 			<netui:hidden tagId="codigo"

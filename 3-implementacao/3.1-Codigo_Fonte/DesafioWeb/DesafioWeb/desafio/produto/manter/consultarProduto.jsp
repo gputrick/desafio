@@ -37,7 +37,7 @@
             <netui-data:grid dataSource="{pageFlow.listaProduto}" name="{pageFlow.gridListaProduto}">
                 <netui-data:gridStyle styleClassPrefix="grid"/>
                 <netui-data:pager renderInHeader="false" action="acPaginacaoProduto" renderInFooter="true"/>
-                <netui-data:columns filterAction="acFiltroListaProduto" sortAction="acOrdenaListaProduto">
+                <netui-data:columns>
                     <netui-data:anchorColumn action="acSelecionaProduto" styleClassPrefix="left" addRowId="true" title="Nome Produto" name="NOME_PRODUTO"/>
                     <netui-data:anchorColumn action="acSelecionaProduto" styleClassPrefix="right" addRowId="true" title="&nbsp;" src="/DesafioWeb/resources/images/eye-icon.png" width="16"/>
                     <netui-data:anchorColumn action="acIrParaAlterarProduto" styleClassPrefix="right" addRowId="true" title="&nbsp;" src="/DesafioWeb/resources/images/edit-icon.png" width="16"/>

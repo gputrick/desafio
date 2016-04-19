@@ -9,6 +9,7 @@ import desafio.CategoriaProdutoVO;
 import itaipu.util.exceptions.AppException;
 import desafio.jcs.JCSCategoriaProduto;
 import desafio.categoriaProduto.CategoriaProdutoFormBean;
+import desafio.jcs.JCSProduto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -31,13 +32,17 @@ import org.apache.struts.action.ActionForm;
  *   <property value="800" name="x"/>
  *   <property value="460" name="y"/>
  * </pageflow-object>
+ * <pageflow-object id="action:acPaginacaoProduto.do">
+ *   <property value="60" name="x"/>
+ *   <property value="40" name="y"/>
+ * </pageflow-object>
  * <pageflow-object id="action:acPaginacaoSubCategoria.do">
  *   <property value="2160" name="x"/>
  *   <property value="660" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acObterListaCategoriaProduto.do#desafio.categoriaProduto.CategoriaProdutoFormBean">
- *   <property value="960" name="x"/>
- *   <property value="560" name="y"/>
+ *   <property value="740" name="x"/>
+ *   <property value="840" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action:acEliminarCategoriaProduto.do">
  *   <property value="1080" name="x"/>
@@ -116,28 +121,28 @@ import org.apache.struts.action.ActionForm;
  *   <property value="660" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acObterListaCategoriaProduto.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="989,989,971,971" name="elbowsX"/>
- *   <property value="404,460,460,517" name="elbowsY"/>
- *   <property value="South_0" name="fromPort"/>
- *   <property value="North_2" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acEliminarCategoriaProduto.do@">
- *   <property value="1011,1011,1080,1080" name="elbowsX"/>
- *   <property value="404,410,410,417" name="elbowsY"/>
- *   <property value="South_2" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acPaginacaoCategoriaProduto.do@">
- *   <property value="964,900,900,836" name="elbowsX"/>
- *   <property value="353,353,453,453" name="elbowsY"/>
- *   <property value="West_1" name="fromPort"/>
- *   <property value="East_1" name="toPort"/>
+ *   <property value="964,870,870,776" name="elbowsX"/>
+ *   <property value="364,364,822,822" name="elbowsY"/>
+ *   <property value="West_2" name="fromPort"/>
+ *   <property value="East_0" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaCadastrarCategoriaProduto.do@">
  *   <property value="1036,1150,1150,1264" name="elbowsX"/>
  *   <property value="353,353,453,453" name="elbowsY"/>
  *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acEliminarCategoriaProduto.do@">
+ *   <property value="1000,1000,1022,1044" name="elbowsX"/>
+ *   <property value="404,442,442,442" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acPaginacaoCategoriaProduto.do@">
+ *   <property value="964,900,900,836" name="elbowsX"/>
+ *   <property value="353,353,453,453" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:consultarCategoriaProduto.jsp@#@action:acIrParaAlterarCategoriaProduto.do@">
  *   <property value="1036,1500,1500,1964" name="elbowsX"/>
@@ -165,10 +170,10 @@ import org.apache.struts.action.ActionForm;
  *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaVisualizarCategoriaPai.do@">
- *   <property value="1896,2110,2110,2324" name="elbowsX"/>
- *   <property value="53,53,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1860,1860,1892,1924" name="elbowsX"/>
+ *   <property value="104,153,153,153" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaAlterarCategoriaProduto.do@">
@@ -189,15 +194,21 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acObterListaSubCategoria.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1860,1860,1892,1924" name="elbowsX"/>
- *   <property value="104,142,142,142" name="elbowsY"/>
- *   <property value="South_1" name="fromPort"/>
- *   <property value="West_0" name="toPort"/>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaVisualizarCategoriaPai.do@">
+ *   <property value="1896,2110,2110,2324" name="elbowsX"/>
+ *   <property value="53,53,653,653" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acIrParaConsultarCategoriaProduto.do@">
  *   <property value="1824,1470,1470,1116" name="elbowsX"/>
  *   <property value="53,53,153,153" name="elbowsY"/>
+ *   <property value="West_1" name="fromPort"/>
+ *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:visualizarCategoriaProduto.jsp@#@action:acPaginacaoProduto.do@">
+ *   <property value="1824,960,960,96" name="elbowsX"/>
+ *   <property value="53,53,33,33" name="elbowsY"/>
  *   <property value="West_1" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
@@ -211,17 +222,23 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
- *   <property value="1216,1330,1330,1444" name="elbowsX"/>
- *   <property value="553,553,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acAlterarCategoriaProduto.do@">
  *   <property value="1144,710,710,276" name="elbowsX"/>
  *   <property value="564,564,653,653" name="elbowsY"/>
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
+ *   <property value="1216,1480,1480,1744" name="elbowsX"/>
+ *   <property value="553,553,653,653" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
+ *   <property value="1216,1280,1280,1280" name="elbowsX"/>
+ *   <property value="564,564,590,617" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="North_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVoltarAPaginaAnterior.do@">
  *   <property value="1144,910,910,676" name="elbowsX"/>
@@ -235,26 +252,8 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
- *   <property value="1216,1670,1670,2124" name="elbowsX"/>
- *   <property value="553,553,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
- *   <property value="1216,1280,1280,1280" name="elbowsX"/>
- *   <property value="564,564,590,617" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
- *   <property value="1216,1410,1410,1604" name="elbowsX"/>
- *   <property value="553,553,653,653" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
- *   <property value="West_1" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
- *   <property value="1216,1480,1480,1744" name="elbowsX"/>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
+ *   <property value="1216,1330,1330,1444" name="elbowsX"/>
  *   <property value="553,553,653,653" name="elbowsY"/>
  *   <property value="East_1" name="fromPort"/>
  *   <property value="West_1" name="toPort"/>
@@ -265,15 +264,27 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
+ *   <property value="1216,1670,1670,2124" name="elbowsX"/>
+ *   <property value="553,553,653,653" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:alterarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
+ *   <property value="1216,1410,1410,1604" name="elbowsX"/>
+ *   <property value="553,553,653,653" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
+ * </pageflow-object>
  * <pageflow-object id="page:alterarCategoriaProduto.jsp">
  *   <property value="1180" name="x"/>
  *   <property value="560" name="y"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acCadastrarCategoriaProduto.do@">
  *   <property value="1436,1680,1680,1924" name="elbowsX"/>
- *   <property value="564,564,642,642" name="elbowsY"/>
+ *   <property value="564,564,653,653" name="elbowsY"/>
  *   <property value="East_2" name="fromPort"/>
- *   <property value="West_0" name="toPort"/>
+ *   <property value="West_1" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acAbrirPopupVincularSubCategoria.do@">
  *   <property value="1364,1220,1220,1076" name="elbowsX"/>
@@ -281,22 +292,10 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_1" name="fromPort"/>
  *   <property value="East_0" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
- *   <property value="1436,1480,1480,1480" name="elbowsX"/>
- *   <property value="564,564,590,617" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
- *   <property value="North_1" name="toPort"/>
- * </pageflow-object>
  * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acApagarMesagem.do@">
  *   <property value="1436,1520,1520,1604" name="elbowsX"/>
  *   <property value="564,564,642,642" name="elbowsY"/>
  *   <property value="East_2" name="fromPort"/>
- *   <property value="West_0" name="toPort"/>
- * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
- *   <property value="1436,1590,1590,1744" name="elbowsX"/>
- *   <property value="553,553,642,642" name="elbowsY"/>
- *   <property value="East_1" name="fromPort"/>
  *   <property value="West_0" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acObterListaSubCategoriaPopup.do#desafio.categoriaProduto.CategoriaProdutoFormBean@">
@@ -311,6 +310,12 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_1" name="toPort"/>
  * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
+ *   <property value="1436,1780,1780,2124" name="elbowsX"/>
+ *   <property value="564,564,642,642" name="elbowsY"/>
+ *   <property value="East_2" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
  * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acDesvincularSubCategoria.do@">
  *   <property value="1364,1110,1110,856" name="elbowsX"/>
  *   <property value="564,564,653,653" name="elbowsY"/>
@@ -323,10 +328,16 @@ import org.apache.struts.action.ActionForm;
  *   <property value="West_2" name="fromPort"/>
  *   <property value="East_0" name="toPort"/>
  * </pageflow-object>
- * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acPaginacaoSubCategoria.do@">
- *   <property value="1436,1780,1780,2124" name="elbowsX"/>
- *   <property value="564,564,642,642" name="elbowsY"/>
- *   <property value="East_2" name="fromPort"/>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acVinculaSubCategoria.do@">
+ *   <property value="1400,1400,1422,1444" name="elbowsX"/>
+ *   <property value="604,642,642,642" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="West_0" name="toPort"/>
+ * </pageflow-object>
+ * <pageflow-object id="action-call:@page:cadastrarCategoriaProduto.jsp@#@action:acFechaPopup.do@">
+ *   <property value="1436,1590,1590,1744" name="elbowsX"/>
+ *   <property value="553,553,642,642" name="elbowsY"/>
+ *   <property value="East_1" name="fromPort"/>
  *   <property value="West_0" name="toPort"/>
  * </pageflow-object>
  * <pageflow-object id="page:cadastrarCategoriaProduto.jsp">
@@ -349,6 +360,17 @@ import org.apache.struts.action.ActionForm;
  *   <property value="504,510,510,517" name="elbowsY"/>
  *   <property value="South_1" name="fromPort"/>
  *   <property value="North_1" name="toPort"/>
+ *   <property value="success" name="label"/>
+ * </pageflow-object>
+ * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acPaginacaoProduto.do@@">
+ *   <property value="140" name="x"/>
+ *   <property value="140" name="y"/>
+ * </pageflow-object>
+ * <pageflow-object id="forward:return-to#success#currentPage#@action:acPaginacaoProduto.do@">
+ *   <property value="60,60,82,104" name="elbowsX"/>
+ *   <property value="84,133,133,133" name="elbowsY"/>
+ *   <property value="South_1" name="fromPort"/>
+ *   <property value="West_1" name="toPort"/>
  *   <property value="success" name="label"/>
  * </pageflow-object>
  * <pageflow-object id="return-to:@forward:return-to#success#currentPage#@action:acPaginacaoSubCategoria.do@@">
@@ -564,6 +586,10 @@ import org.apache.struts.action.ActionForm;
  *   <property value="1900" name="x"/>
  *   <property value="760" name="y"/>
  * </pageflow-object>
+ * <pageflow-object id="control:desafio.jcs.JCSProduto#jCSProduto">
+ *   <property value="31" name="x"/>
+ *   <property value="33" name="y"/>
+ * </pageflow-object>
  * </view-properties>
  * ::
  */
@@ -572,6 +598,11 @@ public class JPFManterCategoriaProdutoController extends PageFlowController {
 	 * @common:control
 	 */
 	private JCSCategoriaProduto jCSCategoriaProduto;
+    
+    /**
+	 * @common:control
+	 */
+	private JCSProduto jCSProduto;
 
 	public CategoriaProdutoFormBean categoriaProdutoFormBean;
 
@@ -587,6 +618,9 @@ public class JPFManterCategoriaProdutoController extends PageFlowController {
 
 	public transient CategoriaProdutoVO[] listaSubCategoriaVO;
 	public transient Object listaSubCategoriaVOFiltrada;
+    
+    public transient RowSet listaProduto;
+    public transient String gridListaProduto = "gridListaProduto";
 	// Uncomment this declaration to access Global.app.
 	//
 	// protected global.Global globalApp;
@@ -626,7 +660,20 @@ public class JPFManterCategoriaProdutoController extends PageFlowController {
 
 		return new Forward("success");
 	}
+    
+    /**
+	 * Action que gerencia a paginação da grid de lista de Produto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acPaginacaoProduto() {
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
 
+		return new Forward("success");
+	}
+    
 	/**
 	 * Action que gerencia a paginação da lista de subcategorias
 	 * 
@@ -755,7 +802,11 @@ public class JPFManterCategoriaProdutoController extends PageFlowController {
 		this.sortFilterService = SortFilterService.getInstance(getRequest());
 		this.listaSubCategoria = this.jCSCategoriaProduto.obterListaSubCategoria(categoriaProdutoVO, null,
 				this.sortFilterService.getDatabaseFilter(this.gridListaSubCategoria));
-
+        
+		this.listaProduto = this.jCSProduto.obterListaProduto(
+				categoriaProdutoVO, null,
+				this.sortFilterService.getDatabaseFilter(this.gridListaProduto));
+        
 		this.categoriaProdutoFormBean.setCategoriaProdutoVO(categoriaProdutoVO);
 
 		return new Forward("success");

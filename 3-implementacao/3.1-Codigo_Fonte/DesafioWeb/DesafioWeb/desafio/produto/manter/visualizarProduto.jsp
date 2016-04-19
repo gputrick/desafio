@@ -35,8 +35,7 @@
 			<netui-data:gridStyle styleClassPrefix="grid" />
 			<netui-data:pager renderInHeader="false"
 				action="acPaginacaoCategoriaProduto" renderInFooter="true" />
-			<netui-data:columns filterAction="acFiltroListaCategoriaProduto"
-				sortAction="acOrdenaListaCategoriaProduto">
+			<netui-data:columns>
 				<netui-data:basicColumn styleClassPrefix="left"
 					title="Nome Categoria" name="NOME_CATEGORIA_PRODUTO" />
 			</netui-data:columns>

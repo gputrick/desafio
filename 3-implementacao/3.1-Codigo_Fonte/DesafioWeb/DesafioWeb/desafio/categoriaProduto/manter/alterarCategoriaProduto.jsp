@@ -113,8 +113,7 @@
 					<netui-data:pager renderInHeader="false"
 						action="acPaginacaoSubCategoria" renderInFooter="true"
 						pageSize="5" />
-					<netui-data:columns filterAction="acFiltroLisstaSubCategoria"
-						sortAction="acOrdenaListaSubCategoria">
+					<netui-data:columns>
 						<netui-data:anchorColumn action="acVinculaSubCategoria"
 							addRowId="true" title="Nome Sub-categoria"
 							name="NOME_CATEGORIA_PRODUTO" />

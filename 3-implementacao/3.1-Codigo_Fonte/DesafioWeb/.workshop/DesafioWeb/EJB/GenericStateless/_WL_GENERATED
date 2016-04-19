@@ -1,7 +1,0 @@
-#Mon Apr 18 15:15:13 GMT-03:00 2016
-META-INF/ejb-jar.xml=1372764221
-com.bea.wlwgen.GenericStatelessSLSBContIntf=2625837307
-com.bea.wlwgen.GenericStatelessSLSBContImpl=3214768731
-WLS_RELEASE_BUILD_VERSION_8=8.1.6.0
-META-INF/weblogic-ejb-jar.xml=2635114292
-com.bea.wlwgen.GenericStatelessSLSBContHome=644168484

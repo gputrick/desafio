@@ -101,7 +101,7 @@
                     <netui-data:grid dataSource="{pageFlow.listaCategoriaProduto}" name="{pageFlow.gridListaCategoriaProduto}">
                         <netui-data:gridStyle styleClassPrefix="grid"/>
                         <netui-data:pager renderInHeader="false" action="acPaginacaoCategoriaProduto" renderInFooter="true" pageSize="5"/>
-                        <netui-data:columns filterAction="acFiltroListaCategoriaProduto" sortAction="acOrdenaListaCategoriaProduto">
+                        <netui-data:columns>
                             <netui-data:anchorColumn action="acVinculaCategoriaProduto" addRowId="true" title="Nome Categoria" name="NOME_CATEGORIA_PRODUTO"/>
                         </netui-data:columns>
                     </netui-data:grid>
