@@ -32,6 +32,10 @@ public interface CategoriaProdutoHome extends EJBLocalHome {
 
 
 
+
+  /**
+   * Metodo executado quando o método create for chamado
+   */
   public CategoriaProduto create(desafio.CategoriaProdutoVO categoriaProdutoVO, desafio.ejb.geral.CategoriaProduto categoriaPai)     throws CreateException, desafio.infra.DesafioException;
 
 

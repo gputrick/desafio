@@ -3,8 +3,7 @@ package desafio.jcx;
 import com.bea.control.*;
 
 /**
- * @jc:ejb home-jndi-name=
- *         "ejb.DesafioEjbs.ProdutoCategoriaProdutoSessionRemoteHome"
+ * @jc:ejb home-jndi-name="ejb.DesafioEjbs.ProdutoCategoriaProdutoSessionRemoteHome"
  */
 public interface EJBProdutoCategoriaProdutoSession extends desafio.ejb.manager.ProdutoCategoriaProdutoSessionHome, // home
 																													// interface

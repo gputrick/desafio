@@ -16,7 +16,7 @@
 		<h2 class="subtitle">Cadastrar</h2>
 		<h1 class="title">Categoria Produto</h1>
 
-		<netui:form tagId="formAlterarCategoriaProduto"
+		<netui:form tagId="formCadastrarCategoriaProduto"
 			action="acCadastrarCategoriaProduto">
 			<h3 class="subtitle">Nome Categoria Produto</h3>
 			<netui:textBox tagId="nome_categoria_produto"
@@ -156,7 +156,7 @@
 
 		btnConfirma = document.getElementById("confirma-button");
 		btnConfirma.onclick = function() {
-			document.forms[getNetuiTagName("formAlterarCategoriaProduto", this)]
+			document.forms[getNetuiTagName("formCadastrarCategoriaProduto", this)]
 					.submit();
 		}
 	</script>

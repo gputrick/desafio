@@ -33,13 +33,15 @@ public interface CategoriaProdutoSessionRemote extends EJBObject {
 
   /**
    * Método responsável por inserir na lista de CategoriaProduto
-   * @param produtoCategoriaProdutoVO - categoriaProdutoVO
+   * @param produtoCategoriaProdutoVO
+            - categoriaProdutoVO
    * @return CategoriaProdutoVO
    * @throws DesafioException
    */
   public desafio.CategoriaProdutoVO addProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, desafio.CategoriaProdutoVO categoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
 
   /**
+   * Método responsável por atualizar os dados primitivos do objeto
    * @param categoriaProdutoVO
    * @return CategoriaProdutoVO
    * @throws DesafioException
@@ -48,12 +50,25 @@ public interface CategoriaProdutoSessionRemote extends EJBObject {
 
   /**
    * M�todo responsável por excluir da lista de CategoriaProduto
-   * @param produtoCategoriaProdutoVO - categoriaProdutoVO
+   * @param produtoCategoriaProdutoVO
+            - categoriaProdutoVO
    * @return CategoriaProdutoVO
    * @throws DesafioException
    */
   public void delProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, desafio.CategoriaProdutoVO categoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
+
+  /**
+   * Método que exclui categoriaProduto da persistência
+   * @param categoriaProdutoVO
+   * @throws DesafioException
+   */
   public void eliminarCategoriaProduto(desafio.CategoriaProdutoVO categoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
+
+  /**
+   * Metodo responsavel por obter os dados do objeto
+   * @param categoriaProdutoVO
+   * @throws DesafioException
+   */
   public desafio.CategoriaProdutoVO obterCategoriaProduto(desafio.CategoriaProdutoVO categoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
 
 }

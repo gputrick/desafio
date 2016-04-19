@@ -33,13 +33,15 @@ public interface ProdutoSessionRemote extends EJBObject {
 
   /**
    * Método responsável por inserir na lista de Produto
-   * @param produtoCategoriaProdutoVO - produtoVO
+   * @param produtoCategoriaProdutoVO
+            - produtoVO
    * @return ProdutoVO
    * @throws DesafioException
    */
   public desafio.ProdutoVO addProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, desafio.ProdutoVO produtoVO)     throws RemoteException, desafio.infra.DesafioException;
 
   /**
+   * Método atualiza os dados primitivos do objeto
    * @param produtoVO
    * @return ProdutoVO
    * @throws DesafioException
@@ -48,12 +50,21 @@ public interface ProdutoSessionRemote extends EJBObject {
 
   /**
    * M�todo responsável por excluir da lista de Produto
-   * @param produtoCategoriaProdutoVO - produtoVO
+   * @param produtoCategoriaProdutoVO
+            - produtoVO
    * @return ProdutoVO
    * @throws DesafioException
    */
   public void delProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO, desafio.ProdutoVO produtoVO)     throws RemoteException, desafio.infra.DesafioException;
+
+  /**
+   * Método exclui o objeto da persistência
+   */
   public void eliminarProduto(desafio.ProdutoVO produtoVO)     throws RemoteException, desafio.infra.DesafioException;
+
+  /**
+   * Método obtém os dados primitivos do objeto
+   */
   public desafio.ProdutoVO obterProduto(desafio.ProdutoVO produtoVO)     throws RemoteException, desafio.infra.DesafioException;
 
 }

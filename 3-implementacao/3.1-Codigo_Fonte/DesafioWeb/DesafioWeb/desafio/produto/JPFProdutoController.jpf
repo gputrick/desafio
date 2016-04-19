@@ -82,8 +82,7 @@ public class JPFProdutoController extends PageFlowController {
 	 * This method represents the point of entry into the pageflow
 	 * 
 	 * @jpf:action
-	 * @jpf:forward name="success" path=
-	 *              "/desafio/produto/manter/JPFManterProdutoController.jpf"
+	 * @jpf:forward name="success" path="/desafio/produto/manter/JPFManterProdutoController.jpf"
 	 * @jpf:forward name="erro" path="/resources/jsp/errorException.jsp"
 	 */
 	protected Forward begin() throws Exception {

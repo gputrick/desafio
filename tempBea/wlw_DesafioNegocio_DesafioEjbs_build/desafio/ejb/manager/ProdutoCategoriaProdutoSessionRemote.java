@@ -36,12 +36,21 @@ public interface ProdutoCategoriaProdutoSessionRemote extends EJBObject {
 
 
   /**
+   * Método Atualiza os dados do objeto
    * @param produtoVO
    * @return ProdutoVO
    * @throws DesafioException
    */
   public desafio.ProdutoCategoriaProdutoVO atualizarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException, javax.naming.NamingException;
+
+  /**
+   * Metodo exclui o objeto da presistência
+   */
   public void eliminarProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
+
+  /**
+   * Método obtém os dados primitivos do objeto
+   */
   public desafio.ProdutoCategoriaProdutoVO obterProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws RemoteException, desafio.infra.DesafioException;
 
 }

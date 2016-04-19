@@ -33,6 +33,10 @@ public interface ProdutoCategoriaProdutoHome extends EJBLocalHome {
 
 
 
+
+  /**
+   * Metodo executado quando é chamado o metodo create da classe
+   */
   public ProdutoCategoriaProduto create(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)     throws CreateException, desafio.infra.DesafioException;
 
 

@@ -39,7 +39,8 @@ public interface ProdutoCategoriaProduto extends EJBLocalObject {
   public void setData(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)  throws desafio.infra.DesafioException;  public void setId_categoria_produto(Long val) ;  public void setId_produto(Long val) ;  public void setProduto(desafio.ejb.geral.Produto arg) ;
   /**
    * Método valida os dados do Value Object
-   * @param Produto com os dados a serem validados
+   * @param Produto
+            com os dados a serem validados
    * @throws DesafioException
    */
   public void validaProdutoCategoriaProduto(desafio.ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO)  throws desafio.infra.DesafioException;
