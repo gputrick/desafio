@@ -1,268 +1,234 @@
-package desafio.jcs; 
+package desafio.jcs;
 
 import com.bea.control.*;
 import desafio.CategoriaProdutoVO;
 import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
 import javax.sql.RowSet;
+
 /**
  * @editor-info:code-gen control-interface="true"
  */
-public class JCSCategoriaProdutoImpl implements JCSCategoriaProduto, ControlSource
-{ 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.EJBCategoriaProdutoSession ejBCategoriaProdutoSession;
+public class JCSCategoriaProdutoImpl implements JCSCategoriaProduto, ControlSource {
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.EJBCategoriaProdutoSession ejBCategoriaProdutoSession;
 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.DBCategoriaProduto dBCategoriaProduto;
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.DBCategoriaProduto dBCategoriaProduto;
 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.EJBProdutoCategoriaProdutoSession ejBProdutoCategoriaProdutoSession;
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.EJBProdutoCategoriaProdutoSession ejBProdutoCategoriaProdutoSession;
 
-    static final long serialVersionUID = 1L;    
+	static final long serialVersionUID = 1L;
 
-    /**
-     * Método obtém lista de categoriaProduto
-     * caso haja o filtro produto faz o join 
-     * com a tabela associativa produto_categoria_produto
-     * 
-     * @common:operation
-     */
-    public RowSet obterListaCategoriaProduto(ProdutoVO produtoVOFiltro, String nomeCategoriaProduto, DatabaseFilter filter) throws Exception
-    {
-        String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
-        StringBuffer whereClause = new StringBuffer();
-        boolean concatenou = false;
-        
-        if((produtoVOFiltro != null) &&
-        (produtoVOFiltro.getId_produto() > 0)){
-            whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
-            .append(" ON CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO ")
-            .append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO = ")
-            .append(produtoVOFiltro.getId_produto())
-            .append(" ");
-            concatenou = true;
-        }
-        
-        if((nomeCategoriaProduto != null) &&
-        (!nomeCategoriaProduto.trim().equals(""))){
-            if( concatenou )
-            {  
-                whereClause.append(" AND ");
-            }
-            else
-            {
-                whereClause.append(" WHERE ");
-                concatenou = true;
-            }
-            
-            whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
-            .append(nomeCategoriaProduto.trim())
-            .append("%') )");
-        }
-	if ( filter != null )
-			{
-				if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
-				{
-					whereClause = new StringBuffer();			
-				}
-				if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
-				{
-					orderByClause = "";
+	/**
+	 * Método obtém lista de categoriaProduto caso haja o filtro produto faz o
+	 * join com a tabela associativa produto_categoria_produto
+	 * 
+	 * @common:operation
+	 */
+	public RowSet obterListaCategoriaProduto(ProdutoVO produtoVOFiltro, String nomeCategoriaProduto,
+			DatabaseFilter filter) throws Exception {
+		String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
+		StringBuffer whereClause = new StringBuffer();
+		boolean concatenou = false;
+
+		if ((produtoVOFiltro != null) && (produtoVOFiltro.getId_produto() > 0)) {
+			whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
+					.append(" ON CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO ")
+					.append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO = ").append(produtoVOFiltro.getId_produto())
+					.append(" ");
+			concatenou = true;
+		}
+
+		if ((nomeCategoriaProduto != null) && (!nomeCategoriaProduto.trim().equals(""))) {
+			if (concatenou) {
+				whereClause.append(" AND ");
+			} else {
+				whereClause.append(" WHERE ");
+				concatenou = true;
+			}
+
+			whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
+					.append(nomeCategoriaProduto.trim()).append("%') )");
+		}
+		if (filter != null) {
+			if (filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("")) {
+				whereClause = new StringBuffer();
+			}
+			if (filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("")) {
+				orderByClause = "";
+			}
+		} else {
+			filter = new DatabaseFilter();
+		}
+
+		return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
+
+	}
+
+	/**
+	 * Método obtém a lista de categorias filtradas pela categoriaPai
+	 * 
+	 * @common:operation
+	 */
+	public CategoriaProdutoVO[] obterListaCategoriaProdutoPorCategoriaPai(CategoriaProdutoVO categoriaPaiVO) {
+
+		return this.dBCategoriaProduto.obterListaCategoriaProdutoPorCategoriaPai(categoriaPaiVO);
+	}
+
+	/**
+	 * Método obtém a lista de subCategorias filtradas pela categoriaPai
+	 * 
+	 * @common:operation
+	 */
+
+	public RowSet obterListaSubCategoria(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeCategoriaProdutoFiltro,
+			DatabaseFilter filter) throws Exception {
+		String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
+		StringBuffer whereClause = new StringBuffer();
+		boolean concatenou = false;
+
+		if ((categoriaProdutoVOFiltro != null) && (categoriaProdutoVOFiltro.getId_categoria_produto()) > 0) {
+			whereClause.append(" WHERE CATEGORIA_PRODUTO.ID_CATEGORIA_PAI = ")
+					.append(categoriaProdutoVOFiltro.getId_categoria_produto()).append(" ");
+			concatenou = true;
+		}
+
+		if ((nomeCategoriaProdutoFiltro != null) && (!nomeCategoriaProdutoFiltro.trim().equals(""))) {
+			if (concatenou) {
+				whereClause.append(" AND ");
+			} else {
+				whereClause.append(" WHERE ");
+				concatenou = true;
+			}
+
+			whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
+					.append(nomeCategoriaProdutoFiltro.trim()).append("%') )");
+		}
+		if (filter != null) {
+			if (filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("")) {
+				whereClause = new StringBuffer();
+			}
+			if (filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("")) {
+				orderByClause = "";
+			}
+		} else {
+			filter = new DatabaseFilter();
+		}
+
+		return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
+
+	}
+
+	/**
+	 * Método elimina todas as ocorrencias de categoria produto na tabela
+	 * associativa produto_categoria_produto e depois exclui categoriaProduto da
+	 * tabela categoria_produto
+	 * 
+	 * @common:operation
+	 */
+	public void eliminarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception {
+		ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto = this.dBProdutoCategoriaProduto
+				.obterListaProdutoCategoriaProdutoPorCategoriaProduto(categoriaProdutoVO);
+		if (listaProdutoCategoriaProduto.length > 0) {
+			for (int i = 0; i < listaProdutoCategoriaProduto.length; i++) {
+				this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProduto[i]);
+			}
+		}
+		this.ejBCategoriaProdutoSession.eliminarCategoriaProduto(categoriaProdutoVO);
+	}
+
+	/**
+	 * Método além de atualizar os dados primitivos de categoriaProduto atualiza
+	 * a lista de sub-categorias associadas a sua primary key
+	 * 
+	 * @common:operation
+	 */
+	public CategoriaProdutoVO atualizarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO,
+			CategoriaProdutoVO[] listaSubCategoriaVOAtualizada) throws Exception {
+		boolean isExcluido;
+
+		CategoriaProdutoVO[] listaSubCategoriaVO = this.obterListaCategoriaProdutoPorCategoriaPai(categoriaProdutoVO);
+
+		for (int i = 0; i < listaSubCategoriaVO.length; i++) {
+			isExcluido = true;
+			for (int j = 0; j < listaSubCategoriaVOAtualizada.length; j++) {
+				if (listaSubCategoriaVO[i].getId_categoria_produto() == listaSubCategoriaVOAtualizada[j]
+						.getId_categoria_produto()) {
+					isExcluido = false;
 				}
 			}
-        else
-        {
-            filter = new DatabaseFilter();
-        }
-        
-        return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
-        
-    }
-    /**
-     * Método obtém a lista de categorias filtradas pela categoriaPai
-     * 
-     * @common:operation
-     */
-    public CategoriaProdutoVO[] obterListaCategoriaProdutoPorCategoriaPai(CategoriaProdutoVO categoriaPaiVO){
-        
-        return this.dBCategoriaProduto.obterListaCategoriaProdutoPorCategoriaPai(categoriaPaiVO);
-    }
-    
-      /**
-       * Método obtém a lista de subCategorias filtradas pela categoriaPai
-       * 
-     * @common:operation
-     */
-
-    public RowSet obterListaSubCategoria(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeCategoriaProdutoFiltro, DatabaseFilter filter) throws Exception
-    {
-        String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
-        StringBuffer whereClause = new StringBuffer();
-        boolean concatenou = false;
-        
-        if((categoriaProdutoVOFiltro != null) &&
-        (categoriaProdutoVOFiltro.getId_categoria_produto()) > 0){
-            whereClause.append(" WHERE CATEGORIA_PRODUTO.ID_CATEGORIA_PAI = ")
-            .append(categoriaProdutoVOFiltro.getId_categoria_produto())
-            .append(" ");
-            concatenou = true;
-        }
-        
-        if((nomeCategoriaProdutoFiltro != null) &&
-        (!nomeCategoriaProdutoFiltro.trim().equals(""))){
-            if( concatenou )
-            {  
-                whereClause.append(" AND ");
-            }
-            else
-            {
-                whereClause.append(" WHERE ");
-                concatenou = true;
-            }
-            
-            whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
-            .append(nomeCategoriaProdutoFiltro.trim())
-            .append("%') )");
-        }
-	if ( filter != null )
-			{
-				if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
-				{
-					whereClause = new StringBuffer();			
-				}
-				if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
-				{
-					orderByClause = "";
-				}
+			if (isExcluido) {
+				listaSubCategoriaVO[i].setId_categoria_pai(0);
+				this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(listaSubCategoriaVO[i]);
 			}
-        else
-        {
-            filter = new DatabaseFilter();
-        }
-        
-        return this.dBCategoriaProduto.getListaCategoriaProduto(whereClause.toString(), orderByClause, filter);
-        
-    }
-    
-    /**
-     * Método elimina todas as ocorrencias de
-     * categoria produto na tabela associativa
-     * produto_categoria_produto e depois
-     * exclui categoriaProduto da tabela categoria_produto
-     * 
-     * @common:operation
-     */
-    public void eliminarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception
-    {
-        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto = this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorCategoriaProduto(categoriaProdutoVO);
-        if(listaProdutoCategoriaProduto.length > 0){
-            for(int i = 0; i < listaProdutoCategoriaProduto.length; i++){
-                this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProduto[i]);
-            }
-        }
-        this.ejBCategoriaProdutoSession.eliminarCategoriaProduto(categoriaProdutoVO);
-    }
-    
-    
-    /**
-     * Método além de atualizar os dados primitivos de categoriaProduto
-     * atualiza a lista de sub-categorias associadas a sua primary key
-     * 
-     * @common:operation
-     */
-    public CategoriaProdutoVO atualizarCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO, CategoriaProdutoVO[] listaSubCategoriaVOAtualizada) throws Exception
-    {
-        boolean isExcluido;
-        
-        CategoriaProdutoVO[] listaSubCategoriaVO = this.obterListaCategoriaProdutoPorCategoriaPai(categoriaProdutoVO);
-        
-        for(int i = 0; i < listaSubCategoriaVO.length; i++){
-            isExcluido = true;
-            for(int j = 0; j < listaSubCategoriaVOAtualizada.length; j++){
-                if(listaSubCategoriaVO[i].getId_categoria_produto() == listaSubCategoriaVOAtualizada[j].getId_categoria_produto()){
-                    isExcluido = false;
-                }
-            }
-            if(isExcluido){
-                listaSubCategoriaVO[i].setId_categoria_pai(0);
-                this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(listaSubCategoriaVO[i]);
-            }
-        }
-        
-        for(int i = 0; i < listaSubCategoriaVOAtualizada.length; i++){
-            listaSubCategoriaVOAtualizada[i].setId_categoria_pai(categoriaProdutoVO.getId_categoria_produto());
-            this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(listaSubCategoriaVOAtualizada[i]);
-        }
-        return this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(categoriaProdutoVO);
-    }
-    
-    /**
-     * Método obtem os dados primitivos de categoriaProduto
-     * e a lista de sub-categorias
-     * 
-     * @common:operation
-     */
-    public CategoriaProdutoVO obterCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception
-    {
-        categoriaProdutoVO = this.ejBCategoriaProdutoSession.obterCategoriaProduto(categoriaProdutoVO);
-        categoriaProdutoVO.setListaProdutoCategoriaProduto(this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorCategoriaProduto(categoriaProdutoVO));
-        
-        return categoriaProdutoVO;
-    }
+		}
 
-    /**
-     * Método obtém lista de categoriaProduto
-     * no formato VO[]
-     * caso haja o filtro produto faz o join 
-     * com a tabela associativa produto_categoria_produto 
-     * 
-     * @common:operation
-     */
-    public CategoriaProdutoVO[] obterListaCategoriaProdutoPorProduto(ProdutoVO produtoVOFiltro, String nomeCategoriaProdutoFiltro) throws Exception
-    {
-        String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
-        StringBuffer whereClause = new StringBuffer();
-        boolean concatenou = false;
-        
-        if((produtoVOFiltro != null) &&
-        (produtoVOFiltro.getId_produto() > 0)){
-            whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
-            .append(" ON CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO ")
-            .append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO = ")
-            .append(produtoVOFiltro.getId_produto())
-            .append(" ");
-            concatenou = true;
-        }
-        
-        if((nomeCategoriaProdutoFiltro != null) &&
-        (!nomeCategoriaProdutoFiltro.trim().equals(""))){
-            if( concatenou )
-            {  
-                whereClause.append(" AND ");
-            }
-            else
-            {
-                whereClause.append(" WHERE ");
-                concatenou = true;
-            }
-            
-            whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
-            .append(nomeCategoriaProdutoFiltro.trim())
-            .append("%') )");
-        }
-            
-        return this.dBCategoriaProduto.getListaCategoriaProdutoPorProduto(whereClause.toString(), orderByClause);
-    }
-} 
+		for (int i = 0; i < listaSubCategoriaVOAtualizada.length; i++) {
+			listaSubCategoriaVOAtualizada[i].setId_categoria_pai(categoriaProdutoVO.getId_categoria_produto());
+			this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(listaSubCategoriaVOAtualizada[i]);
+		}
+		return this.ejBCategoriaProdutoSession.atualizarCategoriaProduto(categoriaProdutoVO);
+	}
+
+	/**
+	 * Método obtem os dados primitivos de categoriaProduto e a lista de
+	 * sub-categorias
+	 * 
+	 * @common:operation
+	 */
+	public CategoriaProdutoVO obterCategoriaProduto(CategoriaProdutoVO categoriaProdutoVO) throws Exception {
+		categoriaProdutoVO = this.ejBCategoriaProdutoSession.obterCategoriaProduto(categoriaProdutoVO);
+		categoriaProdutoVO.setListaProdutoCategoriaProduto(this.dBProdutoCategoriaProduto
+				.obterListaProdutoCategoriaProdutoPorCategoriaProduto(categoriaProdutoVO));
+
+		return categoriaProdutoVO;
+	}
+
+	/**
+	 * Método obtém lista de categoriaProduto no formato VO[] caso haja o filtro
+	 * produto faz o join com a tabela associativa produto_categoria_produto
+	 * 
+	 * @common:operation
+	 */
+	public CategoriaProdutoVO[] obterListaCategoriaProdutoPorProduto(ProdutoVO produtoVOFiltro,
+			String nomeCategoriaProdutoFiltro) throws Exception {
+		String orderByClause = " ORDER BY CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO";
+		StringBuffer whereClause = new StringBuffer();
+		boolean concatenou = false;
+
+		if ((produtoVOFiltro != null) && (produtoVOFiltro.getId_produto() > 0)) {
+			whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
+					.append(" ON CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO ")
+					.append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO = ").append(produtoVOFiltro.getId_produto())
+					.append(" ");
+			concatenou = true;
+		}
+
+		if ((nomeCategoriaProdutoFiltro != null) && (!nomeCategoriaProdutoFiltro.trim().equals(""))) {
+			if (concatenou) {
+				whereClause.append(" AND ");
+			} else {
+				whereClause.append(" WHERE ");
+				concatenou = true;
+			}
+
+			whereClause.append(" (UPPER( CATEGORIA_PRODUTO.NOME_CATEGORIA_PRODUTO ) LIKE UPPER('%")
+					.append(nomeCategoriaProdutoFiltro.trim()).append("%') )");
+		}
+
+		return this.dBCategoriaProduto.getListaCategoriaProdutoPorProduto(whereClause.toString(), orderByClause);
+	}
+}

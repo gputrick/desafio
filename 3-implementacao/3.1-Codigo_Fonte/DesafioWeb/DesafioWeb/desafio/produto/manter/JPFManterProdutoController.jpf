@@ -538,464 +538,456 @@ import org.apache.struts.action.ActionForm;
  * </view-properties>
  * ::
  */
-public class JPFManterProdutoController extends PageFlowController
-{
-    /**
-	* @common:control
-	*/
-    private JCSProduto jCSProduto;
-    
-    /**
-	* @common:control
-	*/
-    private JCSCategoriaProduto jCSCategoriaProduto;
-    
-    public ProdutoFormBean produtoFormBean;
-    public CategoriaProdutoFormBean categoriaProdutoFormBean;
-    
-    public transient PreviousPageInfo currentPage;
+public class JPFManterProdutoController extends PageFlowController {
+	/**
+	 * @common:control
+	 */
+	private JCSProduto jCSProduto;
+
+	/**
+	 * @common:control
+	 */
+	private JCSCategoriaProduto jCSCategoriaProduto;
+
+	public ProdutoFormBean produtoFormBean;
+	public CategoriaProdutoFormBean categoriaProdutoFormBean;
+
+	public transient PreviousPageInfo currentPage;
 	public transient SortFilterService sortFilterService;
 	public transient SortFilterService sortFilterServiceObter;
 
-    public transient RowSet listaProduto;
-    public transient String gridListaProduto = "gridListaProduto";
-    
-    public transient RowSet listaCategoriaProduto;
-    public transient String gridListaCategoriaProduto = "gridListaCategoriaProduto";
-    
-    public transient CategoriaProdutoVO[] listaCategoriaProdutoVO;
-    public transient Object listaCategoriaProdutoVOFiltrada;
-    // Uncomment this declaration to access Global.app.
-    // 
-    //     protected global.Global globalApp;
-    // 
+	public transient RowSet listaProduto;
+	public transient String gridListaProduto = "gridListaProduto";
 
-    // For an example of page flow exception handling see the example "catch" and "exception-handler"
-    // annotations in {project}/WEB-INF/src/global/Global.app
+	public transient RowSet listaCategoriaProduto;
+	public transient String gridListaCategoriaProduto = "gridListaCategoriaProduto";
 
-    /**
-     * Método de Entrada do pageFlow
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" path="consultarProduto.jsp"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward begin() throws Exception
-    {
-        this.produtoFormBean = new ProdutoFormBean();
-        
-        this.categoriaProdutoFormBean = new CategoriaProdutoFormBean();
-        
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaProduto = this.jCSProduto.obterListaProduto(null, produtoFormBean.getNomeProdutoFiltro(), this.sortFilterService.getDatabaseFilter(this.gridListaProduto));       
-        
-        return new Forward("success", this.produtoFormBean);
-    }
+	public transient CategoriaProdutoVO[] listaCategoriaProdutoVO;
+	public transient Object listaCategoriaProdutoVOFiltrada;
+	// Uncomment this declaration to access Global.app.
+	//
+	// protected global.Global globalApp;
+	//
 
-    /**
-     * Action que gerencia a paginação da grid de lista de produto
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acPaginacaoProduto()
-    {
-        this.sortFilterService = SortFilterService.getInstance(getRequest()); 
-                           
-        return new Forward("success");
-    }
-    
-      /**
-       * Action que gerencia a paginação da grid de lista de categoriaProduto
-       * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acPaginacaoCategoriaProduto()
-    {
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-                            
-        return new Forward("success");
-    }
+	// For an example of page flow exception handling see the example "catch"
+	// and "exception-handler"
+	// annotations in {project}/WEB-INF/src/global/Global.app
 
-    /**
-     * Action que obtem a lista do tipo RowSet
-     * de todas os Produtos
-     * com o filtro caso houver
-     * 
-     * @jpf:action
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     * @jpf:forward name="success" path="consultarProduto.jsp"
-     */
-    protected Forward acObterListaProduto(ProdutoFormBean produtoFormBean) throws Exception
-    {
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaProduto = this.jCSProduto.obterListaProduto(null, produtoFormBean.getNomeProdutoFiltro(), this.sortFilterService.getDatabaseFilter(this.gridListaProduto));       
-        
-        return new Forward("success");
-    }
-    
-     /**
-      * Action que exclui um produto
-      * 
-     * @jpf:action
-     * @jpf:forward name="success" path="acObterListaProduto.do"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acEliminarProduto() throws Exception
-    {
-        if (this.produtoFormBean.getProdutoVO().getId_produto() > 0) {
-            this.jCSProduto.eliminarProduto(this.produtoFormBean.getProdutoVO());
-        }	
-		return new Forward("success");   
-    }
-    
-    
-    /**
-     * Action que e seleciona um produto dentro da lista produto
-     * para visualizá-lo
-     * 
-    * @jpf:action
-    * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
-    * @jpf:catch type="Exception" method="exceptionHandler"
-    */
-      protected Forward acSelecionaProduto() throws Exception {      
-        String id_produto = SortFilterService.decodeUniqueIdentifier(getRequest(), this.gridListaProduto, "id_produto");
-        if(id_produto != null){
-            this.produtoFormBean.setProdutoVO(new ProdutoVO());
-            this.produtoFormBean.getProdutoVO().setId_produto(Long.parseLong(id_produto));
-        }
-        return new Forward("success");    
-      }		
-      
-    /**
-     *  Método que gerencia as exceções, chama a página errorException caso haja uma excessão
-     *  
-      * @jpf:exception-handler
-      * @jpf:forward name="errorPage" path="../errorException.jsp"
-      */
-    protected Forward exceptionHandler(Exception ex, String actionName, String mesage, FormData form) {
-        String displayMesage;
-        if(AppException.isMensagemNegocio(ex)){
-            String keyError = AppException.obtemKeyErro(ex);
-            ResourceBundle msgs;
-            msgs= ResourceBundle.getBundle("msgs", (Locale)this.getRequest().getSession().getAttribute(Globals.LOCALE_KEY));
-            displayMesage = "Erro: " + actionName + " - " + msgs.getString("MSG_ERROR_"+ keyError);
-            getRequest().setAttribute("errorMessage",displayMesage);
-        }else{
-            displayMesage = "Erro: " + actionName + " - " + ex.getMessage();
-        }
-        return new Forward( "errorPage" ); 
-    }    
+	/**
+	 * Método de Entrada do pageFlow
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path="consultarProduto.jsp"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward begin() throws Exception {
+		this.produtoFormBean = new ProdutoFormBean();
 
-    /**
-     * Action que obtem dos dados do produto selecionada,
-     * seta o podutoFormBean com estes dados para ir
-     * para a página de visualização de produto
-     * 
-	* @jpf:action
-    * @jpf:forward name="success" path="visualizarProduto.jsp"
-    * @jpf:catch type="Exception"  method="exceptionHandler"
-    */
-    protected Forward acIrParaVisualizarProduto() throws Exception
-    {
-        this.produtoFormBean.setProdutoVO(this.jCSProduto.obterProduto(this.produtoFormBean.getProdutoVO()));
-        
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(this.produtoFormBean.getProdutoVO(), null, this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
+		this.categoriaProdutoFormBean = new CategoriaProdutoFormBean();
 
-        return new Forward("success");
-    }
-    
-    
-     /**
-      * Action que obtem a lista de categoriaProduto do tipo RowSet
-      * pertencentes ao produto atual
-      * filtradas caso houver filtro
-      * para o componente grid da interface
-      * 
-	* @jpf:action
-    * @jpf:forward name="success" path="visualizarProduto.jsp"
-    * @jpf:catch type="Exception"  method="exceptionHandler"
-    */
-    protected Forward acObterListaCategoriaProduto(CategoriaProdutoFormBean categoriaProdutoFormBean) throws Exception
-    {
-        this.produtoFormBean.setProdutoVO(this.jCSProduto.obterProduto(this.produtoFormBean.getProdutoVO()));
-        
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(this.produtoFormBean.getProdutoVO(),categoriaProdutoFormBean.getNomeCategoriaProdutoFiltro() , this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaProduto = this.jCSProduto.obterListaProduto(null, produtoFormBean.getNomeProdutoFiltro(),
+				this.sortFilterService.getDatabaseFilter(this.gridListaProduto));
 
-        return new Forward("success");
-    }
-    
+		return new Forward("success", this.produtoFormBean);
+	}
 
-    /**
-     * Action que obtém a lista de categoriaProduto do tipo VO[]
-     * pertencentes ao produto atual
-     * filtradas caso houver filtro
-     * para o componente repeater da interface
-     * 
-	* @jpf:action
-    * @jpf:forward return-to="currentPage" name="success" 
-    * @jpf:catch type="Exception"  method="exceptionHandler"
-    */
-    protected Forward acObterListaCategoriaProdutoVO(CategoriaProdutoFormBean categoriaProdutoFormBean) throws Exception
-    {   
-        if(categoriaProdutoFormBean.getNomeCategoriaProdutoFiltro().trim().equals("")){
-            this.listaCategoriaProdutoVOFiltrada = this.listaCategoriaProdutoVO;
-        }else{
-            ArrayList listaCategoriaProdutoVODinamica = new ArrayList();
-            
-            for(int i = 0; i < this.listaCategoriaProdutoVO.length; i++){
-                if((this.listaCategoriaProdutoVO[i].getNome_categoria_produto().toUpperCase().indexOf(categoriaProdutoFormBean.getNomeCategoriaProdutoFiltro().trim().toUpperCase())) >= 0){
-                    listaCategoriaProdutoVODinamica.add(this.listaCategoriaProdutoVO[i]);
-                }
-            }
-            this.listaCategoriaProdutoVOFiltrada = listaCategoriaProdutoVODinamica.toArray();
-        }
+	/**
+	 * Action que gerencia a paginação da grid de lista de produto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acPaginacaoProduto() {
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
 
-        return new Forward("success");
-    }
+		return new Forward("success");
+	}
 
-	
-    /**
-    * Action que obtem todos os dados de categoriaProduto
-    * para ir para a página alterarCategoriaProduto
-    * 
-  * @jpf:action
-  * @jpf:forward name="success" path="alterarProduto.jsp"
-  * @jpf:catch type="Exception" method="exceptionHandler"
-  */
-  protected Forward acIrParaAlterarProduto() throws Exception {  
-    
-        String id_produto = SortFilterService.decodeUniqueIdentifier(getRequest(), this.gridListaProduto, "id_produto");
-        
-        if(id_produto != null){
-            this.produtoFormBean.setProdutoVO(new ProdutoVO());
-            this.produtoFormBean.getProdutoVO().setId_produto(Long.parseLong(id_produto));
-        }
-        
-        this.produtoFormBean.setProdutoVO(this.jCSProduto.obterProduto(this.produtoFormBean.getProdutoVO()));
-        
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaCategoriaProdutoVO = this.jCSCategoriaProduto.obterListaCategoriaProdutoPorProduto(this.produtoFormBean.getProdutoVO(), null);
-        this.listaCategoriaProdutoVOFiltrada = this.listaCategoriaProdutoVO;
-        
-		return new Forward("success");        
-  } 
-    /**
-     * Action que obtem a lista de categorias para o popup vincular categoriaProduto
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acObterListaCategoriaProdutoPopup(CategoriaProdutoFormBean categoriaProdutoFormBean) throws Exception{
-        
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(null, categoriaProdutoFormBean.getNomeCategoriaProdutoFiltroPopup(), this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
-        
-        return new Forward("success");
-    }
-    
-    /**
-     * Action que volta para página anterior
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="previousPage"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acVoltarAPaginaAnterior()
-    {
-        return new Forward("success");
-    }
+	/**
+	 * Action que gerencia a paginação da grid de lista de categoriaProduto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acPaginacaoCategoriaProduto() {
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
 
-  
-    /**
-     * Action que desvincula temporariamente o VO
-     * da lista de categoriaProdutoVO
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acDesvincularCategoriaProduto() throws Exception
-    {
-        CategoriaProdutoVO[] listaCategoriaProdutoVO = new CategoriaProdutoVO[this.listaCategoriaProdutoVO.length-1];
-        int j = 0;
-        for(int i = 0; i < this.listaCategoriaProdutoVO.length; i++){
-            if(this.categoriaProdutoFormBean.getCategoriaProdutoVO().getId_categoria_produto() != this.listaCategoriaProdutoVO[i].getId_categoria_produto()){
-                listaCategoriaProdutoVO[j++]=this.listaCategoriaProdutoVO[i];
-            }
-        }
-        this.listaCategoriaProdutoVO = listaCategoriaProdutoVO;
-        this.listaCategoriaProdutoVOFiltrada = listaCategoriaProdutoVO;
-        return new Forward("success");
-    }
-    /**
-     * Action que volta para o begin,
-     * para que o fluxo vá para a pagina consultarProduto
-     * 
-     * @jpf:action
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     * @jpf:forward name="success" path="begin.do"
-     */
-    protected Forward acIrParaConsultarProduto() throws Exception
-    {
-        return new Forward("success");
-    }
+		return new Forward("success");
+	}
 
-    /**
-     * Action que otém a lista de todas as categorias e
-     * abre o popup com esta lista para vincula-las
-     * ao produto atual
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     */
-    protected Forward acAbrirPopupVincularCategoria() throws Exception
-    {
-        this.sortFilterService = SortFilterService.getInstance(getRequest());
-        this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(null, null, this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
-        this.produtoFormBean.setDisplayPopup("block");
-        return new Forward("success");
-    }
+	/**
+	 * Action que obtem a lista do tipo RowSet de todas os Produtos com o filtro
+	 * caso houver
+	 * 
+	 * @jpf:action
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 * @jpf:forward name="success" path="consultarProduto.jsp"
+	 */
+	protected Forward acObterListaProduto(ProdutoFormBean produtoFormBean) throws Exception {
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaProduto = this.jCSProduto.obterListaProduto(null, produtoFormBean.getNomeProdutoFiltro(),
+				this.sortFilterService.getDatabaseFilter(this.gridListaProduto));
 
-    /**
-     * Action que verifica as condições das categorias
-     * em caso de sucesso vincula temporariamente o VO da categoria
-     * ao produto atual
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     */
-    protected Forward acVinculaCategoriaProduto() throws Exception
-    {   
-        long id_categoria_produto = Long.parseLong(SortFilterService.decodeUniqueIdentifier(getRequest(), this.gridListaCategoriaProduto, "id_categoria_produto"));
-        
-        boolean categoriaJaVinculada = false;
-        for(int i = 0; i < this.listaCategoriaProdutoVO.length; i++){
-            if(id_categoria_produto == this.listaCategoriaProdutoVO[i].getId_categoria_produto()){
-                categoriaJaVinculada = true;
-                this.produtoFormBean.setMensagem("Categoria já vinculada!");
-                break;
-            }
-        }
-        
-        if(!categoriaJaVinculada){
-            CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
-            categoriaProdutoVO.setId_categoria_produto(id_categoria_produto);
-            
-            categoriaProdutoVO = this.jCSCategoriaProduto.obterCategoriaProduto(categoriaProdutoVO);
-            
-            CategoriaProdutoVO[] listaCategoriaProdutoVO = new CategoriaProdutoVO[this.listaCategoriaProdutoVO.length+1];
-            for(int j = 0; j < this.listaCategoriaProdutoVO.length; j++){
-                listaCategoriaProdutoVO[j] = this.listaCategoriaProdutoVO[j];
-            }
-            listaCategoriaProdutoVO[this.listaCategoriaProdutoVO.length] = categoriaProdutoVO;
-            
-            this.listaCategoriaProdutoVO = listaCategoriaProdutoVO;
-            this.listaCategoriaProdutoVOFiltrada = this.listaCategoriaProdutoVO;
-            this.produtoFormBean.setDisplayPopup("none");
-        }
-        
-        return new Forward("success");
-    }
+		return new Forward("success");
+	}
 
-    /**
-     * Action que apaga a mensagem da interface,
-     * pois caso a mesagem seja nula, não será
-     * exibida na inicialização da página, alterar ou cadastrar 
-     * categoriaProduto
-     * 
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     */
-    protected Forward acApagarMesagem()
-    {
-        this.produtoFormBean.setMensagem(null);
-        return new Forward("success");
-    }
+	/**
+	 * Action que exclui um produto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path="acObterListaProduto.do"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acEliminarProduto() throws Exception {
+		if (this.produtoFormBean.getProdutoVO().getId_produto() > 0) {
+			this.jCSProduto.eliminarProduto(this.produtoFormBean.getProdutoVO());
+		}
+		return new Forward("success");
+	}
 
-    /**
-     * Action que seta o display do popUp para none,
-     * que no caso deixa-o invisível
-     * @jpf:action
-     * @jpf:forward name="success" return-to="currentPage"
-     */
-    protected Forward acFechaPopup()
-    {
-        this.produtoFormBean.setDisplayPopup("none");
-        return new Forward("success");
-    }
+	/**
+	 * Action que e seleciona um produto dentro da lista produto para
+	 * visualizá-lo
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acSelecionaProduto() throws Exception {
+		String id_produto = SortFilterService.decodeUniqueIdentifier(getRequest(), this.gridListaProduto, "id_produto");
+		if (id_produto != null) {
+			this.produtoFormBean.setProdutoVO(new ProdutoVO());
+			this.produtoFormBean.getProdutoVO().setId_produto(Long.parseLong(id_produto));
+		}
+		return new Forward("success");
+	}
 
-    /**
-     * Action que confirma as alterações do produto e torna-os persistentes
-     * 
-     * @jpf:action
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
-     * @jpf:forward name="error" return-to="currentPage"
-     */
-    protected Forward acAlterarProduto() throws Exception
-    {
-        if(!this.produtoFormBean.getProdutoVO().getNome_produto().trim().equals("")){
-            ProdutoVO produtoVO = this.produtoFormBean.getProdutoVO();
-            ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO[this.listaCategoriaProdutoVO.length];
-            for(int i = 0; i < this.listaCategoriaProdutoVO.length; i++){
-                listaProdutoCategoriaProdutoVO[i] = new ProdutoCategoriaProdutoVO();
-                listaProdutoCategoriaProdutoVO[i].setId_produto(produtoVO.getId_produto());
-                listaProdutoCategoriaProdutoVO[i].setId_categoria_produto(this.listaCategoriaProdutoVO[i].getId_categoria_produto());
-            }
-            this.jCSProduto.atualizarProduto(produtoVO, listaProdutoCategoriaProdutoVO);
-            
-            return new Forward("success");
-        }else{
-            this.produtoFormBean.setMensagem("Insira o nome do produto");
-            return new Forward("error");
-        }
-    }
+	/**
+	 * Método que gerencia as exceções, chama a página errorException caso haja
+	 * uma excessão
+	 * 
+	 * @jpf:exception-handler
+	 * @jpf:forward name="errorPage" path="../errorException.jsp"
+	 */
+	protected Forward exceptionHandler(Exception ex, String actionName, String mesage, FormData form) {
+		String displayMesage;
+		if (AppException.isMensagemNegocio(ex)) {
+			String keyError = AppException.obtemKeyErro(ex);
+			ResourceBundle msgs;
+			msgs = ResourceBundle.getBundle("msgs",
+					(Locale) this.getRequest().getSession().getAttribute(Globals.LOCALE_KEY));
+			displayMesage = "Erro: " + actionName + " - " + msgs.getString("MSG_ERROR_" + keyError);
+			getRequest().setAttribute("errorMessage", displayMesage);
+		} else {
+			displayMesage = "Erro: " + actionName + " - " + ex.getMessage();
+		}
+		return new Forward("errorPage");
+	}
 
-    /**
-     *  Action que nula as informações do formBean
-     *  para ir para a página cadastrarProduto
-     *  
-     * @jpf:action
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     * @jpf:forward name="success" path="cadastrarProduto.jsp"
-     */
-    protected Forward acIrParaCadastrarProduto()
-    {
-        this.produtoFormBean = new ProdutoFormBean();
-        this.listaCategoriaProdutoVO = new CategoriaProdutoVO[0];
-        this.listaCategoriaProdutoVOFiltrada = new CategoriaProdutoVO[0];
-        return new Forward("success");
-    }
+	/**
+	 * Action que obtem dos dados do produto selecionada, seta o podutoFormBean
+	 * com estes dados para ir para a página de visualização de produto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path="visualizarProduto.jsp"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acIrParaVisualizarProduto() throws Exception {
+		this.produtoFormBean.setProdutoVO(this.jCSProduto.obterProduto(this.produtoFormBean.getProdutoVO()));
 
-    /**
-     * Action que confirma as alterarções do produto
-     * a ser cadastrado e torna o objeto persistente
-     * com a lista de categorias
-     * 
-     * @jpf:action
-     * @jpf:catch type="Exception" method="exceptionHandler"
-     * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
-     * @jpf:forward name="error" return-to="currentPage"
-     */
-    protected Forward acCadastrarProduto() throws Exception
-    {   
-        if(!this.produtoFormBean.getProdutoVO().getNome_produto().trim().equals("")){
-            ProdutoVO produtoVO = this.produtoFormBean.getProdutoVO();
-            this.produtoFormBean.setProdutoVO(this.jCSProduto.cadastrarProduto(produtoVO, this.listaCategoriaProdutoVO));
-            
-            return new Forward("success");
-        }else{
-            this.produtoFormBean.setMensagem("Insira o nome do produto");
-            return new Forward("error");
-        }
-        
-    }
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(
+				this.produtoFormBean.getProdutoVO(), null,
+				this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
+
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que obtem a lista de categoriaProduto do tipo RowSet pertencentes
+	 * ao produto atual filtradas caso houver filtro para o componente grid da
+	 * interface
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path="visualizarProduto.jsp"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acObterListaCategoriaProduto(CategoriaProdutoFormBean categoriaProdutoFormBean) throws Exception {
+		this.produtoFormBean.setProdutoVO(this.jCSProduto.obterProduto(this.produtoFormBean.getProdutoVO()));
+
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(
+				this.produtoFormBean.getProdutoVO(), categoriaProdutoFormBean.getNomeCategoriaProdutoFiltro(),
+				this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
+
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que obtém a lista de categoriaProduto do tipo VO[] pertencentes ao
+	 * produto atual filtradas caso houver filtro para o componente repeater da
+	 * interface
+	 * 
+	 * @jpf:action
+	 * @jpf:forward return-to="currentPage" name="success"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acObterListaCategoriaProdutoVO(CategoriaProdutoFormBean categoriaProdutoFormBean)
+			throws Exception {
+		if (categoriaProdutoFormBean.getNomeCategoriaProdutoFiltro().trim().equals("")) {
+			this.listaCategoriaProdutoVOFiltrada = this.listaCategoriaProdutoVO;
+		} else {
+			ArrayList listaCategoriaProdutoVODinamica = new ArrayList();
+
+			for (int i = 0; i < this.listaCategoriaProdutoVO.length; i++) {
+				if ((this.listaCategoriaProdutoVO[i].getNome_categoria_produto().toUpperCase()
+						.indexOf(categoriaProdutoFormBean.getNomeCategoriaProdutoFiltro().trim().toUpperCase())) >= 0) {
+					listaCategoriaProdutoVODinamica.add(this.listaCategoriaProdutoVO[i]);
+				}
+			}
+			this.listaCategoriaProdutoVOFiltrada = listaCategoriaProdutoVODinamica.toArray();
+		}
+
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que obtem todos os dados de categoriaProduto para ir para a página
+	 * alterarCategoriaProduto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path="alterarProduto.jsp"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acIrParaAlterarProduto() throws Exception {
+
+		String id_produto = SortFilterService.decodeUniqueIdentifier(getRequest(), this.gridListaProduto, "id_produto");
+
+		if (id_produto != null) {
+			this.produtoFormBean.setProdutoVO(new ProdutoVO());
+			this.produtoFormBean.getProdutoVO().setId_produto(Long.parseLong(id_produto));
+		}
+
+		this.produtoFormBean.setProdutoVO(this.jCSProduto.obterProduto(this.produtoFormBean.getProdutoVO()));
+
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaCategoriaProdutoVO = this.jCSCategoriaProduto
+				.obterListaCategoriaProdutoPorProduto(this.produtoFormBean.getProdutoVO(), null);
+		this.listaCategoriaProdutoVOFiltrada = this.listaCategoriaProdutoVO;
+
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que obtem a lista de categorias para o popup vincular
+	 * categoriaProduto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acObterListaCategoriaProdutoPopup(CategoriaProdutoFormBean categoriaProdutoFormBean)
+			throws Exception {
+
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(null,
+				categoriaProdutoFormBean.getNomeCategoriaProdutoFiltroPopup(),
+				this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
+
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que volta para página anterior
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="previousPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acVoltarAPaginaAnterior() {
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que desvincula temporariamente o VO da lista de categoriaProdutoVO
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acDesvincularCategoriaProduto() throws Exception {
+		CategoriaProdutoVO[] listaCategoriaProdutoVO = new CategoriaProdutoVO[this.listaCategoriaProdutoVO.length - 1];
+		int j = 0;
+		for (int i = 0; i < this.listaCategoriaProdutoVO.length; i++) {
+			if (this.categoriaProdutoFormBean.getCategoriaProdutoVO()
+					.getId_categoria_produto() != this.listaCategoriaProdutoVO[i].getId_categoria_produto()) {
+				listaCategoriaProdutoVO[j++] = this.listaCategoriaProdutoVO[i];
+			}
+		}
+		this.listaCategoriaProdutoVO = listaCategoriaProdutoVO;
+		this.listaCategoriaProdutoVOFiltrada = listaCategoriaProdutoVO;
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que volta para o begin, para que o fluxo vá para a pagina
+	 * consultarProduto
+	 * 
+	 * @jpf:action
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 * @jpf:forward name="success" path="begin.do"
+	 */
+	protected Forward acIrParaConsultarProduto() throws Exception {
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que otém a lista de todas as categorias e abre o popup com esta
+	 * lista para vincula-las ao produto atual
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 */
+	protected Forward acAbrirPopupVincularCategoria() throws Exception {
+		this.sortFilterService = SortFilterService.getInstance(getRequest());
+		this.listaCategoriaProduto = this.jCSCategoriaProduto.obterListaCategoriaProduto(null, null,
+				this.sortFilterService.getDatabaseFilter(this.gridListaCategoriaProduto));
+		this.produtoFormBean.setDisplayPopup("block");
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que verifica as condições das categorias em caso de sucesso
+	 * vincula temporariamente o VO da categoria ao produto atual
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acVinculaCategoriaProduto() throws Exception {
+		long id_categoria_produto = Long.parseLong(SortFilterService.decodeUniqueIdentifier(getRequest(),
+				this.gridListaCategoriaProduto, "id_categoria_produto"));
+
+		boolean categoriaJaVinculada = false;
+		for (int i = 0; i < this.listaCategoriaProdutoVO.length; i++) {
+			if (id_categoria_produto == this.listaCategoriaProdutoVO[i].getId_categoria_produto()) {
+				categoriaJaVinculada = true;
+				this.produtoFormBean.setMensagem("Categoria já vinculada!");
+				break;
+			}
+		}
+
+		if (!categoriaJaVinculada) {
+			CategoriaProdutoVO categoriaProdutoVO = new CategoriaProdutoVO();
+			categoriaProdutoVO.setId_categoria_produto(id_categoria_produto);
+
+			categoriaProdutoVO = this.jCSCategoriaProduto.obterCategoriaProduto(categoriaProdutoVO);
+
+			CategoriaProdutoVO[] listaCategoriaProdutoVO = new CategoriaProdutoVO[this.listaCategoriaProdutoVO.length
+					+ 1];
+			for (int j = 0; j < this.listaCategoriaProdutoVO.length; j++) {
+				listaCategoriaProdutoVO[j] = this.listaCategoriaProdutoVO[j];
+			}
+			listaCategoriaProdutoVO[this.listaCategoriaProdutoVO.length] = categoriaProdutoVO;
+
+			this.listaCategoriaProdutoVO = listaCategoriaProdutoVO;
+			this.listaCategoriaProdutoVOFiltrada = this.listaCategoriaProdutoVO;
+			this.produtoFormBean.setDisplayPopup("none");
+		}
+
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que apaga a mensagem da interface, pois caso a mesagem seja nula,
+	 * não será exibida na inicialização da página, alterar ou cadastrar
+	 * categoriaProduto
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 */
+	protected Forward acApagarMesagem() {
+		this.produtoFormBean.setMensagem(null);
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que seta o display do popUp para none, que no caso deixa-o
+	 * invisível
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="currentPage"
+	 */
+	protected Forward acFechaPopup() {
+		this.produtoFormBean.setDisplayPopup("none");
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que confirma as alterações do produto e torna-os persistentes
+	 * 
+	 * @jpf:action
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
+	 * @jpf:forward name="error" return-to="currentPage"
+	 */
+	protected Forward acAlterarProduto() throws Exception {
+		if (!this.produtoFormBean.getProdutoVO().getNome_produto().trim().equals("")) {
+			ProdutoVO produtoVO = this.produtoFormBean.getProdutoVO();
+			ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO[this.listaCategoriaProdutoVO.length];
+			for (int i = 0; i < this.listaCategoriaProdutoVO.length; i++) {
+				listaProdutoCategoriaProdutoVO[i] = new ProdutoCategoriaProdutoVO();
+				listaProdutoCategoriaProdutoVO[i].setId_produto(produtoVO.getId_produto());
+				listaProdutoCategoriaProdutoVO[i]
+						.setId_categoria_produto(this.listaCategoriaProdutoVO[i].getId_categoria_produto());
+			}
+			this.jCSProduto.atualizarProduto(produtoVO, listaProdutoCategoriaProdutoVO);
+
+			return new Forward("success");
+		} else {
+			this.produtoFormBean.setMensagem("Insira o nome do produto");
+			return new Forward("error");
+		}
+	}
+
+	/**
+	 * Action que nula as informações do formBean para ir para a página
+	 * cadastrarProduto
+	 * 
+	 * @jpf:action
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 * @jpf:forward name="success" path="cadastrarProduto.jsp"
+	 */
+	protected Forward acIrParaCadastrarProduto() {
+		this.produtoFormBean = new ProdutoFormBean();
+		this.listaCategoriaProdutoVO = new CategoriaProdutoVO[0];
+		this.listaCategoriaProdutoVOFiltrada = new CategoriaProdutoVO[0];
+		return new Forward("success");
+	}
+
+	/**
+	 * Action que confirma as alterarções do produto a ser cadastrado e torna o
+	 * objeto persistente com a lista de categorias
+	 * 
+	 * @jpf:action
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 * @jpf:forward name="success" path="acIrParaVisualizarProduto.do"
+	 * @jpf:forward name="error" return-to="currentPage"
+	 */
+	protected Forward acCadastrarProduto() throws Exception {
+		if (!this.produtoFormBean.getProdutoVO().getNome_produto().trim().equals("")) {
+			ProdutoVO produtoVO = this.produtoFormBean.getProdutoVO();
+			this.produtoFormBean
+					.setProdutoVO(this.jCSProduto.cadastrarProduto(produtoVO, this.listaCategoriaProdutoVO));
+
+			return new Forward("success");
+		} else {
+			this.produtoFormBean.setMensagem("Insira o nome do produto");
+			return new Forward("error");
+		}
+
+	}
 }

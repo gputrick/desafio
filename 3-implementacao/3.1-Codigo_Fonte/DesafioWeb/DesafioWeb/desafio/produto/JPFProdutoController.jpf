@@ -74,56 +74,56 @@ import org.apache.struts.Globals;
  * </view-properties>
  * ::
  */
-public class JPFProdutoController extends PageFlowController
-{
+public class JPFProdutoController extends PageFlowController {
 
+	public ProdutoFormBean produtoFormBean = new ProdutoFormBean();
 
-    public ProdutoFormBean produtoFormBean = new ProdutoFormBean();
-
-  /**
-     * This method represents the point of entry into the pageflow
-     * @jpf:action
-     * @jpf:forward name="success" path="/desafio/produto/manter/JPFManterProdutoController.jpf"
-     * @jpf:forward name="erro" path="/resources/jsp/errorException.jsp"
-     */
-    protected Forward begin() throws Exception
-    {
-      return new Forward("success");
-    }
-		
-		  /**
-  * @jpf:action 
-  * @jpf:forward name="success" return-to="previousPage"
-  * @jpf:catch type="Exception" method="exceptionHandler" 
-  */  
-  protected Forward acVerificaUltimaPagina()throws Exception {
-    return new Forward("success");
-  }  
-	
 	/**
-  * @jpf:action
-  * @jpf:forward name="success" path="begin.do"
-  */
-  protected Forward acExitManter() {
-    return new Forward("success");
-  }  
-	
-	 /**
-  * @jpf:exception-handler
-  * @jpf:forward name="errorPage" path="errorException.jsp"
-  */
-  protected Forward exceptionHandler(Exception ex, String actionName, String mesage, FormData form) {
-    String displayMesage;
-    //internacionaliza��o da mensagem de erro
-    if(AppException.isMensagemNegocio(ex)){
-      String keyError = AppException.obtemKeyErro(ex);
-      ResourceBundle msgs;
-      msgs= ResourceBundle.getBundle("msgs", (Locale)this.getRequest().getSession().getAttribute(Globals.LOCALE_KEY));
-      displayMesage = "Erro: " + actionName + " - " + msgs.getString("MSG_ERROR_"+ keyError);
-      getRequest().setAttribute("errorMessage",displayMesage);
-    } else {
-      displayMesage = "Erro: " + actionName + " - " + ex.getMessage();
-    }   
-    return new Forward( "errorPage" );   
-  }
+	 * This method represents the point of entry into the pageflow
+	 * 
+	 * @jpf:action
+	 * @jpf:forward name="success" path=
+	 *              "/desafio/produto/manter/JPFManterProdutoController.jpf"
+	 * @jpf:forward name="erro" path="/resources/jsp/errorException.jsp"
+	 */
+	protected Forward begin() throws Exception {
+		return new Forward("success");
+	}
+
+	/**
+	 * @jpf:action
+	 * @jpf:forward name="success" return-to="previousPage"
+	 * @jpf:catch type="Exception" method="exceptionHandler"
+	 */
+	protected Forward acVerificaUltimaPagina() throws Exception {
+		return new Forward("success");
+	}
+
+	/**
+	 * @jpf:action
+	 * @jpf:forward name="success" path="begin.do"
+	 */
+	protected Forward acExitManter() {
+		return new Forward("success");
+	}
+
+	/**
+	 * @jpf:exception-handler
+	 * @jpf:forward name="errorPage" path="errorException.jsp"
+	 */
+	protected Forward exceptionHandler(Exception ex, String actionName, String mesage, FormData form) {
+		String displayMesage;
+		// internacionaliza��o da mensagem de erro
+		if (AppException.isMensagemNegocio(ex)) {
+			String keyError = AppException.obtemKeyErro(ex);
+			ResourceBundle msgs;
+			msgs = ResourceBundle.getBundle("msgs",
+					(Locale) this.getRequest().getSession().getAttribute(Globals.LOCALE_KEY));
+			displayMesage = "Erro: " + actionName + " - " + msgs.getString("MSG_ERROR_" + keyError);
+			getRequest().setAttribute("errorMessage", displayMesage);
+		} else {
+			displayMesage = "Erro: " + actionName + " - " + ex.getMessage();
+		}
+		return new Forward("errorPage");
+	}
 }

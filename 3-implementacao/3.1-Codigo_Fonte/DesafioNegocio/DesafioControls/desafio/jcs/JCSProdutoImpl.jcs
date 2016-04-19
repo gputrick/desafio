@@ -1,192 +1,182 @@
-package desafio.jcs; 
+package desafio.jcs;
 
 import com.bea.control.*;
 import desafio.CategoriaProdutoVO;
 import desafio.ProdutoCategoriaProdutoVO;
 import desafio.ProdutoVO;
 import javax.sql.RowSet;
+
 /**
  * @editor-info:code-gen control-interface="true"
  */
-public class JCSProdutoImpl implements JCSProduto, ControlSource
-{ 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
+public class JCSProdutoImpl implements JCSProduto, ControlSource {
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.DBProdutoCategoriaProduto dBProdutoCategoriaProduto;
 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.EJBProdutoCategoriaProdutoSession ejBProdutoCategoriaProdutoSession;
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.EJBProdutoCategoriaProdutoSession ejBProdutoCategoriaProdutoSession;
 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.EJBProdutoSession ejBProdutoSession;
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.EJBProdutoSession ejBProdutoSession;
 
-    static final long serialVersionUID = 1L;    
+	static final long serialVersionUID = 1L;
 
-    /**
-     * @common:control
-     */
-    private desafio.jcx.DBProduto dBProduto;
+	/**
+	 * @common:control
+	 */
+	private desafio.jcx.DBProduto dBProduto;
 
-    /**
-     * Método obtém a lista de produtos, caso houver categoriaVOFiltro
-     * realiza o join com a tabela associativa produto_categoria_produto
-     * 
-     * @common:operation
-     */
-    public RowSet obterListaProduto(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeProduto, DatabaseFilter filter) throws Exception
-    {
-        String orderByClause = " ORDER BY PRODUTO.NOME_PRODUTO";
-        StringBuffer whereClause = new StringBuffer();
-        boolean concatenou = false;
-        
-        if((categoriaProdutoVOFiltro != null) &&
-        (categoriaProdutoVOFiltro.getId_categoria_produto() > 0)){
-            whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
-            .append(" ON PRODUTO.ID_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO ")
-            .append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = ")
-            .append(categoriaProdutoVOFiltro.getId_categoria_produto())
-            .append(" ");
-            concatenou = true;
-        }
-        
-        if((nomeProduto != null) &&
-        (!nomeProduto.trim().equals(""))){
-            if( concatenou )
-            {  
-                whereClause.append(" AND ");
-            }
-            else
-            {
-                whereClause.append(" WHERE ");
-                concatenou = true;
-            }
-            
-            whereClause.append(" (UPPER( PRODUTO.NOME_PRODUTO ) LIKE UPPER('%")
-            .append(nomeProduto.trim())
-            .append("%') )");
-        }
-	if ( filter != null )
-			{
-				if ( filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("") )
-				{
-					whereClause = new StringBuffer();			
-				}
-				if ( filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("") ) 
-				{
-					orderByClause = "";
+	/**
+	 * Método obtém a lista de produtos, caso houver categoriaVOFiltro realiza o
+	 * join com a tabela associativa produto_categoria_produto
+	 * 
+	 * @common:operation
+	 */
+	public RowSet obterListaProduto(CategoriaProdutoVO categoriaProdutoVOFiltro, String nomeProduto,
+			DatabaseFilter filter) throws Exception {
+		String orderByClause = " ORDER BY PRODUTO.NOME_PRODUTO";
+		StringBuffer whereClause = new StringBuffer();
+		boolean concatenou = false;
+
+		if ((categoriaProdutoVOFiltro != null) && (categoriaProdutoVOFiltro.getId_categoria_produto() > 0)) {
+			whereClause.append(" JOIN PRODUTO_CATEGORIA_PRODUTO ")
+					.append(" ON PRODUTO.ID_PRODUTO = PRODUTO_CATEGORIA_PRODUTO.ID_PRODUTO ")
+					.append(" AND PRODUTO_CATEGORIA_PRODUTO.ID_CATEGORIA_PRODUTO = ")
+					.append(categoriaProdutoVOFiltro.getId_categoria_produto()).append(" ");
+			concatenou = true;
+		}
+
+		if ((nomeProduto != null) && (!nomeProduto.trim().equals(""))) {
+			if (concatenou) {
+				whereClause.append(" AND ");
+			} else {
+				whereClause.append(" WHERE ");
+				concatenou = true;
+			}
+
+			whereClause.append(" (UPPER( PRODUTO.NOME_PRODUTO ) LIKE UPPER('%").append(nomeProduto.trim())
+					.append("%') )");
+		}
+		if (filter != null) {
+			if (filter.getWhereClause() != null && !filter.getWhereClause().toString().trim().equals("")) {
+				whereClause = new StringBuffer();
+			}
+			if (filter.getOrderByClause() != null && !filter.getOrderByClause().toString().trim().equals("")) {
+				orderByClause = "";
+			}
+		} else {
+			filter = new DatabaseFilter();
+		}
+
+		return this.dBProduto.getListaProduto(whereClause.toString(), orderByClause, filter);
+
+	}
+
+	/**
+	 * Método elimina todas as ocorrências do produto na tabela associativa
+	 * produto_categoria_produto e depois exclui produto
+	 * 
+	 * @common:operation
+	 */
+	public void eliminarProduto(ProdutoVO produtoVO) throws Exception {
+		ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto = this.dBProdutoCategoriaProduto
+				.obterListaProdutoCategoriaProdutoPorProduto(produtoVO);
+		if (listaProdutoCategoriaProduto.length > 0) {
+			for (int i = 0; i < listaProdutoCategoriaProduto.length; i++) {
+				this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProduto[i]);
+			}
+		}
+		this.ejBProdutoSession.eliminarProduto(produtoVO);
+	}
+
+	/**
+	 * Método verifica todas as ocorrencias de produto na tabela associativa
+	 * produto_categoria_produto, compara com a lista atualizada, exclui quem
+	 * foi excluido e insere os registros novos na tabela. Além de atualizar os
+	 * dados primitivos
+	 * 
+	 * @common:operation
+	 */
+	public void atualizarProduto(ProdutoVO produtoVO,
+			ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVOAtualizada) throws Exception {
+		ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = this.dBProdutoCategoriaProduto
+				.obterListaProdutoCategoriaProdutoPorProduto(produtoVO);
+
+		boolean isInserido;
+		for (int i = 0; i < listaProdutoCategoriaProdutoVOAtualizada.length; i++) {
+			isInserido = true;
+			for (int j = 0; j < listaProdutoCategoriaProdutoVO.length; j++) {
+				if (listaProdutoCategoriaProdutoVOAtualizada[i]
+						.getId_categoria_produto() == listaProdutoCategoriaProdutoVO[j].getId_categoria_produto()) {
+					isInserido = false;
+					break;
 				}
 			}
-        else
-        {
-            filter = new DatabaseFilter();
-        }
-        
-        return this.dBProduto.getListaProduto(whereClause.toString(), orderByClause, filter);
-        
-    }
+			if (isInserido) {
+				this.ejBProdutoCategoriaProdutoSession
+						.atualizarProdutoCategoriaProduto(listaProdutoCategoriaProdutoVOAtualizada[i]);
+			}
+		}
 
-    /**
-     * Método elimina todas as ocorrências do produto
-     * na tabela associativa produto_categoria_produto
-     * e depois exclui produto
-     * 
-     * @common:operation
-     */
-    public void eliminarProduto(ProdutoVO produtoVO) throws Exception
-    {
-        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProduto = this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO);
-        if(listaProdutoCategoriaProduto.length > 0){
-            for(int i = 0; i < listaProdutoCategoriaProduto.length; i++){
-                this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProduto[i]);
-            }
-        }
-        this.ejBProdutoSession.eliminarProduto(produtoVO);
-    }
-    
-    
-    /**
-     * Método verifica todas as ocorrencias de
-     * produto na tabela associativa produto_categoria_produto,
-     * compara com a lista atualizada, exclui quem foi excluido
-     * e insere os registros novos na tabela. Além de atualizar os dados primitivos
-     * 
-     * @common:operation
-     */
-    public void atualizarProduto(ProdutoVO produtoVO, ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVOAtualizada) throws Exception
-    {
-        ProdutoCategoriaProdutoVO[] listaProdutoCategoriaProdutoVO = this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO);
-        
-        boolean isInserido;
-        for(int i = 0; i < listaProdutoCategoriaProdutoVOAtualizada.length; i++){
-            isInserido = true;
-            for(int j = 0; j < listaProdutoCategoriaProdutoVO.length; j++){
-                if(listaProdutoCategoriaProdutoVOAtualizada[i].getId_categoria_produto() == listaProdutoCategoriaProdutoVO[j].getId_categoria_produto()){
-                    isInserido = false;
-                    break;
-                }
-            }
-            if(isInserido){
-                this.ejBProdutoCategoriaProdutoSession.atualizarProdutoCategoriaProduto(listaProdutoCategoriaProdutoVOAtualizada[i]);
-            }
-        }
-        
-        boolean isExcluido;
-        for(int i = 0; i < listaProdutoCategoriaProdutoVO.length; i++){
-            isExcluido = true;
-            for(int j = 0; j < listaProdutoCategoriaProdutoVOAtualizada.length; j++){
-                if(listaProdutoCategoriaProdutoVO[i].getId_categoria_produto() == listaProdutoCategoriaProdutoVOAtualizada[j].getId_categoria_produto()){
-                    isExcluido = false;
-                    break;
-                }
-            }
-            if(isExcluido){
-                this.ejBProdutoCategoriaProdutoSession.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProdutoVO[i]);
-            }
-        }
-        
-        this.ejBProdutoSession.atualizarProduto(produtoVO);
-    }
-    
-     /**
-      * Método insere todas os registros da lista de
-      * produto_categoria_produto depois insere o produtoVO na tabela
-      * produto
-      * 
-     * @common:operation
-     */
-    public ProdutoVO cadastrarProduto(ProdutoVO produtoVO, CategoriaProdutoVO[] listaCategoriaProdutoVO) throws Exception
-    {
-        produtoVO = this.ejBProdutoSession.atualizarProduto(produtoVO);
-        
-        ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO;
-        for(int i = 0; i < listaCategoriaProdutoVO.length; i++){
-            produtoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO();
-            produtoCategoriaProdutoVO.setId_produto(produtoVO.getId_produto());
-            produtoCategoriaProdutoVO.setId_categoria_produto(listaCategoriaProdutoVO[i].getId_categoria_produto());
-            this.ejBProdutoCategoriaProdutoSession.atualizarProdutoCategoriaProduto(produtoCategoriaProdutoVO);
-        }
-        
-        return produtoVO;
-    }
-    
-    /**
-     * Método obtém além dos dados primitivos do produto a lista
-     * de categoria_produto de acordo com suas ocorrencias na tabela
-     * produto_categoria_produto
-     * 
-     * @common:operation
-     */
-    public ProdutoVO obterProduto(ProdutoVO produtoVO) throws Exception
-    {
-        produtoVO = this.ejBProdutoSession.obterProduto(produtoVO);
-        produtoVO.setListaProdutoCategoriaProduto(this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO));
-        
-        return produtoVO;
-    }
-} 
+		boolean isExcluido;
+		for (int i = 0; i < listaProdutoCategoriaProdutoVO.length; i++) {
+			isExcluido = true;
+			for (int j = 0; j < listaProdutoCategoriaProdutoVOAtualizada.length; j++) {
+				if (listaProdutoCategoriaProdutoVO[i]
+						.getId_categoria_produto() == listaProdutoCategoriaProdutoVOAtualizada[j]
+								.getId_categoria_produto()) {
+					isExcluido = false;
+					break;
+				}
+			}
+			if (isExcluido) {
+				this.ejBProdutoCategoriaProdutoSession
+						.eliminarProdutoCategoriaProduto(listaProdutoCategoriaProdutoVO[i]);
+			}
+		}
 
+		this.ejBProdutoSession.atualizarProduto(produtoVO);
+	}
+
+	/**
+	 * Método insere todas os registros da lista de produto_categoria_produto
+	 * depois insere o produtoVO na tabela produto
+	 * 
+	 * @common:operation
+	 */
+	public ProdutoVO cadastrarProduto(ProdutoVO produtoVO, CategoriaProdutoVO[] listaCategoriaProdutoVO)
+			throws Exception {
+		produtoVO = this.ejBProdutoSession.atualizarProduto(produtoVO);
+
+		ProdutoCategoriaProdutoVO produtoCategoriaProdutoVO;
+		for (int i = 0; i < listaCategoriaProdutoVO.length; i++) {
+			produtoCategoriaProdutoVO = new ProdutoCategoriaProdutoVO();
+			produtoCategoriaProdutoVO.setId_produto(produtoVO.getId_produto());
+			produtoCategoriaProdutoVO.setId_categoria_produto(listaCategoriaProdutoVO[i].getId_categoria_produto());
+			this.ejBProdutoCategoriaProdutoSession.atualizarProdutoCategoriaProduto(produtoCategoriaProdutoVO);
+		}
+
+		return produtoVO;
+	}
+
+	/**
+	 * Método obtém além dos dados primitivos do produto a lista de
+	 * categoria_produto de acordo com suas ocorrencias na tabela
+	 * produto_categoria_produto
+	 * 
+	 * @common:operation
+	 */
+	public ProdutoVO obterProduto(ProdutoVO produtoVO) throws Exception {
+		produtoVO = this.ejBProdutoSession.obterProduto(produtoVO);
+		produtoVO.setListaProdutoCategoriaProduto(
+				this.dBProdutoCategoriaProduto.obterListaProdutoCategoriaProdutoPorProduto(produtoVO));
+
+		return produtoVO;
+	}
+}

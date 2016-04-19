@@ -1,239 +1,224 @@
-body
-{
-background-color: #ffffff;
-background-repeat: no-repeat;
-font-family: Arial, Verdana;
-font-size: 14px;
-font-style: normal;
-font-weight: normal;
-/* color: #333333; */
-/* margin-top: 10px; */
-/* margin-left: 10px; */
-/* margin-right: 10px; */
-/* margin-bottom: 10px; */
+body {
+	background-color: #ffffff;
+	background-repeat: no-repeat;
+	font-family: Arial, Verdana;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	/* color: #333333; */
+	/* margin-top: 10px; */
+	/* margin-left: 10px; */
+	/* margin-right: 10px; */
+	/* margin-bottom: 10px; */
 }
-
 
 /* Style for in-page header of the generated rowset pages */
-.pagehead
-{
-font-size: 16px;
-font-weight: bold;
+.pagehead {
+	font-size: 16px;
+	font-weight: bold;
 }
-
 
 /* Table row style referenced in generated various generated pages */
-.tablebody
-{
-/* background-color: #CCDDEE; */
-color: #111111;
-font-size: 14px;
-text-align: left;
-vertical-align: middle;
-padding: 5px 10px 5px 10px;
+.tablebody {
+	/* background-color: #CCDDEE; */
+	color: #111111;
+	font-size: 14px;
+	text-align: left;
+	vertical-align: middle;
+	padding: 5px 10px 5px 10px;
 }
-
 
 /* Default grid header and footer style for generated rowset pages */
-.gridStyle-tr-header,
-.gridStyle-tr-footer
-{
-background-color: #CCDDEE;
-color: #555588;
-font-size: 14px;
-text-align: left;
-vertical-align: baseline;
-line-height: 18px;
-border-color: #999999;
-border-style: solid;
-border-width: 1px;
-padding-left: 10px;
+.gridStyle-tr-header, .gridStyle-tr-footer {
+	background-color: #CCDDEE;
+	color: #555588;
+	font-size: 14px;
+	text-align: left;
+	vertical-align: baseline;
+	line-height: 18px;
+	border-color: #999999;
+	border-style: solid;
+	border-width: 1px;
+	padding-left: 10px;
 }
-
 
 /* Grid base row default style for generated rowset pages */
-.gridStyle-tr-data
-{
-background-color: #FFFFFF;
-color: #111111;
-font-size: 14px;
-text-align: left;
-border-color: #999999;
-border-style: solid;
-border-width: 1px;
-padding-left: 12px;
+.gridStyle-tr-data {
+	background-color: #FFFFFF;
+	color: #111111;
+	font-size: 14px;
+	text-align: left;
+	border-color: #999999;
+	border-style: solid;
+	border-width: 1px;
+	padding-left: 12px;
 }
-
 
 /* Grid alternate row default style for generated rowset pages */
-.gridStyle-tr-alt-data
-{
-background-color: #CCDDEE;
-color: #111111;
-font-size: 14px;
-text-align: left;
-border-color: #999999;
-border-style: solid;
-border-width: 1px;
-padding-left: 12px;
+.gridStyle-tr-alt-data {
+	background-color: #CCDDEE;
+	color: #111111;
+	font-size: 14px;
+	text-align: left;
+	border-color: #999999;
+	border-style: solid;
+	border-width: 1px;
+	padding-left: 12px;
 }
 
-
 /* Used for prompts in generated pages */
-.prompt
-{
-color: #993333;
-font-style: italic;
+.prompt {
+	color: #993333;
+	font-style: italic;
 }
 
 A:link, A:visited, A:active {
-color: #7777AA;
-text-decoration: underline;
+	color: #7777AA;
+	text-decoration: underline;
 }
 
 A:hover {
-color: #9999FF;
-background: transparent;
-text-decoration: underline;
+	color: #9999FF;
+	background: transparent;
+	text-decoration: underline;
 }
 
-.center{
-    height: 20em;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    }
+.center {
+	height: 20em;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
 
-.container{
-    margin: 4%;
+.container {
+	margin: 4%;
 }
 
 .grid-table {
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 10px;
-    margin-top: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 .grid-table .grid-tr-header td {
-    padding-left: 15px;
+	padding-left: 15px;
 }
 
 .grid-table td {
-    padding: 15px;
+	padding: 15px;
 }
 
 .grid-table tr:nth-child(even) {
-    background-color: #eee;
+	background-color: #eee;
 }
 
 .grid-table tr:nth-child(odd) {
-    background-color: #fff;
+	background-color: #fff;
 }
 
-.grid-table .grid-tr-header td{
-    color: white;
-    background-color: #777;
-    text-align: left;
-    padding:1px;
+.grid-table .grid-tr-header td {
+	color: white;
+	background-color: #777;
+	text-align: left;
+	padding: 1px;
 }
 
-.grid-table .grid-tr-header .left-td-header{
-    padding-right: 40em;
+.grid-table .grid-tr-header .left-td-header {
+	padding-right: 40em;
 }
 
-.grid-table .grid-tr-alt-header .left-td-header{
-    padding-right: 40em;
+.grid-table .grid-tr-alt-header .left-td-header {
+	padding-right: 40em;
 }
 
-.grid-table .grid-tr-data .right-td-data{
-    text-align: right;
+.grid-table .grid-tr-data .right-td-data {
+	text-align: right;
 }
 
-.grid-table .grid-tr-alt-data .right-td-data{
-    text-align: right;
+.grid-table .grid-tr-alt-data .right-td-data {
+	text-align: right;
 }
 
-.table-button{
-    text-align: right;
+.table-button {
+	text-align: right;
 }
 
-.table-button i{
-    padding-left:15px;
+.table-button i {
+	padding-left: 15px;
 }
 
-.right-button{
-    float: right;
-    color: #7777AA;
+.right-button {
+	float: right;
+	color: #7777AA;
 }
 
-.title{
-    margin-top: 0px;
-    font-size: 50px;
+.title {
+	margin-top: 0px;
+	font-size: 50px;
 }
 
-.subtitle{
-    margin-bottom: 0px;
-    color: #777777;
+.subtitle {
+	margin-bottom: 0px;
+	color: #777777;
 }
 
-.name{
-    margin-top: 0px;
+.name {
+	margin-top: 0px;
 }
 
-.input{
-    margin-bottom:10px;
+.input {
+	margin-bottom: 10px;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    padding-bottom: 50px;
-    border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	padding-bottom: 50px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
+	color: #aaa;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }
 
-.title-modal{
-    margin-top: 0px;
+.title-modal {
+	margin-top: 0px;
 }
 
-.search-input-modal{
-    width: 90%;
-    margin-bottom:10px;
+.search-input-modal {
+	width: 90%;
+	margin-bottom: 10px;
 }
