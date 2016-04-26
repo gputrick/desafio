@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
-<!-- Generated from /Controller.jpf on Tue Apr 19 16:56:37 GMT-03:00 2016 -->
+<!-- Generated from /Controller.jpf on Wed Apr 20 10:57:31 GMT-03:00 2016 -->
 <struts-config>
   <form-beans>
     <form-bean type="Controller$LoginForm" name="loginForm"/>
